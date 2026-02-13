@@ -110,7 +110,7 @@ export function V4Incubator() {
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.55 }}
             className="text-3xl md:text-4xl font-bold text-center mb-16"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
@@ -142,7 +142,7 @@ export function V4Incubator() {
                 initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.45 }}
                 className={`flex items-center gap-8 ${
                   i % 2 === 0 ? "flex-row" : "flex-row-reverse"
                 }`}
