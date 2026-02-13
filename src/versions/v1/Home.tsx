@@ -426,7 +426,7 @@ export function V1Home() {
       {/* CTA Section */}
       <section className="py-32 px-6 bg-gradient-to-b from-[#0d1424] to-[#0a0f1c] relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-amber-500/5 rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.div

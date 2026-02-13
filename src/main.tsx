@@ -56,6 +56,28 @@ function ScrollToTop() {
   return null;
 }
 
+function DynamicFavicon() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const match = pathname.match(/^\/([1-5])(?:\/|$)/);
+    const version = match?.[1];
+    const href = version ? `/favicons/v${version}.svg` : "/codespark.svg";
+    const type = "image/svg+xml";
+
+    let icon = document.querySelector("link[rel='icon']") as HTMLLinkElement | null;
+    if (!icon) {
+      icon = document.createElement("link");
+      icon.rel = "icon";
+      document.head.appendChild(icon);
+    }
+    icon.type = type;
+    icon.href = href;
+  }, [pathname]);
+
+  return null;
+}
+
 // Version Picker Component
 function VersionPicker() {
   const versions = [
@@ -97,7 +119,7 @@ function VersionPicker() {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-start md:justify-center px-4 py-10 sm:px-6 md:p-8">
       {/* Grain overlay */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -123,19 +145,19 @@ function VersionPicker() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
-        className="text-center mb-16 relative z-10"
+        className="text-center mb-10 sm:mb-16 relative z-10"
       >
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-xs uppercase tracking-[0.3em] text-zinc-500 mb-4"
+          className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-zinc-500 mb-3 sm:mb-4"
           style={{ fontFamily: '"JetBrains Mono", monospace' }}
         >
           Design Prototypes
         </motion.p>
         <h1
-          className="text-5xl md:text-6xl font-medium tracking-tight mb-5"
+          className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight mb-4 sm:mb-5"
           style={{
             fontFamily: '"Fraunces", serif',
             color: "#fafafa",
@@ -145,7 +167,7 @@ function VersionPicker() {
           CodeSpark
         </h1>
         <p
-          className="text-zinc-400 text-base max-w-md mx-auto leading-relaxed"
+          className="text-zinc-400 text-sm sm:text-base max-w-md mx-auto leading-relaxed"
           style={{ fontFamily: '"DM Sans", sans-serif' }}
         >
           Select a design iteration to preview
@@ -153,7 +175,7 @@ function VersionPicker() {
       </motion.div>
 
       {/* Version Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl w-full relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl w-full relative z-10">
         {versions.map((version, index) => (
           <motion.div
             key={version.id}
@@ -167,7 +189,7 @@ function VersionPicker() {
           >
             <Link to={`/${version.id}`} className="block group">
               <div
-                className="relative p-6 rounded-2xl cursor-pointer overflow-hidden transition-all duration-500"
+                className="relative p-4 sm:p-6 rounded-2xl cursor-pointer overflow-hidden transition-all duration-500"
                 style={{
                   background: "rgba(255, 255, 255, 0.02)",
                   border: "1px solid rgba(255, 255, 255, 0.05)",
@@ -274,6 +296,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <ScrollToTop />
+      <DynamicFavicon />
       <Routes>
         {/* Version Picker Home */}
         <Route path="/" element={<VersionPicker />} />

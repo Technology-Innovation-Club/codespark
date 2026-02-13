@@ -34,14 +34,29 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
 * {
   box-sizing: border-box;
+  min-width: 0;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+  }
 }
 
 /* Custom scrollbar */

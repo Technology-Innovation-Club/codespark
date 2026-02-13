@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { siteData } from "../../data/siteData";
+import { DynamicLogo } from "../../components/DynamicLogo";
 
 export function V4Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,41 +34,10 @@ export function V4Layout() {
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-[#00fff0]/20">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             <Link to={basePath} className="flex items-center gap-3 group">
-              <div
-                className="w-12 h-12 bg-[#1a1a2e] border-2 border-[#00fff0] flex items-center justify-center relative overflow-hidden"
-                style={{
-                  clipPath:
-                    "polygon(0 10%, 10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%)",
-                  boxShadow:
-                    "0 0 20px rgba(0, 255, 240, 0.5), inset 0 0 20px rgba(0, 255, 240, 0.1)",
-                }}
-              >
-                <span
-                  className="text-[#00fff0] font-bold text-xl relative z-10"
-                  style={{
-                    fontFamily: '"Syne", sans-serif',
-                    textShadow: "0 0 10px #00fff0",
-                  }}
-                >
-                  C
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00fff0]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <span
-                className="text-xl font-bold tracking-wider"
-                style={{ fontFamily: '"Syne", sans-serif' }}
-              >
-                <span className="text-white">CODE</span>
-                <span
-                  className="text-[#00fff0]"
-                  style={{ textShadow: "0 0 10px #00fff0" }}
-                >
-                  SPARK
-                </span>
-              </span>
+              <DynamicLogo version={4} />
             </Link>
 
             {/* Desktop Navigation */}
@@ -153,9 +123,9 @@ export function V4Layout() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#0a0a0f] border-t border-[#00fff0]/20"
+              className="md:hidden bg-[#0a0a0f] border-t border-[#00fff0]/20 max-h-[calc(100vh-4.25rem)] overflow-y-auto"
             >
-              <div className="px-6 py-6 space-y-4">
+              <div className="px-4 sm:px-6 py-6 space-y-4">
                 {siteData.navigation.map((item) => (
                   <Link
                     key={item.name}
@@ -187,7 +157,7 @@ export function V4Layout() {
       {/* Version Switcher Button */}
       <Link
         to="/"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 bg-[#0a0a0f]/90 backdrop-blur-md border border-[#00fff0]/30 text-[#00fff0] hover:bg-[#00fff0]/10 hover:border-[#00fff0]/50 transition-all cursor-pointer"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-[#0a0a0f]/90 backdrop-blur-md border border-[#00fff0]/30 text-[#00fff0] hover:bg-[#00fff0]/10 hover:border-[#00fff0]/50 transition-all cursor-pointer"
         style={{
           clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)",
           boxShadow: "0 0 15px rgba(0, 255, 240, 0.3)",
@@ -196,11 +166,11 @@ export function V4Layout() {
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
         </svg>
-        <span className="text-sm font-medium uppercase tracking-wider">Switch</span>
+        <span className="hidden sm:inline text-sm font-medium uppercase tracking-wider">Switch</span>
       </Link>
 
       {/* Main Content */}
-      <main className="pt-20 relative">
+      <main className="pt-[4.5rem] sm:pt-20 relative">
         <Outlet />
       </main>
 
@@ -214,40 +184,11 @@ export function V4Layout() {
         <div className="absolute top-20 left-0 w-1/3 h-px bg-gradient-to-r from-[#00fff0]/50 to-transparent" />
         <div className="absolute top-40 right-0 w-1/4 h-px bg-gradient-to-l from-[#ff00ff]/50 to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-12">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <div
-                  className="w-12 h-12 bg-[#1a1a2e] border-2 border-[#00fff0] flex items-center justify-center"
-                  style={{
-                    clipPath:
-                      "polygon(0 10%, 10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%)",
-                    boxShadow: "0 0 20px rgba(0, 255, 240, 0.5)",
-                  }}
-                >
-                  <span
-                    className="text-[#00fff0] font-bold text-xl"
-                    style={{
-                      fontFamily: '"Syne", sans-serif',
-                      textShadow: "0 0 10px #00fff0",
-                    }}
-                  >
-                    C
-                  </span>
-                </div>
-                <span
-                  className="text-xl font-bold tracking-wider"
-                  style={{ fontFamily: '"Syne", sans-serif' }}
-                >
-                  <span className="text-white">CODE</span>
-                  <span
-                    className="text-[#00fff0]"
-                    style={{ textShadow: "0 0 10px #00fff0" }}
-                  >
-                    SPARK
-                  </span>
-                </span>
+                <DynamicLogo version={4} compact />
               </div>
               <p className="text-white/50 max-w-md leading-relaxed text-sm">
                 {`// ${siteData.brand.tagline}`}

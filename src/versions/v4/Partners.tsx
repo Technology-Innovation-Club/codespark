@@ -13,8 +13,8 @@ export function V4Partners() {
       <section className="relative py-32 px-6">
         {/* Background effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00fff0]/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#ff00ff]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#00fff0]/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#ff00ff]/10 rounded-full blur-[120px]" />
         </div>
 
         {/* Grid overlay */}
@@ -376,8 +376,8 @@ export function V4Partners() {
       {/* CTA */}
       <section className="py-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />
-          <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-[#00fff0]/10 rounded-full blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />
+          <div className="absolute top-1/4 right-1/4 w-[170px] h-[170px] sm:w-[240px] sm:h-[240px] md:w-[300px] md:h-[300px] bg-[#00fff0]/10 rounded-full blur-[100px]" />
         </div>
 
         {/* Animated lines */}

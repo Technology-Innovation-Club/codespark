@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { siteData } from "../../data/siteData";
+import { DynamicLogo } from "../../components/DynamicLogo";
 
 export function V2Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,23 +16,10 @@ export function V2Layout() {
     >
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             <Link to={basePath} className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-black flex items-center justify-center">
-                <span
-                  className="text-white font-black text-2xl"
-                  style={{ fontFamily: '"Archivo Black", sans-serif' }}
-                >
-                  C
-                </span>
-              </div>
-              <span
-                className="text-2xl font-black tracking-tighter uppercase"
-                style={{ fontFamily: '"Archivo Black", sans-serif' }}
-              >
-                CodeSpark
-              </span>
+              <DynamicLogo version={2} />
             </Link>
 
             {/* Desktop Navigation */}
@@ -93,9 +81,9 @@ export function V2Layout() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t-4 border-black"
+              className="md:hidden bg-white border-t-4 border-black max-h-[calc(100vh-4.25rem)] overflow-y-auto"
             >
-              <div className="px-6 py-6 space-y-4">
+              <div className="px-4 sm:px-6 py-6 space-y-4">
                 {siteData.navigation.map((item) => (
                   <Link
                     key={item.name}
@@ -123,39 +111,26 @@ export function V2Layout() {
       {/* Version Switcher Button */}
       <Link
         to="/"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 bg-white border-2 border-black text-black hover:bg-black hover:text-white transition-all cursor-pointer"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white border-2 border-black text-black hover:bg-black hover:text-white transition-all cursor-pointer"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
         </svg>
-        <span className="text-sm font-bold uppercase tracking-wider">Switch</span>
+        <span className="hidden sm:inline text-sm font-bold uppercase tracking-wider">Switch</span>
       </Link>
 
       {/* Main Content */}
-      <main className="pt-24">
+      <main className="pt-[4.5rem] sm:pt-24">
         <Outlet />
       </main>
 
       {/* Footer */}
       <footer className="bg-black text-white border-t-4 border-black">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-white flex items-center justify-center">
-                  <span
-                    className="text-black font-black text-2xl"
-                    style={{ fontFamily: '"Archivo Black", sans-serif' }}
-                  >
-                    C
-                  </span>
-                </div>
-                <span
-                  className="text-2xl font-black tracking-tighter uppercase"
-                  style={{ fontFamily: '"Archivo Black", sans-serif' }}
-                >
-                  CodeSpark
-                </span>
+                <DynamicLogo version={2} compact />
               </div>
               <p className="text-gray-400 max-w-md uppercase tracking-wide text-sm">
                 {siteData.brand.tagline}

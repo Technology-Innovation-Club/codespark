@@ -11,8 +11,8 @@ export function V4Incubator() {
       <section className="relative py-32 px-6">
         {/* Background effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-[400px] h-[400px] bg-[#ff00ff]/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-0 left-10 w-[300px] h-[300px] bg-[#00fff0]/10 rounded-full blur-[100px]" />
+          <div className="absolute top-20 right-20 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#ff00ff]/10 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 left-10 w-[170px] h-[170px] sm:w-[240px] sm:h-[240px] md:w-[300px] md:h-[300px] bg-[#00fff0]/10 rounded-full blur-[100px]" />
         </div>
 
         {/* Corner frames */}
@@ -284,7 +284,7 @@ export function V4Incubator() {
       {/* CTA */}
       <section className="py-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#00fff0]/10 rounded-full blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#00fff0]/10 rounded-full blur-[150px]" />
         </div>
 
         <div className="relative max-w-3xl mx-auto text-center">

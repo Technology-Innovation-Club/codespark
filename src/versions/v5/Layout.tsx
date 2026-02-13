@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { siteData } from "../../data/siteData";
+import { DynamicLogo } from "../../components/DynamicLogo";
 
 export function V5Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,16 +23,10 @@ export function V5Layout() {
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-[#e8e4f0]/50">
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             <Link to={basePath} className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#e8e4f0] to-[#fce4ec] flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                <span className="text-[#6b5b95] font-bold text-lg">C</span>
-              </div>
-              <span className="text-xl font-semibold tracking-tight">
-                <span className="text-[#2d2d2d]">Code</span>
-                <span className="text-[#6b5b95]">Spark</span>
-              </span>
+              <DynamicLogo version={5} />
             </Link>
 
             {/* Desktop Navigation */}
@@ -108,9 +103,9 @@ export function V5Layout() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white/90 backdrop-blur-xl border-t border-[#e8e4f0]/50"
+              className="md:hidden bg-white/90 backdrop-blur-xl border-t border-[#e8e4f0]/50 max-h-[calc(100vh-4.25rem)] overflow-y-auto"
             >
-              <div className="px-6 py-6 space-y-2">
+              <div className="px-4 sm:px-6 py-6 space-y-2">
                 {siteData.navigation.map((item) => (
                   <Link
                     key={item.name}
@@ -138,33 +133,27 @@ export function V5Layout() {
       {/* Version Switcher Button */}
       <Link
         to="/"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-md border border-[#6b5b95]/20 rounded-full text-[#6b5b95] hover:bg-[#6b5b95]/10 hover:border-[#6b5b95]/40 transition-all shadow-lg cursor-pointer"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white/80 backdrop-blur-md border border-[#6b5b95]/20 rounded-full text-[#6b5b95] hover:bg-[#6b5b95]/10 hover:border-[#6b5b95]/40 transition-all shadow-lg cursor-pointer"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
         </svg>
-        <span className="text-sm font-medium">Switch Version</span>
+        <span className="hidden sm:inline text-sm font-medium">Switch Version</span>
       </Link>
 
       {/* Main Content */}
-      <main className="relative pt-20">
+      <main className="relative pt-[4.5rem] sm:pt-20">
         <Outlet />
       </main>
 
       {/* Footer */}
       <footer className="relative mt-32 bg-white/50 backdrop-blur-sm border-t border-[#e8e4f0]/50">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
             {/* Brand */}
             <div className="md:col-span-1">
               <Link to={basePath} className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#e8e4f0] to-[#fce4ec] flex items-center justify-center">
-                  <span className="text-[#6b5b95] font-bold text-sm">C</span>
-                </div>
-                <span className="text-lg font-semibold">
-                  <span className="text-[#2d2d2d]">Code</span>
-                  <span className="text-[#6b5b95]">Spark</span>
-                </span>
+                <DynamicLogo version={5} compact />
               </Link>
               <p className="text-sm text-[#2d2d2d]/60 leading-relaxed">
                 {siteData.brand.tagline}

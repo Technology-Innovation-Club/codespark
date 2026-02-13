@@ -12,13 +12,13 @@ export function V4Home() {
       <section className="relative min-h-screen flex items-center justify-center px-6 py-24">
         {/* Animated background effects */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#00fff0]/10 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute top-1/4 left-1/4 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#00fff0]/10 rounded-full blur-[100px] animate-pulse" />
           <div
-            className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#ff00ff]/10 rounded-full blur-[100px] animate-pulse"
+            className="absolute bottom-1/4 right-1/4 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#ff00ff]/10 rounded-full blur-[100px] animate-pulse"
             style={{ animationDelay: "1s" }}
           />
           <div
-            className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-[#f0ff00]/5 rounded-full blur-[80px] animate-pulse"
+            className="absolute top-1/2 left-1/2 w-[170px] h-[170px] sm:w-[240px] sm:h-[240px] md:w-[300px] md:h-[300px] bg-[#f0ff00]/5 rounded-full blur-[80px] animate-pulse"
             style={{ animationDelay: "2s" }}
           />
         </div>
@@ -416,7 +416,7 @@ export function V4Home() {
       {/* CTA Section */}
       <section className="py-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#1a1a2e]/50 to-[#0a0a0f]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />
 
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.div

@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { siteData } from "../../data/siteData";
+import { DynamicLogo } from "../../components/DynamicLogo";
 
 export function V3Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,23 +24,10 @@ export function V3Layout() {
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#faf8f5]/95 backdrop-blur-md border-b border-[#2d2418]/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             <Link to={basePath} className="flex items-center gap-3">
-              <div className="w-11 h-11 bg-[#c45d3e] rounded-2xl flex items-center justify-center shadow-lg shadow-[#c45d3e]/20">
-                <span
-                  className="text-[#faf8f5] font-bold text-lg"
-                  style={{ fontFamily: '"Fraunces", serif' }}
-                >
-                  C
-                </span>
-              </div>
-              <span
-                className="text-xl font-bold tracking-tight"
-                style={{ fontFamily: '"Fraunces", serif' }}
-              >
-                Code<span className="text-[#c45d3e]">Spark</span>
-              </span>
+              <DynamicLogo version={3} />
             </Link>
 
             {/* Desktop Navigation */}
@@ -101,9 +89,9 @@ export function V3Layout() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#faf8f5] border-t border-[#2d2418]/10"
+              className="md:hidden bg-[#faf8f5] border-t border-[#2d2418]/10 max-h-[calc(100vh-4.25rem)] overflow-y-auto"
             >
-              <div className="px-6 py-6 space-y-4">
+              <div className="px-4 sm:px-6 py-6 space-y-4">
                 {siteData.navigation.map((item) => (
                   <Link
                     key={item.name}
@@ -131,16 +119,16 @@ export function V3Layout() {
       {/* Version Switcher Button */}
       <Link
         to="/"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 bg-[#faf8f5]/95 backdrop-blur-md border border-[#c45d3e]/30 rounded-full text-[#c45d3e] hover:bg-[#c45d3e]/10 hover:border-[#c45d3e]/50 transition-all shadow-lg cursor-pointer"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-[#faf8f5]/95 backdrop-blur-md border border-[#c45d3e]/30 rounded-full text-[#c45d3e] hover:bg-[#c45d3e]/10 hover:border-[#c45d3e]/50 transition-all shadow-lg cursor-pointer"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
         </svg>
-        <span className="text-sm font-medium">Switch Version</span>
+        <span className="hidden sm:inline text-sm font-medium">Switch Version</span>
       </Link>
 
       {/* Main Content */}
-      <main className="pt-20 relative">
+      <main className="pt-[4.5rem] sm:pt-20 relative">
         <Outlet />
       </main>
 
@@ -150,24 +138,11 @@ export function V3Layout() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#c45d3e]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#6b8f71]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-12">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-11 h-11 bg-[#c45d3e] rounded-2xl flex items-center justify-center">
-                  <span
-                    className="text-[#faf8f5] font-bold text-lg"
-                    style={{ fontFamily: '"Fraunces", serif' }}
-                  >
-                    C
-                  </span>
-                </div>
-                <span
-                  className="text-xl font-bold text-[#faf8f5]"
-                  style={{ fontFamily: '"Fraunces", serif' }}
-                >
-                  Code<span className="text-[#c45d3e]">Spark</span>
-                </span>
+                <DynamicLogo version={3} compact />
               </div>
               <p className="text-[#faf8f5]/60 max-w-md leading-relaxed">
                 {siteData.brand.tagline}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CodeSpark V2">
+  <rect width="64" height="64" rx="0" fill="#ffffff"/>
+  <rect x="8" y="8" width="48" height="48" rx="0" fill="#000000"/>
+  <path d="M43 19c-2.2-2-5-3-8-3-7 0-12 5-12 12s5 12 12 12c3 0 5.8-1 8-3" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="square"/>
+</svg>
