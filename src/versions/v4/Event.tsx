@@ -336,9 +336,7 @@ export function V4Event() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://forms.gle/yUDzoJSdGACbA2No8"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#register"
                 className="px-12 py-5 bg-[#ff00ff] text-white font-bold uppercase tracking-wider hover:scale-105 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',
@@ -349,14 +347,16 @@ export function V4Event() {
                 REGISTER_NOW
               </a>
               <a
-                href={`mailto:${siteData.brand.email}`}
+                href="https://drive.google.com/file/d/1GsOA8psdMa-VLyg9ZeIBna43jane0Ahq/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-12 py-5 bg-transparent border-2 border-[#00fff0] text-[#00fff0] font-bold uppercase tracking-wider hover:bg-[#00fff0]/10 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',
                   clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
                 }}
               >
-                CONTACT_US
+                SPONSOR_EVENT
               </a>
             </div>
           </motion.div>

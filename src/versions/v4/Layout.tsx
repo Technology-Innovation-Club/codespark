@@ -7,20 +7,23 @@ import { DynamicLogo } from "../../components/DynamicLogo";
 export function V4Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const basePath = "/4";
+  const basePath = "";
+
+  // WhatsApp group link for attendance
+  const attendLink = "https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX";
 
   return (
     <div
-      className="min-h-screen bg-[#0a0a0f] text-white relative overflow-hidden"
+      className="min-h-screen bg-[#0a0a1a] text-white relative overflow-hidden"
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Grid Background */}
       <div
-        className="fixed inset-0 pointer-events-none opacity-20"
+        className="fixed inset-0 pointer-events-none opacity-15"
         style={{
           backgroundImage: `
-          linear-gradient(rgba(0, 255, 240, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 255, 240, 0.1) 1px, transparent 1px)
+          linear-gradient(rgba(0, 255, 240, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 255, 240, 0.08) 1px, transparent 1px)
         `,
           backgroundSize: "50px 50px",
         }}
@@ -33,10 +36,10 @@ export function V4Layout() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-[#00fff0]/20">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a1a]/90 backdrop-blur-xl border-b border-[#00fff0]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
-            <Link to={basePath} className="flex items-center gap-3 group">
+            <Link to={basePath || "/"} className="flex items-center gap-3 group">
               <DynamicLogo version={4} />
             </Link>
 
@@ -45,7 +48,7 @@ export function V4Layout() {
               {siteData.navigation.map((item) => {
                 const isActive =
                   location.pathname === `${basePath}/${item.path}` ||
-                  (item.path === "" && location.pathname === basePath);
+                  (item.path === "" && (location.pathname === basePath || location.pathname === "/"));
                 return (
                   <Link
                     key={item.name}
@@ -72,7 +75,7 @@ export function V4Layout() {
                 );
               })}
               <a
-                href="https://forms.gle/yUDzoJSdGACbA2No8"
+                href={attendLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-4 px-6 py-2.5 bg-[#ff00ff] text-white font-bold uppercase tracking-wider transition-all hover:bg-[#ff00ff]/80 cursor-pointer"
@@ -82,7 +85,7 @@ export function V4Layout() {
                   boxShadow: "0 0 25px rgba(255, 0, 255, 0.5)",
                 }}
               >
-                Apply Now
+                Attend
               </a>
             </div>
 
@@ -123,7 +126,7 @@ export function V4Layout() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#0a0a0f] border-t border-[#00fff0]/20 max-h-[calc(100vh-4.25rem)] overflow-y-auto"
+              className="md:hidden bg-[#0a0a1a] border-t border-[#00fff0]/20 max-h-[calc(100vh-4.25rem)] overflow-y-auto"
             >
               <div className="px-4 sm:px-6 py-6 space-y-4">
                 {siteData.navigation.map((item) => (
@@ -137,7 +140,7 @@ export function V4Layout() {
                   </Link>
                 ))}
                 <a
-                  href="https://forms.gle/yUDzoJSdGACbA2No8"
+                  href={attendLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center px-6 py-3 bg-[#ff00ff] text-white font-bold uppercase tracking-wider"
@@ -146,7 +149,7 @@ export function V4Layout() {
                     boxShadow: "0 0 25px rgba(255, 0, 255, 0.5)",
                   }}
                 >
-                  Apply Now
+                  Attend
                 </a>
               </div>
             </motion.div>
@@ -154,28 +157,13 @@ export function V4Layout() {
         </AnimatePresence>
       </nav>
 
-      {/* Version Switcher Button */}
-      <Link
-        to="/"
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-[#0a0a0f]/90 backdrop-blur-md border border-[#00fff0]/30 text-[#00fff0] hover:bg-[#00fff0]/10 hover:border-[#00fff0]/50 transition-all cursor-pointer"
-        style={{
-          clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)",
-          boxShadow: "0 0 15px rgba(0, 255, 240, 0.3)",
-        }}
-      >
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-        </svg>
-        <span className="hidden sm:inline text-sm font-medium uppercase tracking-wider">Switch</span>
-      </Link>
-
       {/* Main Content */}
       <main className="pt-[4.5rem] sm:pt-20 relative">
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#0a0a0f] relative overflow-hidden border-t border-[#00fff0]/20">
+      <footer className="bg-[#0a0a1a] relative overflow-hidden border-t border-[#00fff0]/20">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#ff00ff]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00fff0]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />

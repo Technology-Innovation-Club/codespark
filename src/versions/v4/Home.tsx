@@ -112,7 +112,7 @@ export function V4Home() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
-              href="https://forms.gle/yUDzoJSdGACbA2No8"
+              href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative px-10 py-4 bg-[#ff00ff] text-white font-bold uppercase tracking-wider transition-all hover:scale-105 cursor-pointer"
@@ -122,11 +122,11 @@ export function V4Home() {
                 boxShadow: "0 0 30px rgba(255, 0, 255, 0.5)",
               }}
             >
-              <span className="relative z-10">Apply to Incubator</span>
+              <span className="relative z-10">Attend Event</span>
               <div className="absolute inset-0 bg-[#ff00ff]/50 blur-xl group-hover:blur-2xl transition-all" />
             </a>
             <Link
-              to="/4/event"
+              to="/event"
               className="px-10 py-4 bg-transparent border-2 border-[#00fff0] text-[#00fff0] font-bold uppercase tracking-wider hover:bg-[#00fff0]/10 transition-all cursor-pointer"
               style={{
                 fontFamily: '"Syne", sans-serif',
@@ -134,7 +134,7 @@ export function V4Home() {
                 boxShadow: "0 0 20px rgba(0, 255, 240, 0.3)",
               }}
             >
-              Attend Event
+              Learn More
             </Link>
           </motion.div>
         </div>
@@ -450,7 +450,7 @@ export function V4Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://forms.gle/yUDzoJSdGACbA2No8"
+                href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-10 py-4 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all cursor-pointer"
@@ -463,7 +463,7 @@ export function V4Home() {
                 START BUILDING
               </a>
               <Link
-                to="/4/about"
+                to="/about"
                 className="px-10 py-4 bg-transparent border-2 border-[#ff00ff] text-[#ff00ff] font-bold uppercase tracking-wider hover:bg-[#ff00ff]/10 transition-all cursor-pointer"
                 style={{
                   fontFamily: '"Syne", sans-serif',

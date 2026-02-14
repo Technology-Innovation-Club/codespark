@@ -75,7 +75,7 @@ export function V4Startups() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
             <span
@@ -84,9 +84,9 @@ export function V4Startups() {
             >
               {"< "}
             </span>
-            <span className="text-white">PORTFOLIO</span>
+            <span className="text-white block sm:inline">PORTFOLIO</span>
             <span
-              className="text-[#00fff0]"
+              className="text-[#00fff0] block sm:inline"
               style={{ textShadow: "0 0 30px rgba(0, 255, 240, 0.8)" }}
             >
               _STARTUPS
@@ -360,7 +360,7 @@ export function V4Startups() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://forms.gle/yUDzoJSdGACbA2No8"
+                href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"
@@ -370,17 +370,17 @@ export function V4Startups() {
                   boxShadow: "0 0 50px rgba(0, 255, 240, 0.6)",
                 }}
               >
-                APPLY_NOW
+                JOIN_COMMUNITY
               </a>
               <a
-                href={`mailto:${siteData.brand.partnerEmail}`}
+                href="mailto:prosperity.olorunfemi@pau.edu.ng"
                 className="px-12 py-5 bg-transparent border-2 border-[#ff00ff] text-[#ff00ff] font-bold uppercase tracking-wider hover:bg-[#ff00ff]/10 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',
                   clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
                 }}
               >
-                INVEST_IN_US
+                PARTNER_WITH_US
               </a>
             </div>
           </motion.div>

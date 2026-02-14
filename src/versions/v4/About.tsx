@@ -235,14 +235,14 @@ export function V4About() {
       <section className="py-24 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/50 to-transparent" />
 
-        <div className="relative max-w-4xl mx-auto text-center">
+        <div className="relative max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <h2
-              className="text-3xl md:text-4xl font-bold mb-8"
+              className="text-3xl md:text-4xl font-bold mb-12 text-center"
               style={{ fontFamily: '"Syne", sans-serif' }}
             >
               <span
@@ -266,39 +266,117 @@ export function V4About() {
               </span>
             </h2>
 
-            <div
-              className="inline-block p-8 bg-[#1a1a2e] border border-[#00fff0]/30"
-              style={{
-                clipPath:
-                  "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
-                boxShadow: "0 0 40px rgba(0, 255, 240, 0.2)",
-              }}
-            >
-              <div
-                className="w-24 h-24 mx-auto mb-4 bg-[#0a0a0f] border-2 border-[#00fff0] flex items-center justify-center"
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Team Lead */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 bg-[#1a1a2e] border border-[#00fff0]/30 text-center"
                 style={{
-                  clipPath:
-                    "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
-                  boxShadow: "0 0 30px rgba(0, 255, 240, 0.3)",
+                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  boxShadow: "0 0 40px rgba(0, 255, 240, 0.2)",
                 }}
               >
-                <span
-                  className="text-[#00fff0] text-3xl font-bold"
+                <div
+                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#00fff0] overflow-hidden"
                   style={{
-                    fontFamily: '"Syne", sans-serif',
-                    textShadow: "0 0 15px #00fff0",
+                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    boxShadow: "0 0 30px rgba(0, 255, 240, 0.3)",
                   }}
                 >
-                  P
-                </span>
-              </div>
-              <p className="text-white/60 mb-2 text-sm">// FOUNDER & LEAD</p>
-              <p
-                className="text-[#00fff0] font-mono text-sm"
-                style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}
+                  <img 
+                    src="/team-lead.webp" 
+                    alt="Prosperity Olorunfemi" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3
+                  className="text-xl font-bold text-white mb-1"
+                  style={{ fontFamily: '"Syne", sans-serif' }}
+                >
+                  Prosperity Olorunfemi
+                </h3>
+                <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
+                  // TEAM LEAD
+                </p>
+                <p className="text-white/50 text-xs">{siteData.brand.email}</p>
+              </motion.div>
+
+              {/* Technical Lead */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
+                className="p-6 bg-[#1a1a2e] border border-[#ff00ff]/30 text-center"
+                style={{
+                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  boxShadow: "0 0 40px rgba(255, 0, 255, 0.2)",
+                }}
               >
-                {siteData.brand.email}
-              </p>
+                <div
+                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#ff00ff] overflow-hidden"
+                  style={{
+                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    boxShadow: "0 0 30px rgba(255, 0, 255, 0.3)",
+                  }}
+                >
+                  <img 
+                    src="/technical-lead.webp" 
+                    alt="Abasiono Mbat" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3
+                  className="text-xl font-bold text-white mb-1"
+                  style={{ fontFamily: '"Syne", sans-serif' }}
+                >
+                  Abasiono Mbat
+                </h3>
+                <p className="text-[#ff00ff] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}>
+                  // TECHNICAL LEAD
+                </p>
+                <p className="text-white/50 text-xs">Tech & Engineering</p>
+              </motion.div>
+
+              {/* Program Manager */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
+                className="p-6 bg-[#1a1a2e] border border-[#f0ff00]/30 text-center"
+                style={{
+                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  boxShadow: "0 0 40px rgba(240, 255, 0, 0.2)",
+                }}
+              >
+                <div
+                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#f0ff00] overflow-hidden"
+                  style={{
+                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    boxShadow: "0 0 30px rgba(240, 255, 0, 0.3)",
+                  }}
+                >
+                  <img 
+                    src="/program-manager.webp" 
+                    alt="John Doe" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3
+                  className="text-xl font-bold text-white mb-1"
+                  style={{ fontFamily: '"Syne", sans-serif' }}
+                >
+                  John Doe
+                </h3>
+                <p className="text-[#f0ff00] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}>
+                  // PROGRAM MANAGER
+                </p>
+                <p className="text-white/50 text-xs">Operations & Programs</p>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -342,7 +420,7 @@ export function V4About() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://forms.gle/yUDzoJSdGACbA2No8"
+                href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-12 py-5 bg-[#ff00ff] text-white font-bold uppercase tracking-wider hover:scale-105 transition-all"
@@ -352,10 +430,10 @@ export function V4About() {
                   boxShadow: "0 0 50px rgba(255, 0, 255, 0.6)",
                 }}
               >
-                APPLY_NOW
+                ATTEND_EVENT
               </a>
               <Link
-                to="/4/for-partners"
+                to="/for-partners"
                 className="px-12 py-5 bg-transparent border-2 border-[#00fff0] text-[#00fff0] font-bold uppercase tracking-wider hover:bg-[#00fff0]/10 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',

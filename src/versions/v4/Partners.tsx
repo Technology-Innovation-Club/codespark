@@ -418,7 +418,7 @@ export function V4Partners() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href={`mailto:${siteData.brand.partnerEmail}`}
+                href="mailto:prosperity.olorunfemi@pau.edu.ng"
                 className="px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',
@@ -429,7 +429,7 @@ export function V4Partners() {
                 BECOME_A_PARTNER
               </a>
               <a
-                href="https://forms.gle/yUDzoJSdGACbA2No8"
+                href="https://drive.google.com/file/d/1GsOA8psdMa-VLyg9ZeIBna43jane0Ahq/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-12 py-5 bg-transparent border-2 border-[#ff00ff] text-[#ff00ff] font-bold uppercase tracking-wider hover:bg-[#ff00ff]/10 transition-all"

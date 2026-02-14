@@ -311,7 +311,7 @@ export function V4Incubator() {
             </p>
 
             <a
-              href="https://forms.gle/yUDzoJSdGACbA2No8"
+              href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"
@@ -321,7 +321,7 @@ export function V4Incubator() {
                 boxShadow: "0 0 50px rgba(0, 255, 240, 0.6)",
               }}
             >
-              APPLY_NOW
+              JOIN_COMMUNITY
             </a>
           </motion.div>
         </div>
