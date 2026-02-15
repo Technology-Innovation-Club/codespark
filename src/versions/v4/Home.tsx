@@ -9,7 +9,7 @@ export function V4Home() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-3 sm:pt-10 md:pt-16 pb-10 sm:pb-14">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-6 sm:pt-10 md:pt-16 pb-10 sm:pb-14">
         {/* Animated background effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#00fff0]/10 rounded-full blur-[100px] animate-pulse" />
@@ -120,25 +120,6 @@ export function V4Home() {
 
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2"
-        >
-          <div
-            className="w-6 h-10 border-2 border-[#00fff0]/50 flex justify-center pt-2"
-            style={{ clipPath: "polygon(15% 0, 85% 0, 100% 100%, 0 100%)" }}
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="w-1.5 h-1.5 bg-[#00fff0]"
-              style={{ boxShadow: "0 0 10px #00fff0" }}
-            />
-          </div>
-        </motion.div>
       </section>
 
       {/* Iyin Section */}
