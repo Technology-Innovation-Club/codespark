@@ -9,7 +9,7 @@ export function V4Home() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-6 sm:pt-10 md:pt-16 pb-10 sm:pb-14">
+      <section className="relative min-h-screen min-[450px]:max-[550px]:min-h-[84svh] flex items-center justify-center px-4 sm:px-6 pt-6 min-[450px]:max-[550px]:pt-4 sm:pt-10 md:pt-16 pb-10 min-[450px]:max-[550px]:pb-6 sm:pb-14">
         {/* Animated background effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#00fff0]/10 rounded-full blur-[100px] animate-pulse" />
@@ -46,7 +46,7 @@ export function V4Home() {
             transition={{ duration: 0.8 }}
           >
             <motion.span
-              className="relative overflow-hidden inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#1a1a2e] border border-[#00fff0]/50 text-[#00fff0] text-[10px] sm:text-sm font-medium mb-6 sm:mb-8"
+              className="relative overflow-hidden inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#1a1a2e] border border-[#00fff0]/50 text-[#00fff0] text-[10px] sm:text-sm font-medium mb-6 min-[450px]:max-[550px]:mb-4 sm:mb-8"
               style={{
                 clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
                 boxShadow: "0 0 20px rgba(0, 255, 240, 0.3)",
@@ -66,7 +66,7 @@ export function V4Home() {
             </motion.span>
           </motion.div>
 
-          <div className="relative mx-auto max-w-[960px] mb-8 px-4 sm:px-8 py-5 sm:py-8">
+          <div className="relative mx-auto max-w-[960px] mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-8 py-5 min-[450px]:max-[550px]:py-4 sm:py-8">
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#00fff0]/70 via-[#ff00ff]/60 to-[#ff00ff]/70" />
               <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#00fff0]/80" />
@@ -102,7 +102,7 @@ export function V4Home() {
             </motion.h1>
           </div>
 
-          <div className="relative mx-auto max-w-3xl mb-8 px-4 sm:px-6 py-4">
+          <div className="relative mx-auto max-w-3xl mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-6 py-4 min-[450px]:max-[550px]:py-3">
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#00fff0]/70 via-[#ff00ff]/60 to-[#ff00ff]/70" />
               <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#00fff0]/80" />
@@ -123,7 +123,7 @@ export function V4Home() {
       </section>
 
       {/* Iyin Section */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6 bg-[#0a0a0f] relative">
+      <section className="py-14 min-[450px]:max-[550px]:py-10 sm:py-20 px-4 sm:px-6 bg-[#0a0a0f] relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/50 to-transparent" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#ff00ff]/50 to-transparent" />
 
