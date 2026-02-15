@@ -10,7 +10,7 @@ export function V4Event() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero */}
-      <section className="relative py-32 px-6 overflow-hidden">
+      <section className="relative pt-14 sm:pt-20 md:pt-24 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#ff00ff]/15 rounded-full blur-[150px]" />
@@ -61,7 +61,7 @@ export function V4Event() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+            className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 text-white leading-tight"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
             <span
@@ -90,7 +90,7 @@ export function V4Event() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-8"
+            className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-8"
           >
             {`> ${event.whatItIs}`}
           </motion.p>
@@ -108,7 +108,7 @@ export function V4Event() {
       </section>
 
       {/* Who Should Attend */}
-      <section className="py-24 px-6 bg-[#1a1a2e] relative">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#1a1a2e] relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/50 to-transparent" />
 
         <div className="max-w-6xl mx-auto">
@@ -116,25 +116,25 @@ export function V4Event() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-16"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 leading-tight"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
-            <span className="text-white">WHO</span>
+            <span className="text-white block sm:inline">WHO</span>
             <span
-              className="text-[#00fff0]"
+              className="text-[#00fff0] block sm:inline"
               style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
             >
               _SHOULD
             </span>
             <span
-              className="text-[#ff00ff]"
+              className="text-[#ff00ff] block sm:inline"
               style={{ textShadow: "0 0 20px rgba(255, 0, 255, 0.5)" }}
             >
               _ATTEND
             </span>
           </motion.h2>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {event.whoShouldAttend.map((attendee, i) => (
               <motion.div
                 key={i}
@@ -142,14 +142,13 @@ export function V4Event() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="px-6 py-4 bg-[#0a0a0f] border border-[#00fff0]/30 hover:border-[#00fff0] transition-all"
+                className="w-full sm:w-auto max-w-md px-5 py-3 bg-[#0a0a0f] border border-[#00fff0]/30 hover:border-[#00fff0] transition-all"
                 style={{
-                  clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)",
                   boxShadow: "0 0 20px rgba(0, 255, 240, 0.1)",
                 }}
               >
                 <span className="text-[#00fff0] mr-2">▸</span>
-                <span className="text-white/80">{attendee}</span>
+                <span className="text-white/80 break-words">{attendee}</span>
               </motion.div>
             ))}
           </div>
@@ -157,7 +156,7 @@ export function V4Event() {
       </section>
 
       {/* Event Highlights */}
-      <section className="py-24 px-6 relative">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 relative">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-transparent via-[#ff00ff]/30 to-transparent" />
           <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-[#00fff0]/30 to-transparent" />
@@ -168,7 +167,7 @@ export function V4Event() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-16"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 leading-tight"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
             <span
@@ -177,9 +176,9 @@ export function V4Event() {
             >
               {"{ "}
             </span>
-            <span className="text-white">EVENT</span>
+            <span className="text-white block sm:inline">EVENT</span>
             <span
-              className="text-[#ff00ff]"
+              className="text-[#ff00ff] block sm:inline"
               style={{ textShadow: "0 0 20px rgba(255, 0, 255, 0.5)" }}
             >
               _HIGHLIGHTS
@@ -203,7 +202,7 @@ export function V4Event() {
                 className="p-6 bg-[#1a1a2e] border-l-4 border-[#ff00ff] hover:bg-[#1a1a2e]/80 transition-all group"
                 style={{ boxShadow: "-4px 0 20px rgba(255, 0, 255, 0.2)" }}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-4">
                   <span
                     className="text-[#ff00ff] font-bold text-xl shrink-0"
                     style={{
@@ -213,7 +212,7 @@ export function V4Event() {
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-white/70 group-hover:text-white transition-colors">
+                  <p className="text-white/70 group-hover:text-white transition-colors break-words">
                     {highlight}
                   </p>
                 </div>
@@ -224,7 +223,7 @@ export function V4Event() {
       </section>
 
       {/* Speakers */}
-      <section className="py-24 px-6 bg-[#0a0a0f] relative">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#0a0a0f] relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#f0ff00]/50 to-transparent" />
 
         <div className="max-w-6xl mx-auto">
@@ -232,12 +231,12 @@ export function V4Event() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-16"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 leading-tight"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
-            <span className="text-white">FEATURED</span>
+            <span className="text-white block sm:inline">FEATURED</span>
             <span
-              className="text-[#f0ff00]"
+              className="text-[#f0ff00] block sm:inline"
               style={{ textShadow: "0 0 20px rgba(240, 255, 0, 0.5)" }}
             >
               _SPEAKERS
@@ -262,24 +261,39 @@ export function V4Event() {
                 {/* Glow effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#f0ff00]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                {/* Avatar placeholder */}
-                <div
-                  className="w-20 h-20 mx-auto mb-4 bg-[#0a0a0f] border-2 border-[#f0ff00]/30 flex items-center justify-center"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
-                  }}
-                >
-                  <span
-                    className="text-[#f0ff00] text-2xl font-bold"
+                {speaker.image ? (
+                  <div
+                    className="w-20 h-20 mx-auto mb-4 border-2 border-[#f0ff00]/30 overflow-hidden"
                     style={{
-                      fontFamily: '"Syne", sans-serif',
-                      textShadow: "0 0 10px rgba(240, 255, 0, 0.5)",
+                      clipPath:
+                        "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
                     }}
                   >
-                    {speaker.name[0]}
-                  </span>
-                </div>
+                    <img
+                      src={speaker.image}
+                      alt={speaker.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="w-20 h-20 mx-auto mb-4 bg-[#0a0a0f] border-2 border-[#f0ff00]/30 flex items-center justify-center"
+                    style={{
+                      clipPath:
+                        "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    }}
+                  >
+                    <span
+                      className="text-[#f0ff00] text-2xl font-bold"
+                      style={{
+                        fontFamily: '"Syne", sans-serif',
+                        textShadow: "0 0 10px rgba(240, 255, 0, 0.5)",
+                      }}
+                    >
+                      {speaker.name[0]}
+                    </span>
+                  </div>
+                )}
 
                 <h3
                   className="text-lg font-bold text-white text-center mb-1 relative z-10"
@@ -297,7 +311,7 @@ export function V4Event() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 px-6 relative overflow-hidden">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#ff00ff]/15 rounded-full blur-[150px]" />
         </div>

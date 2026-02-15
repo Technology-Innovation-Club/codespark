@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { siteData } from "../../data/siteData";
 import { DynamicLogo } from "../../components/DynamicLogo";
@@ -9,6 +9,10 @@ export function V4Layout() {
   const location = useLocation();
   const basePath = "";
   const attendLink = "https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX";
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <div
@@ -92,27 +96,37 @@ export function V4Layout() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 border border-[#00fff0]/50 bg-[#1a1a2e]"
               style={{ boxShadow: "0 0 10px rgba(0, 255, 240, 0.3)" }}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              <div className="w-6 h-5 flex flex-col justify-between">
-                <span
-                  className={`block h-0.5 w-full bg-[#00fff0] transition-transform ${
-                    mobileMenuOpen ? "rotate-45 translate-y-2" : ""
-                  }`}
-                  style={{ boxShadow: "0 0 5px #00fff0" }}
-                />
-                <span
-                  className={`block h-0.5 w-full bg-[#00fff0] transition-opacity ${
-                    mobileMenuOpen ? "opacity-0" : ""
-                  }`}
-                  style={{ boxShadow: "0 0 5px #00fff0" }}
-                />
-                <span
-                  className={`block h-0.5 w-full bg-[#00fff0] transition-transform ${
-                    mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-                  }`}
-                  style={{ boxShadow: "0 0 5px #00fff0" }}
-                />
-              </div>
+              {mobileMenuOpen ? (
+                <svg
+                  className="w-6 h-6 text-[#00fff0]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 6L6 18" />
+                  <path d="M6 6L18 18" />
+                </svg>
+              ) : (
+                <div className="w-6 h-5 flex flex-col justify-between">
+                  <span
+                    className="block h-0.5 w-full bg-[#00fff0]"
+                    style={{ boxShadow: "0 0 5px #00fff0" }}
+                  />
+                  <span
+                    className="block h-0.5 w-full bg-[#00fff0]"
+                    style={{ boxShadow: "0 0 5px #00fff0" }}
+                  />
+                  <span
+                    className="block h-0.5 w-full bg-[#00fff0]"
+                    style={{ boxShadow: "0 0 5px #00fff0" }}
+                  />
+                </div>
+              )}
             </button>
           </div>
         </div>
@@ -155,8 +169,22 @@ export function V4Layout() {
         </AnimatePresence>
       </nav>
 
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.button
+            type="button"
+            aria-label="Close mobile menu overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 top-14 sm:top-20 z-40 bg-transparent lg:hidden"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Main Content */}
-      <main className="pt-[4.5rem] sm:pt-20 relative">
+      <main className="pt-14 sm:pt-20 relative">
         <Outlet />
       </main>
 
@@ -166,9 +194,49 @@ export function V4Layout() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#ff00ff]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00fff0]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
-        {/* Circuit lines */}
-        <div className="absolute top-20 left-0 w-1/3 h-px bg-gradient-to-r from-[#00fff0]/50 to-transparent" />
-        <div className="absolute top-40 right-0 w-1/4 h-px bg-gradient-to-l from-[#ff00ff]/50 to-transparent" />
+        {/* Perimeter space lights */}
+        <div className="absolute top-3 bottom-3 right-3 left-[-4px] sm:top-5 sm:bottom-5 sm:right-5 sm:left-[-6px] pointer-events-none">
+          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <motion.rect
+              x="1"
+              y="1"
+              width="98"
+              height="98"
+              fill="none"
+              stroke="#00fff0"
+              strokeWidth="0.35"
+              strokeLinecap="round"
+              strokeDasharray="12 430"
+              animate={{ strokeDashoffset: [0, -98, -196, -294, -392] }}
+              transition={{
+                duration: 11,
+                repeat: Infinity,
+                ease: "linear",
+                times: [0, 0.2, 0.52, 0.76, 1],
+              }}
+              style={{ filter: "drop-shadow(0 0 5px rgba(0,255,240,0.8))" }}
+            />
+            <motion.rect
+              x="1"
+              y="1"
+              width="98"
+              height="98"
+              fill="none"
+              stroke="#ff00ff"
+              strokeWidth="0.35"
+              strokeLinecap="round"
+              strokeDasharray="10 430"
+              animate={{ strokeDashoffset: [-140, -238, -336, -434, -532] }}
+              transition={{
+                duration: 12.5,
+                repeat: Infinity,
+                ease: "linear",
+                times: [0, 0.2, 0.52, 0.76, 1],
+              }}
+              style={{ filter: "drop-shadow(0 0 5px rgba(255,0,255,0.8))" }}
+            />
+          </svg>
+        </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
@@ -231,11 +299,11 @@ export function V4Layout() {
               </h4>
               <ul className="space-y-3 text-sm">
                 <li className="text-white/50">
-                  <span className="text-[#f0ff00]">email:</span>{" "}
+                  <span className="text-[#f0ff00]">Email:</span>{" "}
                   {siteData.brand.email}
                 </li>
                 <li className="text-white/50">
-                  <span className="text-[#f0ff00]">partners:</span>{" "}
+                  <span className="text-[#f0ff00]">Partners:</span>{" "}
                   {siteData.brand.partnerEmail}
                 </li>
               </ul>

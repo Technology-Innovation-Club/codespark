@@ -10,7 +10,7 @@ export function V4Partners() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero */}
-      <section className="relative py-32 px-6">
+      <section className="relative pt-16 pb-14 sm:pt-20 sm:pb-16 px-4 sm:px-6">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#00fff0]/10 rounded-full blur-[150px]" />
@@ -36,10 +36,10 @@ export function V4Partners() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
+            className="mb-4 sm:mb-6"
           >
             <span
-              className="inline-flex items-center gap-3 px-6 py-3 bg-[#1a1a2e] border border-[#f0ff00]/50 text-[#f0ff00] text-sm font-medium"
+              className="inline-flex max-w-full items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 bg-[#1a1a2e] border border-[#f0ff00]/50 text-[#f0ff00] text-sm sm:text-base font-medium leading-snug text-left sm:text-center"
               style={{
                 clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
                 boxShadow: "0 0 20px rgba(240, 255, 0, 0.2)",
@@ -49,7 +49,9 @@ export function V4Partners() {
                 className="w-2 h-2 bg-[#f0ff00] animate-pulse"
                 style={{ boxShadow: "0 0 10px #f0ff00" }}
               />
-              {"// PARTNERSHIP_OPPORTUNITIES_OPEN"}
+              <span className="hidden sm:inline">{"// PARTNERSHIPS OPEN"}</span>
+              <span className="sm:hidden">{"// PARTNERSHIPS"}</span>
+              <span className="sm:hidden">{"OPEN"}</span>
             </span>
           </motion.div>
 
@@ -57,24 +59,24 @@ export function V4Partners() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="text-[2.1rem] sm:text-5xl md:text-6xl font-bold mb-6 leading-tight break-words px-1"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
             <span
-              className="text-[#ff00ff]"
+              className="text-[#ff00ff] block sm:inline"
               style={{ textShadow: "0 0 30px rgba(255, 0, 255, 0.5)" }}
             >
               {"< "}
             </span>
-            <span className="text-white">FOR</span>
+            <span className="text-white block sm:inline">FOR</span>
             <span
-              className="text-[#00fff0]"
+              className="text-[#00fff0] block sm:inline"
               style={{ textShadow: "0 0 30px rgba(0, 255, 240, 0.8)" }}
             >
               _PARTNERS
             </span>
             <span
-              className="text-[#ff00ff]"
+              className="text-[#ff00ff] block sm:inline"
               style={{ textShadow: "0 0 30px rgba(255, 0, 255, 0.5)" }}
             >
               {" />"}
@@ -93,7 +95,7 @@ export function V4Partners() {
       </section>
 
       {/* Why Partner */}
-      <section className="py-24 px-6 bg-[#1a1a2e] relative">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 bg-[#1a1a2e] relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/50 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#ff00ff]/50 to-transparent" />
 
@@ -106,7 +108,7 @@ export function V4Partners() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-16"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 leading-tight"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
             <span
@@ -117,10 +119,22 @@ export function V4Partners() {
             </span>
             <span className="text-white">WHY</span>
             <span
-              className="text-[#00fff0]"
+              className="text-[#00fff0] sm:hidden"
+              style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
+            >
+              _
+            </span>
+            <span
+              className="text-[#00fff0] hidden sm:inline"
               style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
             >
               _PARTNER
+            </span>
+            <span
+              className="text-[#00fff0] block sm:hidden"
+              style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
+            >
+              PARTNER
             </span>
             <span
               className="text-[#f0ff00]"
@@ -168,7 +182,7 @@ export function V4Partners() {
       </section>
 
       {/* Partnership Options */}
-      <section className="py-24 px-6 relative">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 relative">
         {/* Animated background */}
         <div className="absolute inset-0">
           <motion.div
@@ -199,12 +213,12 @@ export function V4Partners() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-16"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 leading-tight"
             style={{ fontFamily: '"Syne", sans-serif' }}
           >
-            <span className="text-white">PARTNERSHIP</span>
+            <span className="text-white block sm:inline">PARTNERSHIP</span>
             <span
-              className="text-[#ff00ff]"
+              className="text-[#ff00ff] block sm:inline"
               style={{ textShadow: "0 0 20px rgba(255, 0, 255, 0.5)" }}
             >
               _OPTIONS
@@ -243,11 +257,9 @@ export function V4Partners() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.15 }}
                   viewport={{ once: true }}
-                  className="relative p-8 bg-[#1a1a2e] border-2 group overflow-hidden"
+                  className="relative p-6 sm:p-8 bg-[#1a1a2e] border-2 group cursor-pointer"
                   style={{
                     borderColor: `${colors.border}50`,
-                    clipPath:
-                      "polygon(0 0, 95% 0, 100% 8%, 100% 100%, 5% 100%, 0 92%)",
                     boxShadow: `0 0 40px ${colors.shadow}`,
                   }}
                 >
@@ -289,7 +301,7 @@ export function V4Partners() {
                   </div>
 
                   <h3
-                    className="text-2xl font-bold mb-4 relative z-10"
+                    className="text-xl sm:text-2xl font-bold mb-4 relative z-10 break-words pr-10"
                     style={{
                       fontFamily: '"Syne", sans-serif',
                       color: colors.accent,
@@ -298,7 +310,7 @@ export function V4Partners() {
                   >
                     {option.title}
                   </h3>
-                  <p className="text-white/60 group-hover:text-white/80 transition-colors leading-relaxed relative z-10">
+                  <p className="text-white/60 group-hover:text-white/80 transition-colors leading-relaxed relative z-10 break-words">
                     {option.description}
                   </p>
 
@@ -319,7 +331,7 @@ export function V4Partners() {
       </section>
 
       {/* Stats/Impact for Partners */}
-      <section className="py-24 px-6 bg-[#0a0a0f] relative">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 bg-[#0a0a0f] relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#f0ff00]/30 to-transparent" />
 
         <div className="max-w-4xl mx-auto">
@@ -356,7 +368,7 @@ export function V4Partners() {
                 style={{ boxShadow: "0 0 20px rgba(240, 255, 0, 0.1)" }}
               >
                 <p
-                  className="text-3xl md:text-4xl font-bold text-[#f0ff00] mb-2"
+                  className="text-[1.9rem] sm:text-4xl md:text-4xl font-bold text-[#f0ff00] mb-2 leading-none text-center w-full"
                   style={{
                     fontFamily: '"Syne", sans-serif',
                     textShadow: "0 0 20px rgba(240, 255, 0, 0.5)",
@@ -374,7 +386,7 @@ export function V4Partners() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 px-6 relative overflow-hidden">
+      <section className="pt-16 pb-20 sm:pt-20 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />
           <div className="absolute top-1/4 right-1/4 w-[170px] h-[170px] sm:w-[240px] sm:h-[240px] md:w-[300px] md:h-[300px] bg-[#00fff0]/10 rounded-full blur-[100px]" />
@@ -419,7 +431,7 @@ export function V4Partners() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:prosperity.olorunfemi@pau.edu.ng"
-                className="px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"
+                className="inline-flex w-full sm:w-auto items-center justify-center text-center px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',
                   clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",

@@ -11,40 +11,26 @@ export function V4Startups() {
       text: "#00fff0",
       shadow: "rgba(0, 255, 240, 0.3)",
     },
-    "Cultural Tech": {
-      border: "#ff00ff",
-      text: "#ff00ff",
-      shadow: "rgba(255, 0, 255, 0.3)",
-    },
     MarTech: {
       border: "#f0ff00",
       text: "#f0ff00",
       shadow: "rgba(240, 255, 0, 0.3)",
-    },
-    "Campus Tech": {
-      border: "#00fff0",
-      text: "#00fff0",
-      shadow: "rgba(0, 255, 240, 0.3)",
     },
     Sustainability: {
       border: "#00ff88",
       text: "#00ff88",
       shadow: "rgba(0, 255, 136, 0.3)",
     },
-    "Career Tech": {
+    "Accessibility Tech": {
       border: "#ff00ff",
       text: "#ff00ff",
       shadow: "rgba(255, 0, 255, 0.3)",
-    },
-    HealthTech: {
-      border: "#ff6b6b",
-      text: "#ff6b6b",
-      shadow: "rgba(255, 107, 107, 0.3)",
     },
   };
 
   const getColors = (category: string) =>
     categoryColors[category] || categoryColors["EdTech"];
+  const industryCount = new Set(siteData.startupsList.map((s) => s.category)).size;
 
   return (
     <div
@@ -52,7 +38,7 @@ export function V4Startups() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero */}
-      <section className="relative py-32 px-6">
+      <section className="relative pt-24 pb-14 sm:pt-28 sm:pb-16 px-6">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-1/4 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#00fff0]/10 rounded-full blur-[120px]" />
@@ -145,7 +131,7 @@ export function V4Startups() {
                   textShadow: "0 0 15px rgba(255, 0, 255, 0.5)",
                 }}
               >
-                6+
+                {industryCount}+
               </p>
               <p className="text-white/50 text-sm">INDUSTRIES</p>
             </motion.div>
@@ -191,8 +177,6 @@ export function V4Startups() {
                   className="relative p-6 bg-[#0a0a0f] border group overflow-hidden"
                   style={{
                     borderColor: `${colors.border}33`,
-                    clipPath:
-                      "polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%)",
                     boxShadow: `0 0 30px ${colors.shadow}`,
                   }}
                 >
@@ -250,18 +234,23 @@ export function V4Startups() {
                   </p>
 
                   {/* Stats */}
-                  <div className="space-y-2 pt-4 border-t border-white/10">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#f0ff00] text-xs">TRACTION:</span>
-                      <span className="text-white/70 text-xs">
+                  <div className="space-y-3 pt-4 border-t border-white/10">
+                    <div className="grid grid-cols-[auto,1fr] items-start gap-x-3 gap-y-1">
+                      <span className="text-[#f0ff00] text-xs leading-relaxed">
+                        TRACTION:
+                      </span>
+                      <span className="text-white/70 text-xs leading-relaxed">
                         {startup.traction}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span style={{ color: colors.text }} className="text-xs">
+                    <div className="grid grid-cols-[auto,1fr] items-start gap-x-3 gap-y-1">
+                      <span
+                        style={{ color: colors.text }}
+                        className="text-xs leading-relaxed"
+                      >
                         STATS:
                       </span>
-                      <span className="text-white/70 text-xs">
+                      <span className="text-white/70 text-xs leading-relaxed">
                         {startup.stats}
                       </span>
                     </div>
@@ -363,7 +352,7 @@ export function V4Startups() {
                 href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"
+                className="inline-flex w-full sm:w-auto items-center justify-center text-center px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',
                   clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
@@ -374,7 +363,7 @@ export function V4Startups() {
               </a>
               <a
                 href="mailto:prosperity.olorunfemi@pau.edu.ng"
-                className="px-12 py-5 bg-transparent border-2 border-[#ff00ff] text-[#ff00ff] font-bold uppercase tracking-wider hover:bg-[#ff00ff]/10 transition-all"
+                className="inline-flex w-full sm:w-auto items-center justify-center text-center px-12 py-5 bg-transparent border-2 border-[#ff00ff] text-[#ff00ff] font-bold uppercase tracking-wider hover:bg-[#ff00ff]/10 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',
                   clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
