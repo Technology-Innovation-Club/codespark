@@ -42,7 +42,7 @@ export function V4Layout() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             <Link to={basePath || "/"} className="flex items-center gap-3 group">
-              <DynamicLogo version={4} />
+              <DynamicLogo />
             </Link>
 
             {/* Desktop Navigation */}
@@ -195,8 +195,12 @@ export function V4Layout() {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00fff0]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
         {/* Perimeter space lights */}
-        <div className="absolute top-3 bottom-3 right-3 left-[-4px] sm:top-5 sm:bottom-5 sm:right-5 sm:left-[-6px] pointer-events-none">
-          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+        <div className="absolute top-3 bottom-3 right-px left-px sm:top-5 sm:bottom-5 sm:right-px sm:left-px pointer-events-none">
+          <svg
+            className="w-full h-full overflow-visible"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 100"
+          >
             <motion.rect
               x="1"
               y="1"
@@ -242,7 +246,7 @@ export function V4Layout() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <DynamicLogo version={4} compact />
+                <DynamicLogo compact />
               </div>
               <p className="text-white/50 max-w-md leading-relaxed text-sm">
                 {`// ${siteData.brand.tagline}`}

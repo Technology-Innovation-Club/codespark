@@ -7,6 +7,8 @@ export function V4Incubator() {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
+  const phaseViewport = { amount: 0.45, once: false } as const;
+
   return (
     <div
       className="overflow-hidden"
@@ -151,9 +153,14 @@ export function V4Incubator() {
                 return (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.08 }}
+                    initial={{ opacity: 0, y: 24, scale: 0.96, filter: "blur(4px)" }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                    viewport={phaseViewport}
+                    transition={{
+                      duration: 0.45,
+                      delay: i * 0.08,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                     className="relative pl-12"
                   >
                     <div
@@ -183,8 +190,8 @@ export function V4Incubator() {
                         {`// ${phase.name}`}
                       </span>
                       <h3
-                        className="text-3xl font-bold mt-2 text-white leading-tight"
-                        style={{ fontFamily: '"Syne", sans-serif' }}
+                        className="text-2xl sm:text-3xl font-bold mt-2 text-white leading-tight break-words"
+                        style={{ fontFamily: '"Syne", sans-serif', overflowWrap: "anywhere" }}
                       >
                         {phase.title}
                       </h3>
@@ -203,9 +210,24 @@ export function V4Incubator() {
             {siteData.programs.incubator.phases.map((phase, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
+                initial={{
+                  opacity: 0,
+                  x: i % 2 === 0 ? -56 : 56,
+                  scale: 0.96,
+                  filter: "blur(4px)",
+                }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                  scale: 1,
+                  filter: "blur(0px)",
+                }}
+                viewport={phaseViewport}
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className={`flex items-center gap-8 ${
                   i % 2 === 0 ? "flex-row" : "flex-row-reverse"
                 }`}
@@ -234,7 +256,7 @@ export function V4Incubator() {
                       {`// ${phase.name}`}
                     </span>
                     <h3
-                      className="text-xl font-bold mt-2 text-white"
+                      className="text-xl font-bold mt-2 text-white break-words"
                       style={{ fontFamily: '"Syne", sans-serif' }}
                     >
                       {phase.title}
