@@ -80,6 +80,27 @@ export function DynamicLogo({
   compact = false,
   className = "",
 }: DynamicLogoProps) {
+  if (version === 4) {
+    const src =
+      !showWordmark || compact
+        ? "/codespark-logo-mark-white.webp"
+        : "/codespark-logo-white.webp";
+
+    return (
+      <div className={`flex items-center ${className}`}>
+        <motion.img
+          aria-label="CodeSpark logo"
+          initial={{ scale: 0.94, opacity: 0.9 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.35, ease: [0.25, 0.1, 0, 1] }}
+          src={src}
+          alt="CodeSpark"
+          className={`h-9 sm:h-10 w-auto object-contain ${compact ? "max-w-9 sm:max-w-10" : "max-w-[190px] sm:max-w-[210px]"}`}
+        />
+      </div>
+    );
+  }
+
   const theme = themes[version];
   const size = compact ? "w-9 h-9 text-base" : "w-10 h-10 sm:w-11 sm:h-11 text-lg";
 
@@ -112,7 +133,6 @@ export function DynamicLogo({
           className={`text-lg sm:text-xl font-bold tracking-tight ${theme.wordClass}`}
           style={{
             fontFamily: theme.fontFamily,
-            ...(version === 4 ? { letterSpacing: "0.06em" } : {}),
           }}
         >
           Code<span className={theme.accentClass}>Spark</span>

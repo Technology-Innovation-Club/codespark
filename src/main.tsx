@@ -30,8 +30,8 @@ function ScrollToTop() {
 
 function DynamicFavicon() {
   useEffect(() => {
-    const href = "/codespark.svg";
-    const type = "image/svg+xml";
+    const href = "/favicon.webp";
+    const type = "image/webp";
 
     let icon = document.querySelector("link[rel='icon']") as HTMLLinkElement | null;
     if (!icon) {
