@@ -105,38 +105,6 @@ export function V4Home() {
             {`> ${siteData.hero.subheadline}`}
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <a
-              href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative px-10 py-4 bg-[#ff00ff] text-white font-bold uppercase tracking-wider transition-all hover:scale-105 cursor-pointer"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-                boxShadow: "0 0 30px rgba(255, 0, 255, 0.5)",
-              }}
-            >
-              <span className="relative z-10">Attend Event</span>
-              <div className="absolute inset-0 bg-[#ff00ff]/50 blur-xl group-hover:blur-2xl transition-all" />
-            </a>
-            <Link
-              to="/event"
-              className="px-10 py-4 bg-transparent border-2 border-[#00fff0] text-[#00fff0] font-bold uppercase tracking-wider hover:bg-[#00fff0]/10 transition-all cursor-pointer"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-                boxShadow: "0 0 20px rgba(0, 255, 240, 0.3)",
-              }}
-            >
-              Learn More
-            </Link>
-          </motion.div>
         </div>
 
         {/* Scroll Indicator */}

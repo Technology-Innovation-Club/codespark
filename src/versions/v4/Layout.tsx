@@ -8,8 +8,6 @@ export function V4Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const basePath = "";
-
-  // WhatsApp group link for attendance
   const attendLink = "https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX";
 
   return (
@@ -44,7 +42,7 @@ export function V4Layout() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1">
               {siteData.navigation.map((item) => {
                 const isActive =
                   location.pathname === `${basePath}/${item.path}` ||
@@ -92,7 +90,7 @@ export function V4Layout() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 border border-[#00fff0]/50 bg-[#1a1a2e]"
+              className="lg:hidden p-2 border border-[#00fff0]/50 bg-[#1a1a2e]"
               style={{ boxShadow: "0 0 10px rgba(0, 255, 240, 0.3)" }}
             >
               <div className="w-6 h-5 flex flex-col justify-between">
@@ -126,7 +124,7 @@ export function V4Layout() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#0a0a1a] border-t border-[#00fff0]/20 max-h-[calc(100vh-4.25rem)] overflow-y-auto"
+              className="lg:hidden bg-[#0a0a1a] border-t border-[#00fff0]/20 max-h-[calc(100vh-4.25rem)] overflow-y-auto"
             >
               <div className="px-4 sm:px-6 py-6 space-y-4">
                 {siteData.navigation.map((item) => (

@@ -301,7 +301,6 @@ export function V4About() {
                 <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
                   // TEAM LEAD
                 </p>
-                <p className="text-white/50 text-xs">{siteData.brand.email}</p>
               </motion.div>
 
               {/* Technical Lead */}
@@ -338,10 +337,9 @@ export function V4About() {
                 <p className="text-[#ff00ff] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}>
                   // TECHNICAL LEAD
                 </p>
-                <p className="text-white/50 text-xs">Tech & Engineering</p>
               </motion.div>
 
-              {/* Program Manager */}
+              {/* Branding Lead */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -360,9 +358,9 @@ export function V4About() {
                     boxShadow: "0 0 30px rgba(240, 255, 0, 0.3)",
                   }}
                 >
-                  <img 
-                    src="/program-manager.webp" 
-                    alt="John Doe" 
+                  <img
+                    src="/branding-lead.webp"
+                    alt="Okon Uyaiabasi"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -370,12 +368,11 @@ export function V4About() {
                   className="text-xl font-bold text-white mb-1"
                   style={{ fontFamily: '"Syne", sans-serif' }}
                 >
-                  John Doe
+                  Okon Uyaiabasi
                 </h3>
                 <p className="text-[#f0ff00] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}>
-                  // PROGRAM MANAGER
+                  // BRANDING LEAD
                 </p>
-                <p className="text-white/50 text-xs">Operations & Programs</p>
               </motion.div>
             </div>
           </motion.div>

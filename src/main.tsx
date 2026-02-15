@@ -11,6 +11,7 @@ import { V4Event } from "./versions/v4/Event";
 import { V4Startups } from "./versions/v4/Startups";
 import { V4About } from "./versions/v4/About";
 import { V4Partners } from "./versions/v4/Partners";
+import { V4NotFound } from "./versions/v4/NotFound";
 
 // Scroll to top component
 function ScrollToTop() {
@@ -59,16 +60,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="startups" element={<V4Startups />} />
           <Route path="about" element={<V4About />} />
           <Route path="for-partners" element={<V4Partners />} />
-        </Route>
-
-        {/* Legacy /4 routes redirect to main */}
-        <Route path="/4" element={<V4Layout />}>
-          <Route index element={<V4Home />} />
-          <Route path="incubator" element={<V4Incubator />} />
-          <Route path="event" element={<V4Event />} />
-          <Route path="startups" element={<V4Startups />} />
-          <Route path="about" element={<V4About />} />
-          <Route path="for-partners" element={<V4Partners />} />
+          <Route path="*" element={<V4NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
