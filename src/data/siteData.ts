@@ -389,6 +389,7 @@ export const siteData = {
       { name: "Prosperity Olorunfemi", role: "Founder & Lead", bio: "Tech entrepreneur passionate about student innovation", avatar: "👨‍💼" },
       { name: "Team Member 2", role: "Operations Lead", bio: "Building systems for founder success", avatar: "👩‍💼" },
       { name: "Team Member 3", role: "Program Director", bio: "Designing world-class incubation programs", avatar: "👨‍🏫" },
+      { name: "Oluwademilade Oguntade", role: "Marketing Lead", bio: "Driving growth, storytelling, and community engagement.", avatar: "👩🏾‍💼" },
     ],
     values: [
       { icon: "🙏", title: "Faith-Driven" },

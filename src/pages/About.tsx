@@ -280,7 +280,7 @@ export function About() {
               </span>
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
               {/* Team Lead */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -418,6 +418,42 @@ export function About() {
                 </h3>
                 <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
                   {"Program Manager"}
+                </p>
+              </motion.div>
+
+              {/* Marketing Lead */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="p-6 bg-[#1a1a2e] border border-[#ff00ff]/30 text-center"
+                style={{
+                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  boxShadow: "0 0 40px rgba(255, 0, 255, 0.2)",
+                }}
+              >
+                <div
+                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#ff00ff] overflow-hidden"
+                  style={{
+                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    boxShadow: "0 0 30px rgba(255, 0, 255, 0.3)",
+                  }}
+                >
+                  <img
+                    src="/marketing-lead.webp"
+                    alt="Oluwademilade Oguntade"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: "center 18%" }}
+                  />
+                </div>
+                <h3
+                  className="text-xl font-bold text-white mb-1"
+                  style={{ fontFamily: '"Syne", sans-serif' }}
+                >
+                  Oluwademilade Oguntade
+                </h3>
+                <p className="text-[#ff00ff] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}>
+                  {"Marketing Lead"}
                 </p>
               </motion.div>
             </div>
