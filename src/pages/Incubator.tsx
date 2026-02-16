@@ -23,8 +23,8 @@ export function Incubator() {
         </div>
 
         {/* Corner frames */}
-        <div className="absolute top-24 left-8 w-24 h-24 border-l-2 border-t-2 border-[#00fff0]/30" />
-        <div className="absolute top-24 right-8 w-24 h-24 border-r-2 border-t-2 border-[#ff00ff]/30" />
+        <div className="absolute top-[57px] sm:top-24 left-[5px] sm:left-8 w-[72px] sm:w-24 h-[72px] sm:h-24 border-l-2 border-t-2 border-[#00fff0]/30" />
+        <div className="absolute top-[57px] sm:top-24 right-[5px] sm:right-8 w-[72px] sm:w-24 h-[72px] sm:h-24 border-r-2 border-t-2 border-[#ff00ff]/30" />
 
         <div className="relative max-w-5xl mx-auto text-center">
           <motion.span
