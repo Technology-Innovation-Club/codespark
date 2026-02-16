@@ -15,7 +15,7 @@ export function Incubator() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero */}
-      <section className="relative pt-16 pb-12 sm:pt-24 sm:pb-14 px-4 sm:px-6">
+      <section className="relative pt-4 pb-6 sm:pt-24 sm:pb-14 px-4 sm:px-6">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#ff00ff]/10 rounded-full blur-[100px]" />

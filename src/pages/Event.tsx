@@ -10,7 +10,7 @@ export function Event() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero */}
-      <section className="relative pt-14 sm:pt-20 md:pt-24 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden">
+      <section className="relative pt-4 pb-8 sm:pt-20 sm:pb-20 px-4 sm:px-6 overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#ff00ff]/15 rounded-full blur-[150px]" />

@@ -14,7 +14,7 @@ export function About() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero */}
-      <section className="relative pt-16 pb-12 sm:pt-20 sm:pb-14 px-4 sm:px-6">
+      <section className="relative pt-4 pb-6 sm:pt-20 sm:pb-14 px-4 sm:px-6">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-1/4 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />

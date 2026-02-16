@@ -38,7 +38,7 @@ export function Startups() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero */}
-      <section className="relative pt-24 pb-14 sm:pt-28 sm:pb-16 px-6">
+      <section className="relative pt-4 pb-8 sm:pt-28 sm:pb-16 px-6">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-1/4 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#00fff0]/10 rounded-full blur-[120px]" />
