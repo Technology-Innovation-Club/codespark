@@ -312,7 +312,7 @@ export function About() {
                   Prosperity Olorunfemi
                 </h3>
                 <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
-                  {/* // TEAM LEAD */}
+                  {"Founder & Lead"}
                 </p>
               </motion.div>
 
@@ -347,7 +347,7 @@ export function About() {
                   Abasiono Mbat
                 </h3>
                 <p className="text-[#ff00ff] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}>
-                  {/* // TECHNICAL LEAD */}
+                  {"Technical Lead"}
                 </p>
               </motion.div>
 
@@ -382,7 +382,7 @@ export function About() {
                   Okon Uyaiabasi
                 </h3>
                 <p className="text-[#f0ff00] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}>
-                  {/* // BRANDING LEAD */}
+                  {"Branding Lead"}
                 </p>
               </motion.div>
 
@@ -417,7 +417,7 @@ export function About() {
                   Emmanuel Omale
                 </h3>
                 <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
-                  {/* // PROGRAM MANAGER */}
+                  {"Program Manager"}
                 </p>
               </motion.div>
             </div>
