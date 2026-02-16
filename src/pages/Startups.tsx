@@ -30,6 +30,8 @@ export function Startups() {
 
   const getColors = (category: string) =>
     categoryColors[category] || categoryColors["EdTech"];
+  const hasLiveWebsite = (website: string) =>
+    website.startsWith("http://") || website.startsWith("https://");
   const industryCount = new Set(siteData.startupsList.map((s) => s.category)).size;
 
   return (
@@ -167,6 +169,7 @@ export function Startups() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {siteData.startupsList.map((startup, i) => {
               const colors = getColors(startup.category);
+              const hasWebsite = hasLiveWebsite(startup.website);
               return (
                 <motion.div
                   key={i}
@@ -212,21 +215,54 @@ export function Startups() {
                     </span>
                   </div>
 
-                  {/* Startup name */}
-                  <h3
-                    className="text-2xl font-bold mb-3 text-white group-hover:text-opacity-100 transition-colors"
-                    style={{ fontFamily: '"Syne", sans-serif' }}
-                  >
-                    <span
-                      style={{
-                        color: colors.text,
-                        textShadow: `0 0 15px ${colors.shadow}`,
-                      }}
+                  {/* Startup name and website link */}
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <h3
+                      className="text-2xl font-bold text-white group-hover:text-opacity-100 transition-colors mb-0"
+                      style={{ fontFamily: '"Syne", sans-serif' }}
                     >
-                      {">"}
-                    </span>{" "}
-                    {startup.name}
-                  </h3>
+                      <span
+                        style={{
+                          color: colors.text,
+                          textShadow: `0 0 15px ${colors.shadow}`,
+                        }}
+                      >
+                        {">"}
+                      </span>{" "}
+                      {startup.name}
+                    </h3>
+                    {hasWebsite && (
+                      <a
+                        href={startup.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative z-10 shrink-0 w-9 h-9 flex items-center justify-center border transition-all hover:scale-105"
+                        style={{
+                          color: colors.text,
+                          borderColor: `${colors.border}88`,
+                          backgroundColor: `${colors.border}1a`,
+                          boxShadow: `0 0 14px ${colors.shadow}`,
+                        }}
+                        aria-label={`Open ${startup.name} website in new tab`}
+                        title={`Visit ${startup.name}`}
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M14 4h6v6" />
+                          <path d="M10 14 20 4" />
+                          <path d="M20 13v7H4V4h7" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
 
                   {/* Description */}
                   <p className="text-white/60 text-sm mb-4 leading-relaxed">

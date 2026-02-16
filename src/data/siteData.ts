@@ -236,7 +236,7 @@ export const siteData = {
         founded: "2024",
       },
       {
-        name: "PAU Archive",
+        name: "Archive",
         description: "All-in-one AI-powered study platform for viewing course content, generating flashcards, summaries, and more.",
         logo: "📚",
         sector: "EdTech",
@@ -267,7 +267,7 @@ export const siteData = {
       category: "EdTech",
       traction: "1,000+ educators, 3 institutions adopted",
       stats: "$7,000+ grants",
-      website: "https://www.acadai.co",
+      website: "https://www.acadai.co/",
       logo: "🎓",
       sector: "EdTech",
       stage: "Growth",
@@ -275,7 +275,7 @@ export const siteData = {
       funding: "$7,000+",
     },
     {
-      name: "PAU Archive",
+      name: "Archive",
       description:
         "All-in-one AI-powered study platform for viewing course content, generating flashcards, summaries, and more.",
       category: "EdTech",
@@ -303,13 +303,13 @@ export const siteData = {
       funding: "Pre-seed",
     },
     {
-      name: "FlashNarrative",
+      name: "Flash Narrative",
       description:
         "AI-powered sentiment and narrative intelligence for PR teams and corporates.",
       category: "MarTech",
       traction: "Co-built with a leading PR firm",
       stats: "₦10M grant (Zenith Bank Hackathon Top 5)",
-      website: "#",
+      website: "",
       logo: "📖",
       sector: "MarTech",
       stage: "Pilot",
@@ -317,7 +317,7 @@ export const siteData = {
       funding: "₦10M grant",
     },
     {
-      name: "Echo",
+      name: "EchoMind",
       description:
         "Voice-AI infrastructure enabling the elderly and physically challenged to access services.",
       category: "Accessibility Tech",
