@@ -17,16 +17,6 @@ export function V4Event() {
           <div className="absolute bottom-20 left-20 w-[170px] h-[170px] sm:w-[240px] sm:h-[240px] md:w-[300px] md:h-[300px] bg-[#00fff0]/10 rounded-full blur-[100px]" />
         </div>
 
-        {/* Animated scan lines */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/50 to-transparent"
-            initial={{ top: 0 }}
-            animate={{ top: "100%" }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-          />
-        </div>
-
         {/* Corner frames */}
         <div className="absolute top-24 left-8 w-32 h-32 border-l-2 border-t-2 border-[#ff00ff]/50" />
         <div className="absolute bottom-24 right-8 w-32 h-32 border-r-2 border-b-2 border-[#00fff0]/50" />
