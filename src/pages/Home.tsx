@@ -67,10 +67,41 @@ export function Home() {
           </motion.div>
 
           <div className="relative mx-auto max-w-[960px] mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-8 py-5 min-[450px]:max-[550px]:py-4 sm:py-8">
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#00fff0]/70 via-[#ff00ff]/60 to-[#ff00ff]/70" />
-              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#00fff0]/80" />
-              <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-[#ff00ff]/80" />
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                <motion.rect
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  fill="none"
+                  stroke="#00fff0"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeDasharray="8 400"
+                  animate={{ strokeDashoffset: [0, -408] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  style={{ filter: "drop-shadow(0 0 6px rgba(0,255,240,0.8))" }}
+                />
+                <motion.rect
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  fill="none"
+                  stroke="#ff00ff"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeDasharray="6 400"
+                  animate={{ strokeDashoffset: [-200, -608] }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                  style={{ filter: "drop-shadow(0 0 6px rgba(255,0,255,0.8))" }}
+                />
+              </svg>
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00fff0]/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff00ff]/40 to-transparent" />
+              <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#00fff0]/40 to-transparent" />
+              <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#ff00ff]/40 to-transparent" />
             </div>
 
             <motion.h1
@@ -103,10 +134,41 @@ export function Home() {
           </div>
 
           <div className="relative mx-auto max-w-3xl mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-6 py-4 min-[450px]:max-[550px]:py-3">
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#00fff0]/70 via-[#ff00ff]/60 to-[#ff00ff]/70" />
-              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#00fff0]/80" />
-              <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-[#ff00ff]/80" />
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                <motion.rect
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  fill="none"
+                  stroke="#ff00ff"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeDasharray="8 300"
+                  animate={{ strokeDashoffset: [0, -308] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+                  style={{ filter: "drop-shadow(0 0 6px rgba(255,0,255,0.8))" }}
+                />
+                <motion.rect
+                  x="0"
+                  y="0"
+                  width="100%"
+                  height="100%"
+                  fill="none"
+                  stroke="#00fff0"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeDasharray="6 300"
+                  animate={{ strokeDashoffset: [-150, -450] }}
+                  transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
+                  style={{ filter: "drop-shadow(0 0 6px rgba(0,255,240,0.8))" }}
+                />
+              </svg>
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff00ff]/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00fff0]/40 to-transparent" />
+              <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#00fff0]/40 to-transparent" />
+              <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#ff00ff]/40 to-transparent" />
             </div>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
