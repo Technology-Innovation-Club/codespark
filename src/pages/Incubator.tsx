@@ -15,7 +15,7 @@ export function Incubator() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero */}
-      <section className="relative pt-4 pb-6 sm:pt-24 sm:pb-14 px-4 sm:px-6">
+      <section className="relative pt-4 pb-6 sm:pt-24 sm:pb-14 px-3 sm:px-6">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#ff00ff]/10 rounded-full blur-[100px]" />
@@ -30,7 +30,7 @@ export function Incubator() {
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex flex-col sm:flex-row items-center gap-1 sm:gap-3 px-4 sm:px-6 py-3 bg-[#1a1a2e] border border-[#f0ff00]/50 text-[#f0ff00] text-[0.8rem] sm:text-sm font-medium mb-4 sm:mb-6 leading-snug"
+            className="inline-flex w-full max-w-[304px] sm:w-auto sm:max-w-none items-center justify-center gap-1.5 sm:gap-3 px-3 sm:px-6 py-2.5 sm:py-3 bg-[#1a1a2e] border border-[#f0ff00]/50 text-[#f0ff00] text-[0.68rem] min-[360px]:text-[0.74rem] sm:text-sm font-medium mb-4 sm:mb-6 leading-none whitespace-nowrap"
             style={{
               clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
               boxShadow: "0 0 20px rgba(240, 255, 0, 0.2)",
@@ -40,11 +40,7 @@ export function Incubator() {
               className="w-2 h-2 bg-[#f0ff00] animate-pulse"
               style={{ boxShadow: "0 0 10px #f0ff00" }}
             />
-            <span className="hidden sm:inline">
-              {"// APPLICATIONS_OPEN_NOVEMBER_2026"}
-            </span>
-            <span className="sm:hidden">{"// APPLICATIONS_OPEN_N"}</span>
-            <span className="sm:hidden">{"OVEMBER_2026"}</span>
+            <span>{"// APPLICATIONS_OPEN_NOVEMBER_2026"}</span>
           </motion.span>
 
           <motion.h1
