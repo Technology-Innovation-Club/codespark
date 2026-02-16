@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import { siteData } from "../../data/siteData";
+import { siteData } from "../data/siteData";
 
-export function V4Startups() {
+export function Startups() {
   const categoryColors: Record<
     string,
     { border: string; text: string; shadow: string }

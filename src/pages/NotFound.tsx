@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 
-export function V4NotFound() {
+export function NotFound() {
   return (
     <section className="relative min-h-[72vh] flex items-center justify-center px-6 py-24 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_16%,rgba(26,72,255,0.35)_0%,rgba(9,16,63,0.88)_45%,rgba(5,6,30,1)_100%)]" />
@@ -28,7 +28,7 @@ export function V4NotFound() {
       >
         <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#2f72ff]/60 bg-[#09124c]/80 text-[#d8ddff] text-xs sm:text-sm uppercase tracking-[0.22em]">
           <span className="w-2 h-2 rounded-full bg-[#00fff0]" />
-          404 // Route Not Found
+          404 {/* // Route Not Found */}
         </p>
 
         <h1

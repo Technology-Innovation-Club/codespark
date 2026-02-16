@@ -3,17 +3,15 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import "./index.css";
 
-// Version 4 imports only
-import { V4Layout } from "./versions/v4/Layout";
-import { V4Home } from "./versions/v4/Home";
-import { V4Incubator } from "./versions/v4/Incubator";
-import { V4Event } from "./versions/v4/Event";
-import { V4Startups } from "./versions/v4/Startups";
-import { V4About } from "./versions/v4/About";
-import { V4Partners } from "./versions/v4/Partners";
-import { V4NotFound } from "./versions/v4/NotFound";
+import { Layout } from "./pages/Layout";
+import { Home } from "./pages/Home";
+import { Incubator } from "./pages/Incubator";
+import { Event } from "./pages/Event";
+import { Startups } from "./pages/Startups";
+import { About } from "./pages/About";
+import { Partners } from "./pages/Partners";
+import { NotFound } from "./pages/NotFound";
 
-// Scroll to top component
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -52,15 +50,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ScrollToTop />
       <DynamicFavicon />
       <Routes>
-        {/* Main site - Cyber Neon design */}
-        <Route path="/" element={<V4Layout />}>
-          <Route index element={<V4Home />} />
-          <Route path="incubator" element={<V4Incubator />} />
-          <Route path="event" element={<V4Event />} />
-          <Route path="startups" element={<V4Startups />} />
-          <Route path="about" element={<V4About />} />
-          <Route path="for-partners" element={<V4Partners />} />
-          <Route path="*" element={<V4NotFound />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="incubator" element={<Incubator />} />
+          <Route path="event" element={<Event />} />
+          <Route path="startups" element={<Startups />} />
+          <Route path="about" element={<About />} />
+          <Route path="for-partners" element={<Partners />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

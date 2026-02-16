@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { siteData } from "../../data/siteData";
+import { siteData } from "../data/siteData";
 
-export function V4About() {
+export function About() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -312,7 +312,7 @@ export function V4About() {
                   Prosperity Olorunfemi
                 </h3>
                 <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
-                  // TEAM LEAD
+                  {/* // TEAM LEAD */}
                 </p>
               </motion.div>
 
@@ -347,7 +347,7 @@ export function V4About() {
                   Abasiono Mbat
                 </h3>
                 <p className="text-[#ff00ff] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}>
-                  // TECHNICAL LEAD
+                  {/* // TECHNICAL LEAD */}
                 </p>
               </motion.div>
 
@@ -382,7 +382,7 @@ export function V4About() {
                   Okon Uyaiabasi
                 </h3>
                 <p className="text-[#f0ff00] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}>
-                  // BRANDING LEAD
+                  {/* // BRANDING LEAD */}
                 </p>
               </motion.div>
 
@@ -417,7 +417,7 @@ export function V4About() {
                   Emmanuel Omale
                 </h3>
                 <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
-                  // PROGRAM MANAGER
+                  {/* // PROGRAM MANAGER */}
                 </p>
               </motion.div>
             </div>

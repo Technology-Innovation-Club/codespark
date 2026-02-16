@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import { siteData } from "../../data/siteData";
+import { siteData } from "../data/siteData";
 
-export function V4Event() {
+export function Event() {
   const event = siteData.programs.event;
 
   return (

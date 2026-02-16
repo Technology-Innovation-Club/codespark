@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { siteData } from "../../data/siteData";
+import { siteData } from "../data/siteData";
 
-export function V4Home() {
+export function Home() {
   return (
     <div
       className="overflow-hidden"

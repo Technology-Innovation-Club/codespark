@@ -1,10 +1,10 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { siteData } from "../../data/siteData";
-import { DynamicLogo } from "../../components/DynamicLogo";
+import { siteData } from "../data/siteData";
+import { DynamicLogo } from "../components/DynamicLogo";
 
-export function V4Layout() {
+export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const basePath = "";

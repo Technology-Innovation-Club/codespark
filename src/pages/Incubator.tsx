@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
 import { useEffect } from "react";
-import { siteData } from "../../data/siteData";
+import { siteData } from "../data/siteData";
 
-export function V4Incubator() {
+export function Incubator() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
