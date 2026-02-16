@@ -9,7 +9,7 @@ export function Home() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero Section */}
-      <section className="relative min-h-0 sm:min-h-screen flex items-start sm:items-center justify-center px-4 sm:px-6 pt-3 pb-3 sm:pt-6 sm:pb-14">
+      <section className="relative min-h-0 sm:min-h-screen flex items-start sm:items-center justify-center px-4 sm:px-6 pt-6 pb-3 sm:pt-6 sm:pb-14">
         {/* Animated background effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#00fff0]/10 rounded-full blur-[100px] animate-pulse" />
@@ -245,7 +245,7 @@ export function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 relative">
+      <section className="pt-8 pb-20 sm:py-28 px-4 sm:px-6 relative">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/50 to-transparent" />
 
         <div className="max-w-6xl mx-auto">
