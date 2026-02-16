@@ -9,7 +9,7 @@ export function Home() {
       style={{ fontFamily: '"Space Mono", monospace' }}
     >
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-6 pb-4 sm:pb-14">
+      <section className="relative min-h-0 sm:min-h-screen flex items-start sm:items-center justify-center px-4 sm:px-6 pt-3 pb-3 sm:pt-6 sm:pb-14">
         {/* Animated background effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#00fff0]/10 rounded-full blur-[100px] animate-pulse" />
@@ -46,7 +46,7 @@ export function Home() {
             transition={{ duration: 0.8 }}
           >
             <motion.span
-              className="relative overflow-hidden inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#1a1a2e] border border-[#00fff0]/50 text-[#00fff0] text-xs sm:text-sm font-medium mb-3 sm:mb-8"
+              className="relative overflow-hidden inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#1a1a2e] border border-[#00fff0]/50 text-[#00fff0] text-[0.8rem] sm:text-sm font-medium mb-3 sm:mb-8"
               style={{
                 clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
                 boxShadow: "0 0 20px rgba(0, 255, 240, 0.3)",
@@ -66,7 +66,7 @@ export function Home() {
             </motion.span>
           </motion.div>
 
-          <div className="relative mx-auto max-w-[960px] mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-8 py-5 min-[450px]:max-[550px]:py-4 sm:py-8">
+          <div className="relative mx-auto max-w-[960px] mb-6 sm:mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-8 py-5 min-[450px]:max-[550px]:py-4 sm:py-8">
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
               <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
                 <motion.rect
@@ -133,7 +133,7 @@ export function Home() {
             </motion.h1>
           </div>
 
-          <div className="relative mx-auto max-w-3xl mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-6 py-4 min-[450px]:max-[550px]:py-3">
+          <div className="relative mx-auto max-w-3xl mb-4 sm:mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-6 py-4 min-[450px]:max-[550px]:py-3">
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
               <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
                 <motion.rect
@@ -185,7 +185,7 @@ export function Home() {
       </section>
 
       {/* Iyin Section */}
-      <section className="py-6 sm:py-20 px-4 sm:px-6 bg-[#0a0a0f] relative">
+      <section className="pt-2 pb-6 sm:py-20 px-4 sm:px-6 bg-[#0a0a0f] relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/50 to-transparent" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#ff00ff]/50 to-transparent" />
 

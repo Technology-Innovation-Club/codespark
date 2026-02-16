@@ -30,7 +30,7 @@ export function Incubator() {
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex flex-col sm:flex-row items-center gap-1 sm:gap-3 px-4 sm:px-6 py-3 bg-[#1a1a2e] border border-[#f0ff00]/50 text-[#f0ff00] text-xs sm:text-sm font-medium mb-4 sm:mb-6 leading-snug"
+            className="inline-flex flex-col sm:flex-row items-center gap-1 sm:gap-3 px-4 sm:px-6 py-3 bg-[#1a1a2e] border border-[#f0ff00]/50 text-[#f0ff00] text-[0.8rem] sm:text-sm font-medium mb-4 sm:mb-6 leading-snug"
             style={{
               clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
               boxShadow: "0 0 20px rgba(240, 255, 0, 0.2)",

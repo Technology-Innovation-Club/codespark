@@ -26,7 +26,7 @@ export function NotFound() {
         transition={{ duration: 0.7 }}
         className="relative z-10 max-w-3xl w-full text-center border border-[#1f49ff]/70 bg-[#060a2d]/88 rounded-2xl px-6 py-10 sm:px-10 sm:py-14 shadow-[0_0_45px_rgba(9,57,255,0.25)]"
       >
-        <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#2f72ff]/60 bg-[#09124c]/80 text-[#d8ddff] text-xs sm:text-sm uppercase tracking-[0.22em]">
+        <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#2f72ff]/60 bg-[#09124c]/80 text-[#d8ddff] text-[0.8rem] sm:text-sm uppercase tracking-[0.22em]">
           <span className="w-2 h-2 rounded-full bg-[#00fff0]" />
           404 {/* // Route Not Found */}
         </p>
