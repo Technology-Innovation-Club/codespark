@@ -390,6 +390,7 @@ export const siteData = {
       { name: "Team Member 2", role: "Operations Lead", bio: "Building systems for founder success", avatar: "👩‍💼" },
       { name: "Team Member 3", role: "Program Director", bio: "Designing world-class incubation programs", avatar: "👨‍🏫" },
       { name: "Oluwademilade Oguntade", role: "Marketing Lead", bio: "Driving growth, storytelling, and community engagement.", avatar: "👩🏾‍💼" },
+      { name: "Omotayo Ayeni", role: "Logistics & Event Planning Lead", bio: "Coordinating seamless event operations and execution.", avatar: "🗂️" },
     ],
     values: [
       { icon: "🙏", title: "Faith-Driven" },

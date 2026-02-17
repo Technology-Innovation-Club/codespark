@@ -250,7 +250,7 @@ export function About() {
       <section className="pt-14 pb-12 sm:pt-16 sm:pb-14 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/50 to-transparent" />
 
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-[1600px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -280,7 +280,7 @@ export function About() {
               </span>
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
               {/* Team Lead */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -303,6 +303,7 @@ export function About() {
                     src="/team-lead.webp" 
                     alt="Prosperity Olorunfemi" 
                     className="w-full h-full object-cover"
+                    style={{ objectPosition: "center 16%" }}
                   />
                 </div>
                 <h3
@@ -338,6 +339,7 @@ export function About() {
                     src="/technical-lead.webp" 
                     alt="Abasiono Mbat" 
                     className="w-full h-full object-cover"
+                    style={{ objectPosition: "center 16%", transform: "translateY(-3px) scale(3)" }}
                   />
                 </div>
                 <h3
@@ -373,6 +375,7 @@ export function About() {
                     src="/branding-lead.webp"
                     alt="Okon Uyaiabasi"
                     className="w-full h-full object-cover"
+                    style={{ objectPosition: "center 16%" }}
                   />
                 </div>
                 <h3
@@ -408,6 +411,7 @@ export function About() {
                     src="/program-manager.webp"
                     alt="Emmanuel Omale"
                     className="w-full h-full object-cover"
+                    style={{ objectPosition: "center 16%" }}
                   />
                 </div>
                 <h3
@@ -443,7 +447,7 @@ export function About() {
                     src="/marketing-lead.webp"
                     alt="Oluwademilade Oguntade"
                     className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 18%" }}
+                    style={{ objectPosition: "58% 18%", transform: "translate(-1px, 1px) scale(1.6)" }}
                   />
                 </div>
                 <h3
@@ -454,6 +458,42 @@ export function About() {
                 </h3>
                 <p className="text-[#ff00ff] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}>
                   {"Marketing Lead"}
+                </p>
+              </motion.div>
+
+              {/* Logistics & Event Planning Lead */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="p-6 bg-[#1a1a2e] border border-[#f0ff00]/30 text-center"
+                style={{
+                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  boxShadow: "0 0 40px rgba(240, 255, 0, 0.2)",
+                }}
+              >
+                <div
+                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#f0ff00] overflow-hidden"
+                  style={{
+                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    boxShadow: "0 0 30px rgba(240, 255, 0, 0.3)",
+                  }}
+                >
+                  <img
+                    src="/omotayo-ayeni.webp"
+                    alt="Omotayo Ayeni"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: "90% 50%", transform: "translate(-1px, 1px) scale(1.1)" }}
+                  />
+                </div>
+                <h3
+                  className="text-xl font-bold text-white mb-1"
+                  style={{ fontFamily: '"Syne", sans-serif' }}
+                >
+                  Omotayo Ayeni
+                </h3>
+                <p className="text-[#f0ff00] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}>
+                  {"Logistics & Event Planning Lead"}
                 </p>
               </motion.div>
             </div>
