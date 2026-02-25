@@ -340,7 +340,8 @@ export function Event() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="#register"
+                href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
+                target="_blank"
                 className="px-12 py-5 bg-[#ff00ff] text-white font-bold uppercase tracking-wider hover:scale-105 transition-all"
                 style={{
                   fontFamily: '"Syne", sans-serif',
