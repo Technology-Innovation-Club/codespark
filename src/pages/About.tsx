@@ -538,7 +538,7 @@ export function About() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
+                href="https://selar.com/4177492w29"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-12 py-5 bg-[#ff00ff] text-white font-bold uppercase tracking-wider hover:scale-105 transition-all"

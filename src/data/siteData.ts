@@ -123,7 +123,7 @@ export const siteData = {
     },
     event: {
       title: "CodeSpark Tech & Entrepreneurship Event 2026",
-      date: "March 28, 2026",
+      date: "March 21, 2026",
       location: "Lagos Business School, Lagos State, Nigeria",
       attendance: "500+ Student Builders",
       description:
@@ -188,7 +188,7 @@ export const siteData = {
       {
         title: "CodeSpark Tech & Entrepreneurship Event 2026",
         type: "Conference",
-        date: "March 28, 2026",
+        date: "March 21, 2026",
         location: "Pan-Atlantic University, Lagos State, Nigeria",
         image: "",
         description: "500+ student builder convergence with founders, investors, and operators.",
@@ -209,7 +209,7 @@ export const siteData = {
       {
         title: "CodeSpark Tech & Entrepreneurship Event 2026",
         type: "Conference",
-        date: "March 28, 2026",
+        date: "March 21, 2026",
         location: "Pan-Atlantic University, Lagos State, Nigeria",
         image: "",
         description: "500+ student builder convergence with founders, investors, and operators.",

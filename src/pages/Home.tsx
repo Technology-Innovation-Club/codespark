@@ -475,7 +475,7 @@ export function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX"
+                href="https://selar.com/4177492w29"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-10 py-4 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all cursor-pointer"

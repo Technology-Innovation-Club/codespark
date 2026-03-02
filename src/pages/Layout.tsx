@@ -8,7 +8,7 @@ export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const basePath = "";
-  const attendLink = "https://chat.whatsapp.com/LQ33JW7yiJAKs8Cg85LXKX";
+  const attendLink = "https://selar.com/4177492w29";
 
   useEffect(() => {
     setMobileMenuOpen(false);
