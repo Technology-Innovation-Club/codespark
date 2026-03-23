@@ -379,7 +379,7 @@ export function Incubator() {
             </p>
 
             <a
-              href="https://selar.com/4177492w29"
+              href="https://tix.africa/discover/codespark2026"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"

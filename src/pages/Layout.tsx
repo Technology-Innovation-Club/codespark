@@ -8,7 +8,7 @@ export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const basePath = "";
-  const attendLink = "https://selar.com/4177492w29";
+  const attendLink = "https://tix.africa/discover/codespark2026";
 
   useEffect(() => {
     setMobileMenuOpen(false);
