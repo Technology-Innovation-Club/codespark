@@ -8,7 +8,7 @@ export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const basePath = "";
-  const attendLink = "https://tix.africa/discover/codespark2026";
+  const attendLink = "https://tix.africa/discover/codesparkevent2026";
 
   useEffect(() => {
     setMobileMenuOpen(false);
