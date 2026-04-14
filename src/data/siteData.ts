@@ -461,9 +461,9 @@ export const siteData = {
   },
 
   navigation: [
-    { name: "Home", path: "" },
+    { name: "Home", path: "home" },
     { name: "Incubator", path: "incubator" },
-    { name: "Event", path: "event" },
+    { name: "Event", path: "events" },
     { name: "Startups", path: "startups" },
     { name: "About", path: "about" },
     { name: "For Partners", path: "for-partners" },

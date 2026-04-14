@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import "./index.css";
 
 import { Layout } from "./pages/Layout";
@@ -51,9 +51,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <DynamicFavicon />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Navigate to="/events" replace />} />
+          <Route path="home" element={<Home />} />
           <Route path="incubator" element={<Incubator />} />
-          <Route path="event" element={<Event />} />
+          <Route path="events" element={<Event />} />
+          <Route path="event" element={<Navigate to="/events" replace />} />
           <Route path="startups" element={<Startups />} />
           <Route path="about" element={<About />} />
           <Route path="for-partners" element={<Partners />} />

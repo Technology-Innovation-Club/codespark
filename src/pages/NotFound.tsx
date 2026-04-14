@@ -49,12 +49,12 @@ export function NotFound() {
         </p>
 
         <p className="mt-5 text-sm sm:text-base text-[#b8c5ff]/85 max-w-xl mx-auto leading-relaxed">
-          {`> The page you requested is not mapped in this build. Navigate back to the root route to continue exploring CodeSpark.`}
+          {`> The page you requested is not mapped in this build. Navigate to the home route to continue exploring CodeSpark.`}
         </p>
 
         <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
           <Link
-            to="/"
+            to="/home"
             className="px-8 py-3 bg-[#00fff0] text-[#04103a] font-bold uppercase tracking-wider hover:bg-[#78fff8] transition-colors"
             style={{
               fontFamily: '"Syne", sans-serif',
