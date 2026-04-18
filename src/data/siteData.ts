@@ -155,13 +155,14 @@ export const siteData = {
         "Innovation leaders",
       ],
       highlights: [
-        "Opening Talk: Student Led Innovation in Africa",
-        "Keynote Address: How I Built A Tech Startup As An African Student",
-        "Experience Sharing: Harsh Realities of Startup Building in Africa",
-        "Fireside Chat & Q&A: Building Ethical & Profitable Startups",
-        "CodeSpark Pitch Competition",
-        "Africa Students Startup Showcase & Recognition",
-        "Africa Tech Debate",
+        `Inter-school Tech Debate: "AI & Tech is Making Africans Dumb"`,
+        "CodeSpark Origin Story & Community Launch",
+        "CodeSpark Pitch Competition - 5 Startups Compete for ₦1 Million",
+        "CodeSpark Buildathon (Inter-school Ideation Session)",
+        "Networking, Exhibition & Founders' Showcase",
+        "CodeSpark Research Expo",
+        `Founders' Panel & AMA: "Failures as Founders: What No One Tells You"`,
+        "Closing Note: Building Products that Win in an AI-Saturated World",
       ],
       speakers: [
         {
