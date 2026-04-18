@@ -68,7 +68,10 @@ export function Home() {
 
           <div className="relative mx-auto max-w-[960px] mb-6 sm:mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-8 py-5 min-[450px]:max-[550px]:py-4 sm:py-8">
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+              <svg
+                className="absolute inset-0 w-full h-full"
+                preserveAspectRatio="none"
+              >
                 <motion.rect
                   x="0"
                   y="0"
@@ -94,7 +97,11 @@ export function Home() {
                   strokeLinecap="round"
                   strokeDasharray="6 400"
                   animate={{ strokeDashoffset: [-200, -608] }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                   style={{ filter: "drop-shadow(0 0 6px rgba(255,0,255,0.8))" }}
                 />
               </svg>
@@ -135,7 +142,10 @@ export function Home() {
 
           <div className="relative mx-auto max-w-3xl mb-4 sm:mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-6 py-4 min-[450px]:max-[550px]:py-3">
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+              <svg
+                className="absolute inset-0 w-full h-full"
+                preserveAspectRatio="none"
+              >
                 <motion.rect
                   x="0"
                   y="0"
@@ -179,9 +189,7 @@ export function Home() {
               {`> ${siteData.hero.subheadline}`}
             </motion.p>
           </div>
-
         </div>
-
       </section>
 
       {/* Iyin Section */}
@@ -430,7 +438,9 @@ export function Home() {
                   className="flex items-start gap-3 text-white/70"
                 >
                   <span className="text-[#f0ff00]">▸</span>
-                  <span className="text-sm break-words leading-relaxed">{achievement}</span>
+                  <span className="text-sm break-words leading-relaxed">
+                    {achievement}
+                  </span>
                 </motion.div>
               ))}
             </div>

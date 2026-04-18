@@ -149,8 +149,18 @@ export function Incubator() {
                 return (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 24, scale: 0.96, filter: "blur(4px)" }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                    initial={{
+                      opacity: 0,
+                      y: 24,
+                      scale: 0.96,
+                      filter: "blur(4px)",
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      filter: "blur(0px)",
+                    }}
                     viewport={phaseViewport}
                     transition={{
                       duration: 0.45,
@@ -181,13 +191,19 @@ export function Incubator() {
                     >
                       <span
                         className="text-sm font-bold"
-                        style={{ color: accent, textShadow: `0 0 10px ${accent}` }}
+                        style={{
+                          color: accent,
+                          textShadow: `0 0 10px ${accent}`,
+                        }}
                       >
                         {`// ${phase.name}`}
                       </span>
                       <h3
                         className="text-2xl sm:text-3xl font-bold mt-2 text-white leading-tight break-words"
-                        style={{ fontFamily: '"Syne", sans-serif', overflowWrap: "anywhere" }}
+                        style={{
+                          fontFamily: '"Syne", sans-serif',
+                          overflowWrap: "anywhere",
+                        }}
                       >
                         {phase.title}
                       </h3>
@@ -228,10 +244,14 @@ export function Incubator() {
                   i % 2 === 0 ? "flex-row" : "flex-row-reverse"
                 }`}
               >
-                <div className={`flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
+                <div
+                  className={`flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}
+                >
                   <div
                     className={`inline-block p-6 bg-[#0a0a0f] border ${
-                      i % 2 === 0 ? "border-[#00fff0]/50" : "border-[#ff00ff]/50"
+                      i % 2 === 0
+                        ? "border-[#00fff0]/50"
+                        : "border-[#ff00ff]/50"
                     } hover:border-opacity-100 transition-all`}
                     style={{
                       boxShadow:
@@ -257,7 +277,9 @@ export function Incubator() {
                     >
                       {phase.title}
                     </h3>
-                    <p className="text-white/50 mt-1 text-sm">{phase.description}</p>
+                    <p className="text-white/50 mt-1 text-sm">
+                      {phase.description}
+                    </p>
                   </div>
                 </div>
 

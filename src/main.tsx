@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import "./index.css";
 
 import { Layout } from "./pages/Layout";
@@ -31,7 +37,9 @@ function DynamicFavicon() {
     const href = "/favicon.webp";
     const type = "image/webp";
 
-    let icon = document.querySelector("link[rel='icon']") as HTMLLinkElement | null;
+    let icon = document.querySelector(
+      "link[rel='icon']",
+    ) as HTMLLinkElement | null;
     if (!icon) {
       icon = document.createElement("link");
       icon.rel = "icon";
@@ -63,5 +71,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </Route>
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -32,7 +32,10 @@ export function About() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               className="relative text-[1.75rem] sm:text-6xl font-bold mb-2 inline-flex items-center justify-center leading-none px-8 sm:px-14"
-              style={{ fontFamily: '"Syne", sans-serif', letterSpacing: "-0.01em" }}
+              style={{
+                fontFamily: '"Syne", sans-serif',
+                letterSpacing: "-0.01em",
+              }}
             >
               <span
                 className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 text-[#00fff0] text-[2.35rem] sm:text-6xl leading-none"
@@ -288,20 +291,22 @@ export function About() {
                 transition={{ delay: 0.1 }}
                 className="p-6 bg-[#1a1a2e] border border-[#00fff0]/30 text-center"
                 style={{
-                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  clipPath:
+                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
                   boxShadow: "0 0 40px rgba(0, 255, 240, 0.2)",
                 }}
               >
                 <div
                   className="w-28 h-28 mx-auto mb-4 border-2 border-[#00fff0] overflow-hidden"
                   style={{
-                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    clipPath:
+                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
                     boxShadow: "0 0 30px rgba(0, 255, 240, 0.3)",
                   }}
                 >
-                  <img 
-                    src="/team-lead.webp" 
-                    alt="Prosperity Olorunfemi" 
+                  <img
+                    src="/team-lead.webp"
+                    alt="Prosperity Olorunfemi"
                     className="w-full h-full object-cover"
                     style={{ objectPosition: "center 16%" }}
                   />
@@ -312,7 +317,10 @@ export function About() {
                 >
                   Prosperity Olorunfemi
                 </h3>
-                <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
+                <p
+                  className="text-[#00fff0] text-sm mb-2"
+                  style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}
+                >
                   {"Founder & Lead"}
                 </p>
               </motion.div>
@@ -324,22 +332,27 @@ export function About() {
                 transition={{ delay: 0.2 }}
                 className="p-6 bg-[#1a1a2e] border border-[#ff00ff]/30 text-center"
                 style={{
-                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  clipPath:
+                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
                   boxShadow: "0 0 40px rgba(255, 0, 255, 0.2)",
                 }}
               >
                 <div
                   className="w-28 h-28 mx-auto mb-4 border-2 border-[#ff00ff] overflow-hidden"
                   style={{
-                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    clipPath:
+                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
                     boxShadow: "0 0 30px rgba(255, 0, 255, 0.3)",
                   }}
                 >
-                  <img 
-                    src="/technical-lead.webp" 
-                    alt="Abasiono Mbat" 
+                  <img
+                    src="/technical-lead.webp"
+                    alt="Abasiono Mbat"
                     className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 16%", transform: "translateY(-3px) scale(3)" }}
+                    style={{
+                      objectPosition: "center 16%",
+                      transform: "translateY(-3px) scale(3)",
+                    }}
                   />
                 </div>
                 <h3
@@ -348,7 +361,10 @@ export function About() {
                 >
                   Abasiono Mbat
                 </h3>
-                <p className="text-[#ff00ff] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}>
+                <p
+                  className="text-[#ff00ff] text-sm mb-2"
+                  style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}
+                >
                   {"Technical Lead"}
                 </p>
               </motion.div>
@@ -360,14 +376,16 @@ export function About() {
                 transition={{ delay: 0.3 }}
                 className="p-6 bg-[#1a1a2e] border border-[#f0ff00]/30 text-center"
                 style={{
-                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  clipPath:
+                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
                   boxShadow: "0 0 40px rgba(240, 255, 0, 0.2)",
                 }}
               >
                 <div
                   className="w-28 h-28 mx-auto mb-4 border-2 border-[#f0ff00] overflow-hidden"
                   style={{
-                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    clipPath:
+                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
                     boxShadow: "0 0 30px rgba(240, 255, 0, 0.3)",
                   }}
                 >
@@ -384,7 +402,10 @@ export function About() {
                 >
                   Okon Uyaiabasi
                 </h3>
-                <p className="text-[#f0ff00] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}>
+                <p
+                  className="text-[#f0ff00] text-sm mb-2"
+                  style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}
+                >
                   {"Branding Lead"}
                 </p>
               </motion.div>
@@ -396,14 +417,16 @@ export function About() {
                 transition={{ delay: 0.4 }}
                 className="p-6 bg-[#1a1a2e] border border-[#00fff0]/30 text-center"
                 style={{
-                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  clipPath:
+                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
                   boxShadow: "0 0 40px rgba(0, 255, 240, 0.2)",
                 }}
               >
                 <div
                   className="w-28 h-28 mx-auto mb-4 border-2 border-[#00fff0] overflow-hidden"
                   style={{
-                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    clipPath:
+                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
                     boxShadow: "0 0 30px rgba(0, 255, 240, 0.3)",
                   }}
                 >
@@ -420,7 +443,10 @@ export function About() {
                 >
                   Emmanuel Omale
                 </h3>
-                <p className="text-[#00fff0] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}>
+                <p
+                  className="text-[#00fff0] text-sm mb-2"
+                  style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}
+                >
                   {"Program Manager"}
                 </p>
               </motion.div>
@@ -432,14 +458,16 @@ export function About() {
                 transition={{ delay: 0.5 }}
                 className="p-6 bg-[#1a1a2e] border border-[#ff00ff]/30 text-center"
                 style={{
-                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  clipPath:
+                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
                   boxShadow: "0 0 40px rgba(255, 0, 255, 0.2)",
                 }}
               >
                 <div
                   className="w-28 h-28 mx-auto mb-4 border-2 border-[#ff00ff] overflow-hidden"
                   style={{
-                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    clipPath:
+                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
                     boxShadow: "0 0 30px rgba(255, 0, 255, 0.3)",
                   }}
                 >
@@ -447,7 +475,10 @@ export function About() {
                     src="/marketing-lead.webp"
                     alt="Oluwademilade Oguntade"
                     className="w-full h-full object-cover"
-                    style={{ objectPosition: "58% 18%", transform: "translate(-1px, 1px) scale(1.6)" }}
+                    style={{
+                      objectPosition: "58% 18%",
+                      transform: "translate(-1px, 1px) scale(1.6)",
+                    }}
                   />
                 </div>
                 <h3
@@ -456,7 +487,10 @@ export function About() {
                 >
                   Oluwademilade Oguntade
                 </h3>
-                <p className="text-[#ff00ff] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}>
+                <p
+                  className="text-[#ff00ff] text-sm mb-2"
+                  style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}
+                >
                   {"Marketing Lead"}
                 </p>
               </motion.div>
@@ -468,14 +502,16 @@ export function About() {
                 transition={{ delay: 0.6 }}
                 className="p-6 bg-[#1a1a2e] border border-[#f0ff00]/30 text-center"
                 style={{
-                  clipPath: "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
+                  clipPath:
+                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
                   boxShadow: "0 0 40px rgba(240, 255, 0, 0.2)",
                 }}
               >
                 <div
                   className="w-28 h-28 mx-auto mb-4 border-2 border-[#f0ff00] overflow-hidden"
                   style={{
-                    clipPath: "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
+                    clipPath:
+                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
                     boxShadow: "0 0 30px rgba(240, 255, 0, 0.3)",
                   }}
                 >
@@ -483,7 +519,10 @@ export function About() {
                     src="/omotayo-ayeni.webp"
                     alt="Omotayo Ayeni"
                     className="w-full h-full object-cover"
-                    style={{ objectPosition: "90% 50%", transform: "translate(-1px, 1px) scale(1.1)" }}
+                    style={{
+                      objectPosition: "90% 50%",
+                      transform: "translate(-1px, 1px) scale(1.1)",
+                    }}
                   />
                 </div>
                 <h3
@@ -492,7 +531,10 @@ export function About() {
                 >
                   Omotayo Ayeni
                 </h3>
-                <p className="text-[#f0ff00] text-sm mb-2" style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}>
+                <p
+                  className="text-[#f0ff00] text-sm mb-2"
+                  style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}
+                >
                   {"Logistics & Event Planning Lead"}
                 </p>
               </motion.div>

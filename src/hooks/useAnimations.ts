@@ -11,7 +11,7 @@ export function useInView(options?: IntersectionObserverInit) {
           setIsInView(true);
         }
       },
-      { threshold: 0.1, ...options }
+      { threshold: 0.1, ...options },
     );
 
     if (ref.current) {
@@ -27,7 +27,7 @@ export function useInView(options?: IntersectionObserverInit) {
 export function useAnimatedCounter(
   end: number,
   duration: number = 2000,
-  startOnView: boolean = true
+  startOnView: boolean = true,
 ) {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(!startOnView);
@@ -41,7 +41,7 @@ export function useAnimatedCounter(
             setHasStarted(true);
           }
         },
-        { threshold: 0.5 }
+        { threshold: 0.5 },
       );
 
       if (ref.current) {

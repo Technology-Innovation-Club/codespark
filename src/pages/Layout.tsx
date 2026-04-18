@@ -41,7 +41,10 @@ export function Layout() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a1a]/90 backdrop-blur-xl border-b border-[#00fff0]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
-            <Link to={basePath || "/"} className="flex items-center gap-3 group">
+            <Link
+              to={basePath || "/"}
+              className="flex items-center gap-3 group"
+            >
               <DynamicLogo />
             </Link>
 
@@ -50,7 +53,9 @@ export function Layout() {
               {siteData.navigation.map((item) => {
                 const isActive =
                   location.pathname === `${basePath}/${item.path}` ||
-                  (item.path === "" && (location.pathname === basePath || location.pathname === "/"));
+                  (item.path === "" &&
+                    (location.pathname === basePath ||
+                      location.pathname === "/"));
                 return (
                   <Link
                     key={item.name}

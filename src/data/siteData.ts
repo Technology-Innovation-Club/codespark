@@ -75,10 +75,26 @@ export const siteData = {
   ],
 
   features: [
-    { icon: "🚀", title: "Incubator Program", description: "3-4 month hands-on execution program for student founders" },
-    { icon: "🎯", title: "Revenue Focus", description: "₦100k-₦500k revenue target before Demo Day" },
-    { icon: "👥", title: "Mentorship", description: "Access to mentors from Lagos Business School" },
-    { icon: "💡", title: "Investor Access", description: "Direct connection to investors at pitch events" },
+    {
+      icon: "🚀",
+      title: "Incubator Program",
+      description: "3-4 month hands-on execution program for student founders",
+    },
+    {
+      icon: "🎯",
+      title: "Revenue Focus",
+      description: "₦100k-₦500k revenue target before Demo Day",
+    },
+    {
+      icon: "👥",
+      title: "Mentorship",
+      description: "Access to mentors from Lagos Business School",
+    },
+    {
+      icon: "💡",
+      title: "Investor Access",
+      description: "Direct connection to investors at pitch events",
+    },
   ],
 
   programs: {
@@ -149,41 +165,96 @@ export const siteData = {
       ],
       speakers: [
         {
-          name: "Dr. Peter Bamkole",
-          title: "Deputy Vice-Chancellor, Pan-Atlantic University",
-          image: "/dr-peter-bamkole.webp",
+          name: "Dr. Eyitemi Fasanu-Adegboye",
+          title: "CEO & Co-founder | Research Ready Hub",
+          // image: "/dr-peter-bamkole.webp",
         },
-        { name: "Keynote Speaker", title: "Africa's No.1 Investor" },
-        { name: "Speaker TBA", title: "Top Fintech CEO" },
-        { name: "Speaker TBA", title: "Startup Lawyer" },
-        { name: "Speaker TBA", title: "VC Partner" },
+        { name: "Anjolaoluwa Ajayi", title: "Founder | Acad AI" },
+        { name: "Grace Idiare", title: "Co-founder | VarscityScape" },
+        { name: "John Oseni", title: "Co-founder | AttendX" },
+        {
+          name: "Gabriel Ologunwa",
+          title: "Accelerator Manager | Lagos Business School BIA",
+        },
+        {
+          name: "Gabriel Ologunwa",
+          title:
+            "AVP, Global Expansion & Payment Partnerships, West Africa | Flutterwave",
+        },
+        { name: "James Nelson", title: "Founder | Storipod" },
       ],
     },
   },
 
   incubator: {
     title: "CodeSpark Incubator",
-    description: "A 3–4 month hands-on execution program for selected student founders.",
+    description:
+      "A 3–4 month hands-on execution program for selected student founders.",
     benefits: [
-      { icon: "💰", title: "Revenue Focus", description: "₦100k-₦500k target before Demo Day" },
-      { icon: "👨‍🏫", title: "Expert Mentorship", description: "Mentors from Lagos Business School" },
-      { icon: "🤝", title: "Investor Access", description: "Direct connections to investors" },
-      { icon: "📈", title: "Growth Support", description: "Structured growth framework" },
-      { icon: "🏆", title: "Demo Day", description: "Pitch to investors and partners" },
-      { icon: "🌐", title: "Network", description: "Join a community of founders" },
+      {
+        icon: "💰",
+        title: "Revenue Focus",
+        description: "₦100k-₦500k target before Demo Day",
+      },
+      {
+        icon: "👨‍🏫",
+        title: "Expert Mentorship",
+        description: "Mentors from Lagos Business School",
+      },
+      {
+        icon: "🤝",
+        title: "Investor Access",
+        description: "Direct connections to investors",
+      },
+      {
+        icon: "📈",
+        title: "Growth Support",
+        description: "Structured growth framework",
+      },
+      {
+        icon: "🏆",
+        title: "Demo Day",
+        description: "Pitch to investors and partners",
+      },
+      {
+        icon: "🌐",
+        title: "Network",
+        description: "Join a community of founders",
+      },
     ],
     timeline: [
-      { phase: "Week 1-2", title: "Entrepreneurial Formation", description: "Faith-driven leadership foundation" },
-      { phase: "Week 3-4", title: "Design Thinking", description: "Problem-solution fit validation" },
-      { phase: "Week 5-6", title: "Business Model", description: "Sustainable revenue model design" },
-      { phase: "Week 7-8", title: "Go-to-Market", description: "Launch and customer acquisition" },
-      { phase: "Week 9-14", title: "Revenue Challenge", description: "Intensive revenue generation phase" },
+      {
+        phase: "Week 1-2",
+        title: "Entrepreneurial Formation",
+        description: "Faith-driven leadership foundation",
+      },
+      {
+        phase: "Week 3-4",
+        title: "Design Thinking",
+        description: "Problem-solution fit validation",
+      },
+      {
+        phase: "Week 5-6",
+        title: "Business Model",
+        description: "Sustainable revenue model design",
+      },
+      {
+        phase: "Week 7-8",
+        title: "Go-to-Market",
+        description: "Launch and customer acquisition",
+      },
+      {
+        phase: "Week 9-14",
+        title: "Revenue Challenge",
+        description: "Intensive revenue generation phase",
+      },
     ],
   },
 
   event: {
     title: "CodeSpark Events",
-    description: "Join our community of student founders, investors, and industry leaders.",
+    description:
+      "Join our community of student founders, investors, and industry leaders.",
     upcoming: [
       {
         title: "CodeSpark Tech & Entrepreneurship Event 2026",
@@ -191,7 +262,8 @@ export const siteData = {
         date: "April 25th 2026",
         location: "Pan-Atlantic University, Lagos State, Nigeria",
         image: "",
-        description: "500+ student builder convergence with founders, investors, and operators.",
+        description:
+          "500+ student builder convergence with founders, investors, and operators.",
       },
     ],
     types: [
@@ -204,7 +276,8 @@ export const siteData = {
 
   events: {
     title: "CodeSpark Events",
-    description: "Join our community of student founders, investors, and industry leaders.",
+    description:
+      "Join our community of student founders, investors, and industry leaders.",
     upcoming: [
       {
         title: "CodeSpark Tech & Entrepreneurship Event 2026",
@@ -212,7 +285,8 @@ export const siteData = {
         date: "April 25th 2026",
         location: "Pan-Atlantic University, Lagos State, Nigeria",
         image: "",
-        description: "500+ student builder convergence with founders, investors, and operators.",
+        description:
+          "500+ student builder convergence with founders, investors, and operators.",
       },
     ],
     types: [
@@ -237,7 +311,8 @@ export const siteData = {
       },
       {
         name: "Archive",
-        description: "All-in-one AI-powered study platform for viewing course content, generating flashcards, summaries, and more.",
+        description:
+          "All-in-one AI-powered study platform for viewing course content, generating flashcards, summaries, and more.",
         logo: "📚",
         sector: "EdTech",
         stage: "Growth",
@@ -348,7 +423,8 @@ export const siteData = {
   about: {
     headline: "Building Africa's Most Principled Student Founders.",
     title: "About CodeSpark",
-    description: "We are building the pipeline that turns student builders into globally competitive startup founders.",
+    description:
+      "We are building the pipeline that turns student builders into globally competitive startup founders.",
     story: [
       "CodeSpark was founded with a simple belief: the next generation of African unicorn founders is already in university classrooms today.",
       "We saw a gap in African universities—brilliant students with world-changing ideas but no structured pathway to turn those ideas into reality.",
@@ -357,7 +433,8 @@ export const siteData = {
     ],
     vision:
       "To create a continental pipeline of principled student founders who build globally competitive companies from Africa.",
-    mission: "To identify, train, and launch the next generation of African tech founders while they are still students, providing them with the skills, network, and resources to build globally competitive companies.",
+    mission:
+      "To identify, train, and launch the next generation of African tech founders while they are still students, providing them with the skills, network, and resources to build globally competitive companies.",
     pillars: [
       {
         title: "Build Problem-Solvers",
@@ -386,11 +463,36 @@ export const siteData = {
       },
     ],
     team: [
-      { name: "Prosperity Olorunfemi", role: "Founder & Lead", bio: "Tech entrepreneur passionate about student innovation", avatar: "👨‍💼" },
-      { name: "Team Member 2", role: "Operations Lead", bio: "Building systems for founder success", avatar: "👩‍💼" },
-      { name: "Team Member 3", role: "Program Director", bio: "Designing world-class incubation programs", avatar: "👨‍🏫" },
-      { name: "Oluwademilade Oguntade", role: "Marketing Lead", bio: "Driving growth, storytelling, and community engagement.", avatar: "👩🏾‍💼" },
-      { name: "Omotayo Ayeni", role: "Logistics & Event Planning Lead", bio: "Coordinating seamless event operations and execution.", avatar: "🗂️" },
+      {
+        name: "Prosperity Olorunfemi",
+        role: "Founder & Lead",
+        bio: "Tech entrepreneur passionate about student innovation",
+        avatar: "👨‍💼",
+      },
+      {
+        name: "Team Member 2",
+        role: "Operations Lead",
+        bio: "Building systems for founder success",
+        avatar: "👩‍💼",
+      },
+      {
+        name: "Team Member 3",
+        role: "Program Director",
+        bio: "Designing world-class incubation programs",
+        avatar: "👨‍🏫",
+      },
+      {
+        name: "Oluwademilade Oguntade",
+        role: "Marketing Lead",
+        bio: "Driving growth, storytelling, and community engagement.",
+        avatar: "👩🏾‍💼",
+      },
+      {
+        name: "Omotayo Ayeni",
+        role: "Logistics & Event Planning Lead",
+        bio: "Coordinating seamless event operations and execution.",
+        avatar: "🗂️",
+      },
     ],
     values: [
       { icon: "🙏", title: "Faith-Driven" },
@@ -405,7 +507,8 @@ export const siteData = {
   partners: {
     headline: "Partner With the Next Generation of African Founders.",
     title: "Partner With Us",
-    description: "Join our ecosystem and help shape the future of African entrepreneurship.",
+    description:
+      "Join our ecosystem and help shape the future of African entrepreneurship.",
     whyPartner: [
       "Early deal flow access to vetted student startups",
       "Brand visibility among 500+ ambitious builders",
@@ -432,14 +535,51 @@ export const siteData = {
       },
     ],
     list: [
-      { name: "Pan-Atlantic University", type: "University", logo: "🏛️", description: "Our founding academic partner" },
-      { name: "Lagos Business School", type: "Academic", logo: "🎓", description: "Business education excellence" },
-      { name: "Zenith Bank", type: "Corporate", logo: "🏦", description: "Supporting innovation" },
+      {
+        name: "Pan-Atlantic University",
+        type: "University",
+        logo: "🏛️",
+        description: "Our founding academic partner",
+      },
+      {
+        name: "Lagos Business School",
+        type: "Academic",
+        logo: "🎓",
+        description: "Business education excellence",
+      },
+      {
+        name: "Zenith Bank",
+        type: "Corporate",
+        logo: "🏦",
+        description: "Supporting innovation",
+      },
     ],
     tiers: [
-      { name: "Silver", description: "Basic partnership tier", benefits: ["Logo on website", "Event access", "Newsletter mention"] },
-      { name: "Gold", description: "Enhanced partnership tier", benefits: ["All Silver benefits", "Speaking slot at events", "Startup introductions", "Brand visibility"] },
-      { name: "Platinum", description: "Premium partnership tier", benefits: ["All Gold benefits", "Dedicated account manager", "Custom programs", "Exclusive deal flow"] },
+      {
+        name: "Silver",
+        description: "Basic partnership tier",
+        benefits: ["Logo on website", "Event access", "Newsletter mention"],
+      },
+      {
+        name: "Gold",
+        description: "Enhanced partnership tier",
+        benefits: [
+          "All Silver benefits",
+          "Speaking slot at events",
+          "Startup introductions",
+          "Brand visibility",
+        ],
+      },
+      {
+        name: "Platinum",
+        description: "Premium partnership tier",
+        benefits: [
+          "All Gold benefits",
+          "Dedicated account manager",
+          "Custom programs",
+          "Exclusive deal flow",
+        ],
+      },
     ],
   },
 

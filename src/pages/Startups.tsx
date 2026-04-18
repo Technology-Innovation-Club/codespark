@@ -32,7 +32,8 @@ export function Startups() {
     categoryColors[category] || categoryColors["EdTech"];
   const hasLiveWebsite = (website: string) =>
     website.startsWith("http://") || website.startsWith("https://");
-  const industryCount = new Set(siteData.startupsList.map((s) => s.category)).size;
+  const industryCount = new Set(siteData.startupsList.map((s) => s.category))
+    .size;
 
   return (
     <div
