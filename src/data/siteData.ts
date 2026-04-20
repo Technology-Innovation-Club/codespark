@@ -168,7 +168,7 @@ export const siteData = {
         {
           name: "Dr. Eyitemi Fasanu-Adegboye",
           title: "CEO & Co-founder | Research Ready Hub",
-          // image: "/dr-peter-bamkole.webp",
+          image: undefined,
         },
         { name: "Anjolaoluwa Ajayi", title: "Founder | Acad AI" },
         { name: "Grace Idiare", title: "Co-founder | VarscityScape" },
