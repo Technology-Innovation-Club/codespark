@@ -174,7 +174,7 @@ export const siteData = {
         { name: "Grace Idiare", title: "Co-founder | VarscityScape" },
         { name: "John Oseni", title: "Co-founder | AttendX" },
         {
-          name: "Gabriel Ologunwa",
+          name: "Gregory Asiegbu",
           title: "Accelerator Manager | Lagos Business School BIA",
         },
         {
