@@ -168,21 +168,59 @@ export const siteData = {
         {
           name: "Dr. Eyitemi Fasanu-Adegboye",
           title: "CEO & Co-founder | Research Ready Hub",
-          image: undefined,
+          image: "/event-speakers/dr-eyitemi-fasanu-adegboye.webp",
         },
-        { name: "Anjolaoluwa Ajayi", title: "Founder | Acad AI" },
-        { name: "Grace Idiare", title: "Co-founder | VarscityScape" },
-        { name: "John Oseni", title: "Co-founder | AttendX" },
+        {
+          name: "Anjolaoluwa Ajayi",
+          title: "Founder | Acad AI",
+          image: "/event-speakers/anjolaoluwa-ajayi.webp",
+        },
+        {
+          name: "Grace Idiare",
+          title: "Co-founder | VarscityScape",
+          image: "/event-speakers/grace-idiare.webp",
+        },
+        {
+          name: "John Oseni",
+          title: "Co-founder | AttendX",
+          image: "/event-speakers/john-oseni.webp",
+        },
         {
           name: "Gregory Asiegbu",
           title: "Accelerator Manager | Lagos Business School BIA",
+          image: "/event-speakers/gregory-asiegbu.webp",
         },
         {
           name: "Gabriel Ologunwa",
           title:
             "AVP, Global Expansion & Payment Partnerships, West Africa | Flutterwave",
+          image: "/event-speakers/gabriel-ologunwa.webp",
         },
-        { name: "James Nelson", title: "Founder | Storipod" },
+        {
+          name: "James Nelson",
+          title: "Founder | Storipod",
+          image: "/event-speakers/james-nelson.webp",
+        },
+        {
+          name: "Yinka David-Kaiyewu",
+          title: "President | Purpose-Drive Global",
+          image: "/event-speakers/yinka-david-kaiyewu.webp",
+        },
+        {
+          name: "Emmanuel Samuel",
+          title: "Senior Tech Recruiter | Flutterwave",
+          image: "/event-speakers/emmanuel-samuel.webp",
+        },
+        {
+          name: "Dr Goodluck Nnorom",
+          title: "GenZ HOD | Caleb University",
+          image: "/event-speakers/dr-goodluck-nnorom.webp",
+        },
+        {
+          name: "Precious Ikade",
+          title: "Founder | TekBuddy",
+          image: "/event-speakers/precious-ikade.webp",
+        },
       ],
     },
   },

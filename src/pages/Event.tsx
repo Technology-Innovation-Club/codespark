@@ -253,7 +253,7 @@ export function Event() {
 
                 {speaker.image ? (
                   <div
-                    className="w-20 h-20 mx-auto mb-4 border-2 border-[#f0ff00]/30 overflow-hidden"
+                    className="w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-4 border-2 border-[#f0ff00]/30 overflow-hidden"
                     style={{
                       clipPath:
                         "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
@@ -262,12 +262,14 @@ export function Event() {
                     <img
                       src={speaker.image}
                       alt={speaker.name}
-                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-center"
                     />
                   </div>
                 ) : (
                   <div
-                    className="w-20 h-20 mx-auto mb-4 bg-[#0a0a0f] border-2 border-[#f0ff00]/30 flex items-center justify-center"
+                    className="w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-4 bg-[#0a0a0f] border-2 border-[#f0ff00]/30 flex items-center justify-center"
                     style={{
                       clipPath:
                         "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
