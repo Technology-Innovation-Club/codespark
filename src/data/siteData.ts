@@ -221,6 +221,11 @@ export const siteData = {
           title: "Founder | TekBuddy",
           image: "/event-speakers/precious-ikade.webp",
         },
+        {
+          name: "Uche Edwin",
+          title: "Lead Product Manager | Equalyz AI",
+          image: "/event-speakers/uche-edwin.webp",
+        },
       ],
     },
   },
