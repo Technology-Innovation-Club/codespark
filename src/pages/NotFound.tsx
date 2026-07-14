@@ -54,7 +54,7 @@ export function NotFound() {
 
         <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
           <Link
-            to="/home"
+            to="/"
             className="px-8 py-3 bg-[#00fff0] text-[#04103a] font-bold uppercase tracking-wider hover:bg-[#78fff8] transition-colors"
             style={{
               fontFamily: '"Syne", sans-serif',

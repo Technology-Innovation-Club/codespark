@@ -59,7 +59,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <DynamicFavicon />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="/events" replace />} />
+          <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
           <Route path="incubator" element={<Incubator />} />
           <Route path="events" element={<Event />} />
