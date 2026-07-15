@@ -24,7 +24,7 @@ export function InnovationChallenge() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.15]"
             style={{ fontFamily: '"Poppins", sans-serif' }}
           >
             <span className="text-white">Build Real Projects.</span>
