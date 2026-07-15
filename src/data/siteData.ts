@@ -651,6 +651,7 @@ export const siteData = {
     { name: "Startups", path: "startups" },
     { name: "About", path: "about" },
     { name: "For Partners", path: "for-partners" },
+    { name: "Innovation Challenge", path: "innovation-challenge" },
   ],
 
   socialLinks: [

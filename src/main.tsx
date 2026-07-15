@@ -17,6 +17,7 @@ import { Startups } from "./pages/Startups";
 import { About } from "./pages/About";
 import { Partners } from "./pages/Partners";
 import { NotFound } from "./pages/NotFound";
+import { InnovationChallenge } from "./pages/InnovationChallenge";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -67,6 +68,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="startups" element={<Startups />} />
           <Route path="about" element={<About />} />
           <Route path="for-partners" element={<Partners />} />
+          <Route
+            path="innovation-challenge"
+            element={<InnovationChallenge />}
+          />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

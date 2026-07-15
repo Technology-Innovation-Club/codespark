@@ -62,7 +62,11 @@ export function Home() {
                 className="w-2 h-2 bg-[#00fff0] animate-pulse"
                 style={{ boxShadow: "0 0 10px #00fff0" }}
               />
-              {"// FAITH_DRIVEN_STARTUP_PLATFORM"}
+              <Link to="/innovation-challenge">
+                {
+                  "// WHAT'S NEW: CHECK OUT THE CODESPARK INNOVATION CHALLENGE ↗️"
+                }
+              </Link>
             </motion.span>
           </motion.div>
 
