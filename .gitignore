@@ -10,7 +10,12 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.output
+.tanstack
 *.local
+
+# Convex local backend data
+.convex
 
 # Editor directories and files
 .vscode/*
