@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { siteData } from "../data/siteData";
 
