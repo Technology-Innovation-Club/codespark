@@ -1,18 +1,28 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import {
+  Outlet,
+  Link,
+  useRouterState,
+  type LinkProps,
+} from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+
+function navTo(path: string, basePath: string) {
+  if (path === "") return (basePath || "/") as LinkProps["to"];
+  return `${basePath}/${path}` as LinkProps["to"];
+}
 import { motion, AnimatePresence } from "motion/react";
 import { siteData } from "../data/siteData";
 import { DynamicLogo } from "../components/DynamicLogo";
 
 export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const { pathname } = useRouterState({ select: (s) => s.location });
   const basePath = "";
   const attendLink = "https://tix.africa/discover/codesparkevent2026";
 
   useEffect(() => {
     setMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <div
@@ -42,7 +52,7 @@ export function Layout() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             <Link
-              to={basePath || "/"}
+              to={navTo("", basePath)}
               className="flex items-center gap-3 group"
             >
               <DynamicLogo />
@@ -52,14 +62,14 @@ export function Layout() {
             <div className="hidden lg:flex items-center gap-1">
               {siteData.navigation.map((item) => {
                 const isActive =
-                  location.pathname === `${basePath}/${item.path}` ||
+                  pathname === `${basePath}/${item.path}` ||
                   (item.path === "" &&
-                    (location.pathname === basePath ||
-                      location.pathname === "/"));
+                    (pathname === basePath ||
+                      pathname === "/"));
                 return (
                   <Link
                     key={item.name}
-                    to={`${basePath}/${item.path}`}
+                    to={navTo(item.path, basePath)}
                     className={`relative px-4 py-2 text-sm font-medium tracking-wider uppercase transition-all cursor-pointer ${
                       isActive
                         ? "text-[#00fff0]"
@@ -149,7 +159,7 @@ export function Layout() {
                 {siteData.navigation.map((item) => (
                   <Link
                     key={item.name}
-                    to={`${basePath}/${item.path}`}
+                    to={navTo(item.path, basePath)}
                     onClick={() => setMobileMenuOpen(false)}
                     className="block text-white/70 hover:text-[#00fff0] transition-colors font-medium uppercase tracking-wider text-sm cursor-pointer"
                   >
@@ -287,7 +297,7 @@ export function Layout() {
                 {siteData.navigation.slice(0, 4).map((item) => (
                   <li key={item.name}>
                     <Link
-                      to={`${basePath}/${item.path}`}
+                      to={navTo(item.path, basePath)}
                       className="text-white/50 hover:text-[#00fff0] transition-colors text-sm cursor-pointer"
                     >
                       {`> ${item.name}`}
