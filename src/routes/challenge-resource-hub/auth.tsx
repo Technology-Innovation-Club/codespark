@@ -138,9 +138,10 @@ function OnboardingPage() {
               <Field
                 icon={<Users className="h-4 w-4" />}
                 value={team}
-                onChange={setTeam}
-                placeholder="Team name (optional)"
+                onChange={(v) => setTeam(v.replace(/\b[a-z]/g, (c) => c.toUpperCase()))}
+                placeholder="Team name"
                 type="text"
+                required
                 autoComplete="organization"
               />
             )}

@@ -47,8 +47,10 @@ export default defineSchema({
     avatar_url: v.optional(v.string()),
     xp: v.number(),
     level: v.number(),
+    is_admin: v.optional(v.boolean()),
   })
     .index("by_userId", ["userId"])
+    .index("by_email", ["email"])
     .searchIndex("search_name", { searchField: "full_name" }),
 
   categories: defineTable({
@@ -178,4 +180,22 @@ export default defineSchema({
     title: v.string(),
     body: v.string(),
   }),
+
+  attendance_sessions: defineTable({
+    code: v.string(),
+    createdBy: v.id("users"),
+    durationMinutes: v.number(),
+    expiresAt: v.number(),
+  })
+    .index("by_code", ["code"])
+    .index("by_createdBy", ["createdBy"]),
+
+  attendance_records: defineTable({
+    userId: v.id("users"),
+    sessionId: v.id("attendance_sessions"),
+    attendedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_session", ["sessionId"])
+    .index("by_user_and_session", ["userId", "sessionId"]),
 });

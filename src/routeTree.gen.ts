@@ -23,6 +23,7 @@ import { Route as ChallengeResourceHubIndexRouteImport } from './routes/challeng
 import { Route as ChallengeResourceHubHubRouteImport } from './routes/challenge-resource-hub/_hub'
 import { Route as ChallengeResourceHubAuthRouteImport } from './routes/challenge-resource-hub/auth'
 import { Route as ChallengeResourceHubHubAiToolkitRouteImport } from './routes/challenge-resource-hub/_hub/ai-toolkit'
+import { Route as ChallengeResourceHubHubAttendanceRouteImport } from './routes/challenge-resource-hub/_hub/attendance'
 import { Route as ChallengeResourceHubHubBooksRouteImport } from './routes/challenge-resource-hub/_hub/books'
 import { Route as ChallengeResourceHubHubCertificationsRouteImport } from './routes/challenge-resource-hub/_hub/certifications'
 import { Route as ChallengeResourceHubHubDashboardRouteImport } from './routes/challenge-resource-hub/_hub/dashboard'
@@ -105,6 +106,12 @@ const ChallengeResourceHubHubAiToolkitRoute =
     path: '/ai-toolkit',
     getParentRoute: () => ChallengeResourceHubHubRoute,
   } as any)
+const ChallengeResourceHubHubAttendanceRoute =
+  ChallengeResourceHubHubAttendanceRouteImport.update({
+    id: '/attendance',
+    path: '/attendance',
+    getParentRoute: () => ChallengeResourceHubHubRoute,
+  } as any)
 const ChallengeResourceHubHubBooksRoute =
   ChallengeResourceHubHubBooksRouteImport.update({
     id: '/books',
@@ -168,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/challenge-resource-hub/auth': typeof ChallengeResourceHubAuthRoute
   '/challenge-resource-hub/': typeof ChallengeResourceHubIndexRoute
   '/challenge-resource-hub/ai-toolkit': typeof ChallengeResourceHubHubAiToolkitRoute
+  '/challenge-resource-hub/attendance': typeof ChallengeResourceHubHubAttendanceRoute
   '/challenge-resource-hub/books': typeof ChallengeResourceHubHubBooksRoute
   '/challenge-resource-hub/certifications': typeof ChallengeResourceHubHubCertificationsRoute
   '/challenge-resource-hub/dashboard': typeof ChallengeResourceHubHubDashboardRoute
@@ -190,6 +198,7 @@ export interface FileRoutesByTo {
   '/challenge-resource-hub/auth': typeof ChallengeResourceHubAuthRoute
   '/': typeof PublicIndexRoute
   '/challenge-resource-hub/ai-toolkit': typeof ChallengeResourceHubHubAiToolkitRoute
+  '/challenge-resource-hub/attendance': typeof ChallengeResourceHubHubAttendanceRoute
   '/challenge-resource-hub/books': typeof ChallengeResourceHubHubBooksRoute
   '/challenge-resource-hub/certifications': typeof ChallengeResourceHubHubCertificationsRoute
   '/challenge-resource-hub/dashboard': typeof ChallengeResourceHubHubDashboardRoute
@@ -215,6 +224,7 @@ export interface FileRoutesById {
   '/_public/': typeof PublicIndexRoute
   '/challenge-resource-hub/': typeof ChallengeResourceHubIndexRoute
   '/challenge-resource-hub/_hub/ai-toolkit': typeof ChallengeResourceHubHubAiToolkitRoute
+  '/challenge-resource-hub/_hub/attendance': typeof ChallengeResourceHubHubAttendanceRoute
   '/challenge-resource-hub/_hub/books': typeof ChallengeResourceHubHubBooksRoute
   '/challenge-resource-hub/_hub/certifications': typeof ChallengeResourceHubHubCertificationsRoute
   '/challenge-resource-hub/_hub/dashboard': typeof ChallengeResourceHubHubDashboardRoute
@@ -240,6 +250,7 @@ export interface FileRouteTypes {
     | '/challenge-resource-hub/auth'
     | '/challenge-resource-hub/'
     | '/challenge-resource-hub/ai-toolkit'
+    | '/challenge-resource-hub/attendance'
     | '/challenge-resource-hub/books'
     | '/challenge-resource-hub/certifications'
     | '/challenge-resource-hub/dashboard'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/challenge-resource-hub/auth'
     | '/'
     | '/challenge-resource-hub/ai-toolkit'
+    | '/challenge-resource-hub/attendance'
     | '/challenge-resource-hub/books'
     | '/challenge-resource-hub/certifications'
     | '/challenge-resource-hub/dashboard'
@@ -286,6 +298,7 @@ export interface FileRouteTypes {
     | '/_public/'
     | '/challenge-resource-hub/'
     | '/challenge-resource-hub/_hub/ai-toolkit'
+    | '/challenge-resource-hub/_hub/attendance'
     | '/challenge-resource-hub/_hub/books'
     | '/challenge-resource-hub/_hub/certifications'
     | '/challenge-resource-hub/_hub/dashboard'
@@ -403,6 +416,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChallengeResourceHubHubAiToolkitRouteImport
       parentRoute: typeof ChallengeResourceHubHubRoute
     }
+    '/challenge-resource-hub/_hub/attendance': {
+      id: '/challenge-resource-hub/_hub/attendance'
+      path: '/attendance'
+      fullPath: '/challenge-resource-hub/attendance'
+      preLoaderRoute: typeof ChallengeResourceHubHubAttendanceRouteImport
+      parentRoute: typeof ChallengeResourceHubHubRoute
+    }
     '/challenge-resource-hub/_hub/books': {
       id: '/challenge-resource-hub/_hub/books'
       path: '/books'
@@ -491,6 +511,7 @@ const PublicRouteWithChildren =
 
 interface ChallengeResourceHubHubRouteChildren {
   ChallengeResourceHubHubAiToolkitRoute: typeof ChallengeResourceHubHubAiToolkitRoute
+  ChallengeResourceHubHubAttendanceRoute: typeof ChallengeResourceHubHubAttendanceRoute
   ChallengeResourceHubHubBooksRoute: typeof ChallengeResourceHubHubBooksRoute
   ChallengeResourceHubHubCertificationsRoute: typeof ChallengeResourceHubHubCertificationsRoute
   ChallengeResourceHubHubDashboardRoute: typeof ChallengeResourceHubHubDashboardRoute
@@ -505,6 +526,8 @@ const ChallengeResourceHubHubRouteChildren: ChallengeResourceHubHubRouteChildren
   {
     ChallengeResourceHubHubAiToolkitRoute:
       ChallengeResourceHubHubAiToolkitRoute,
+    ChallengeResourceHubHubAttendanceRoute:
+      ChallengeResourceHubHubAttendanceRoute,
     ChallengeResourceHubHubBooksRoute: ChallengeResourceHubHubBooksRoute,
     ChallengeResourceHubHubCertificationsRoute:
       ChallengeResourceHubHubCertificationsRoute,

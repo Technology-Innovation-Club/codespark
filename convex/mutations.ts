@@ -6,6 +6,12 @@ function today(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+function capitalizeTeam(team: string | undefined): string | undefined {
+  if (!team) return team;
+  const t = team.trim().replace(/\b[a-z]/g, (c) => c.toUpperCase());
+  return t === "" ? undefined : t;
+}
+
 function yesterday(): string {
   return new Date(Date.now() - 86400000).toISOString().slice(0, 10);
 }
@@ -97,7 +103,7 @@ export const completeProfile = mutation({
       await ctx.db.patch(existing._id, {
         username: args.username,
         full_name: args.full_name ?? args.username,
-        team: args.team,
+        team: capitalizeTeam(args.team),
         email: args.email,
       });
       return existing._id;
@@ -106,7 +112,7 @@ export const completeProfile = mutation({
       userId,
       username: args.username,
       full_name: args.full_name ?? args.username,
-      team: args.team,
+      team: capitalizeTeam(args.team),
       email: args.email,
       xp: 0,
       level: 1,

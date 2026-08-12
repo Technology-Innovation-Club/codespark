@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# CodeSpark
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CodeSpark captures the learning journey behind the Innovation Challenge: a **Challenge Resource Hub** with curated resources, books, certificates, AI tools, notes, streaks & XP, plus a **live session attendance system**.
 
-Currently, two official plugins are available:
+Built with React + TypeScript + Vite, TanStack Router, Tailwind CSS v4, and [Convex](https://convex.dev) as the backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+- **Frontend** — React 19, TanStack Router (file-based routing via `vite.config.ts` plugin), TanStack Query + `@convex-dev/react-query`, Tailwind v4 (neobrutalist design system in `src/components/nb.tsx`)
+- **Backend** — Convex (`convex/`): PostgreSQL-compatible reactive database, auth (`@convex-dev/auth`, password provider), queries/mutations in `convex/queries.ts`, `convex/mutations.ts`, `convex/attendance.ts`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+pnpm install
+pnpm dev          # start Vite dev server
+pnpm convex:dev   # start the Convex local/dev backend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Convex config lives in `.env.local` (`VITE_CONVEX_URL`, `JWT_PRIVATE_KEY`, etc.).
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+## Scripts
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+| Command             | Purpose                                            |
+| ------------------- | -------------------------------------------------- |
+| `pnpm dev`          | Vite dev server                                    |
+| `pnpm build`        | Production build                                   |
+| `pnpm typecheck`    | Run `tsc -b` (heavy — only when needed)            |
+| `pnpm lint`         | ESLint                                             |
+| `pnpm convex:dev`   | Run Convex dev backend                             |
+| `pnpm convex:deploy`| Deploy Convex functions + schema                   |
+| `pnpm convex:seed`  | Seed the catalogue (`convex run seed`)             |
+| `pnpm admin:promote <email>` | Promote a user to admin                    |
+
+> Note on memory: this project is developed on machines with limited RAM. Prefer
+> targeted checks (`npx eslint <files>`, `npx tsc -p convex/tsconfig.json`) over
+> full `pnpm typecheck` when only a few files changed.
+
+## Attendance system
+
+Admins open a short-lived session code (default **5 minutes**, up to 60) from the
+**Attendance** page and share it live during online sessions. Participants enter
+the code on the same page to mark themselves present; everyone can review their
+attendance history there.
+
+- Tables: `attendance_sessions`, `attendance_records`
+- Functions: `convex/attendance.ts`
+- Page: `src/routes/challenge-resource-hub/_hub/attendance.tsx`
+
+### Promoting a user to admin
+
+Admins are designated by the project owner via a script that requires Convex CLI
+access to the deployment — only someone with database access can run it.
+
+```bash
+# Promote (the user must have signed up first)
+./scripts/promote-admin.sh promote you@example.com
+
+# Revoke admin
+./scripts/promote-admin.sh demote you@example.com
+
+# List current admins
+./scripts/promote-admin.sh list
 ```
+
+Under the hood this calls the internal Convex functions in `convex/admin.ts`
+(`admin:promoteAdmin`, `admin:demoteAdmin`, `admin:listAdmins`) through
+`npx convex run`, so it only works for whoever owns/logs into the Convex project.

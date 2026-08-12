@@ -149,7 +149,33 @@ export type Profile = {
   avatar_url?: string | null;
   xp: number;
   level: number;
+  is_admin?: boolean | null;
 };
+
+export type AttendanceRecord = {
+  id: string;
+  session_id: string;
+  attended_at: number;
+  code: string;
+  expires_at: number;
+  duration_minutes: number;
+};
+
+export type AdminAttendance = {
+  session: {
+    id: string;
+    code: string;
+    duration_minutes: number;
+    expires_at: number;
+    expired: boolean;
+    created_at: number;
+  };
+  attendees: Array<{
+    user_id: string;
+    name: string;
+    attended_at: number;
+  }>;
+} | null;
 
 /* ------------------------------- catalogue ------------------------------- */
 
@@ -271,4 +297,32 @@ export function useCompleteProfile() {
     mutationFn: (input: { username: string; full_name?: string; team?: string; email?: string }) =>
       mutate(input),
   });
+}
+
+/* ------------------------------- attendance ------------------------------- */
+
+export function useCreateAttendanceSession() {
+  const mutate = useConvexMutation(api.attendance.createAttendanceSession);
+  return useMutation({
+    mutationFn: (input: { durationMinutes?: number }) => mutate(input),
+  });
+}
+
+export function useMarkAttendance() {
+  const mutate = useConvexMutation(api.attendance.markAttendance);
+  return useMutation({
+    mutationFn: (input: { code: string }) => mutate(input),
+  });
+}
+
+export function useMyAttendance() {
+  return useQuery(convexQuery(api.attendance.getMyAttendance, {})) as UseQueryResult<
+    AttendanceRecord[]
+  >;
+}
+
+export function useAdminAttendance(now: number) {
+  return useQuery(
+    convexQuery(api.attendance.getAdminAttendance, { now }),
+  ) as UseQueryResult<AdminAttendance>;
 }

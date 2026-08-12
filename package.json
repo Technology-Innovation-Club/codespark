@@ -12,7 +12,9 @@
     "format": "prettier --write . --cache",
     "convex:dev": "convex dev",
     "convex:deploy": "convex deploy",
-    "convex:seed": "convex run seed"
+    "convex:seed": "convex run seed",
+    "admin:promote": "bash scripts/promote-admin.sh promote",
+    "admin:demote": "bash scripts/promote-admin.sh demote"
   },
   "dependencies": {
     "@convex-dev/auth": "^0.0.35",

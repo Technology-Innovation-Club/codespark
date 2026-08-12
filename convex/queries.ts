@@ -102,6 +102,7 @@ function mapProfile(r: any) {
     avatar_url: r.avatar_url ?? null,
     xp: r.xp,
     level: r.level,
+    is_admin: r.is_admin ?? false,
   };
 }
 

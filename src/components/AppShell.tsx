@@ -13,6 +13,7 @@ import {
   Menu,
   X,
   Flame,
+  CalendarCheck,
 } from "lucide-react";
 import { useProfile, useStreak } from "@/lib/data";
 import { NBButton } from "@/components/nb";
@@ -24,6 +25,7 @@ const NAV = [
   { to: "/challenge-resource-hub/books", label: "Books", icon: BookOpen },
   { to: "/challenge-resource-hub/certifications", label: "Certificates", icon: Award },
   { to: "/challenge-resource-hub/ai-toolkit", label: "AI Toolkit", icon: Sparkles },
+  { to: "/challenge-resource-hub/attendance", label: "Attendance", icon: CalendarCheck },
   { to: "/challenge-resource-hub/notes", label: "Notes", icon: NotebookPen },
   { to: "/challenge-resource-hub/my-library", label: "My Library", icon: Bookmark },
   { to: "/challenge-resource-hub/progress", label: "Progress", icon: BarChart3 },
