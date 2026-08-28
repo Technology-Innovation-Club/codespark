@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
+import { Route as DesignsRouteImport } from './routes/designs'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicAboutRouteImport } from './routes/_public/about'
 import { Route as PublicEventRouteImport } from './routes/_public/event'
@@ -22,6 +23,8 @@ import { Route as PublicStartupsRouteImport } from './routes/_public/startups'
 import { Route as ChallengeResourceHubIndexRouteImport } from './routes/challenge-resource-hub/index'
 import { Route as ChallengeResourceHubHubRouteImport } from './routes/challenge-resource-hub/_hub'
 import { Route as ChallengeResourceHubAuthRouteImport } from './routes/challenge-resource-hub/auth'
+import { Route as DesignsIndexRouteImport } from './routes/designs/index'
+import { Route as DesignsNameRouteImport } from './routes/designs/$name'
 import { Route as ChallengeResourceHubHubAiToolkitRouteImport } from './routes/challenge-resource-hub/_hub/ai-toolkit'
 import { Route as ChallengeResourceHubHubAttendanceRouteImport } from './routes/challenge-resource-hub/_hub/attendance'
 import { Route as ChallengeResourceHubHubBooksRouteImport } from './routes/challenge-resource-hub/_hub/books'
@@ -35,6 +38,11 @@ import { Route as ChallengeResourceHubHubCategorySlugRouteImport } from './route
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignsRoute = DesignsRouteImport.update({
+  id: '/designs',
+  path: '/designs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicIndexRoute = PublicIndexRouteImport.update({
@@ -100,6 +108,16 @@ const ChallengeResourceHubAuthRoute =
     path: '/challenge-resource-hub/auth',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DesignsIndexRoute = DesignsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DesignsRoute,
+} as any)
+const DesignsNameRoute = DesignsNameRouteImport.update({
+  id: '/$name',
+  path: '/$name',
+  getParentRoute: () => DesignsRoute,
+} as any)
 const ChallengeResourceHubHubAiToolkitRoute =
   ChallengeResourceHubHubAiToolkitRouteImport.update({
     id: '/ai-toolkit',
@@ -163,6 +181,7 @@ const ChallengeResourceHubHubCategorySlugRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
+  '/designs': typeof DesignsRouteWithChildren
   '/about': typeof PublicAboutRoute
   '/event': typeof PublicEventRoute
   '/events': typeof PublicEventsRoute
@@ -173,7 +192,9 @@ export interface FileRoutesByFullPath {
   '/startups': typeof PublicStartupsRoute
   '/challenge-resource-hub': typeof ChallengeResourceHubHubRouteWithChildren
   '/challenge-resource-hub/auth': typeof ChallengeResourceHubAuthRoute
+  '/designs/$name': typeof DesignsNameRoute
   '/challenge-resource-hub/': typeof ChallengeResourceHubIndexRoute
+  '/designs/': typeof DesignsIndexRoute
   '/challenge-resource-hub/ai-toolkit': typeof ChallengeResourceHubHubAiToolkitRoute
   '/challenge-resource-hub/attendance': typeof ChallengeResourceHubHubAttendanceRoute
   '/challenge-resource-hub/books': typeof ChallengeResourceHubHubBooksRoute
@@ -196,7 +217,9 @@ export interface FileRoutesByTo {
   '/startups': typeof PublicStartupsRoute
   '/challenge-resource-hub': typeof ChallengeResourceHubIndexRoute
   '/challenge-resource-hub/auth': typeof ChallengeResourceHubAuthRoute
+  '/designs/$name': typeof DesignsNameRoute
   '/': typeof PublicIndexRoute
+  '/designs': typeof DesignsIndexRoute
   '/challenge-resource-hub/ai-toolkit': typeof ChallengeResourceHubHubAiToolkitRoute
   '/challenge-resource-hub/attendance': typeof ChallengeResourceHubHubAttendanceRoute
   '/challenge-resource-hub/books': typeof ChallengeResourceHubHubBooksRoute
@@ -211,6 +234,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_public': typeof PublicRouteWithChildren
+  '/designs': typeof DesignsRouteWithChildren
   '/_public/about': typeof PublicAboutRoute
   '/_public/event': typeof PublicEventRoute
   '/_public/events': typeof PublicEventsRoute
@@ -221,8 +245,10 @@ export interface FileRoutesById {
   '/_public/startups': typeof PublicStartupsRoute
   '/challenge-resource-hub/_hub': typeof ChallengeResourceHubHubRouteWithChildren
   '/challenge-resource-hub/auth': typeof ChallengeResourceHubAuthRoute
+  '/designs/$name': typeof DesignsNameRoute
   '/_public/': typeof PublicIndexRoute
   '/challenge-resource-hub/': typeof ChallengeResourceHubIndexRoute
+  '/designs/': typeof DesignsIndexRoute
   '/challenge-resource-hub/_hub/ai-toolkit': typeof ChallengeResourceHubHubAiToolkitRoute
   '/challenge-resource-hub/_hub/attendance': typeof ChallengeResourceHubHubAttendanceRoute
   '/challenge-resource-hub/_hub/books': typeof ChallengeResourceHubHubBooksRoute
@@ -238,6 +264,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/designs'
     | '/about'
     | '/event'
     | '/events'
@@ -248,7 +275,9 @@ export interface FileRouteTypes {
     | '/startups'
     | '/challenge-resource-hub'
     | '/challenge-resource-hub/auth'
+    | '/designs/$name'
     | '/challenge-resource-hub/'
+    | '/designs/'
     | '/challenge-resource-hub/ai-toolkit'
     | '/challenge-resource-hub/attendance'
     | '/challenge-resource-hub/books'
@@ -271,7 +300,9 @@ export interface FileRouteTypes {
     | '/startups'
     | '/challenge-resource-hub'
     | '/challenge-resource-hub/auth'
+    | '/designs/$name'
     | '/'
+    | '/designs'
     | '/challenge-resource-hub/ai-toolkit'
     | '/challenge-resource-hub/attendance'
     | '/challenge-resource-hub/books'
@@ -285,6 +316,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_public'
+    | '/designs'
     | '/_public/about'
     | '/_public/event'
     | '/_public/events'
@@ -295,8 +327,10 @@ export interface FileRouteTypes {
     | '/_public/startups'
     | '/challenge-resource-hub/_hub'
     | '/challenge-resource-hub/auth'
+    | '/designs/$name'
     | '/_public/'
     | '/challenge-resource-hub/'
+    | '/designs/'
     | '/challenge-resource-hub/_hub/ai-toolkit'
     | '/challenge-resource-hub/_hub/attendance'
     | '/challenge-resource-hub/_hub/books'
@@ -311,6 +345,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   PublicRoute: typeof PublicRouteWithChildren
+  DesignsRoute: typeof DesignsRouteWithChildren
   ChallengeResourceHubHubRoute: typeof ChallengeResourceHubHubRouteWithChildren
   ChallengeResourceHubAuthRoute: typeof ChallengeResourceHubAuthRoute
   ChallengeResourceHubIndexRoute: typeof ChallengeResourceHubIndexRoute
@@ -323,6 +358,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/designs': {
+      id: '/designs'
+      path: '/designs'
+      fullPath: '/designs'
+      preLoaderRoute: typeof DesignsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_public/': {
@@ -408,6 +450,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/challenge-resource-hub/auth'
       preLoaderRoute: typeof ChallengeResourceHubAuthRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/designs/': {
+      id: '/designs/'
+      path: '/'
+      fullPath: '/designs/'
+      preLoaderRoute: typeof DesignsIndexRouteImport
+      parentRoute: typeof DesignsRoute
+    }
+    '/designs/$name': {
+      id: '/designs/$name'
+      path: '/$name'
+      fullPath: '/designs/$name'
+      preLoaderRoute: typeof DesignsNameRouteImport
+      parentRoute: typeof DesignsRoute
     }
     '/challenge-resource-hub/_hub/ai-toolkit': {
       id: '/challenge-resource-hub/_hub/ai-toolkit'
@@ -509,6 +565,19 @@ const PublicRouteChildren: PublicRouteChildren = {
 const PublicRouteWithChildren =
   PublicRoute._addFileChildren(PublicRouteChildren)
 
+interface DesignsRouteChildren {
+  DesignsNameRoute: typeof DesignsNameRoute
+  DesignsIndexRoute: typeof DesignsIndexRoute
+}
+
+const DesignsRouteChildren: DesignsRouteChildren = {
+  DesignsNameRoute: DesignsNameRoute,
+  DesignsIndexRoute: DesignsIndexRoute,
+}
+
+const DesignsRouteWithChildren =
+  DesignsRoute._addFileChildren(DesignsRouteChildren)
+
 interface ChallengeResourceHubHubRouteChildren {
   ChallengeResourceHubHubAiToolkitRoute: typeof ChallengeResourceHubHubAiToolkitRoute
   ChallengeResourceHubHubAttendanceRoute: typeof ChallengeResourceHubHubAttendanceRoute
@@ -550,6 +619,7 @@ const ChallengeResourceHubHubRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   PublicRoute: PublicRouteWithChildren,
+  DesignsRoute: DesignsRouteWithChildren,
   ChallengeResourceHubHubRoute: ChallengeResourceHubHubRouteWithChildren,
   ChallengeResourceHubAuthRoute: ChallengeResourceHubAuthRoute,
   ChallengeResourceHubIndexRoute: ChallengeResourceHubIndexRoute,

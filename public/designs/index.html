@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodeSpark / Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0a0a0b;--surface:#fafaf7;--paper:#fff;--line:#e7e3d8;
+  --muted:#6b6a65;--muted-2:#9a978f;
+  --aurora:#10b981;--aurora-ink:#062b1f;
+  --clarity:#2563eb;
+  --prism:#5b21b6;
+  --meridian:#d97706;
+  --horizon:#c5a55a;--horizon-ink:#050a14;
+}
+html{scroll-behavior:smooth}
+body{background:var(--surface);color:var(--ink);font-family:'Geist',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+
+.wrap{max-width:1280px;margin:0 auto;padding:32px 24px 96px}
+
+/* Header */
+.head{padding:64px 0 56px;border-bottom:1px solid var(--line);margin-bottom:56px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;background:#fff;border:1px solid var(--line);border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.eyebrow .dot{width:6px;height:6px;border-radius:999px;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.18)}
+h1{font-size:clamp(40px,7vw,72px);font-weight:800;letter-spacing:-.04em;line-height:.95;color:var(--ink);margin-bottom:18px;max-width:14ch}
+.lede{font-size:18px;color:var(--muted);max-width:60ch;line-height:1.5}
+.lede b{color:var(--ink);font-weight:600}
+.head-meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:18px;font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted-2)}
+.head-meta span b{color:var(--ink);font-weight:600;font-family:'Geist',sans-serif}
+
+/* Filter bar */
+.filter-bar{margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.filter-label{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);font-weight:600}
+.filter-pills{display:flex;gap:6px;flex-wrap:wrap}
+.filter-pill{padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .15s}
+.filter-pill:hover{border-color:var(--ink);color:var(--ink)}
+.filter-pill.is-active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{position:relative;display:block;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(10,10,11,.08);border-color:#d4cfbe}
+.card-preview{position:relative;aspect-ratio:16/10;overflow:hidden;background:#f5f3ee}
+.card-preview iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;transform-origin:0 0;background:#fff}
+.card-preview .scrim{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.04) 100%);pointer-events:none;z-index:1}
+.card-meta{padding:20px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card-letter{font-family:'Geist Mono',monospace;font-size:12px;font-weight:600;color:var(--muted-2);letter-spacing:.06em}
+.card-link{font-size:12px;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:4px;opacity:0;transition:opacity .2s}
+.card:hover .card-link{opacity:1}
+.card-name{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}
+.card-tagline{font-size:14px;color:var(--muted);line-height:1.45}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--line);margin-top:6px}
+.card-swatch{display:flex;gap:4px;align-items:center}
+.swatch{width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.06)}
+.card-tag{font-family:'Geist Mono',monospace;font-size:10.5px;font-weight:500;color:var(--muted-2);letter-spacing:.04em;text-transform:uppercase}
+.card{--card-accent:var(--ink)}
+
+/* Per-card accent */
+.card[data-id="aurora"] .card-letter{color:var(--aurora)}
+.card[data-id="clarity"] .card-letter{color:var(--clarity)}
+.card[data-id="prism"] .card-letter{color:var(--prism)}
+.card[data-id="meridian"] .card-letter{color:var(--meridian)}
+.card[data-id="horizon"] .card-letter{color:var(--horizon)}
+
+/* Footer */
+.foot{margin-top:80px;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted)}
+.foot a{color:var(--ink);border-bottom:1px solid var(--line)}
+.foot a:hover{border-color:var(--ink)}
+
+/* Mobile */
+@media(max-width:880px){
+  .grid{grid-template-columns:1fr}
+  .head{padding:48px 0 40px;margin-bottom:40px}
+  .wrap{padding:24px 16px 80px}
+}
+@media(max-width:520px){
+  .filter-bar{flex-direction:column;align-items:flex-start}
+  .head-meta{gap:10px}
+}
+
+/* Filtered state */
+.card.is-hidden{display:none}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="head">
+    <div class="eyebrow"><span class="dot"></span>Five new redesigns, August 2026</div>
+    <h1>Pick a direction.</h1>
+    <p class="lede">Five self-contained prototypes for the standardized redesign of <b>CodeSpark</b>: the landing site, the Innovation Challenge page, the Hub dashboard, and the resource subroute. Each is a real, interactive HTML build. Click any card to open it in a new tab.</p>
+    <div class="head-meta">
+      <span><b>5</b> prototypes</span>
+      <span><b>4</b> surfaces each</span>
+      <span><b>375px</b> mobile-ready</span>
+      <span><b>~/code/aisandbox/codespark/prototypes/11.html</b> +</span>
+    </div>
+  </header>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter by mood</span>
+    <div class="filter-pills" id="filters">
+      <button class="filter-pill is-active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="dark">Dark</button>
+      <button class="filter-pill" data-filter="light">Light</button>
+      <button class="filter-pill" data-filter="luxury">Luxury</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <a class="card" data-id="aurora" data-mood="dark" href="aurora/" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <iframe src="aurora/index.html#home" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="scrim"></div>
+      </div>
+      <div class="card-meta">
+        <div class="card-head">
+          <span class="card-letter">K — AURORA</span>
+          <span class="card-link">Open ↗</span>
+        </div>
+        <div class="card-name">Emerald dark tech</div>
+        <div class="card-tagline">Geist sans on ink-black, single emerald accent, glassmorphic cards, glass product mockup in the hero.</div>
+        <div class="card-foot">
+          <div class="card-swatch">
+            <span class="swatch" style="background:#09090b"></span>
+            <span class="swatch" style="background:#18181b"></span>
+            <span class="swatch" style="background:#10b981"></span>
+            <span class="swatch" style="background:#fafafa"></span>
+          </div>
+          <span class="card-tag">Dark · 57K</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" data-id="clarity" data-mood="light" href="clarity/" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <iframe src="clarity/index.html#home" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="scrim"></div>
+      </div>
+      <div class="card-meta">
+        <div class="card-head">
+          <span class="card-letter">L — CLARITY</span>
+          <span class="card-link">Open ↗</span>
+        </div>
+        <div class="card-name">Blue light minimal</div>
+        <div class="card-tagline">Outfit display, cream surfaces, single electric-blue accent, 3D tilt cards, theme toggle.</div>
+        <div class="card-foot">
+          <div class="card-swatch">
+            <span class="swatch" style="background:#fafaf9"></span>
+            <span class="swatch" style="background:#fff;border-color:#e7e5e4"></span>
+            <span class="swatch" style="background:#2563eb"></span>
+            <span class="swatch" style="background:#18181b"></span>
+          </div>
+          <span class="card-tag">Light · 110K</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" data-id="prism" data-mood="light" href="prism/" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <iframe src="prism/index.html" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="scrim"></div>
+      </div>
+      <div class="card-meta">
+        <div class="card-head">
+          <span class="card-letter">M — PRISM</span>
+          <span class="card-link">Open ↗</span>
+        </div>
+        <div class="card-name">Violet gradient modern</div>
+        <div class="card-tagline">Sora + Space Grotesk, cream base with deep violet, bento grid, scroll-driven hero, interactive cards.</div>
+        <div class="card-foot">
+          <div class="card-swatch">
+            <span class="swatch" style="background:#fbfbf8"></span>
+            <span class="swatch" style="background:#0a0a0a"></span>
+            <span class="swatch" style="background:#5b21b6"></span>
+            <span class="swatch" style="background:#3d0f8c"></span>
+          </div>
+          <span class="card-tag">Light · 50K</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" data-id="meridian" data-mood="dark luxury" href="meridian/" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <iframe src="meridian/index.html" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="scrim"></div>
+      </div>
+      <div class="card-meta">
+        <div class="card-head">
+          <span class="card-letter">N — MERIDIAN</span>
+          <span class="card-link">Open ↗</span>
+        </div>
+        <div class="card-name">Amber dark luxury</div>
+        <div class="card-tagline">DM Sans on near-black, single amber accent, premium dark look, full hub with 3-column layout, live search.</div>
+        <div class="card-foot">
+          <div class="card-swatch">
+            <span class="swatch" style="background:#0c0a09"></span>
+            <span class="swatch" style="background:#1a1714"></span>
+            <span class="swatch" style="background:#d97706"></span>
+            <span class="swatch" style="background:#f5f0e8"></span>
+          </div>
+          <span class="card-tag">Dark · 56K</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" data-id="horizon" data-mood="dark luxury" href="horizon/" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <iframe src="horizon/index.html" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="scrim"></div>
+      </div>
+      <div class="card-meta">
+        <div class="card-head">
+          <span class="card-letter">O — HORIZON</span>
+          <span class="card-link">Open ↗</span>
+        </div>
+        <div class="card-name">Navy + gold editorial</div>
+        <div class="card-tagline">Playfair Display + Inter on deep navy, single gold accent, serif luxury exception, full 4 surfaces with timeline.</div>
+        <div class="card-foot">
+          <div class="card-swatch">
+            <span class="swatch" style="background:#050a14"></span>
+            <span class="swatch" style="background:#0b1324"></span>
+            <span class="swatch" style="background:#c5a55a"></span>
+            <span class="swatch" style="background:#f0ede4"></span>
+          </div>
+          <span class="card-tag">Dark · 54K</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <footer class="foot">
+    <span>CodeSpark design picker. August 2026.</span>
+    <span>Need the full report? <a href="../reports/five-redesigns.html">View the write-up</a> · <a href="interactive.html">Side-by-side viewer</a></span>
+  </footer>
+
+</div>
+
+<script>
+// Filter pills
+const pills=document.querySelectorAll('.filter-pill');
+const cards=document.querySelectorAll('.card');
+pills.forEach(p=>p.addEventListener('click',()=>{
+  pills.forEach(x=>x.classList.remove('is-active'));
+  p.classList.add('is-active');
+  const f=p.dataset.filter;
+  cards.forEach(c=>{
+    const mood=c.dataset.mood;
+    const show=f==='all'||mood.includes(f);
+    c.classList.toggle('is-hidden',!show);
+  });
+}));
+
+// Lazy iframe scale: each card iframe is 1280px wide rendered in 16:10 box.
+// We scale it so it fits the preview without horizontal scroll.
+const iframes=document.querySelectorAll('.card-preview iframe');
+iframes.forEach(f=>{
+  f.addEventListener('load',()=>{
+    try{
+      const w=f.contentWindow.document.documentElement.scrollWidth||1280;
+      const box=f.parentElement.getBoundingClientRect();
+      const scale=box.width/w;
+      f.style.transform=`scale(${scale})`;
+    }catch(e){}
+  });
+});
+// Also re-scale on resize
+window.addEventListener('resize',()=>{
+  iframes.forEach(f=>{
+    try{
+      const w=f.contentWindow.document.documentElement.scrollWidth||1280;
+      const box=f.parentElement.getBoundingClientRect();
+      const scale=box.width/w;
+      f.style.transform=`scale(${scale})`;
+    }catch(e){}
+  });
+});
+</script>
+</body>
+</html>
