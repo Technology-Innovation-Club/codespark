@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HORIZON, Direction O</title>
+<meta name="description" content="HORIZON: a premium dark pipeline for student founders. Deep navy, gold, Playfair display, Inter body." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: '#050a14',
+        surface: '#0b1324',
+        gold: '#c5a55a',
+        goldLight: '#d8bc7c',
+        goldDeep: '#9e7e3e',
+        stone: '#8a817a',
+        ink: '#f0ede4',
+        inkMuted: '#b5afa6',
+        line: '#15223a',
+        lineSoft: '#0f1930',
+      },
+      fontFamily: {
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        body: ['"Inter"', 'system-ui', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+  :root { --navy:#050a14;--surface:#0b1324;--gold:#c5a55a;--goldLight:#d8bc7c;--stone:#8a817a;--ink:#f0ede4;--inkMuted:#b5afa6;--line:#15223a;--lineSoft:#0f1930; }
+  html.dark { --navy:#050a14;--surface:#0b1324;--gold:#c5a55a;--ink:#f0ede4;--inkMuted:#b5afa6;}
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{font-family:"Inter",system-ui,sans-serif;background:var(--navy);color:var(--ink);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:rgba(197,165,90,.22);color:inherit}
+  img{max-width:100%;height:auto;display:block}
+  button,input{font-family:inherit}
+  input[type="email"],input[type="text"]{font-size:16px}
+  /* Font: Playfair ONLY for display / hero. No other serif usage. */
+  h1,h2,h3.display{font-family:"Playfair Display",Georgia,serif;letter-spacing:-0.03em;line-height:1.06;font-weight:600}
+  .body-text{font-family:"Inter",system-ui,sans-serif}
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.marquee-track{animation:none!important}}
+  @media(hover:none) and (pointer:coarse){.tilt{transform:none!important}}
+  /* Nav */
+  .nav-link{position:relative;color:var(--inkMuted);transition:color .2s}
+  .nav-link.active{color:var(--ink);font-weight:600}
+  .nav-link.active::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2px;background:var(--gold);border-radius:999px}
+  /* Gold tinted shadow */
+  .gold-shadow{box-shadow:0 20px 60px rgba(197,165,90,.14)}
+  .gold-shadow-sm{box-shadow:0 8px 24px rgba(197,165,90,.10)}
+  /* Marquee */
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .marquee-track{animation:marquee 32s linear infinite;display:flex;gap:3rem;width:max-content}
+  @media(max-width:768px){.marquee-track{animation-duration:44s}}
+  /* Magnetic-ish CTA (disabled touch) */
+  @media (hover:hover) and (pointer:fine) {
+    .mag-cta { transition: transform .22s ease, box-shadow .22s ease; }
+    .mag-cta:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 14px 36px rgba(197,165,90,.35); }
+  }
+  @media (hover:none) and (pointer:coarse) { .mag-cta { transform:none!important; } }
+  /* Tab crossfade */
+  .tab-card{display:none;animation:fadeIn .35s ease}
+  .tab-card.active{display:block;animation:fadeIn .35s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  /* No scrollbar */
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+  /* Tilt disabled on touch */
+  @media(hover:none) and (pointer:coarse){.tilt{transform:none!important}}
+  /* Mobile */
+  @media(max-width:768px){ .bento-grid{grid-template-columns:1fr!important} .hub-cols{grid-template-columns:1fr!important} .stats-grid{grid-template-columns:1fr 1fr!important} .hero-split{grid-template-columns:1fr!important} .logo-row{grid-template-columns:repeat(3,1fr)!important} }
+  @media(max-width:480px){ .stats-grid{grid-template-columns:1fr!important} .logo-row{grid-template-columns:repeat(2,1fr)!important} }
+</style>
+</head>
+<body class="min-h-[100dvh]">
+
+<!-- ===== NAV ===== -->
+<header id="topnav" class="sticky top-0 z-50 backdrop-blur-xl border-b" style="height:68px;background:color-mix(in srgb,var(--navy) 92%,transparent);border-color:var(--line);">
+  <div class="max-w-[1280px] mx-auto h-full px-5 md:px-8 flex items-center justify-between gap-6">
+    <a href="#home" class="flex items-center gap-3 shrink-0" aria-label="HORIZON home">
+      <span class="w-9 h-9 rounded-full grid place-items-center text-[13px] font-bold shadow-md" style="background:var(--gold);box-shadow:0 4px 14px rgba(197,165,90,.45);color:var(--navy)">H</span>
+      <span class="font-display font-bold tracking-tight text-[17px]"><span style="color:var(--goldLight)">HORIZON</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-1 text-[13px] font-medium" aria-label="Primary" style="color:var(--inkMuted)">
+      <a data-nav href="#home" class="nav-link px-3 py-2 rounded-full">Home</a>
+      <a data-nav href="#challenge" class="nav-link px-3 py-2 rounded-full">Challenge</a>
+      <a data-nav href="#hub" class="nav-link px-3 py-2 rounded-full">Hub</a>
+      <a data-nav href="#hub-internals" class="nav-link px-3 py-2 rounded-full">Resources</a>
+    </nav>
+    <div class="flex items-center gap-2 shrink-0">
+      <button id="themeToggle" aria-label="Toggle theme" class="w-9 h-9 grid place-items-center rounded-full border transition-colors" style="border-color:var(--line);background:var(--surface);color:var(--ink)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+      </button>
+      <a href="#challenge" class="hidden md:inline-flex h-9 px-4 items-center rounded-full text-[13px] font-semibold transition-transform hover:-translate-y-px" style="background:var(--gold);color:var(--navy);box-shadow:0 6px 18px rgba(197,165,90,.3)">Apply</a>
+      <button id="hamburger" aria-label="Open menu" aria-expanded="false" class="md:hidden w-11 h-11 grid place-items-center rounded-full border" style="border-color:var(--line);background:var(--surface);color:var(--ink)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileDrawer" class="hidden md:hidden absolute inset-x-0 top-[68px] p-3" style="background:color-mix(in srgb,var(--navy) 94%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+    <nav class="flex flex-col gap-1">
+      <a href="#home" class="mobile-link px-4 py-3 rounded-xl text-[15px] font-medium" style="color:var(--ink)">Home</a>
+      <a href="#challenge" class="mobile-link px-4 py-3 rounded-xl text-[15px] font-medium" style="color:var(--ink)">Challenge</a>
+      <a href="#hub" class="mobile-link px-4 py-3 rounded-xl text-[15px] font-medium" style="color:var(--ink)">Hub</a>
+      <a href="#hub-internals" class="mobile-link px-4 py-3 rounded-xl text-[15px] font-medium" style="color:var(--ink)">Resources</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== HOME HERO SPLIT ===== -->
+<section id="home" class="relative overflow-hidden">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8" style="min-height:min(100dvh,880px);display:grid;align-items:center;padding-top:36px;padding-bottom:28px">
+    <div class="hero-split grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-16 items-center">
+      <!-- Left -->
+      <div class="reveal" style="--d:0ms">
+        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold tracking-wide uppercase" style="border:1px solid var(--line);background:var(--surface);color:var(--inkMuted)">
+          <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:var(--gold)"></span> Cohort opens 29 Aug
+        </div>
+        <h1 class="mt-6 font-display font-bold tracking-tight" style="font-size:clamp(36px,6.5vw,64px);line-height:1.02;max-width:14ch">Ship a working product before you graduate.</h1>
+        <p class="mt-5 max-w-[46ch] leading-relaxed" style="color:var(--inkMuted);font-size:16px">A dark pipeline for student founders who build, not pitch. Real reviews, real users, one eight-week stage. Apply now and join the horizon.</p>
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a href="#challenge" class="mag-cta h-12 px-7 inline-flex items-center justify-center rounded-full text-sm font-semibold transition-all hover:-translate-y-0.5" style="background:var(--gold);color:var(--navy);box-shadow:0 8px 22px rgba(197,165,90,.3)">Apply now</a>
+          <a href="#hub" class="h-12 px-7 inline-flex items-center justify-center rounded-full text-sm font-semibold border transition-colors hover:bg-[rgba(197,165,90,.06)]" style="border-color:var(--line);color:var(--ink);background:var(--surface)">Open the hub</a>
+        </div>
+        <div class="mt-8 flex items-center gap-4 text-xs" style="color:var(--inkMuted)">
+          <div class="flex -space-x-2">
+            <img src="https://picsum.photos/seed/hz1/64/64" alt="" class="w-8 h-8 rounded-full object-cover ring-2" style="ring-color:var(--navy)" />
+            <img src="https://picsum.photos/seed/hz2/64/64" alt="" class="w-8 h-8 rounded-full object-cover ring-2" style="ring-color:var(--navy)" />
+            <img src="https://picsum.photos/seed/hz3/64/64" alt="" class="w-8 h-8 rounded-full object-cover ring-2" style="ring-color:var(--navy)" />
+          </div>
+          <span>Founders from 15 universities</span>
+        </div>
+      </div>
+      <!-- Right image card -->
+      <div class="reveal relative" style="--d:80ms">
+        <div class="rounded-[22px] overflow-hidden tilt gold-shadow" style="box-shadow:0 20px 60px rgba(197,165,90,.14)">
+          <div class="relative overflow-hidden">
+            <img src="https://picsum.photos/seed/horizon-hero/900/620" alt="Team building" class="w-full h-[380px] md:h-[460px] object-cover transition-transform duration-700 hover:scale-[1.03]" />
+            <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(5,10,20,.55) 100%)"></div>
+            <div class="absolute left-3 right-3 bottom-3 grid grid-cols-[1.15fr_.85fr] gap-3">
+              <div class="rounded-2xl p-4" style="background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line)">
+                <div class="text-[10px] font-semibold tracking-widest uppercase" style="color:var(--goldLight)">Active sprint</div>
+                <div class="mt-1 font-display font-semibold text-[15px]">Week 5, Build</div>
+                <div class="mt-3 h-1.5 rounded-full overflow-hidden" style="background:rgba(240,237,228,.06)"><div class="h-full rounded-full" style="width:68%;background:var(--gold)"></div></div>
+                <div class="mt-2 flex justify-between text-[11px]" style="color:var(--inkMuted)"><span>68% complete</span><span>9 days left</span></div>
+              </div>
+              <div class="hidden sm:flex flex-col gap-2 rounded-2xl p-4" style="background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line)">
+                <div class="flex items-center justify-between"><span class="text-xs font-semibold" style="color:var(--ink)">Team HORIZON</span><span class="w-2 h-2 rounded-full" style="background:var(--gold)"></span></div>
+                <div class="h-px" style="background:var(--line)"></div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 text-xs rounded-lg px-3 py-2" style="background:var(--surface);border:1px solid var(--line)"><span class="w-5 h-5 rounded-full grid place-items-center text-[10px] font-bold" style="background:var(--gold);color:var(--navy)">✓</span><span>Demo ready</span></div>
+                  <div class="flex items-center gap-2 text-xs rounded-lg px-3 py-2" style="background:var(--surface);border:1px solid var(--line)"><span class="w-5 h-5 rounded-full grid place-items-center text-[10px]" style="border:1px solid var(--line);color:var(--inkMuted)">◌</span><span>Pitch review</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden lg:flex absolute -top-3 -right-2 rounded-full px-4 py-2 text-xs font-semibold shadow-lg" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 22px rgba(197,165,90,.12);color:var(--ink)">
+          <span class="w-2 h-2 rounded-full mr-2" style="background:var(--gold)"></span> 15 universities connected
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="relative" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8">
+    <div class="stats-grid grid grid-cols-2 lg:grid-cols-4 divide-x" style="border-color:var(--line)">
+      <div class="reveal px-6 py-8 lg:px-10 lg:py-10" style="--d:0ms">
+        <div class="font-display font-bold tracking-tight" style="font-size:clamp(32px,4vw,48px);line-height:1;color:var(--ink);font-style:italic">8</div>
+        <div class="mt-2 text-[11px] font-semibold tracking-[0.12em] uppercase" style="color:var(--stone)">Weeks of work</div>
+        <div class="mt-1 text-xs" style="color:var(--inkMuted)">One stage, one deliverable each Friday</div>
+      </div>
+      <div class="reveal px-6 py-8 lg:px-10 lg:py-10" style="--d:60ms">
+        <div class="font-display font-bold tracking-tight" style="font-size:clamp(32px,4vw,48px);line-height:1;color:var(--ink);font-style:italic">20</div>
+        <div class="mt-2 text-[11px] font-semibold tracking-[0.12em] uppercase" style="color:var(--stone)">Teams accepted</div>
+        <div class="mt-1 text-xs" style="color:var(--inkMuted)">Small cohorts, real feedback</div>
+      </div>
+      <div class="reveal px-6 py-8 lg:px-10 lg:py-10" style="--d:120ms">
+        <div class="font-display font-bold tracking-tight" style="font-size:clamp(32px,4vw,48px);line-height:1;color:var(--ink);font-style:italic">15</div>
+        <div class="mt-2 text-[11px] font-semibold tracking-[0.12em] uppercase" style="color:var(--stone)">Universities</div>
+        <div class="mt-1 text-xs" style="color:var(--inkMuted)">West and East Africa partners</div>
+      </div>
+      <div class="reveal px-6 py-8 lg:px-10 lg:py-10" style="--d:180ms">
+        <div class="font-display font-bold tracking-tight" style="font-size:clamp(32px,4vw,48px);line-height:1;color:var(--ink);font-style:italic">₦200k</div>
+        <div class="mt-2 text-[11px] font-semibold tracking-[0.12em] uppercase" style="color:var(--stone)">Grand prize</div>
+        <div class="mt-1 text-xs" style="color:var(--inkMuted)">Plus runner-up grants</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SURFACES ===== -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 py-24">
+  <div class="flex items-end justify-between gap-4 mb-12 reveal">
+    <div>
+      <div class="sc text-[11px] font-semibold tracking-[0.18em] uppercase; color:var(--goldLight)">The three surfaces</div>
+      <h2 class="font-display font-semibold tracking-tight mt-2" style="font-size:clamp(28px,3.5vw,42px);line-height:1.1">Program, Hub, Forum.</h2>
+    </div>
+    <a href="#challenge" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium hover:text-[var(--goldLight)] transition-colors" style="color:var(--stone)">Explore the challenge <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="bento-grid grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="reveal rounded-[16px] p-8 md:p-10 relative overflow-hidden" style="background:linear-gradient(160deg,var(--surface),#0a1020);border:1px solid var(--line)">
+      <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-30" style="background:radial-gradient(circle,var(--gold) 0%,transparent 70%);transform:translate(30%,-30%)"></div>
+      <div class="text-[11px] font-semibold tracking-[0.18em] uppercase mb-4" style="color:var(--goldLight)">01 / Program</div>
+      <h3 class="font-display font-semibold text-2xl md:text-[28px] leading-snug mb-3">The Innovation Challenge</h3>
+      <p class="text-sm leading-relaxed mb-6" style="color:var(--inkMuted)">Eight weeks of building, not waiting. One problem, one customer, one working prototype every Friday. Real mentors, real reviews, real stage at the Forum.</p>
+      <ul class="space-y-2 text-sm" style="color:var(--stone)">
+        <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full" style="background:var(--gold)"></span> 8-week schedule, week by week</li>
+        <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full" style="background:var(--gold)"></span> Weekly mentor sessions</li>
+        <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full" style="background:var(--gold)"></span> Friday demo + Forum stage</li>
+      </ul>
+    </div>
+    <div class="reveal rounded-[16px] p-8 md:p-10 relative overflow-hidden" style="background:linear-gradient(160deg,var(--surface),#0f1630);border:1px solid var(--line);--d:80ms">
+      <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-30" style="background:radial-gradient(circle,var(--gold) 0%,transparent 70%);transform:translate(30%,-30%)"></div>
+      <div class="text-[11px] font-semibold tracking-[0.18em] uppercase mb-4" style="color:var(--goldLight)">02 / Hub</div>
+      <h3 class="font-display font-semibold text-2xl md:text-[28px] leading-snug mb-3">Private workspace</h3>
+      <p class="text-sm leading-relaxed mb-6" style="color:var(--inkMuted)">Resources by week, attendance, notes, certifications, AI tools, and a team space. Built for people who do the work, not for browsing.</p>
+      <a href="#hub" class="inline-flex items-center gap-2 text-sm font-medium hover:text-[var(--goldLight)] transition-colors" style="color:var(--stone)">Open the workspace <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="reveal rounded-[16px] p-8 md:p-10 relative overflow-hidden" style="background:linear-gradient(160deg,var(--surface),#091028);border:1px solid var(--line);--d:160ms">
+      <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-30" style="background:radial-gradient(circle,var(--gold) 0%,transparent 70%);transform:translate(30%,-30%)"></div>
+      <div class="text-[11px] font-semibold tracking-[0.18em] uppercase mb-4" style="color:var(--goldLight)">03 / Forum</div>
+      <h3 class="font-display font-semibold text-2xl md:text-[28px] leading-snug mb-3">The final stage</h3>
+      <p class="text-sm leading-relaxed mb-6" style="color:var(--inkMuted)">Public pitches to operators and investors. Winners announced the same evening. A number you can take to your next investor.</p>
+      <a href="#challenge" class="inline-flex items-center gap-2 text-sm font-medium hover:text-[var(--goldLight)] transition-colors" style="color:var(--stone)">See rewards <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORY BLOCK ===== -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 py-24" style="border-top:1px solid var(--line)">
+  <div class="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-start reveal">
+    <div>
+      <div class="sc text-[11px] font-semibold tracking-[0.18em] uppercase mb-4" style="color:var(--goldLight)">On starting young</div>
+      <blockquote class="font-display font-semibold text-3xl md:text-4xl leading-snug" style="font-style:italic;color:var(--ink)">
+        “The first thing I needed was a room where the work was the point.”
+      </blockquote>
+      <div class="mt-6 text-sm" style="color:var(--inkMuted)">
+        <strong style="color:var(--ink)">Iyinoluwa Aboyeji</strong>, Founder, Andela &amp; Flutterwave. Twelve years after his first company, he still builds with students.<span style="color:var(--stone)"> We are that room, for the next hundred founders.</span>
+      </div>
+    </div>
+    <div class="space-y-5 text-sm leading-relaxed" style="color:var(--inkMuted)">
+      <p>CodeSpark measures what it funds. Six cohorts completed, fourteen startups incubated, three with paying customers within six months of the Forum. Two of them back as mentors.</p>
+      <p>The program takes no equity. The Hub is free for active participants. The grand prize is unrestricted. The forum recordings are public. We publish the full record because the work is the point.</p>
+      <a href="#challenge" class="inline-flex items-center gap-2 text-sm font-medium mt-2" style="color:var(--goldLight)">Read the full record <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW ===== -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 py-24" style="border-top:1px solid var(--line)">
+  <div class="max-w-2xl reveal">
+    <div class="sc text-[11px] font-semibold tracking-[0.18em] uppercase mb-3" style="color:var(--goldLight)">How it works</div>
+    <h2 class="font-display font-semibold tracking-tight" style="font-size:clamp(28px,3.5vw,42px);line-height:1.1">Apply. Build. Pitch. Repeat.</h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-4 mt-12">
+    <div class="reveal rounded-2xl p-7" style="background:var(--surface);border:1px solid var(--line);--d:0ms">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-lg" style="background:var(--gold);color:var(--navy)">01</div>
+      <h3 class="font-display font-semibold text-xl mt-4 mb-2">Apply with a problem</h3>
+      <p class="text-sm leading-relaxed" style="color:var(--inkMuted)">One specific person, one specific problem, ten real conversations logged by the end of week one.</p>
+    </div>
+    <div class="reveal rounded-2xl p-7" style="background:var(--surface);border:1px solid var(--line);--d:80ms">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-lg" style="background:var(--gold);color:var(--navy)">02</div>
+      <h3 class="font-display font-semibold text-xl mt-4 mb-2">Build every Friday</h3>
+      <p class="text-sm leading-relaxed" style="color:var(--inkMuted)">A deliverable each week. A working URL, a first customer, a spreadsheet you can defend.</p>
+    </div>
+    <div class="reveal rounded-2xl p-7" style="background:var(--surface);border:1px solid var(--line);--d:160ms">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-lg" style="background:var(--gold);color:var(--navy)">03</div>
+      <h3 class="font-display font-semibold text-xl mt-4 mb-2">Pitch at the Forum</h3>
+      <p class="text-sm leading-relaxed" style="color:var(--inkMuted)">Public final stage. Winners announced the same evening. A number you can take to your next investor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOGOS / PARTNERS (MARQUEE) ===== -->
+<section class="relative overflow-hidden" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8 py-10">
+    <div class="sc text-[11px] font-semibold tracking-[0.18em] uppercase mb-6" style="color:var(--stone)">Partner universities</div>
+    <div class="overflow-hidden relative">
+      <div class="marquee-track">
+        <div class="flex gap-16 items-center text-sm font-medium whitespace-nowrap" style="color:var(--inkMuted)">
+          <span>University of Lagos</span><span>•</span><span>University of Cape Town</span><span>•</span><span>Ashesi University</span><span>•</span><span>University of Nairobi</span><span>•</span><span>KNUST, Kumasi</span><span>•</span><span>Lancaster University Ghana</span><span>•</span><span>University of Ibadan</span><span>•</span><span>Makerere University</span><span>•</span><span>Obafemi Awolowo University</span><span>•</span><span>University of Ghana</span><span>•</span>
+        </div>
+        <div class="flex gap-16 items-center text-sm font-medium whitespace-nowrap" aria-hidden="true" style="color:var(--inkMuted)">
+          <span>University of Lagos</span><span>•</span><span>University of Cape Town</span><span>•</span><span>Ashesi University</span><span>•</span><span>University of Nairobi</span><span>•</span><span>KNUST, Kumasi</span><span>•</span><span>Lancaster University Ghana</span><span>•</span><span>University of Ibadan</span><span>•</span><span>Makerere University</span><span>•</span><span>Obafemi Awolowo University</span><span>•</span><span>University of Ghana</span><span>•</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 py-24" style="border-top:1px solid var(--line)">
+  <div class="max-w-xl reveal mb-12">
+    <div class="sc text-[11px] font-semibold tracking-[0.18em] uppercase mb-3" style="color:var(--goldLight)">Pricing</div>
+    <h2 class="font-display font-semibold tracking-tight" style="font-size:clamp(28px,3.5vw,42px);line-height:1.1">Free for active participants. Paid for the full library.</h2>
+    <p class="mt-3 text-sm" style="color:var(--inkMuted)">The Challenge is free for accepted teams. The Hub is free for active users. Deep-dive courses, mentor hours, and AI beyond 10 free queries are $19/month or $199 per course.</p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="reveal rounded-2xl p-7" style="border:1px solid var(--line);background:var(--surface);--d:0ms">
+      <div class="text-[11px] font-semibold tracking-[0.18em] uppercase mb-3" style="color:var(--stone)">Free</div>
+      <div class="font-display font-bold text-3xl" style="color:var(--ink)">$0</div>
+      <div class="text-xs mt-2" style="color:var(--inkMuted)">For active Challenge participants</div>
+      <ul class="mt-6 space-y-2 text-sm" style="color:var(--inkMuted)">
+        <li>Core track and weekly digest</li><li>Community access</li><li>10 AI queries/month</li><li>Attendance tracking</li>
+      </ul>
+    </div>
+    <div class="reveal rounded-2xl p-7 relative" style="border:1px solid var(--gold);background:linear-gradient(160deg,var(--surface),#0d1830);--d:80ms">
+      <div class="absolute top-3 right-3 text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full" style="background:var(--gold);color:var(--navy)">Popular</div>
+      <div class="text-[11px] font-semibold tracking-[0.18em] uppercase mb-3" style="color:var(--goldLight)">All-access</div>
+      <div class="font-display font-bold text-3xl" style="color:var(--ink)">$19<span class="text-base font-body font-medium" style="color:var(--stone)">/month</span></div>
+      <div class="text-xs mt-2" style="color:var(--inkMuted)">For founders outside the cohort</div>
+      <ul class="mt-6 space-y-2 text-sm" style="color:var(--inkMuted)">
+        <li>All library resources</li><li>Deep-dive courses</li><li>Mentor hours (2/mo)</li><li>AI assistant (unlimited)</li>
+      </ul>
+    </div>
+    <div class="reveal rounded-2xl p-7" style="border:1px solid var(--line);background:var(--surface);--d:160ms">
+      <div class="text-[11px] font-semibold tracking-[0.18em] uppercase mb-3" style="color:var(--stone)">Single course</div>
+      <div class="font-display font-bold text-3xl" style="color:var(--ink)">$199</div>
+      <div class="text-xs mt-2" style="color:var(--inkMuted)">One deep-dive, lifetime access</div>
+      <ul class="mt-6 space-y-2 text-sm" style="color:var(--inkMuted)">
+        <li>Curated curriculum by week</li><li>Mentor review included</li><li>Certificate on completion</li><li>No recurring fee</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHALLENGE ===== -->
+<section id="challenge" class="relative" style="border-top:1px solid var(--line);background:linear-gradient(180deg,var(--navy),#070f20)">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8 py-24">
+    <div class="reveal">
+      <div class="sc text-[11px] font-semibold tracking-[0.18em] uppercase mb-3" style="color:var(--goldLight)">Innovation Challenge</div>
+      <h1 class="font-display font-bold tracking-tight mb-4" style="font-size:clamp(36px,6vw,64px);line-height:1.02">Eight weeks of working, not waiting.</h1>
+      <p class="text-base md:text-lg max-w-2xl" style="color:var(--inkMuted)">Apply with a problem you can defend and a team that will do the work. The Challenge is small on purpose. Twenty teams, fifteen universities, one shared schedule, one final stage.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12 reveal">
+      <div class="rounded-2xl p-7" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="font-display font-bold text-4xl" style="font-style:italic;color:var(--ink)">08</div>
+        <div class="text-[11px] font-semibold tracking-[0.14em] uppercase mt-2" style="color:var(--stone)">Weeks</div>
+        <div class="text-xs mt-1" style="color:var(--inkMuted)">One deliverable every Friday</div>
+      </div>
+      <div class="rounded-2xl p-7" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="font-display font-bold text-4xl" style="font-style:italic;color:var(--ink)">20</div>
+        <div class="text-[11px] font-semibold tracking-[0.14em] uppercase mt-2" style="color:var(--stone)">Teams</div>
+        <div class="text-xs mt-1" style="color:var(--inkMuted)">Small cohorts, real reviews</div>
+      </div>
+      <div class="rounded-2xl p-7" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="font-display font-bold text-4xl" style="font-style:italic;color:var(--ink)">15</div>
+        <div class="text-[11px] font-semibold tracking-[0.14em] uppercase mt-2" style="color:var(--stone)">Universities</div>
+        <div class="text-xs mt-1" style="color:var(--inkMuted)">West and East Africa</div>
+      </div>
+      <div class="rounded-2xl p-7" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="font-display font-bold text-4xl" style="font-style:italic;color:var(--ink)">29 Aug</div>
+        <div class="text-[11px] font-semibold tracking-[0.14em] uppercase mt-2" style="color:var(--stone)">Deadline</div>
+        <div class="text-xs mt-1" style="color:var(--inkMuted)">Applications close 14 Sep</div>
+      </div>
+    </div>
+
+    <!-- Possibilities cards -->
+    <div class="grid md:grid-cols-3 gap-4 mt-12 reveal">
+      <div class="rounded-2xl p-8" style="background:linear-gradient(160deg,var(--surface),#08152a);border:1px solid var(--line)">
+        <div class="text-[11px] font-semibold tracking-[0.14em] uppercase mb-4" style="color:var(--goldLight)">Week 01</div>
+        <h3 class="font-display font-semibold text-xl mb-2">Problem and customer</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--inkMuted)">Pick one specific person with one specific problem. Write it down. Talk to ten by Friday.</p>
+      </div>
+      <div class="rounded-2xl p-8" style="background:linear-gradient(160deg,var(--surface),#08152a);border:1px solid var(--line);--d:80ms">
+        <div class="text-[11px] font-semibold tracking-[0.14em] uppercase mb-4" style="color:var(--goldLight)">Week 04</div>
+        <h3 class="font-display font-semibold text-xl mb-2">First customers</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--inkMuted)">Charge something, or get a written commitment. A pre-order counts. A letter of intent counts.</p>
+      </div>
+      <div class="rounded-2xl p-8" style="background:linear-gradient(160deg,var(--surface),#08152a);border:1px solid var(--line);--d:160ms">
+        <div class="text-[11px] font-semibold tracking-[0.14em] uppercase mb-4" style="color:var(--goldLight)">Week 08</div>
+        <h3 class="font-display font-semibold text-xl mb-2">Forum, live pitches</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--inkMuted)">Public final stage. Winners announced the same evening. A number you can take to investors.</p>
+      </div>
+    </div>
+
+    <!-- Sprint -->
+    <div class="rounded-2xl p-8 md:p-10 mt-12" style="background:var(--surface);border:1px solid var(--line)">
+      <h3 class="font-display font-semibold text-2xl mb-6">The sprint, week by week</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div><div class="font-display font-bold text-lg" style="font-style:italic;color:var(--goldLight)">01</div><div class="text-sm font-medium mt-1">Problem</div><div class="text-xs mt-1" style="color:var(--inkMuted)">10 conversations, signed problem brief</div></div>
+        <div><div class="font-display font-bold text-lg" style="font-style:italic;color:var(--goldLight)">03</div><div class="text-sm font-medium mt-1">Build</div><div class="text-xs mt-1" style="color:var(--inkMuted)">Working v0, used by 3 people</div></div>
+        <div><div class="font-display font-bold text-lg" style="font-style:italic;color:var(--goldLight)">05</div><div class="text-sm font-medium mt-1">Numbers</div><div class="text-xs mt-1" style="color:var(--inkMuted)">One-page model with flagged guesses</div></div>
+        <div><div class="font-display font-bold text-lg" style="font-style:italic;color:var(--goldLight)">08</div><div class="text-sm font-medium mt-1">Forum</div><div class="text-xs mt-1" style="color:var(--inkMuted)">Public pitch, verdict, number taken</div></div>
+      </div>
+    </div>
+
+    <!-- Rewards -->
+    <div class="mt-12 rounded-2xl p-8 md:p-10" style="background:linear-gradient(160deg,var(--navy),#060f1a);border:1px solid var(--gold)">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+        <div>
+          <h3 class="font-display font-semibold text-2xl">Grand prize and what comes with it.</h3>
+          <p class="text-sm mt-2" style="color:var(--inkMuted)">The prize is meant to keep you working for six months, not to retire. Paid in two tranches.</p>
+        </div>
+        <div class="font-display font-bold text-5xl" style="font-style:italic;color:var(--gold)">₦200k</div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 text-sm" style="color:var(--inkMuted)">
+        <div><strong style="color:var(--ink)">Grand prize</strong>, on Forum night, unrestricted.</div>
+        <div><strong style="color:var(--ink)">Second tranche</strong>, after a public three-month update.</div>
+        <div><strong style="color:var(--ink)">Four runner-ups</strong>, ₦75k each, same conditions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HUB ===== -->
+<section id="hub" class="max-w-[1280px] mx-auto px-5 md:px-8 py-24" style="border-top:1px solid var(--line)">
+  <div class="reveal mb-10">
+    <div class="sc text-[11px] font-semibold tracking-[0.18em] uppercase mb-3" style="color:var(--goldLight)">Innovation Hub</div>
+    <h2 class="font-display font-semibold tracking-tight" style="font-size:clamp(28px,3.5vw,42px);line-height:1.1">Your working room for the next eight weeks.</h2>
+  </div>
+  <div class="hub-cols grid lg:grid-cols-[260px_1fr_260px] gap-6">
+    <!-- Sidebar tasks -->
+    <aside class="rounded-2xl p-6" style="background:var(--surface);border:1px solid var(--line)">
+      <h3 class="font-display font-semibold text-lg mb-4">Tasks</h3>
+      <div class="space-y-3 text-sm" style="color:var(--inkMuted)">
+        <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 font-medium transition-colors hover:bg-[rgba(197,165,90,.08)]" style="background:rgba(197,165,90,.08);color:var(--ink)">
+          <span class="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold" style="background:var(--gold);color:var(--navy)">1</span> Problem brief
+        </a>
+        <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-[rgba(197,165,90,.08)]" style="color:var(--inkMuted)">
+          <span class="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold" style="border:1px solid var(--line);color:var(--inkMuted)">2</span> Customer talks
+        </a>
+        <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-[rgba(197,165,90,.08)]" style="color:var(--inkMuted)">
+          <span class="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold" style="border:1px solid var(--line);color:var(--inkMuted)">3</span> First build
+        </a>
+        <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-[rgba(197,165,90,.08)]" style="color:var(--inkMuted)">
+          <span class="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold" style="border:1px solid var(--line);color:var(--inkMuted)">4</span> First customer
+        </a>
+      </div>
+    </aside>
+
+    <!-- Tiles -->
+    <div>
+      <div class="reveal grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+        <a href="#" class="rounded-2xl p-6 transition-colors hover:-translate-y-0.5" style="background:linear-gradient(160deg,var(--surface),#08152a);border:1px solid var(--line)">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(197,165,90,.15);color:var(--gold)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+          <div class="font-display font-semibold text-lg">Dashboard</div>
+          <div class="text-xs mt-1" style="color:var(--inkMuted)">Your cohort status at a glance</div>
+        </a>
+        <a href="#" class="rounded-2xl p-6 transition-colors hover:-translate-y-0.5" style="background:linear-gradient(160deg,var(--surface),#08152a);border:1px solid var(--line)">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(197,165,90,.15);color:var(--gold)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="font-display font-semibold text-lg">Resources</div>
+          <div class="text-xs mt-1" style="color:var(--inkMuted)">142 items, organized by week</div>
+        </a>
+        <a href="#" class="rounded-2xl p-6 transition-colors hover:-translate-y-0.5" style="background:linear-gradient(160deg,var(--surface),#08152a);border:1px solid var(--line)">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(197,165,90,.15);color:var(--gold)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="font-display font-semibold text-lg">Streaks</div>
+          <div class="text-xs mt-1" style="color:var(--inkMuted)">17 days, 412 XP this week</div>
+        </a>
+      </div>
+      <!-- Live search -->
+      <div class="rounded-2xl p-5" style="background:var(--surface);border:1px solid var(--line)">
+        <label for="hubSearch" class="text-sm font-medium">Search resources</label>
+        <div class="relative mt-2">
+          <input id="hubSearch" type="text" placeholder="Pricing, mentors, templates..." class="w-full rounded-xl px-4 py-3 text-sm" style="background:var(--navy);border:1px solid var(--line);color:var(--ink);outline:none;font-size:16px" oninput="filterHub(this.value)" />
+        </div>
+        <div id="hubResults" class="mt-4 space-y-2 text-sm"></div>
+      </div>
+    </div>
+
+    <!-- Forum sidebar -->
+    <aside class="rounded-2xl p-6" style="background:var(--surface);border:1px solid var(--line)">
+      <h3 class="font-display font-semibold text-lg mb-4">Forum</h3>
+      <div class="space-y-4 text-sm" style="color:var(--inkMuted)">
+        <a href="#" class="block rounded-xl px-3 py-3 transition-colors hover:bg-[rgba(197,165,90,.06)]" style="border:1px solid var(--line)">
+          <div class="font-medium" style="color:var(--ink)">Week 05 demos, live now</div>
+          <div class="text-xs mt-1">12 pitches, 3 finalists, jury seated</div>
+        </a>
+        <a href="#" class="block rounded-xl px-3 py-3 transition-colors hover:bg-[rgba(197,165,90,.06)]" style="border:1px solid var(--line)">
+          <div class="font-medium" style="color:var(--ink)">Mentor session notes</div>
+          <div class="text-xs mt-1">Yewande Adetunji, pricing models, 18 Aug</div>
+        </a>
+        <a href="#" class="block rounded-xl px-3 py-3 transition-colors hover:bg-[rgba(197,165,90,.06)]" style="border:1px solid var(--line)">
+          <div class="font-medium" style="color:var(--ink)">Cohort VI wrap</div>
+          <div class="text-xs mt-1">4 of 5 teams still operating, 6 months after</div>
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== RESOURCES (TABS + CARDS) ===== -->
+<section id="hub-internals" class="max-w-[1280px] mx-auto px-5 md:px-8 py-24" style="border-top:1px solid var(--line)">
+  <div class="reveal mb-8">
+    <div class="sc text-[11px] font-semibold tracking-[0.18em] uppercase mb-3" style="color:var(--goldLight)">Resources</div>
+    <h2 class="font-display font-semibold tracking-tight" style="font-size:clamp(28px,3.5vw,42px);line-height:1.1">Library, by week and by topic.</h2>
+  </div>
+  <div class="reveal flex gap-2 mb-8 flex-wrap" role="tablist" aria-label="Resource tabs">
+    <button onclick="showTab('books')" id="tab-btn-books" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors" style="background:var(--gold);color:var(--navy)">Books</button>
+    <button onclick="showTab('templates')" id="tab-btn-templates" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors" style="background:var(--surface);border:1px solid var(--line);color:var(--inkMuted)">Templates</button>
+    <button onclick="showTab('ai')" id="tab-btn-ai" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors" style="background:var(--surface);border:1px solid var(--line);color:var(--inkMuted)">AI Toolkit</button>
+  </div>
+
+  <div id="tab-books" class="tab-card active">
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Week 01</div>
+        <h4 class="font-display font-semibold text-lg">The Mom Test</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">How to talk to customers and learn if your problem is real.</p>
+      </a>
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Week 03</div>
+        <h4 class="font-display font-semibold text-lg">Lean Startup</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">Build the smallest thing that solves the problem.</p>
+      </a>
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Week 05</div>
+        <h4 class="font-display font-semibold text-lg">Pricing for Early Products</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">One-page models, flagged guesses, payback math.</p>
+      </a>
+    </div>
+  </div>
+  <div id="tab-templates" class="tab-card">
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Problem brief</div>
+        <h4 class="font-display font-semibold text-lg">Problem brief template</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">One page, one person, ten conversations.</p>
+      </a>
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Pitch</div>
+        <h4 class="font-display font-semibold text-lg">5-minute pitch deck</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">No slides you have to apologize for.</p>
+      </a>
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Model</div>
+        <h4 class="font-display font-semibold text-lg">Unit economics sheet</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">CAC, LTV, contribution margin, payback.</p>
+      </a>
+    </div>
+  </div>
+  <div id="tab-ai" class="tab-card">
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Research</div>
+        <h4 class="font-display font-semibold text-lg">Research assistant</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">With sources, not guesses.</p>
+      </a>
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Draft review</div>
+        <h4 class="font-display font-semibold text-lg">Draft review for pitches</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">Problem statements and pitch scripts.</p>
+      </a>
+      <a href="#" class="rounded-2xl p-6 block transition-colors hover:-translate-y-0.5" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="text-[10px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--goldLight)">Recommender</div>
+        <h4 class="font-display font-semibold text-lg">Weekly recommender</h4>
+        <p class="text-xs mt-2" style="color:var(--inkMuted)">What to read next based on your week.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 py-24" style="border-top:1px solid var(--line)">
+  <div class="reveal rounded-3xl p-10 md:p-16 text-center gold-shadow relative overflow-hidden" style="background:linear-gradient(160deg,var(--surface),#0d1830);border:1px solid var(--line)">
+    <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+    <h2 class="font-display font-bold tracking-tight" style="font-size:clamp(28px,4vw,52px);line-height:1.1">Start building before the cohort closes.</h2>
+    <p class="mt-4 text-base md:text-lg max-w-xl mx-auto" style="color:var(--inkMuted)">Apply with a problem, join a team of twenty, ship by week eight. No equity taken. No hidden fees for active participants.</p>
+    <form onsubmit="handleApply(event)" class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" novalidate>
+      <input type="email" required placeholder="your@email.com" class="flex-1 rounded-full px-5 py-3.5 text-sm" style="background:var(--navy);border:1px solid var(--line);color:var(--ink);outline:none;font-size:16px" />
+      <button type="submit" class="mag-cta rounded-full px-8 py-3.5 text-sm font-semibold" style="background:var(--gold);color:var(--navy);box-shadow:0 6px 18px rgba(197,165,90,.25)">Apply now</button>
+    </form>
+    <div id="applyMsg" class="mt-3 text-sm font-medium" style="color:var(--goldLight);display:none"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer style="border-top:1px solid var(--line);background:var(--navy)">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8 py-12 grid md:grid-cols-4 gap-10 text-sm">
+    <div>
+      <div class="font-display font-bold text-xl mb-3"><span style="color:var(--gold)">HORIZON</span></div>
+      <p style="color:var(--inkMuted)">A premium pipeline for student founders. Deep navy, gold, Playfair display, Inter body. One direction, one stage.</p>
+    </div>
+    <div>
+      <div class="font-semibold text-xs tracking-[0.14em] uppercase mb-3" style="color:var(--stone)">Program</div>
+      <ul class="space-y-2" style="color:var(--inkMuted)"><li><a href="#challenge" class="hover:text-[var(--ink)] transition-colors">The Challenge</a></li><li><a href="#challenge" class="hover:text-[var(--ink)] transition-colors">Schedule</a></li><li><a href="#challenge" class="hover:text-[var(--ink)] transition-colors">Forum</a></li></ul>
+    </div>
+    <div>
+      <div class="font-semibold text-xs tracking-[0.14em] uppercase mb-3" style="color:var(--stone)">Hub</div>
+      <ul class="space-y-2" style="color:var(--inkMuted)"><li><a href="#hub" class="hover:text-[var(--ink)] transition-colors">Dashboard</a></li><li><a href="#hub-internals" class="hover:text-[var(--ink)] transition-colors">Resources</a></li><li><a href="#hub" class="hover:text-[var(--ink)] transition-colors">Streaks</a></li></ul>
+    </div>
+    <div>
+      <div class="font-semibold text-xs tracking-[0.14em] uppercase mb-3" style="color:var(--stone)">Contact</div>
+      <ul class="space-y-2" style="color:var(--inkMuted)"><li>Lagos, Nigeria</li><li>Accra, Ghana</li><li>Nairobi, Kenya</li><li><a href="#" class="hover:text-[var(--ink)] transition-colors">hello@horizon.africa</a></li></ul>
+    </div>
+  </div>
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs" style="color:var(--inkMuted);border-top:1px solid var(--line)">
+    <span>Direction O, HORIZON. 2026.</span>
+    <span>Playfair Display + Inter. Deep navy + gold.</span>
+  </div>
+</footer>
+
+<script>
+// ===== Scroll reveal =====
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ===== Sticky nav highlight =====
+const navLinks = document.querySelectorAll('[data-nav]');
+const sections = ['home','challenge','hub','hub-internals'].map(id => document.getElementById(id));
+function setActiveNav(id) {
+  navLinks.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + id); });
+}
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting && e.intersectionRatio > 0.25) setActiveNav(e.target.id); });
+}, { threshold: [0.25, 0.5] });
+sections.forEach(s => s && navObs.observe(s));
+
+// ===== Hamburger =====
+document.getElementById('hamburger').addEventListener('click', () => {
+  const d = document.getElementById('mobileDrawer');
+  d.classList.toggle('hidden');
+  document.getElementById('hamburger').setAttribute('aria-expanded', !d.classList.contains('hidden'));
+});
+document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('mobileDrawer').classList.add('hidden');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+}));
+
+// ===== Theme toggle (visual only) =====
+document.getElementById('themeToggle').addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+});
+
+// ===== Tab crossfade =====
+function showTab(name) {
+  ['books','templates','ai'].forEach(n => {
+    document.getElementById('tab-'+n).classList.toggle('active', n === name);
+    const btn = document.getElementById('tab-btn-'+n);
+    btn.style.background = n === name ? 'var(--gold)' : 'var(--surface)';
+    btn.style.color = n === name ? 'var(--navy)' : 'var(--inkMuted)';
+    btn.style.borderColor = n === name ? 'transparent' : 'var(--line)';
+  });
+}
+
+// ===== Live search filter (hub) =====
+const hubItems = [
+  {t:'Problem brief',d:'One page, ten conversations',tag:'Week 01'},
+  {t:'Customer talks',d:'Interview template and notes',tag:'Week 01'},
+  {t:'First build',d:'Working v0 checklist',tag:'Week 03'},
+  {t:'Pricing model',d:'Unit economics sheet',tag:'Week 05'},
+  {t:'Pitch deck',d:'5-minute structure',tag:'Week 07'},
+  {t:'Mentor notes',d:'Yewande Adetunji session',tag:'Mentor'},
+];
+function filterHub(q) {
+  const res = document.getElementById('hubResults');
+  if (!q.trim()) { res.innerHTML = ''; return; }
+  const matches = hubItems.filter(i => (i.t + ' ' + i.d).toLowerCase().includes(q.toLowerCase()));
+  if (!matches.length) { res.innerHTML = '<div style="color:var(--inkMuted)">No results</div>'; return; }
+  res.innerHTML = matches.map(m => `<a href="#" class="block rounded-xl px-3 py-3 text-sm" style="background:var(--surface);border:1px solid var(--line);color:var(--ink)"><div class="font-medium">${m.t}</div><div style="color:var(--inkMuted);font-size:11px">${m.d} · ${m.tag}</div></a>`).join('');
+}
+
+// ===== Form validation =====
+function handleApply(e) {
+  e.preventDefault();
+  const input = e.target.querySelector('input[type="email"]');
+  const msg = document.getElementById('applyMsg');
+  if (!input.value || !input.value.includes('@')) {
+    msg.textContent = 'Enter a valid email to apply.';
+    msg.style.display = 'block';
+    msg.style.color = '#c99';
+    return;
+  }
+  msg.textContent = 'Application received. We will be in touch before the cohort closes.';
+  msg.style.display = 'block';
+  msg.style.color = 'var(--goldLight)';
+  input.value = '';
+}
+</script>
+</body>
+</html>

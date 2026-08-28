@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MERIDIAN. Direction N</title>
+<meta name="description" content="MERIDIAN is a premium dark pipeline for student founders: challenge, hub, and resources in one system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink: '#0c0a09',
+        stone: '#f5f0e8',
+        amber: '#d97706',
+        amberDeep: '#b45309',
+        surface: '#141210',
+        surface2: '#181411',
+        line: '#2a2622',
+        muted: '#9a958c',
+        faint: '#6b6458',
+      },
+      fontFamily: {
+        display: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Sans Mono"', 'monospace'],
+      },
+    }
+  }
+}
+</script>
+<style>
+:root{--ink:#0c0a09;--stone:#f5f0e8;--amber:#d97706;--surface:#141210;--surface2:#181411;--line:#2a2622;--muted:#9a958c;--faint:#6b6458}
+html.dark{--ink:#f5f0e8;--stone:#0c0a09;--surface:#141210;--surface2:#181411;--line:#2a2622;--muted:#9a958c;--faint:#6b6458}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--ink);color:var(--stone);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .35s ease,color .35s ease}
+::selection{background:rgba(217,119,6,.18);color:inherit}
+h1,h2,h3,h4{font-family:"DM Sans",system-ui,sans-serif;letter-spacing:-0.035em;line-height:1.05;font-weight:600}
+img{max-width:100%;height:auto;display:block}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} .marquee-track{animation:none!important} .tilt{transform:none!important} }
+@media (hover:none) and (pointer:coarse){ .tilt{transform:none!important} }
+@media (max-width:1024px){ .hub-cols{grid-template-columns:1fr!important} .hub-cols>aside:last-child{display:none} .bento-grid{grid-template-columns:1fr 1fr!important} }
+@media (max-width:768px){ .bento-grid{grid-template-columns:1fr!important} .logos-grid{grid-template-columns:repeat(3,1fr)!important} .marquee-track{animation-duration:42s} }
+@media (max-width:480px){ .logos-grid{grid-template-columns:repeat(2,1fr)!important} .stats-grid-mobile{grid-template-columns:1fr!important} }
+.tilt{transform-style:preserve-3d;transition:transform .22s ease,box-shadow .22s ease}
+.nav-link{position:relative}
+.nav-link.active{font-weight:600;color:var(--stone)}
+.nav-link.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--amber);border-radius:999px}
+input,button{font-family:inherit}
+input[type="email"]{font-size:16px}
+</style>
+</head>
+<body class="min-h-[100dvh]">
+
+<!-- NAV 68px -->
+<header id="topnav" class="sticky top-0 z-50 backdrop-blur-xl" style="height:68px;background:color-mix(in srgb,var(--ink) 88%,transparent);border-bottom:1px solid var(--line)">
+  <div class="max-w-[1280px] mx-auto h-full px-5 md:px-8 flex items-center justify-between gap-6">
+    <a href="#home" class="flex items-center gap-3 shrink-0" aria-label="MERIDIAN home">
+      <span class="w-9 h-9 rounded-lg grid place-items-center text-[13px] font-bold shadow-md" style="background:var(--amber);box-shadow:0 4px 14px rgba(217,119,6,.35);color:#0c0a09">M</span>
+      <span class="font-display font-semibold tracking-tight text-[17px]">MERIDIAN</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-1 text-[13.5px] font-medium" aria-label="Primary" style="color:var(--muted)">
+      <a data-nav href="#home" class="nav-link px-3.5 py-2 rounded-full">Home</a>
+      <a data-nav href="#challenge" class="nav-link px-3.5 py-2 rounded-full">Challenge</a>
+      <a data-nav href="#hub" class="nav-link px-3.5 py-2 rounded-full">Hub</a>
+      <a data-nav href="#resources" class="nav-link px-3.5 py-2 rounded-full">Resources</a>
+    </nav>
+    <div class="flex items-center gap-2 shrink-0">
+      <button id="themeToggle" aria-label="Toggle theme" class="w-9 h-9 grid place-items-center rounded-full border transition-colors" style="border-color:var(--line);background:var(--surface);color:var(--stone)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+      </button>
+      <a href="#challenge" class="hidden md:inline-flex h-9 px-4 items-center rounded-full text-[13px] font-semibold text-[var(--ink)] shadow-md transition-transform hover:-translate-y-px" style="background:var(--amber);box-shadow:0 6px 18px rgba(217,119,6,.3)">Apply</a>
+      <button id="hamburger" aria-label="Open menu" aria-expanded="false" class="md:hidden w-11 h-11 grid place-items-center rounded-full border" style="border-color:var(--line);background:var(--surface);color:var(--stone)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileDrawer" class="hidden md:hidden absolute inset-x-0 top-[68px] p-3" style="background:color-mix(in srgb,var(--ink) 92%,transparent);backdrop-filter:blur(14px)">
+    <nav class="flex flex-col gap-1">
+      <a href="#home" class="mobile-link px-4 py-3 rounded-xl text-[15px] font-medium" style="color:var(--stone)">Home</a>
+      <a href="#challenge" class="mobile-link px-4 py-3 rounded-xl text-[15px] font-medium" style="color:var(--stone)">Challenge</a>
+      <a href="#hub" class="mobile-link px-4 py-3 rounded-xl text-[15px] font-medium" style="color:var(--stone)">Hub</a>
+      <a href="#resources" class="mobile-link px-4 py-3 rounded-xl text-[15px] font-medium" style="color:var(--stone)">Resources</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO split #home -->
+<section id="home" class="relative overflow-hidden">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8" style="min-height:min(100dvh,820px);display:grid;align-items:center;padding-top:36px;padding-bottom:28px">
+    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-16 items-center">
+      <div class="reveal" style="--d:0ms">
+        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold tracking-wide uppercase" style="border:1px solid var(--line);background:var(--surface);color:var(--muted)">
+          <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:var(--amber)"></span> Cohort opens July 23
+        </div>
+        <h1 class="mt-6 font-display font-bold tracking-tight" style="font-size:clamp(32px,6vw,56px);line-height:1.02;max-width:14ch">Ship a working product before you graduate.</h1>
+        <p class="mt-5 max-w-[46ch] leading-relaxed" style="color:var(--muted);font-size:16px">A dark pipeline for student founders who want to build, not just pitch. Real reviews, real users, one stage.</p>
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a href="#challenge" class="h-12 px-7 inline-flex items-center justify-center rounded-full text-sm font-semibold text-[var(--ink)] shadow-lg transition-all hover:-translate-y-0.5" style="background:var(--amber);box-shadow:0 8px 22px rgba(217,119,6,.35)">Apply now</a>
+          <a href="#hub" class="h-12 px-7 inline-flex items-center justify-center rounded-full text-sm font-semibold border transition-colors hover:bg-[rgba(217,119,6,.06)]" style="border-color:var(--line);color:var(--stone);background:var(--surface)">View hub</a>
+        </div>
+        <div class="mt-8 flex items-center gap-4 text-xs" style="color:var(--muted)">
+          <div class="flex -space-x-2">
+            <img src="https://picsum.photos/seed/meridian-u1/64/64" alt="" class="w-8 h-8 rounded-full object-cover ring-2" style="ring-color:var(--ink)">
+            <img src="https://picsum.photos/seed/meridian-u2/64/64" alt="" class="w-8 h-8 rounded-full object-cover ring-2" style="ring-color:var(--ink)">
+            <img src="https://picsum.photos/seed/meridian-u3/64/64" alt="" class="w-8 h-8 rounded-full object-cover ring-2" style="ring-color:var(--ink)">
+          </div>
+          <span>Founders from 15 universities</span>
+        </div>
+      </div>
+      <div class="reveal relative" style="--d:80ms">
+        <div class="rounded-[22px] overflow-hidden tilt shadow-2xl" style="box-shadow:0 20px 60px rgba(217,119,6,.18)">
+          <div class="relative overflow-hidden">
+            <img src="https://picsum.photos/seed/meridian-hero/900/620" alt="Team building" class="w-full h-[380px] md:h-[460px] object-cover transition-transform duration-700 hover:scale-[1.03]">
+            <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 50%,rgba(12,10,9,.22) 100%)"></div>
+            <div class="absolute left-3 right-3 bottom-3 grid grid-cols-[1.15fr_.85fr] gap-3">
+              <div class="rounded-2xl p-4" style="background:color-mix(in srgb,var(--surface2) 92%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line)">
+                <div class="text-[10px] font-semibold tracking-widest uppercase" style="color:var(--amber)">Active sprint</div>
+                <div class="mt-1 font-display font-semibold text-[15px]">Week 5 - Production</div>
+                <div class="mt-3 h-1.5 rounded-full overflow-hidden" style="background:rgba(245,240,232,.06)"><div class="h-full rounded-full" style="width:68%;background:var(--amber)"></div></div>
+                <div class="mt-2 flex justify-between text-[11px]" style="color:var(--muted)"><span>68% complete</span><span>9 days left</span></div>
+              </div>
+              <div class="hidden sm:flex flex-col gap-2 rounded-2xl p-4" style="background:color-mix(in srgb,var(--surface2) 92%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line)">
+                <div class="flex items-center justify-between"><span class="text-xs font-semibold">Team Meridian</span><span class="w-2 h-2 rounded-full" style="background:var(--amber)"></span></div>
+                <div class="h-px" style="background:var(--line)"></div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 text-xs rounded-lg px-3 py-2" style="background:var(--surface);border:1px solid var(--line)"><span class="w-5 h-5 rounded-full grid place-items-center text-[10px] font-bold" style="background:var(--amber);color:#0c0a09">✓</span> Demo ready</div>
+                  <div class="flex items-center gap-2 text-xs rounded-lg px-3 py-2" style="background:var(--surface);border:1px solid var(--line)"><span class="w-5 h-5 rounded-full grid place-items-center text-[10px]" style="border:1px solid var(--line)">◌</span> Pitch review</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden lg:flex absolute -top-3 -right-2 rounded-full px-4 py-2 text-xs font-semibold shadow-lg" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 22px rgba(217,119,6,.12);color:var(--stone)">
+          <span class="w-2 h-2 rounded-full mr-2" style="background:var(--amber)"></span> 15 universities connected
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee py-3 overflow-hidden" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface2)">
+  <div class="marquee-track inline-flex whitespace-nowrap text-[13px] font-medium tracking-wide" style="color:var(--muted);animation:marq 24s linear infinite">
+    <span class="mx-8 inline-flex items-center gap-8"><span>Shipping every week</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span><span>Mentors who have shipped</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span><span>Real users, real feedback</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span></span>
+    <span class="mx-8 inline-flex items-center gap-8"><span>Shipping every week</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span><span>Mentors who have shipped</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span><span>Real users, real feedback</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span></span>
+    <span class="mx-8 inline-flex items-center gap-8"><span>Shipping every week</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span><span>Mentors who have shipped</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span><span>Real users, real feedback</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span></span>
+    <span class="mx-8 inline-flex items-center gap-8"><span>Shipping every week</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span><span>Mentors who have shipped</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span><span>Real users, real feedback</span><span class="w-1.5 h-1.5 rounded-full" style="background:var(--amber)"></span></span>
+  </div>
+</div>
+<style>@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style>
+
+<!-- STATS -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 py-20 md:py-24 reveal" aria-label="Program stats">
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+    <div class="rounded-2xl p-6 text-center tilt" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 4px 18px rgba(217,119,6,.06)">
+      <div class="text-[32px] md:text-[36px] font-display font-bold tracking-tight leading-none count" data-count="15">0</div>
+      <div class="mt-3 text-[11px] font-semibold tracking-widest uppercase" style="color:var(--muted)">Universities</div>
+    </div>
+    <div class="rounded-2xl p-6 text-center tilt" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 4px 18px rgba(217,119,6,.06)">
+      <div class="text-[32px] md:text-[36px] font-display font-bold tracking-tight leading-none count" data-count="20">0</div>
+      <div class="mt-3 text-[11px] font-semibold tracking-widest uppercase" style="color:var(--muted)">Teams per cohort</div>
+    </div>
+    <div class="rounded-2xl p-6 text-center text-[var(--ink)] tilt" style="background:var(--amber);border:1px solid var(--amber);box-shadow:0 6px 22px rgba(217,119,6,.35)">
+      <div class="text-[32px] md:text-[36px] font-display font-bold tracking-tight leading-none"><span class="count" data-count="8">0</span> <span class="text-xl font-body font-normal">wks</span></div>
+      <div class="mt-3 text-[11px] font-semibold tracking-widest uppercase opacity-80">Sprint</div>
+    </div>
+    <div class="rounded-2xl p-6 text-center tilt" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 4px 18px rgba(217,119,6,.06)">
+      <div class="text-[32px] md:text-[36px] font-display font-bold tracking-tight leading-none"><span class="count" data-count="500">0</span><span class="text-xl">+</span></div>
+      <div class="mt-3 text-[11px] font-semibold tracking-widest uppercase" style="color:var(--muted)">Community</div>
+    </div>
+    <div class="rounded-2xl p-6 text-center tilt col-span-2 md:col-span-1" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 4px 18px rgba(217,119,6,.06)">
+      <div class="text-[32px] md:text-[36px] font-display font-bold tracking-tight leading-none"><span class="count" data-count="200">0</span>k</div>
+      <div class="mt-3 text-[11px] font-semibold tracking-widest uppercase" style="color:var(--muted)">Grand prize</div>
+    </div>
+  </div>
+</section>
+
+<!-- SURFACES -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 pb-24 reveal" aria-label="Surfaces">
+  <div class="flex items-end justify-between gap-4 mb-8">
+    <div>
+      <div class="eyebrow text-[11px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--amber)">One system, three surfaces</div>
+      <h2 class="text-[28px] md:text-[36px] font-display font-bold tracking-tight">Writers, builders, and operators under one roof.</h2>
+    </div>
+    <a href="#challenge" class="hidden md:inline-flex text-sm font-medium hover:opacity-70" style="color:var(--muted)">See challenge →</a>
+  </div>
+  <div class="bento-grid grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr] gap-4">
+    <a href="#challenge" class="card-hover rounded-3xl overflow-hidden tilt relative shadow-xl" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 12px 40px rgba(217,119,6,.08)">
+      <div class="relative h-[220px] md:h-[260px] overflow-hidden">
+        <img src="https://picsum.photos/seed/meridian-incub/800/500" alt="Incubator" class="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]">
+        <div class="absolute top-4 left-4 rounded-full px-3 py-1 text-xs font-bold text-[var(--ink)] shadow-md" style="background:var(--amber)">Featured</div>
+      </div>
+      <div class="p-7 md:p-8 flex flex-col">
+        <div class="w-10 h-10 rounded-xl grid place-items-center shadow-md mb-4" style="background:var(--amber);box-shadow:0 4px 14px rgba(217,119,6,.3);color:#0c0a09">◈</div>
+        <h3 class="text-xl font-display font-bold">Incubator</h3>
+        <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Eight weeks from idea to demo day. Weekly reviews, labs that keep you shipping, and a stage that earns interest.</p>
+        <span class="mt-auto pt-5 inline-flex rounded-full px-4 py-2 text-xs font-bold w-fit" style="background:var(--amber);color:#0c0a09">Apply now</span>
+      </div>
+    </a>
+    <div class="rounded-3xl p-7 tilt" style="background:linear-gradient(135deg,#26190e 0%,var(--surface) 70%);border:1px solid var(--line);box-shadow:0 12px 40px rgba(217,119,6,.08)">
+      <div class="w-10 h-10 rounded-xl grid place-items-center" style="background:#0c0a09;border:1px solid var(--line);color:var(--amber)">⚡</div>
+      <h3 class="mt-4 text-xl font-display font-bold">Challenge</h3>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Compete across fifteen universities. Twenty teams, real problems, judged by operators.</p>
+      <div class="mt-4 flex gap-2">
+        <span class="rounded-full px-3 py-1 text-xs font-bold text-[var(--ink)]" style="background:var(--amber)">15 schools</span>
+        <span class="rounded-full px-3 py-1 text-xs font-semibold" style="background:#0c0a09;border:1px solid var(--line);color:var(--stone)">8 weeks</span>
+      </div>
+      <img src="https://picsum.photos/seed/meridian-chall/600/240" alt="Challenge" class="mt-5 w-full h-[100px] object-cover rounded-2xl" loading="lazy">
+    </div>
+    <a href="#hub" class="rounded-3xl p-7 tilt" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 12px 40px rgba(217,119,6,.08)">
+      <div class="w-10 h-10 rounded-xl grid place-items-center" style="background:var(--surface);border:1px solid var(--line);color:var(--amber)">⬢</div>
+      <h3 class="mt-4 text-xl font-display font-bold">Hub</h3>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Tasks, classes, attendance, and team chat in one place. Your home base for momentum.</p>
+      <div class="mt-4 rounded-2xl p-3 flex items-center gap-3" style="background:var(--surface);border:1px solid var(--line)">
+        <div class="flex -space-x-2">
+          <span class="w-7 h-7 rounded-full grid place-items-center text-[11px] font-bold text-[var(--ink)]" style="background:var(--amber)">T</span>
+          <span class="w-7 h-7 rounded-full grid place-items-center text-[11px] font-bold" style="background:#0c0a09;border:1px solid var(--line);color:var(--stone)">A</span>
+        </div>
+        <div class="text-xs"><div class="font-semibold">Team Meridian</div><div style="color:var(--muted)">3 members online</div></div>
+        <span class="ml-auto w-2 h-2 rounded-full" style="background:var(--amber)"></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CHALLENGE #challenge -->
+<section id="challenge" class="max-w-[1280px] mx-auto px-5 md:px-8 pt-8 md:pt-16 reveal" aria-label="Innovation Challenge">
+  <div class="rounded-3xl overflow-hidden shadow-2xl" style="border:1px solid var(--line);box-shadow:0 20px 60px rgba(217,119,6,.12)">
+    <div class="grid lg:grid-cols-2 gap-0">
+      <div class="p-8 md:p-10 lg:p-12">
+        <div class="inline-flex rounded-full px-3 py-1 text-[11px] font-bold tracking-widest text-[var(--ink)] shadow-md" style="background:var(--amber)">INNOVATION CHALLENGE 2026</div>
+        <h2 class="mt-6 font-display font-bold tracking-tight" style="font-size:clamp(28px,5vw,44px);line-height:1.05">Turn your idea into a working product in 8 weeks.</h2>
+        <p class="mt-4 text-[15px] leading-relaxed max-w-[52ch]" style="color:var(--muted)">A sprint for student teams who want to ship, not just pitch. Mentors, labs, and a stage that earns attention.</p>
+        <div class="mt-7 grid grid-cols-3 gap-3">
+          <div class="rounded-2xl p-4 text-center" style="background:var(--surface);border:1px solid var(--line)"><div class="text-2xl font-display font-bold">15</div><div class="text-[11px] font-semibold tracking-widest uppercase mt-1" style="color:var(--muted)">Universities</div></div>
+          <div class="rounded-2xl p-4 text-center" style="background:var(--surface);border:1px solid var(--line)"><div class="text-2xl font-display font-bold">20</div><div class="text-[11px] font-semibold tracking-widest uppercase mt-1" style="color:var(--muted)">Teams</div></div>
+          <div class="rounded-2xl p-4 text-center text-[var(--ink)] shadow-lg" style="background:var(--amber);border:1px solid var(--amber);box-shadow:0 6px 18px rgba(217,119,6,.3)"><div class="text-2xl font-display font-bold">8</div><div class="text-[11px] font-semibold tracking-widest uppercase mt-1 opacity-80">Weeks</div></div>
+        </div>
+        <a href="#challenge" class="mt-7 inline-flex h-12 px-8 items-center rounded-full text-sm font-semibold text-[var(--ink)] shadow-lg transition-all hover:-translate-y-0.5" style="background:var(--amber);box-shadow:0 8px 22px rgba(217,119,6,.35)">Apply now</a>
+      </div>
+      <div class="relative min-h-[380px] lg:min-h-0">
+        <img src="https://picsum.photos/seed/meridian-work/900/700" alt="Workspace" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 30%,rgba(12,10,9,.22) 100%)"></div>
+        <div class="absolute bottom-4 left-4 right-4 rounded-2xl p-4 flex items-center justify-between shadow-xl" style="background:color-mix(in srgb,var(--surface2) 88%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line)">
+          <div><div class="text-xs font-medium" style="color:var(--muted)">Next cohort</div><div class="font-display font-semibold text-sm">July 23 - Sept 18</div></div>
+          <span class="rounded-full px-3 py-1 text-xs font-bold text-[var(--ink)] shadow-md" style="background:var(--amber)">8 wks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 py-24 reveal" aria-label="Founder note">
+  <div class="rounded-3xl overflow-hidden shadow-2xl" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 12px 40px rgba(217,119,6,.08)">
+    <div class="grid md:grid-cols-[420px_1fr] gap-0">
+      <div class="relative h-[320px] md:h-auto overflow-hidden">
+        <img src="https://picsum.photos/seed/meridian-founder/800/700" alt="Founder" class="w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+        <div class="eyebrow text-[11px] font-semibold tracking-[0.14em] uppercase mb-3" style="color:var(--amber)">Founder note</div>
+        <h3 class="font-display font-bold tracking-tight text-2xl md:text-[26px]">I founded MERIDIAN because talent needs a runway, not just advice.</h3>
+        <blockquote class="mt-5 leading-relaxed text-[15px]" style="color:var(--stone)">"We had ideas but no path to ship. MERIDIAN gives you mentors who review weekly, space to build, and a stage where people actually listen."</blockquote>
+        <p class="mt-3 text-[15px] leading-relaxed" style="color:var(--muted)">This is not a course. It is a pipeline that rewards work. You show up, you build, you earn the next room.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <img src="https://picsum.photos/seed/meridian-avatar/80/80" alt="Founder" class="w-10 h-10 rounded-full object-cover shadow-md" loading="lazy">
+          <div><div class="font-semibold text-sm">Amina R.</div><div class="text-xs" style="color:var(--muted)">Founder, MERIDIAN</div></div>
+          <a href="#challenge" class="ml-auto rounded-full px-4 h-9 inline-flex items-center text-xs font-bold shadow-sm transition-transform hover:-translate-y-px" style="border:1px solid var(--line);background:#0c0a09;color:var(--stone)">Apply now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 pb-24 reveal" aria-label="How it works">
+  <h2 class="font-display font-bold tracking-tight text-[28px] md:text-[32px]">How it works</h2>
+  <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="rounded-3xl p-7 tilt shadow-lg" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 6px 24px rgba(217,119,6,.08)">
+      <div class="text-xs font-bold tracking-widest" style="color:var(--amber)">01</div>
+      <h4 class="mt-3 font-display font-bold text-lg">Apply</h4>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Submit your team and problem. We review in 48 hours and select twenty.</p>
+      <div class="mt-4 h-1.5 rounded-full overflow-hidden" style="background:rgba(217,119,6,.08)"><div class="h-full rounded-full" style="width:25%;background:var(--amber)"></div></div>
+    </div>
+    <div class="rounded-3xl p-7 tilt shadow-lg" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 6px 24px rgba(217,119,6,.08)">
+      <div class="text-xs font-bold tracking-widest" style="color:var(--amber)">02</div>
+      <h4 class="mt-3 font-display font-bold text-lg">Build</h4>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Eight week sprint with mentors, labs, and weekly demos. No hiding.</p>
+      <div class="mt-4 h-1.5 rounded-full overflow-hidden" style="background:rgba(217,119,6,.08)"><div class="h-full rounded-full" style="width:50%;background:var(--amber)"></div></div>
+    </div>
+    <div class="rounded-3xl p-7 tilt text-[var(--ink)] shadow-xl" style="background:var(--amber);border:1px solid var(--amber);box-shadow:0 8px 26px rgba(217,119,6,.35)">
+      <div class="text-xs font-bold tracking-widest opacity-70">03</div>
+      <h4 class="mt-3 font-display font-bold text-lg">Ship</h4>
+      <p class="mt-2 text-[15px] leading-relaxed opacity-90">Launch a working product and collect real users. Demo or you do not graduate.</p>
+      <div class="mt-4 h-1.5 rounded-full overflow-hidden" style="background:rgba(12,10,9,.25)"><div class="h-full bg-[#0c0a09] rounded-full" style="width:75%"></div></div>
+    </div>
+    <div class="rounded-3xl p-7 tilt shadow-lg" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 6px 24px rgba(217,119,6,.08)">
+      <div class="text-xs font-bold tracking-widest" style="color:var(--amber)">04</div>
+      <h4 class="mt-3 font-display font-bold text-lg">Showcase</h4>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Pitch at the Forum. One stage, the right people, real interest.</p>
+      <div class="mt-4 h-1.5 rounded-full overflow-hidden" style="background:rgba(217,119,6,.08)"><div class="h-full rounded-full" style="width:100%;background:var(--amber)"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HUB #hub -->
+<section id="hub" class="border-t reveal" style="border-color:var(--line);background:color-mix(in srgb,var(--surface2) 60%,var(--ink))" aria-label="Innovation Hub">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="h-[64px] px-5 md:px-8 flex items-center justify-between gap-4" style="border-bottom:1px solid var(--line);background:var(--surface)">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full grid place-items-center text-[var(--ink)] font-bold text-sm shadow-md" style="background:var(--amber);box-shadow:0 4px 14px rgba(217,119,6,.35)">M</span>
+        <span class="font-display font-bold tracking-tight">Hub</span>
+        <span class="hidden md:inline-flex rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-widest" style="background:var(--surface);border:1px solid var(--line);color:var(--muted)">COHORT 2026</span>
+      </div>
+      <div class="flex items-center gap-3 flex-1 justify-end max-w-[520px]">
+        <div class="relative flex-1 hidden sm:block">
+          <input id="hubSearch" type="text" placeholder="Search tasks, resources, people" oninput="filterHub(this.value)" class="w-full h-10 pl-9 pr-4 rounded-xl text-sm border transition-colors focus:outline-none focus:border-[var(--amber)]" style="background:var(--surface);border-color:var(--line);font-size:16px;color:var(--stone)">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm" style="color:var(--muted)">⌕</span>
+        </div>
+        <img src="https://picsum.photos/seed/meridian-avatar/80/80" alt="Profile" class="w-9 h-9 rounded-full object-cover ring-2" style="ring-color:var(--ink)" loading="lazy">
+      </div>
+    </div>
+    <div class="hub-cols grid grid-cols-1 lg:grid-cols-[240px_1fr_320px] gap-0">
+      <aside class="hidden lg:block p-4" style="border-right:1px solid var(--line);background:var(--surface);min-height:720px">
+        <nav class="space-y-1 text-sm font-medium" style="color:var(--muted)">
+          <a href="#hub" class="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold" style="background:var(--surface);border:1px solid var(--line);color:var(--stone)">◎ Overview</a>
+          <a href="#resources" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:opacity-70">⌘ Resources</a>
+          <a href="#hub" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:opacity-70">▭ Tasks</a>
+          <a href="#hub" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:opacity-70">◐ Classes</a>
+          <a href="#hub" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:opacity-70">◉ Team</a>
+          <a href="#hub" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:opacity-70">✦ Forum</a>
+        </nav>
+        <div class="mt-6 rounded-3xl p-5 text-[var(--ink)] shadow-lg" style="background:var(--amber);box-shadow:0 8px 22px rgba(217,119,6,.35)">
+          <div class="text-[10px] font-bold tracking-[0.14em] uppercase opacity-70">Up next</div>
+          <div class="mt-2 font-display font-semibold text-sm">Live review - Today 4pm</div>
+          <div class="mt-1 text-xs opacity-80">Product critique with Maya</div>
+          <button onclick="notify('Join confirmed.')" class="mt-3 rounded-full bg-[#0c0a09] px-4 h-9 text-xs font-bold transition-transform hover:-translate-y-px" style="color:var(--stone)">Join now</button>
+        </div>
+      </aside>
+      <main class="p-5 md:p-7 space-y-6" style="background:var(--ink)">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            <h3 class="font-display font-bold text-xl tracking-tight">Good morning, Tolu</h3>
+            <p class="text-sm" style="color:var(--muted)">You are on a 5 day streak. Keep it up.</p>
+          </div>
+          <div class="rounded-2xl px-4 py-3 flex items-center gap-3 shadow-sm" style="background:var(--surface);border:1px solid var(--line)">
+            <span class="w-8 h-8 rounded-full grid place-items-center text-sm shadow-md" style="background:var(--amber);color:#0c0a09">🔥</span>
+            <div><div class="font-semibold text-sm">5 day streak</div><div class="text-xs" style="color:var(--muted)">2 days to next badge</div></div>
+          </div>
+        </div>
+        <div id="hubTiles" class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="hub-tile rounded-2xl p-5 shadow-sm tilt" data-label="Tasks" style="background:var(--surface);border:1px solid var(--line)"><div class="text-xs font-bold tracking-widest uppercase" style="color:var(--amber)">Tasks</div><div class="mt-3 text-2xl font-display font-bold">4</div><div class="text-xs" style="color:var(--muted)">Due this week</div></div>
+          <div class="hub-tile rounded-2xl p-5 shadow-sm tilt" data-label="Resources" style="background:var(--surface);border:1px solid var(--line)"><div class="text-xs font-bold tracking-widest uppercase" style="color:var(--amber)">Resources</div><div class="mt-3 text-2xl font-display font-bold">12</div><div class="text-xs" style="color:var(--muted)">Available now</div></div>
+          <div class="hub-tile rounded-2xl p-5 text-[var(--ink)] shadow-lg tilt" data-label="XP" style="background:var(--amber);border:1px solid var(--amber);box-shadow:0 6px 18px rgba(217,119,6,.3)"><div class="text-xs font-bold tracking-widest uppercase opacity-70">XP</div><div class="mt-3 text-2xl font-display font-bold">3,240</div><div class="text-xs opacity-80">Top 10%</div></div>
+          <div class="hub-tile rounded-2xl p-5 shadow-sm tilt" data-label="Team" style="background:var(--surface);border:1px solid var(--line)"><div class="text-xs font-bold tracking-widest uppercase" style="color:var(--amber)">Team</div><div class="mt-3 text-2xl font-display font-bold">3</div><div class="text-xs" style="color:var(--muted)">Online now</div></div>
+        </div>
+        <div class="rounded-2xl p-5 shadow-sm" style="background:var(--surface);border:1px solid var(--line)">
+          <h4 class="font-display font-bold text-base mb-3">Active tasks</h4>
+          <div class="space-y-3" id="taskList">
+            <div class="task-row flex items-center gap-3 p-3 rounded-xl" style="background:var(--surface2);border:1px solid var(--line)"><span class="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold text-[var(--ink)]" style="background:var(--amber)">1</span><div><div class="text-sm font-medium">Pitch deck draft</div><div class="text-xs" style="color:var(--muted)">Due Jul 30</div></div></div>
+            <div class="task-row flex items-center gap-3 p-3 rounded-xl" style="background:var(--surface2);border:1px solid var(--line)"><span class="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold text-[var(--ink)]" style="background:var(--amber)">2</span><div><div class="text-sm font-medium">User interview notes</div><div class="text-xs" style="color:var(--muted)">Due Aug 2</div></div></div>
+            <div class="task-row flex items-center gap-3 p-3 rounded-xl" style="background:var(--surface2);border:1px solid var(--line)"><span class="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold text-[var(--ink)]" style="background:var(--amber)">3</span><div><div class="text-sm font-medium">Lab prep materials</div><div class="text-xs" style="color:var(--muted)">Due Aug 5</div></div></div>
+          </div>
+        </div>
+      </main>
+      <aside class="hidden lg:block p-5" style="border-left:1px solid var(--line);background:var(--surface)">
+        <h4 class="font-display font-bold mb-3">Upcoming</h4>
+        <div class="space-y-3">
+          <div class="rounded-2xl p-4 shadow-sm" style="background:var(--ink);border:1px solid var(--line)">
+            <div class="text-xs font-semibold" style="color:var(--amber)">Today 4pm</div>
+            <div class="font-display font-semibold text-sm">Live review with Maya</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Product critique, 30 mins</div>
+          </div>
+          <div class="rounded-2xl p-4 shadow-sm" style="background:var(--ink);border:1px solid var(--line)">
+            <div class="text-xs font-semibold" style="color:var(--amber)">Thu 11am</div>
+            <div class="font-display font-semibold text-sm">Mentor office hours</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Open to all teams</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES #resources with tabs -->
+<section id="resources" class="max-w-[1280px] mx-auto px-5 md:px-8 py-24 reveal" aria-label="Resources">
+  <div class="eyebrow text-[11px] font-semibold tracking-[0.14em] uppercase mb-2" style="color:var(--amber)">Resources</div>
+  <h2 class="font-display font-bold tracking-tight text-[28px] md:text-[32px] mb-8">Browse the library.</h2>
+  <div class="flex flex-wrap gap-2 mb-6" id="resourceTabs" role="tablist" aria-label="Resource filters">
+    <button onclick="switchTab('all', this)" class="tab-btn active rounded-full px-4 py-2 text-xs font-bold transition-colors" style="background:var(--amber);color:#0c0a09">All</button>
+    <button onclick="switchTab('design', this)" class="tab-btn rounded-full px-4 py-2 text-xs font-bold border transition-colors" style="background:transparent;border-color:var(--line);color:var(--stone)">Design</button>
+    <button onclick="switchTab('pitch', this)" class="tab-btn rounded-full px-4 py-2 text-xs font-bold border transition-colors" style="background:transparent;border-color:var(--line);color:var(--stone)">Pitch</button>
+    <button onclick="switchTab('metrics', this)" class="tab-btn rounded-full px-4 py-2 text-xs font-bold border transition-colors" style="background:transparent;border-color:var(--line);color:var(--stone)">Metrics</button>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="resourceGrid">
+    <article class="resource-card rounded-3xl p-7 tilt shadow-lg" data-tab="design" style="background:var(--surface);border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--amber)">Design</div>
+      <h3 class="font-display font-bold text-xl">Design for reality</h3>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">How to build interfaces that survive real users, not just presentations.</p>
+      <div class="mt-4 flex gap-2"><span class="rounded-full px-2.5 py-0.5 text-[10px] font-bold" style="background:var(--surface2);border:1px solid var(--line);color:var(--stone)">Module</span><span class="rounded-full px-2.5 py-0.5 text-[10px] font-bold" style="background:var(--amber);color:#0c0a09">Popular</span></div>
+    </article>
+    <article class="resource-card rounded-3xl p-7 tilt shadow-lg" data-tab="pitch" style="background:var(--surface);border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--amber)">Pitch</div>
+      <h3 class="font-display font-bold text-xl">Pitch with proof</h3>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Structure your story with evidence, not hope. Examples from funded teams.</p>
+      <div class="mt-4 flex gap-2"><span class="rounded-full px-2.5 py-0.5 text-[10px] font-bold" style="background:var(--surface2);border:1px solid var(--line);color:var(--stone)">Guide</span></div>
+    </article>
+    <article class="resource-card rounded-3xl p-7 tilt shadow-lg" data-tab="metrics" style="background:var(--surface);border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--amber)">Metrics</div>
+      <h3 class="font-display font-bold text-xl">Metrics that matter</h3>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Which numbers actually tell you if you are growing, and which distract.</p>
+      <div class="mt-4 flex gap-2"><span class="rounded-full px-2.5 py-0.5 text-[10px] font-bold" style="background:var(--surface2);border:1px solid var(--line);color:var(--stone)">Module</span></div>
+    </article>
+    <article class="resource-card rounded-3xl p-7 tilt shadow-lg" data-tab="pitch" style="background:var(--surface);border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--amber)">Pitch</div>
+      <h3 class="font-display font-bold text-xl">The 10-minute demo</h3>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">How to show, not tell. Structure, pacing, and the one slide to cut.</p>
+      <div class="mt-4 flex gap-2"><span class="rounded-full px-2.5 py-0.5 text-[10px] font-bold" style="background:var(--surface2);border:1px solid var(--line);color:var(--stone)">Workshop</span></div>
+    </article>
+    <article class="resource-card rounded-3xl p-7 tilt shadow-lg" data-tab="design" style="background:var(--surface);border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--amber)">Design</div>
+      <h3 class="font-display font-bold text-xl">Color and contrast</h3>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">A practical guide to accessible dark interfaces that still feel premium.</p>
+      <div class="mt-4 flex gap-2"><span class="rounded-full px-2.5 py-0.5 text-[10px] font-bold" style="background:var(--surface2);border:1px solid var(--line);color:var(--stone)">Guide</span></div>
+    </article>
+    <article class="resource-card rounded-3xl p-7 tilt shadow-lg" data-tab="metrics" style="background:var(--surface);border:1px solid var(--line)">
+      <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:var(--amber)">Metrics</div>
+      <h3 class="font-display font-bold text-xl">Retention curves</h3>
+      <p class="mt-2 text-[15px] leading-relaxed" style="color:var(--muted)">Reading cohort charts without overfitting to noise. A calm method.</p>
+      <div class="mt-4 flex gap-2"><span class="rounded-full px-2.5 py-0.5 text-[10px] font-bold" style="background:var(--surface2);border:1px solid var(--line);color:var(--stone)">Module</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- LOGOS SVG monograms -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 py-24 reveal" aria-label="University partners">
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <div class="eyebrow text-[11px] font-semibold tracking-[0.14em] uppercase mb-1" style="color:var(--amber)">Partners</div>
+      <h2 class="font-display font-bold tracking-tight text-[24px]">University partners</h2>
+    </div>
+    <span class="text-xs font-medium" style="color:var(--muted)">15 and growing</span>
+  </div>
+  <div class="logos-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+    <div class="rounded-2xl p-5 flex items-center gap-3 shadow-sm tilt" style="background:var(--surface);border:1px solid var(--line)">
+      <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="var(--amber)"/><text x="18" y="22" text-anchor="middle" fill="#0c0a09" font-family="DM Sans,system-ui" font-weight="700" font-size="14">U</text></svg>
+      <span class="font-display font-semibold text-sm">Unilag</span>
+    </div>
+    <div class="rounded-2xl p-5 flex items-center gap-3 shadow-sm tilt" style="background:var(--surface);border:1px solid var(--line)">
+      <svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#0c0a09" stroke="var(--line)" stroke-width="2"/><text x="18" y="22" text-anchor="middle" fill="var(--stone)" font-family="DM Sans,system-ui" font-weight="700" font-size="14">O</text></svg>
+      <span class="font-display font-semibold text-sm">OAU</span>
+    </div>
+    <div class="rounded-2xl p-5 flex items-center gap-3 shadow-sm tilt" style="background:var(--surface);border:1px solid var(--line)">
+      <svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="var(--amber)"/><text x="18" y="22" text-anchor="middle" fill="#0c0a09" font-family="DM Sans,system-ui" font-weight="700" font-size="14">C</text></svg>
+      <span class="font-display font-semibold text-sm">Covenant</span>
+    </div>
+    <div class="rounded-2xl p-5 flex items-center gap-3 shadow-sm tilt" style="background:var(--surface);border:1px solid var(--line)">
+      <svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#0c0a09" stroke="var(--line)" stroke-width="2"/><text x="18" y="22" text-anchor="middle" fill="var(--stone)" font-family="DM Sans,system-ui" font-weight="700" font-size="14">L</text></svg>
+      <span class="font-display font-semibold text-sm">LASU</span>
+    </div>
+    <div class="rounded-2xl p-5 flex items-center gap-3 shadow-sm tilt" style="background:var(--surface);border:1px solid var(--line)">
+      <svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="var(--amber)"/><text x="18" y="22" text-anchor="middle" fill="#0c0a09" font-family="DM Sans,system-ui" font-weight="700" font-size="14">B</text></svg>
+      <span class="font-display font-semibold text-sm">Babcock</span>
+    </div>
+    <div class="rounded-2xl p-5 flex items-center gap-3 shadow-sm tilt" style="background:var(--surface);border:1px solid var(--line)">
+      <svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#0c0a09" stroke="var(--line)" stroke-width="2"/><text x="18" y="22" text-anchor="middle" fill="var(--stone)" font-family="DM Sans,system-ui" font-weight="700" font-size="14">F</text></svg>
+      <span class="font-display font-semibold text-sm">FUTA</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / COMMITMENT + FORM -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 pb-24 reveal" aria-label="Commitment and contact">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div class="rounded-3xl p-8 md:p-10 shadow-xl" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 12px 40px rgba(217,119,6,.08)">
+      <h3 class="font-display font-bold text-xl">Commitment</h3>
+      <p class="mt-2 text-[15px] leading-relaxed max-w-[55ch]" style="color:var(--muted)">We fund the program. You bring time and focus. No tuition. Selection is competitive and attendance is tracked.</p>
+      <ul class="mt-6 space-y-3 text-[15px]" style="color:var(--stone)">
+        <li class="flex gap-3 items-center"><span class="w-6 h-6 rounded-full grid place-items-center text-xs text-[var(--ink)] shadow-sm" style="background:var(--amber)">✓</span> 8 weeks, 6 to 8 hours per week</li>
+        <li class="flex gap-3 items-center"><span class="w-6 h-6 rounded-full grid place-items-center text-xs text-[var(--ink)] shadow-sm" style="background:var(--amber)">✓</span> In-person labs plus online reviews</li>
+        <li class="flex gap-3 items-center"><span class="w-6 h-6 rounded-full grid place-items-center text-xs text-[var(--ink)] shadow-sm" style="background:var(--amber)">✓</span> Demo or you do not graduate</li>
+      </ul>
+      <div class="mt-6 rounded-2xl p-4 flex items-center justify-between shadow-sm" style="background:var(--ink);border:1px solid var(--line)">
+        <div><div class="text-xs font-medium" style="color:var(--muted)">Cohort size</div><div class="font-display font-bold">20 teams max</div></div>
+        <span class="rounded-full px-3 py-1 text-xs font-bold text-[var(--ink)] shadow-sm" style="background:var(--amber)">Selective</span>
+      </div>
+    </div>
+    <div class="rounded-3xl p-8 md:p-10 shadow-xl" style="background:var(--surface);border:1px solid var(--line);box-shadow:0 12px 40px rgba(217,119,6,.08)">
+      <h3 class="font-display font-bold text-xl">Get notified</h3>
+      <p class="mt-2 text-[15px]" style="color:var(--muted)">Leave your email. We will send deadlines, prep material, and selection updates.</p>
+      <form id="notifyForm" class="mt-6 space-y-3" novalidate onsubmit="return handleForm(event)">
+        <label for="notifyEmail" class="sr-only">Email address</label>
+        <input id="notifyEmail" type="email" placeholder="you@university.edu" class="w-full h-12 px-4 rounded-xl text-base border transition-colors focus:outline-none focus:border-[var(--amber)]" style="background:#0c0a09;border-color:var(--line);font-size:16px;color:var(--stone)" required>
+        <p id="emailError" class="hidden text-xs font-medium" style="color:#c0392b">Enter a valid email address.</p>
+        <button type="submit" class="w-full h-12 rounded-full text-sm font-bold text-[var(--ink)] shadow-lg transition-transform hover:-translate-y-0.5" style="background:var(--amber);box-shadow:0 6px 18px rgba(217,119,6,.3)">Apply now</button>
+        <p class="text-xs text-center" style="color:var(--muted)">No spam. Unsubscribe anytime.</p>
+      </form>
+      <div id="formSuccess" class="hidden mt-4 rounded-2xl p-4 text-sm shadow-sm" style="background:#26190e;border:1px solid var(--amber);color:var(--amber)">
+        You are in. Check your email for the next steps.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="max-w-[1280px] mx-auto px-5 md:px-8 pb-24 reveal" aria-label="Call to action">
+  <div class="rounded-3xl p-8 md:p-10 lg:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl text-[var(--ink)]" style="background:linear-gradient(135deg,#26190e,#0c0a09);box-shadow:0 20px 60px rgba(217,119,6,.25);border:1px solid var(--line)">
+    <div>
+      <h3 class="font-display font-bold tracking-tight text-2xl md:text-[32px]" style="color:var(--stone)">Ready to build something real?</h3>
+      <p class="mt-2 text-[15px] opacity-90" style="color:var(--muted)">Applications close July 17. Twenty teams will be selected.</p>
+    </div>
+    <a href="#challenge" class="h-12 px-8 rounded-full text-sm font-bold shadow-lg transition-all hover:-translate-y-0.5 shrink-0" style="background:var(--amber);color:#0c0a09;box-shadow:0 8px 22px rgba(217,119,6,.35)">Apply now</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t" style="border-color:var(--line);background:var(--surface)">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm" style="color:var(--muted)">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-8 rounded-lg grid place-items-center text-[var(--ink)] font-bold text-xs shadow-md" style="background:var(--amber);box-shadow:0 4px 10px rgba(217,119,6,.3)">M</span>
+      <span class="font-display font-semibold text-[15px]" style="color:var(--stone)">MERIDIAN</span>
+    </div>
+    <div>Built for student founders. No code-style. No editorial retro.</div>
+  </div>
+</footer>
+
+<script>
+// Theme toggle
+const btn = document.getElementById('themeToggle');
+btn.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  document.documentElement.classList.toggle('light');
+});
+
+// Hamburger
+const ham = document.getElementById('hamburger');
+const drawer = document.getElementById('mobileDrawer');
+ham.addEventListener('click', () => {
+  const open = drawer.classList.toggle('hidden');
+  ham.setAttribute('aria-expanded', String(!open));
+});
+document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => { drawer.classList.add('hidden'); ham.setAttribute('aria-expanded','false'); }));
+
+// Sticky nav highlight
+const navLinks = document.querySelectorAll('[data-nav]');
+const sections = ['home','challenge','hub','resources'].map(id => document.getElementById(id)).filter(Boolean);
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, { rootMargin: '-44% 0px -55% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+
+// Scroll reveal
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Counters
+function animateCounters() {
+  document.querySelectorAll('.count').forEach(el => {
+    const target = parseInt(el.dataset.count, 10);
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toLocaleString();
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); countObs.unobserve(e.target); } });
+}, { threshold: 0.2 });
+document.querySelectorAll('.count').forEach(c => countObs.observe(c.closest('section') || c));
+
+// Hub search filter
+function filterHub(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('.hub-tile').forEach(t => {
+    const label = (t.getAttribute('data-label') || '').toLowerCase();
+    t.style.display = (label.indexOf(q) > -1 || q === '') ? '' : 'none';
+  });
+  document.querySelectorAll('.task-row').forEach(r => {
+    const text = r.textContent.toLowerCase();
+    r.style.display = text.indexOf(q) > -1 ? '' : 'none';
+  });
+}
+
+// Resource tabs
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('active');
+    b.style.background = 'transparent';
+    b.style.color = 'var(--stone)';
+  });
+  btn.classList.add('active');
+  btn.style.background = 'var(--amber)';
+  btn.style.color = '#0c0a09';
+  document.querySelectorAll('.resource-card').forEach(c => {
+    c.style.display = (tab === 'all' || c.getAttribute('data-tab') === tab) ? '' : 'none';
+  });
+}
+
+// Form
+function handleForm(ev) {
+  ev.preventDefault();
+  const input = document.getElementById('notifyEmail');
+  const err = document.getElementById('emailError');
+  const success = document.getElementById('formSuccess');
+  const val = input.value.trim();
+  if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+    err.classList.remove('hidden');
+    input.style.borderColor = '#c0392b';
+    success.classList.add('hidden');
+    return false;
+  }
+  err.classList.add('hidden');
+  input.style.borderColor = 'var(--line)';
+  input.value = '';
+  success.classList.remove('hidden');
+  return false;
+}
+
+// Notify toast
+function notify(msg) {
+  const d = document.createElement('div');
+  d.textContent = msg;
+  d.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:10px 18px;border-radius:12px;background:var(--amber);color:#0c0a09;font-size:13px;font-weight:600;z-index:60;box-shadow:0 10px 30px rgba(217,119,6,.35)';
+  document.body.appendChild(d);
+  setTimeout(() => { d.remove(); }, 2200);
+}
+
+// Magnetic CTA (touch-disabled)
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.querySelectorAll('.tilt').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      el.style.transform = 'perspective(1000px) rotateY(' + (x * 3) + 'deg) rotateX(' + (-y * 3) + 'deg) scale(1.01)';
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  });
+}
+</script>
+</body>
+</html>
