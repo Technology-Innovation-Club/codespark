@@ -209,7 +209,7 @@ export function Incubator() {
               size="lg"
               className="bg-white text-[var(--accent)] hover:bg-white/90 border-white shadow-none"
             >
-              <a href="https://tix.africa/discover/codesparkevent2026" target="_blank" rel="noopener noreferrer">
+              <a href="https://tix.africa/discover/codespark-tech-entrepreneurship-event" target="_blank" rel="noopener noreferrer">
                 Join community
               </a>
             </Button>

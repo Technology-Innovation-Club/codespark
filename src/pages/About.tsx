@@ -89,7 +89,7 @@ export function About() {
             className="mt-8 flex flex-wrap justify-center gap-3"
           >
             <Button asChild size="lg">
-              <a href="https://tix.africa/discover/codesparkevent2026" target="_blank" rel="noopener noreferrer">
+              <a href="https://tix.africa/discover/codespark-tech-entrepreneurship-event" target="_blank" rel="noopener noreferrer">
                 Attend event
               </a>
             </Button>
@@ -316,7 +316,7 @@ export function About() {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto">
               <Button asChild variant="outline" size="lg" className="bg-white text-[var(--accent)] border-white hover:bg-white/90 w-full sm:w-auto">
-                <a href="https://tix.africa/discover/codesparkevent2026" target="_blank" rel="noopener noreferrer">
+                <a href="https://tix.africa/discover/codespark-tech-entrepreneurship-event" target="_blank" rel="noopener noreferrer">
                   Attend event
                 </a>
               </Button>

@@ -160,7 +160,7 @@ export function Startups() {
           </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg" className="rounded-full">
-              <a href="https://tix.africa/discover/codesparkevent2026" target="_blank" rel="noopener noreferrer">Join community</a>
+              <a href="https://tix.africa/discover/codespark-tech-entrepreneurship-event" target="_blank" rel="noopener noreferrer">Join community</a>
             </Button>
             <Button asChild variant="outline" size="lg" className="rounded-full">
               <a href="mailto:prosperity.olorunfemi@pau.edu.ng">Partner with us</a>

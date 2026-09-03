@@ -28,7 +28,7 @@ export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { pathname } = useRouterState({ select: (s) => s.location });
   const basePath = "";
-  const attendLink = "https://tix.africa/discover/codesparkevent2026";
+  const attendLink = "https://tix.africa/discover/codespark-tech-entrepreneurship-event";
   const [theme, setTheme] = useTheme();
 
   useEffect(() => {
