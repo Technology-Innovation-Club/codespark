@@ -1,9 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { useCategories, useResources } from "@/lib/data";
-import { NBButton, Sticker } from "@/components/nb";
 import { ResourceGrid, ResourceGridSkeleton } from "@/components/ResourceCard";
 import { PageHeader } from "@/components/AppShell";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export const Route = createFileRoute("/challenge-resource-hub/_hub/category/$slug")({
   head: ({ params }) => {
@@ -12,24 +13,18 @@ export const Route = createFileRoute("/challenge-resource-hub/_hub/category/$slu
     return {
       meta: [
         { title },
-        {
-          name: "description",
-          content: `Curated official ${name} learning resources for CodeSpark participants.`,
-        },
+        { name: "description", content: `Curated official ${name} learning resources for CodeSpark participants.` },
         { property: "og:title", content: title },
-        {
-          property: "og:description",
-          content: `Curated official ${name} learning resources for CodeSpark participants.`,
-        },
+        { property: "og:description", content: `Curated official ${name} learning resources for CodeSpark participants.` },
       ],
     };
   },
   component: CategoryPage,
   notFoundComponent: () => (
     <div className="py-20 text-center">
-      <h1 className="text-3xl">Category not found</h1>
+      <h1 className="font-display text-3xl font-semibold">Category not found</h1>
       <Link to="/challenge-resource-hub/resources" className="mt-6 inline-block">
-        <NBButton tone="yellow">Back to library</NBButton>
+        <Button>Back to library</Button>
       </Link>
     </div>
   ),
@@ -46,18 +41,16 @@ function CategoryPage() {
   const list = (resources ?? []).filter((r) => r.category_id === category?.id);
 
   return (
-    <div className="animate-rise">
+    <div>
       <Link to="/challenge-resource-hub/resources" className="mb-4 inline-block">
-        <NBButton tone="paper" size="sm">
-          <ArrowLeft className="h-4 w-4" /> All categories
-        </NBButton>
+        <Button variant="outline" size="sm"><ArrowLeft className="h-4 w-4" /> All categories</Button>
       </Link>
 
       <PageHeader
         eyebrow="Category"
         title={category?.name ?? "Loading…"}
         subtitle={category?.description ?? undefined}
-        right={<Sticker tone={category?.color}>{list.length} resources</Sticker>}
+        right={<Badge variant="soft">{list.length} resources</Badge>}
       />
 
       {isLoading ? <ResourceGridSkeleton /> : <ResourceGrid resources={list} />}

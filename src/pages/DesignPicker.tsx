@@ -1,4 +1,6 @@
 import { HeadContent } from "@tanstack/react-router";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export function DesignPicker() {
   const designs = [
@@ -12,19 +14,41 @@ export function DesignPicker() {
   return (
     <>
       <HeadContent title="CodeSpark / Designs" />
-      <main style={{ maxWidth: 1200, margin: "0 auto", padding: 48, fontFamily: "system-ui, sans-serif", color: "#0a0a0b", background: "#fafaf7", minHeight: "100vh" }}>
-        <h1 style={{ fontSize: "clamp(36px,6vw,72px)", fontWeight: 800, letterSpacing: "-.04em", marginBottom: 12 }}>Design picker</h1>
-        <p style={{ fontSize: 18, color: "#6b6a65", maxWidth: 640, marginBottom: 32, lineHeight: 1.5 }}>
-          Five redesigned surfaces for the innovation hub. Click any card to view the interactive prototype.
-        </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 24 }}>
-          {designs.map((d) => (
-            <a key={d.name} href={`/designs/${d.name}/`} style={{ display: "block", background: "#fff", border: "1px solid #e7e3d8", borderRadius: 16, padding: 24, textDecoration: "none", color: "inherit", boxShadow: "0 2px 8px rgba(15,17,23,.04)", transition: "transform .2s, box-shadow .2s" }} onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)", e.currentTarget.style.boxShadow = "0 12px 28px rgba(15,17,23,.08)")} onMouseLeave={(e) => (e.currentTarget.style.transform = "none", e.currentTarget.style.boxShadow = "0 2px 8px rgba(15,17,23,.04)")}>
-              <div style={{ fontSize: 11, letterSpacing: ".14em", textTransform: "uppercase", color: "#9a978f", fontWeight: 600, marginBottom: 8 }}>{d.name}</div>
-              <h2 style={{ fontSize: 20, fontWeight: 700, margin: 0, letterSpacing: "-.01em" }}>{d.label}</h2>
-              <p style={{ fontSize: 14, color: "#6b6a65", marginTop: 6 }}>{d.desc}</p>
-            </a>
-          ))}
+      <main className="min-h-screen bg-[var(--bg)] px-5 py-12 sm:py-16">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="flex items-center gap-3">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--accent)] text-sm font-bold text-white">C</span>
+            <span className="font-display text-[17px] font-semibold tracking-tight">CodeSpark</span>
+            <Badge variant="outline" className="hidden sm:inline-flex rounded-full bg-[var(--surface-2)] px-2 py-0.5 text-[10px] tracking-widest">CLARITY</Badge>
+            <Badge variant="soft" className="ml-2 rounded-full px-2.5 py-1 text-[10px] tracking-widest">PROTOTYPE</Badge>
+          </div>
+
+          <h1 className="mt-8 font-display text-[36px] sm:text-[48px] font-semibold tracking-tight leading-[0.95]">Design picker</h1>
+          <p className="mt-3 max-w-[640px] text-[15px] leading-relaxed" style={{ color: "var(--muted)" }}>
+            Five redesigned surfaces for the innovation hub. Click any card to view the interactive prototype.
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {designs.map((d) => (
+              <a
+                key={d.name}
+                href={`/designs/${d.name}/`}
+                className="group block"
+              >
+                <Card hover className="flex h-full flex-col p-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-medium tracking-[0.14em] uppercase" style={{ color: "var(--muted)" }}>{d.name}</span>
+                    <Badge variant="soft" className="rounded-full px-2 py-0.5 text-[10px] tracking-widest">PROTOTYPE</Badge>
+                  </div>
+                  <h2 className="mt-4 font-display text-[18px] font-semibold tracking-tight leading-tight">{d.label}</h2>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>{d.desc}</p>
+                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--accent)]">
+                    Open prototype <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
+                  </span>
+                </Card>
+              </a>
+            ))}
+          </div>
         </div>
       </main>
     </>

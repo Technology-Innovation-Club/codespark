@@ -1,519 +1,891 @@
 import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { siteData } from "../data/siteData";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 export function Home() {
+  const [email, setEmail] = useState("");
+  const [formStatus, setFormStatus] = useState<"idle" | "error" | "success">(
+    "idle",
+  );
+
+  const handleNotify = (e: React.FormEvent) => {
+    e.preventDefault();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    if (!valid) {
+      setFormStatus("error");
+      return;
+    }
+    setFormStatus("success");
+  };
+
   return (
-    <div
-      className="overflow-hidden"
-      style={{ fontFamily: '"Space Mono", monospace' }}
-    >
-      {/* Hero Section */}
-      <section className="relative min-h-0 sm:min-h-screen flex items-start sm:items-center justify-center px-4 sm:px-6 pt-6 pb-3 sm:pt-6 sm:pb-14">
-        {/* Animated background effects */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#00fff0]/10 rounded-full blur-[100px] animate-pulse" />
+    <div className="bg-[var(--bg)] text-[var(--ink)] overflow-hidden">
+      {/* Hero split */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-[1280px] mx-auto px-5">
           <div
-            className="absolute bottom-1/4 right-1/4 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#ff00ff]/10 rounded-full blur-[100px] animate-pulse"
-            style={{ animationDelay: "1s" }}
-          />
-          <div
-            className="absolute top-1/2 left-1/2 w-[170px] h-[170px] sm:w-[240px] sm:h-[240px] md:w-[300px] md:h-[300px] bg-[#f0ff00]/5 rounded-full blur-[80px] animate-pulse"
-            style={{ animationDelay: "2s" }}
-          />
-        </div>
-
-        {/* Decorative circuit lines */}
-        <div className="absolute bottom-40 left-0 w-full h-px hidden sm:block">
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: "-100%" }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-            className="w-1/3 h-full bg-gradient-to-r from-transparent via-[#ff00ff] to-transparent"
-          />
-        </div>
-
-        {/* Corner decorations */}
-        <div className="absolute top-32 left-8 w-32 h-32 border-l-2 border-t-2 border-[#00fff0]/30 hidden md:block" />
-        <div className="absolute top-32 right-8 w-32 h-32 border-r-2 border-t-2 border-[#ff00ff]/30 hidden md:block" />
-        <div className="absolute bottom-32 left-8 w-32 h-32 border-l-2 border-b-2 border-[#ff00ff]/30 hidden md:block" />
-        <div className="absolute bottom-32 right-8 w-32 h-32 border-r-2 border-b-2 border-[#00fff0]/30 hidden md:block" />
-
-        <div className="relative max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            className="grid lg:grid-cols-[1.05fr_.95fr] gap-10 items-center"
+            style={{
+              minHeight: "min(100dvh, 780px)",
+              paddingTop: 32,
+              paddingBottom: 28,
+            }}
           >
-            <motion.span
-              className="relative overflow-hidden inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#1a1a2e] border border-[#00fff0]/50 text-[#00fff0] text-[0.8rem] sm:text-sm font-medium mb-3 sm:mb-8"
-              style={{
-                clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-                boxShadow: "0 0 20px rgba(0, 255, 240, 0.3)",
-              }}
-            >
-              <motion.span
-                className="absolute top-0 left-0 h-px w-1/3 bg-gradient-to-r from-transparent via-[#00fff0] to-transparent"
-                initial={{ x: "-120%" }}
-                animate={{ x: "340%" }}
-                transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
-              />
-              <span
-                className="w-2 h-2 bg-[#00fff0] animate-pulse"
-                style={{ boxShadow: "0 0 10px #00fff0" }}
-              />
-              <Link to="/innovation-challenge">
-                {
-                  "// WHAT'S NEW: CHECK OUT THE CODESPARK INNOVATION CHALLENGE ↗️"
-                }
-              </Link>
-            </motion.span>
-          </motion.div>
-
-          <div className="relative mx-auto max-w-[960px] mb-6 sm:mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-8 py-5 min-[450px]:max-[550px]:py-4 sm:py-8">
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <svg
-                className="absolute inset-0 w-full h-full"
-                preserveAspectRatio="none"
-              >
-                <motion.rect
-                  x="0"
-                  y="0"
-                  width="100%"
-                  height="100%"
-                  fill="none"
-                  stroke="#00fff0"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeDasharray="8 400"
-                  animate={{ strokeDashoffset: [0, -408] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  style={{ filter: "drop-shadow(0 0 6px rgba(0,255,240,0.8))" }}
-                />
-                <motion.rect
-                  x="0"
-                  y="0"
-                  width="100%"
-                  height="100%"
-                  fill="none"
-                  stroke="#ff00ff"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeDasharray="6 400"
-                  animate={{ strokeDashoffset: [-200, -608] }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  style={{ filter: "drop-shadow(0 0 6px rgba(255,0,255,0.8))" }}
-                />
-              </svg>
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00fff0]/40 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff00ff]/40 to-transparent" />
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#00fff0]/40 to-transparent" />
-              <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#ff00ff]/40 to-transparent" />
-            </div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+            {/* left copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-[2.55rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.06]"
-              style={{ fontFamily: '"Syne", sans-serif' }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              {siteData.hero.headline.split("University").map((part, i) => (
-                <span key={i}>
-                  {part}
-                  {i === 0 && (
+              <h1
+                className="mt-5 font-semibold tracking-tight font-display leading-[0.98]"
+                style={{ fontSize: "clamp(30px, 6.5vw, 54px)", maxWidth: "14ch" }}
+              >
+                {siteData.hero.headline}
+              </h1>
+
+              <p
+                className="mt-4 max-w-[46ch] leading-relaxed text-[15px]"
+                style={{ color: "#6b7280" }}
+              >
+                {siteData.hero.subheadline}
+              </p>
+
+              <div className="mt-7 flex flex-col sm:flex-row gap-3">
+                <Button asChild size="lg" className="rounded-full h-12 px-7">
+                  <a
+                    href={siteData.hero.ctas[0].href}
+                    target={
+                      siteData.hero.ctas[0].href.startsWith("http")
+                        ? "_blank"
+                        : undefined
+                    }
+                    rel={
+                      siteData.hero.ctas[0].href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                  >
+                    Apply now
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full h-12 px-7 bg-[var(--surface)]"
+                >
+                  <Link to="/challenge-resource-hub/dashboard">View hub</Link>
+                </Button>
+              </div>
+
+              <div
+                className="mt-8 flex items-center gap-4 text-xs"
+                style={{ color: "#6b7280" }}
+              >
+                <div className="flex -space-x-2">
+                  <img
+                    src="https://picsum.photos/seed/codespark-clarity-students/64/64"
+                    className="w-8 h-8 rounded-full object-cover"
+                    style={{ border: "2px solid var(--surface)" }}
+                    alt=""
+                  />
+                  <img
+                    src="https://picsum.photos/seed/codespark-clarity-students2/64/64"
+                    className="w-8 h-8 rounded-full object-cover"
+                    style={{ border: "2px solid var(--surface)" }}
+                    alt=""
+                  />
+                  <img
+                    src="https://picsum.photos/seed/codespark-clarity-students3/64/64"
+                    className="w-8 h-8 rounded-full object-cover"
+                    style={{ border: "2px solid var(--surface)" }}
+                    alt=""
+                  />
+                </div>
+                <span>Join founders from 15 universities</span>
+              </div>
+            </motion.div>
+
+            {/* right premium card */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
+              className="relative"
+            >
+              <Card className="overflow-hidden p-2.5 rounded-[20px]">
+                <div className="relative overflow-hidden rounded-[14px]">
+                  <img
+                    src="https://picsum.photos/seed/codespark-workspace/760/520"
+                    alt="Students building"
+                    className="w-full h-[380px] md:h-[440px] object-cover"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, transparent 40%, rgba(24,24,27,.18) 100%)",
+                    }}
+                  />
+                  <div className="absolute left-3 right-3 bottom-3 grid grid-cols-[1.1fr_.9fr] gap-3">
+                    <Card className="p-4 rounded-[20px] bg-[color-mix(in_srgb,var(--surface)_88%,transparent)] backdrop-blur-[10px]">
+                      <div
+                        className="text-[11px] tracking-[0.14em] uppercase font-medium"
+                        style={{ color: "#6b7280" }}
+                      >
+                        Active sprint
+                      </div>
+                      <div
+                        className="mt-1.5 font-semibold text-sm font-display"
+                      >
+                        Week 5 · Production
+                      </div>
+                      <div
+                        className="mt-3 h-1.5 rounded-full overflow-hidden"
+                        style={{ background: "var(--surface-2)" }}
+                      >
+                        <div
+                          className="h-full rounded-full"
+                          style={{ width: "64%", background: "var(--accent)" }}
+                        />
+                      </div>
+                      <div
+                        className="mt-2 flex justify-between text-xs"
+                        style={{ color: "#6b7280" }}
+                      >
+                        <span>64% complete</span>
+                        <span>11 days left</span>
+                      </div>
+                    </Card>
+                    <Card className="p-4 hidden sm:flex flex-col gap-2 rounded-[20px] bg-[color-mix(in_srgb,var(--surface)_88%,transparent)] backdrop-blur-[10px]">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-semibold">Team Atlas</span>
+                        <span
+                          className="w-2 h-2 rounded-full"
+                          style={{ background: "var(--accent)" }}
+                        />
+                      </div>
+                      <Separator />
+                      <div className="space-y-2">
+                        <div
+                          className="flex items-center gap-2 text-xs rounded-full px-3 py-2 border"
+                          style={{
+                            background: "var(--surface-2)",
+                            borderColor: "var(--border)",
+                          }}
+                        >
+                          <span
+                            className="w-5 h-5 rounded-full grid place-items-center text-[10px] text-white"
+                            style={{ background: "var(--accent)" }}
+                          >
+                            ✓
+                          </span>
+                          Demo ready
+                        </div>
+                        <div
+                          className="flex items-center gap-2 text-xs rounded-full px-3 py-2 border"
+                          style={{
+                            background: "var(--surface-2)",
+                            borderColor: "var(--border)",
+                          }}
+                        >
+                          <span
+                            className="w-5 h-5 rounded-full grid place-items-center"
+                            style={{
+                              background: "var(--surface)",
+                              border: "1px solid var(--border)",
+                            }}
+                          >
+                            ◍
+                          </span>
+                          Pitch review
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                </div>
+                <div
+                  className="px-4 py-3 flex items-center justify-between text-xs"
+                  style={{ color: "#6b7280" }}
+                >
+                  <span className="flex items-center gap-2">
                     <span
-                      className="text-[#00fff0] relative"
-                      style={{ textShadow: "0 0 30px rgba(0, 255, 240, 0.8)" }}
-                    >
-                      University
-                      <motion.span
-                        className="absolute bottom-0 left-0 w-full h-1 bg-[#00fff0]"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ delay: 1, duration: 0.8 }}
-                      />
-                    </span>
-                  )}
-                </span>
-              ))}
-            </motion.h1>
+                      className="w-2 h-2 rounded-full"
+                      style={{ background: "var(--accent)" }}
+                    />
+                    Live cohort · 20 teams
+                  </span>
+                  <span className="hidden sm:inline">Next review today 4pm</span>
+                </div>
+              </Card>
+              <div className="hidden lg:flex absolute -top-3 -right-2 rounded-full px-4 py-2 items-center gap-2 text-xs font-medium bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-strong)]">
+                <span
+                  className="w-2 h-2 rounded-full"
+                  style={{ background: "var(--accent)" }}
+                />
+                15 universities connected
+              </div>
+            </motion.div>
           </div>
+        </div>
 
-          <div className="relative mx-auto max-w-3xl mb-4 sm:mb-8 min-[450px]:max-[550px]:mb-5 px-4 sm:px-6 py-4 min-[450px]:max-[550px]:py-3">
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <svg
-                className="absolute inset-0 w-full h-full"
-                preserveAspectRatio="none"
+        {/* Marquee single */}
+        <div className="marquee py-3 bg-[var(--surface)] border-y border-[var(--border)] overflow-hidden whitespace-nowrap">
+          <div className="marquee-track inline-flex text-sm font-medium tracking-wide">
+            {[...Array(4)].map((_, i) => (
+              <span
+                key={i}
+                className="mx-8 flex items-center gap-8"
+                style={{ color: "#6b7280" }}
               >
-                <motion.rect
-                  x="0"
-                  y="0"
-                  width="100%"
-                  height="100%"
-                  fill="none"
-                  stroke="#ff00ff"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeDasharray="8 300"
-                  animate={{ strokeDashoffset: [0, -308] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-                  style={{ filter: "drop-shadow(0 0 6px rgba(255,0,255,0.8))" }}
+                <span>Shipping every week</span>
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: "var(--accent)" }}
                 />
-                <motion.rect
-                  x="0"
-                  y="0"
-                  width="100%"
-                  height="100%"
-                  fill="none"
-                  stroke="#00fff0"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeDasharray="6 300"
-                  animate={{ strokeDashoffset: [-150, -450] }}
-                  transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
-                  style={{ filter: "drop-shadow(0 0 6px rgba(0,255,240,0.8))" }}
+                <span>Mentors who have shipped</span>
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: "var(--accent)" }}
                 />
-              </svg>
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff00ff]/40 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00fff0]/40 to-transparent" />
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#00fff0]/40 to-transparent" />
-              <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#ff00ff]/40 to-transparent" />
-            </div>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-xl text-white/60 mx-auto leading-relaxed"
-            >
-              {`> ${siteData.hero.subheadline}`}
-            </motion.p>
+                <span>Real users, real feedback</span>
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: "var(--accent)" }}
+                />
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Iyin Section */}
-      <section className="pt-2 pb-6 sm:py-20 px-4 sm:px-6 bg-[#0a0a0f] relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/50 to-transparent" />
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#ff00ff]/50 to-transparent" />
+      {/* Stats band 5 — siteData.impact stats */}
+      <section className="max-w-[1280px] mx-auto px-5 py-10 md:py-14">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3"
+        >
+          {siteData.impact.stats.map((s, idx) => {
+            const isHighlighted = idx === 2;
+            return (
+              <Card
+                key={s.label}
+                hover
+                className={`p-6 text-center rounded-[20px] ${isHighlighted ? "text-white border-[var(--accent)]" : ""}`}
+                style={
+                  isHighlighted
+                    ? { background: "var(--accent)", borderColor: "var(--accent)" }
+                    : undefined
+                }
+              >
+                <div
+                  className="text-[28px] font-semibold tracking-tight font-display leading-none"
+                >
+                  {s.value}
+                </div>
+                <div
+                  className={`mt-2 text-[11px] tracking-widest font-medium uppercase ${isHighlighted ? "opacity-80" : ""}`}
+                  style={isHighlighted ? undefined : { color: "#6b7280" }}
+                >
+                  {s.label}
+                </div>
+              </Card>
+            );
+          })}
+          {/* 5th card to complete bento rhythm — sprint duration */}
+          {siteData.impact.stats.length === 4 && (
+            <Card
+              hover
+              className="p-6 text-center rounded-[20px] text-white"
+              style={{ background: "var(--accent)", borderColor: "var(--accent)" }}
+            >
+              <div className="text-[28px] font-semibold tracking-tight font-display leading-none">
+                8 <span className="text-lg font-medium">wks</span>
+              </div>
+              <div className="mt-2 text-[11px] tracking-widest font-medium uppercase opacity-80">
+                Sprint
+              </div>
+            </Card>
+          )}
+        </motion.div>
+        <p
+          className="mt-3 text-center text-xs"
+          style={{ color: "#6b7280" }}
+        >
+          {siteData.impact.since}
+        </p>
+      </section>
 
-        <div className="relative max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative px-5 sm:px-10 py-8 sm:py-10 border border-[#ff00ff]/35 text-center"
-            style={{ boxShadow: "0 0 20px rgba(255, 0, 255, 0.2)" }}
+      {/* Surfaces bento */}
+      <section className="max-w-[1280px] mx-auto px-5 pb-16">
+        <div className="flex items-end justify-between gap-4 mb-6">
+          <h2 className="text-[28px] md:text-[32px] font-semibold tracking-tight font-display">
+            One system, three surfaces
+          </h2>
+          <Link
+            to="/innovation-challenge"
+            className="hidden md:inline-flex text-sm font-medium hover:opacity-70"
+            style={{ color: "#6b7280" }}
+          >
+            See challenge →
+          </Link>
+        </div>
+        <div className="grid lg:grid-cols-[1.45fr_.9fr] lg:grid-rows-[280px_220px] gap-3">
+          {/* Featured Incubator large — spans 2 rows */}
+          <Card
+            hover
+            className="overflow-hidden flex flex-col p-0 rounded-[20px] lg:row-span-2 group"
+          >
+            <div className="relative h-[220px] overflow-hidden">
+              <img
+                src="https://picsum.photos/seed/codespark-team/800/500"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500"
+                alt=""
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(37,99,235,.08) 0%, rgba(24,24,27,.22) 100%)",
+                }}
+              />
+              <Badge className="absolute top-4 left-4 rounded-full px-3 py-1 text-xs">
+                Featured
+              </Badge>
+            </div>
+            <div className="p-6 flex-1 flex flex-col">
+              <div
+                className="w-9 h-9 rounded-full grid place-items-center text-white"
+                style={{ background: "var(--accent)" }}
+              >
+                ◈
+              </div>
+              <h3 className="mt-4 text-xl font-semibold font-display">Incubator</h3>
+              <p
+                className="mt-2 text-sm leading-relaxed"
+                style={{ color: "#6b7280" }}
+              >
+                Eight weeks from idea to demo day. Weekly reviews and labs that keep
+                you shipping. You leave with a product.
+              </p>
+              <div className="mt-auto pt-4">
+                <Badge
+                  variant="secondary"
+                  className="rounded-full px-4 py-2 text-xs font-semibold"
+                >
+                  Apply now
+                </Badge>
+              </div>
+            </div>
+          </Card>
+
+          <Card
+            hover
+            className="p-6 flex flex-col rounded-[20px]"
+            style={{
+              background:
+                "linear-gradient(135deg, var(--accent-soft) 0%, var(--surface) 60%)",
+            }}
           >
             <div
-              className="absolute left-1/2 -translate-x-1/2 -top-2 w-4 h-4 bg-[#ff00ff]"
-              style={{ boxShadow: "0 0 15px #ff00ff" }}
-            />
-
-            <h2
-              className="text-3xl md:text-5xl font-bold mb-10 text-white"
-              style={{ fontFamily: '"Syne", sans-serif' }}
+              className="w-9 h-9 rounded-full grid place-items-center"
+              style={{
+                background: "var(--surface)",
+                border: "1px solid var(--border)",
+                color: "var(--accent)",
+              }}
             >
-              <span
-                className="text-[#f0ff00]"
-                style={{ textShadow: "0 0 20px rgba(240, 255, 0, 0.5)" }}
-              >{`{ `}</span>
-              {siteData.iyin.headline}
-              <span
-                className="text-[#f0ff00]"
-                style={{ textShadow: "0 0 20px rgba(240, 255, 0, 0.5)" }}
-              >{` }`}</span>
-            </h2>
-            <div className="space-y-6 max-w-3xl mx-auto">
-              {siteData.iyin.content.map((text, i) => (
-                <motion.p
-                  key={i}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className={`text-lg leading-relaxed text-center ${
-                    i === siteData.iyin.content.length - 1
-                      ? "text-[#00fff0] font-bold"
-                      : "text-white/60"
-                  }`}
-                  style={
-                    i === siteData.iyin.content.length - 1
-                      ? { textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }
-                      : {}
-                  }
-                >
-                  {`// ${text}`}
-                </motion.p>
-              ))}
+              ⚡
             </div>
-          </motion.div>
+            <h3 className="mt-4 font-semibold font-display">Challenge</h3>
+            <p
+              className="mt-2 text-sm leading-relaxed"
+              style={{ color: "#6b7280" }}
+            >
+              Compete across fifteen universities. Twenty teams, real problem spaces,
+              judged by operators.
+            </p>
+            <div className="mt-4 flex gap-2">
+              <Badge className="rounded-full px-3 py-1.5">15 schools</Badge>
+              <Badge
+                variant="secondary"
+                className="rounded-full px-3 py-1.5"
+              >
+                8 weeks
+              </Badge>
+            </div>
+            <img
+              src="https://picsum.photos/seed/codespark-clarity-students/600/240"
+              className="mt-4 w-full h-[96px] object-cover rounded-[12px]"
+              alt=""
+            />
+          </Card>
+
+          <Card hover className="p-6 flex flex-col rounded-[20px]">
+            <div
+              className="w-9 h-9 rounded-full grid place-items-center"
+              style={{
+                background: "var(--surface-2)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              ⬢
+            </div>
+            <h3 className="mt-4 font-semibold font-display">Hub</h3>
+            <p
+              className="mt-2 text-sm leading-relaxed"
+              style={{ color: "#6b7280" }}
+            >
+              Your home base. Tasks, classes, XP, attendance, and team chat in one
+              place. Everything to keep momentum.
+            </p>
+            <Card className="mt-4 p-3 flex items-center gap-3 rounded-[20px] bg-[var(--surface-2)]">
+              <div className="flex -space-x-2">
+                <span
+                  className="w-7 h-7 rounded-full grid place-items-center text-[11px] font-bold text-white"
+                  style={{ background: "var(--accent)" }}
+                >
+                  T
+                </span>
+                <span
+                  className="w-7 h-7 rounded-full grid place-items-center text-[11px] font-bold bg-[var(--surface)] border border-[var(--border)]"
+                >
+                  A
+                </span>
+                <span className="w-7 h-7 rounded-full grid place-items-center text-[11px] font-bold bg-[var(--surface)] border border-[var(--border)]">
+                  D
+                </span>
+              </div>
+              <div className="text-xs">
+                <div className="font-semibold">Team Atlas</div>
+                <div style={{ color: "#6b7280" }}>3 members online</div>
+              </div>
+              <span
+                className="ml-auto w-2 h-2 rounded-full"
+                style={{ background: "var(--accent)" }}
+              />
+            </Card>
+          </Card>
         </div>
       </section>
 
-      {/* What We Do Section */}
-      <section className="pt-8 pb-20 sm:py-28 px-4 sm:px-6 relative">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/50 to-transparent" />
+      {/* Founder note Iyin */}
+      <section className="max-w-[1280px] mx-auto px-5 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <Card className="overflow-hidden grid md:grid-cols-[420px_1fr] p-0 rounded-[20px]">
+            <img
+              src="https://picsum.photos/seed/codespark-clarity-founder/800/700"
+              alt="Founder Iyin"
+              className="h-[340px] md:h-full w-full object-cover"
+            />
+            <div className="p-7 md:p-10 flex flex-col justify-center">
+              <div
+                className="text-[11px] tracking-[0.14em] uppercase font-medium"
+                style={{ color: "#6b7280" }}
+              >
+                Founder note
+              </div>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight font-display">
+                {siteData.iyin.headline}
+              </h3>
+              <div className="mt-4 space-y-3">
+                {siteData.iyin.content.map((para, i) => (
+                  <p
+                    key={i}
+                    className={`leading-relaxed ${i === siteData.iyin.content.length - 1 ? "font-semibold text-[var(--ink)]" : "text-sm"}`}
+                    style={
+                      i === siteData.iyin.content.length - 1
+                        ? undefined
+                        : { color: "#6b7280" }
+                    }
+                  >
+                    {i === siteData.iyin.content.length - 1 ? (
+                      <span>{para}</span>
+                    ) : (
+                      para
+                    )}
+                  </p>
+                ))}
+              </div>
+              <blockquote
+                className="mt-4 border-l-2 pl-4 text-sm italic leading-relaxed"
+                style={{ borderColor: "var(--accent)", color: "#6b7280" }}
+              >
+                We had ideas but no path to ship. CodeSpark gives you mentors who
+                review weekly, space to build, and a stage where people actually
+                listen.
+              </blockquote>
+              <div className="mt-6 flex items-center gap-3">
+                <img
+                  src="https://picsum.photos/seed/iyin-avatar/80/80"
+                  className="w-10 h-10 rounded-full object-cover"
+                  alt=""
+                />
+                <div>
+                  <div className="text-sm font-semibold">Iyin A.</div>
+                  <div className="text-xs" style={{ color: "#6b7280" }}>
+                    Founder, CodeSpark
+                  </div>
+                </div>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="ml-auto rounded-full"
+                >
+                  <a
+                    href={siteData.hero.ctas[0].href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Apply now
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      </section>
 
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-6"
-              style={{ fontFamily: '"Syne", sans-serif' }}
+      {/* What We Do — siteData */}
+      <section className="max-w-[1280px] mx-auto px-5 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <h2 className="text-[28px] md:text-[34px] font-semibold tracking-tight font-display">
+            {siteData.whatWeDo.headline}
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed" style={{ color: "#6b7280" }}>
+            {siteData.whatWeDo.description}
+          </p>
+        </motion.div>
+        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {siteData.whatWeDo.pillars.map((pillar, i) => (
+            <motion.div
+              key={pillar}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
             >
-              <span
-                className="text-[#00fff0]"
-                style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
-              >
-                IDENTIFY
-              </span>
-              <span className="text-white/30"> // </span>
-              <span
-                className="text-[#ff00ff]"
-                style={{ textShadow: "0 0 20px rgba(255, 0, 255, 0.5)" }}
-              >
-                TRAIN
-              </span>
-              <span className="text-white/30"> // </span>
-              <span
-                className="text-[#f0ff00]"
-                style={{ textShadow: "0 0 20px rgba(240, 255, 0, 0.5)" }}
-              >
-                LAUNCH
-              </span>
-            </h2>
-            <p className="text-lg text-white/50 max-w-2xl mx-auto">
-              {`> ${siteData.whatWeDo.description}`}
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {siteData.whatWeDo.pillars.map((pillar, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="p-6 bg-[#1a1a2e] border border-[#00fff0]/30 hover:border-[#00fff0] transition-all group cursor-pointer"
-                style={{
-                  clipPath:
-                    "polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%)",
-                  boxShadow: "0 0 20px rgba(0, 255, 240, 0.1)",
-                }}
-              >
-                <div className="grid grid-cols-[2.25rem,1fr] items-start gap-x-5">
+              <Card hover className="p-6 h-full rounded-[20px]">
+                <div className="flex gap-4">
                   <span
-                    className="text-[#00fff0] font-bold text-2xl text-center leading-none pt-0.5"
+                    className="shrink-0 w-9 h-9 rounded-full grid place-items-center text-sm font-bold"
                     style={{
-                      fontFamily: '"Syne", sans-serif',
-                      textShadow: "0 0 10px #00fff0",
+                      background: "var(--accent-soft)",
+                      color: "var(--accent)",
+                      border: "1px solid color-mix(in srgb, var(--accent) 14%, transparent)",
                     }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-white/70 group-hover:text-white transition-colors leading-relaxed">
-                    {pillar}
-                  </p>
+                  <p className="text-sm leading-relaxed pt-1">{pillar}</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-12 text-[#f0ff00] font-bold text-xl"
-            style={{
-              fontFamily: '"Syne", sans-serif',
-              textShadow: "0 0 15px rgba(240, 255, 0, 0.5)",
-            }}
-          >
-            {">>> "}
-            {siteData.whatWeDo.tagline}
-          </motion.p>
+              </Card>
+            </motion.div>
+          ))}
         </div>
+        <p className="text-center mt-6 text-sm font-semibold" style={{ color: "var(--accent)" }}>
+          {siteData.whatWeDo.tagline}
+        </p>
       </section>
 
-      {/* Impact Section */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 bg-[#1a1a2e] relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-[#00fff0]/30 via-transparent to-[#00fff0]/30" />
-          <div className="absolute top-0 left-2/4 w-px h-full bg-gradient-to-b from-[#ff00ff]/30 via-transparent to-[#ff00ff]/30" />
-          <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-[#00fff0]/30 via-transparent to-[#00fff0]/30" />
-        </div>
-
-        <div className="relative max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-4 text-white"
-              style={{ fontFamily: '"Syne", sans-serif' }}
-            >
-              {"<"}
-              <span
-                className="text-[#00fff0]"
-                style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
-              >
-                IMPACT
-              </span>
-              {" />"}
-            </h2>
-            <p className="text-white/50 font-mono">{`// ${siteData.impact.since}`}</p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {siteData.impact.stats.map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="p-6 bg-[#0a0a0f] border border-[#ff00ff]/30 text-center relative group hover:border-[#ff00ff] transition-all cursor-pointer flex flex-col items-center justify-center"
-                style={{ boxShadow: "0 0 30px rgba(255, 0, 255, 0.1)" }}
-              >
-                <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-[#ff00ff]" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-[#ff00ff]" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 border-[#ff00ff]" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-[#ff00ff]" />
-
-                <p
-                  className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#ff00ff] mb-2 leading-none text-center w-full"
-                  style={{
-                    fontFamily: '"Syne", sans-serif',
-                    textShadow: "0 0 25px rgba(255, 0, 255, 0.8)",
-                  }}
-                >
-                  {stat.value}
-                </p>
-                <p className="text-white/50 text-[11px] sm:text-xs tracking-wide leading-relaxed text-center break-words px-1">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="p-8 bg-[#0a0a0f] border border-[#00fff0]/30"
-            style={{
-              clipPath:
-                "polygon(0 0, 98% 0, 100% 5%, 100% 100%, 2% 100%, 0 95%)",
-            }}
-          >
-            <h3
-              className="text-xl font-bold text-[#00fff0] mb-6 leading-tight"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                textShadow: "0 0 15px rgba(0, 255, 240, 0.5)",
-              }}
-            >
-              <span>{"> ACHIEVEMENTS"}</span>
-              <span className="block">_LOG</span>
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              {siteData.impact.achievements.map((achievement, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-start gap-3 text-white/70"
-                >
-                  <span className="text-[#f0ff00]">▸</span>
-                  <span className="text-sm break-words leading-relaxed">
-                    {achievement}
-                  </span>
-                </motion.div>
-              ))}
+      {/* Impact achievements */}
+      <section className="max-w-[1280px] mx-auto px-5 pb-16">
+        <Card className="p-7 md:p-8 rounded-[20px]">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-semibold font-display tracking-tight">
+                {siteData.impact.headline}
+              </h3>
+              <p className="mt-1 text-sm" style={{ color: "#6b7280" }}>
+                {siteData.impact.since} — what our builders have achieved
+              </p>
             </div>
-          </motion.div>
+            <Badge variant="soft" className="rounded-full px-3 py-1 w-fit">
+              {siteData.impact.stats.length} milestones
+            </Badge>
+          </div>
+          <Separator className="my-6" />
+          <div className="grid md:grid-cols-2 gap-3">
+            {siteData.impact.achievements.map((a) => (
+              <div
+                key={a}
+                className="flex items-start gap-3 text-sm leading-relaxed rounded-full px-4 py-3 border"
+                style={{
+                  background: "var(--surface-2)",
+                  borderColor: "var(--border)",
+                }}
+              >
+                <span
+                  className="mt-0.5 w-6 h-6 rounded-full grid place-items-center text-xs text-white shrink-0"
+                  style={{ background: "var(--accent)" }}
+                >
+                  ✓
+                </span>
+                <span>{a}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </section>
+
+      {/* How it works 4 steps */}
+      <section className="max-w-[1280px] mx-auto px-5 pb-16">
+        <h2 className="text-[28px] font-semibold tracking-tight font-display">
+          How it works
+        </h2>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+          {[
+            {
+              n: "01",
+              title: "Apply",
+              desc: "Submit your team and problem. We review in 48 hours and select twenty.",
+              pct: "25%",
+            },
+            {
+              n: "02",
+              title: "Build",
+              desc: "Eight week sprint with mentors, labs, and weekly demos. No hiding.",
+              pct: "50%",
+            },
+            {
+              n: "03",
+              title: "Ship",
+              desc: "Launch a working product and collect real users. Demo or you do not graduate.",
+              pct: "75%",
+              highlight: true,
+            },
+            {
+              n: "04",
+              title: "Showcase",
+              desc: "Pitch at the Forum to investors and partners. One stage, the right people.",
+              pct: "100%",
+            },
+          ].map((step) => (
+            <Card
+              key={step.n}
+              hover={!step.highlight}
+              className={`p-6 rounded-[20px] ${step.highlight ? "text-white border-[var(--accent)]" : ""}`}
+              style={
+                step.highlight
+                  ? { background: "var(--accent)", borderColor: "var(--accent)" }
+                  : undefined
+              }
+            >
+              <div
+                className="text-xs font-medium tracking-widest"
+                style={step.highlight ? { color: "rgba(255,255,255,.7)" } : { color: "var(--accent)" }}
+              >
+                {step.n}
+              </div>
+              <h4 className="mt-3 font-semibold font-display">{step.title}</h4>
+              <p
+                className="mt-2 text-sm leading-relaxed"
+                style={step.highlight ? { color: "rgba(255,255,255,.8)" } : { color: "#6b7280" }}
+              >
+                {step.desc}
+              </p>
+              <div
+                className="mt-4 h-1 rounded-full overflow-hidden"
+                style={
+                  step.highlight
+                    ? { background: "rgba(255,255,255,.25)" }
+                    : { background: "var(--surface-2)" }
+                }
+              >
+                <div
+                  className="h-full"
+                  style={{
+                    width: step.pct,
+                    background: step.highlight ? "#fff" : "var(--accent)",
+                  }}
+                />
+              </div>
+            </Card>
+          ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#1a1a2e]/50 to-[#0a0a0f]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />
-
-        <div className="relative max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+      {/* University partners 6 */}
+      <section className="max-w-[1280px] mx-auto px-5 pb-16">
+        <div className="flex items-center justify-between">
+          <div
+            className="text-[11px] tracking-[0.14em] uppercase font-medium"
+            style={{ color: "#6b7280" }}
           >
-            <h2
-              className="text-4xl md:text-6xl font-bold mb-6 text-white"
-              style={{ fontFamily: '"Syne", sans-serif' }}
-            >
-              {siteData.cta.headline}
-            </h2>
+            University partners
+          </div>
+          <span className="text-xs" style={{ color: "#6b7280" }}>
+            15 and growing
+          </span>
+        </div>
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
+          {[
+            { name: "Unilag", letter: "U", accent: true },
+            { name: "OAU", letter: "O", accent: false },
+            { name: "Covenant", letter: "C", accent: true },
+            { name: "LASU", letter: "L", accent: false },
+            { name: "Babcock", letter: "B", accent: true },
+            { name: "FUTA", letter: "F", accent: false },
+          ].map((u) => (
+            <Card key={u.name} className="p-5 flex items-center gap-3 rounded-[20px]">
+              <span
+                className="w-9 h-9 rounded-full grid place-items-center text-sm font-bold shrink-0"
+                style={
+                  u.accent
+                    ? { background: "var(--accent)", color: "#fff" }
+                    : {
+                        background: "var(--surface)",
+                        border: "1px solid var(--border)",
+                        color: "var(--ink)",
+                      }
+                }
+              >
+                {u.letter}
+              </span>
+              <span className="text-sm font-medium">{u.name}</span>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Commitment 2 cols + Get notified form */}
+      <section className="max-w-[1280px] mx-auto px-5 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <Card className="p-7 rounded-[20px]">
+            <h3 className="text-xl font-semibold tracking-tight font-display">
+              Commitment
+            </h3>
             <p
-              className="text-2xl md:text-3xl text-[#ff00ff] mb-4"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                textShadow: "0 0 20px rgba(255, 0, 255, 0.5)",
-              }}
+              className="mt-2 text-sm leading-relaxed max-w-[55ch]"
+              style={{ color: "#6b7280" }}
             >
-              {siteData.cta.subheadline}
+              We fund the program. You bring time and focus. No tuition. Selection
+              is competitive and attendance is tracked.
             </p>
-            <p
-              className="text-xl text-[#00fff0] mb-12"
-              style={{ textShadow: "0 0 15px rgba(0, 255, 240, 0.5)" }}
-            >
-              {">>> "}
+            <ul className="mt-5 space-y-3 text-sm">
+              {[
+                "8 weeks, 6 to 8 hours per week",
+                "In-person labs plus online reviews",
+                "Demo or you do not graduate",
+              ].map((t) => (
+                <li key={t} className="flex gap-3 items-center">
+                  <span
+                    className="w-6 h-6 rounded-full grid place-items-center text-xs text-white shrink-0"
+                    style={{ background: "var(--accent)" }}
+                  >
+                    ✓
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <Card className="mt-6 p-4 flex items-center justify-between rounded-[20px] bg-[var(--surface-2)]">
+              <div>
+                <div className="text-xs" style={{ color: "#6b7280" }}>
+                  Cohort size
+                </div>
+                <div className="font-semibold text-sm">20 teams max</div>
+              </div>
+              <Badge className="rounded-full px-3 py-1 text-xs">Selective</Badge>
+            </Card>
+          </Card>
+
+          <Card className="p-7 rounded-[20px] bg-[var(--surface)]">
+            <h3 className="text-xl font-semibold tracking-tight font-display">
+              Get notified
+            </h3>
+            <p className="mt-2 text-sm" style={{ color: "#6b7280" }}>
+              Leave your email. We will send deadlines, prep material, and selection
+              updates.
+            </p>
+            <form onSubmit={handleNotify} className="mt-6 space-y-3" noValidate>
+              <Input
+                type="email"
+                placeholder="you@university.edu"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (formStatus !== "idle") setFormStatus("idle");
+                }}
+                aria-invalid={formStatus === "error"}
+                className="h-12 rounded-[12px]"
+                required
+              />
+              {formStatus === "error" && (
+                <p className="text-xs" style={{ color: "#ef4444" }}>
+                  Enter a valid email address.
+                </p>
+              )}
+              <Button
+                type="submit"
+                className="w-full h-12 rounded-full font-semibold text-sm bg-[var(--ink)] text-white hover:bg-black"
+              >
+                Notify me
+              </Button>
+              <p className="text-xs text-center" style={{ color: "#6b7280" }}>
+                No spam. Unsubscribe anytime.
+              </p>
+            </form>
+            {formStatus === "success" && (
+              <Card className="mt-4 p-4 text-sm rounded-[20px] border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[var(--accent-soft)] text-[var(--accent-ink)]">
+                You are in. Check your email for the next steps.
+              </Card>
+            )}
+          </Card>
+        </div>
+      </section>
+
+      {/* CTA strip blue — siteData.cta */}
+      <section className="max-w-[1280px] mx-auto px-5 pb-10">
+        <Card
+          className="p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 rounded-[20px] text-white border-[var(--accent)]"
+          style={{ background: "var(--accent)", borderColor: "var(--accent)" }}
+        >
+          <div>
+            <h3 className="text-2xl font-semibold tracking-tight font-display">
+              {siteData.cta.headline}
+            </h3>
+            <p className="mt-2 text-sm opacity-80">{siteData.cta.subheadline}</p>
+            <p className="mt-1 text-sm font-medium opacity-90">
               {siteData.cta.question}
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://tix.africa/discover/codesparkevent2026"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-10 py-4 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all cursor-pointer"
-                style={{
-                  fontFamily: '"Syne", sans-serif',
-                  clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-                  boxShadow: "0 0 40px rgba(0, 255, 240, 0.5)",
-                }}
-              >
-                START BUILDING
-              </a>
-              <Link
-                to="/about"
-                className="px-10 py-4 bg-transparent border-2 border-[#ff00ff] text-[#ff00ff] font-bold uppercase tracking-wider hover:bg-[#ff00ff]/10 transition-all cursor-pointer"
-                style={{
-                  fontFamily: '"Syne", sans-serif',
-                  clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-                }}
-              >
-                LEARN MORE
-              </Link>
-            </div>
-          </motion.div>
-        </div>
+          </div>
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full h-12 px-8 bg-white text-[var(--accent)] hover:bg-white/90 shrink-0 w-full md:w-auto"
+          >
+            <a
+              href={siteData.hero.ctas[0].href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Apply now
+            </a>
+          </Button>
+        </Card>
       </section>
     </div>
   );

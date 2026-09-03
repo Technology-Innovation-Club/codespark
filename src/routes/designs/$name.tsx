@@ -1,4 +1,5 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
+import { Badge } from "@/components/ui/badge";
 
 const LABELS: Record<string, { label: string; accent: string }> = {
   aurora: { label: "Aurora (Emerald dark)", accent: "#10b981" },
@@ -14,20 +15,26 @@ export const Route = createFileRoute("/designs/$name")({
 
 function PrototypeRoute() {
   const { name } = useParams({ strict: false });
-  const meta = LABELS[name] || { label: name, accent: "#0a0a0b" };
+  const meta = LABELS[name as string] || { label: name, accent: "#2563eb" };
 
   return (
-    <div style={{ position: "fixed", inset: 0, background: "#0a0a0b", display: "flex", flexDirection: "column", zIndex: 9999 }}>
-      <div style={{ height: 44, flexShrink: 0, background: "#0a0a0b", borderBottom: "1px solid #23242b", display: "flex", alignItems: "center", padding: "0 20px", gap: 16, fontFamily: "system-ui, sans-serif", fontSize: 13, color: "#fafaf7" }}>
-        <Link to="/designs" style={{ color: meta.accent, textDecoration: "none", fontWeight: 600 }}>← All designs</Link>
-        <span style={{ color: "#3a3a45" }}>|</span>
-        <span style={{ fontWeight: 700, color: "#fafaf7" }}>{meta.label}</span>
-        <span style={{ marginLeft: "auto", fontSize: 12, color: "#6f6b65", fontFamily: "ui-monospace, monospace" }}>/designs/{name}/</span>
+    <div className="fixed inset-0 z-[9999] flex flex-col bg-[var(--bg)]">
+      <div className="flex h-16 shrink-0 items-center gap-3 border-b bg-[var(--surface)] px-5" style={{ borderColor: "var(--border)" }}>
+        <Link to="/designs" className="flex items-center gap-3">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--accent)] text-sm font-bold text-white">C</span>
+          <span className="hidden sm:block font-display text-[15px] font-semibold tracking-tight">CodeSpark</span>
+          <span className="hidden lg:inline-flex rounded-full border bg-[var(--surface-2)] px-2 py-1 text-[10px] font-medium tracking-widest" style={{ borderColor: "var(--border)", color: "var(--muted)" }}>CLARITY</span>
+        </Link>
+        <span className="hidden sm:block h-4 w-px bg-[var(--border)]" />
+        <span className="hidden sm:block text-sm font-semibold tracking-tight">{meta.label}</span>
+        <Badge variant="soft" className="rounded-full px-2.5 py-1 text-[10px] tracking-widest">PROTOTYPE</Badge>
+        <Link to="/designs" className="ml-auto text-sm font-medium text-[var(--accent)] hover:underline">← All designs</Link>
+        <span className="hidden md:inline text-xs" style={{ color: "var(--muted-2)" }}>/designs/{String(name)}/</span>
       </div>
       <iframe
-        src={`/designs/${name}/`}
+        src={`/designs/${String(name)}/`}
         title={meta.label}
-        style={{ flex: 1, width: "100%", height: "100%", border: 0, background: "#fff" }}
+        className="flex-1 w-full border-0 bg-white"
       />
     </div>
   );

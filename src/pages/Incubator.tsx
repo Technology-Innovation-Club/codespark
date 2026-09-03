@@ -1,420 +1,221 @@
 import { motion } from "motion/react";
 import { useEffect } from "react";
 import { siteData } from "../data/siteData";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export function Incubator() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
-  const phaseViewport = { amount: 0.45, once: false } as const;
-
   return (
-    <div
-      className="overflow-hidden"
-      style={{ fontFamily: '"Space Mono", monospace' }}
-    >
-      {/* Hero */}
-      <section className="relative pt-4 pb-6 sm:pt-24 sm:pb-14 px-3 sm:px-6">
-        {/* Background effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#ff00ff]/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-0 left-10 w-[170px] h-[170px] sm:w-[240px] sm:h-[240px] md:w-[300px] md:h-[300px] bg-[#00fff0]/10 rounded-full blur-[100px]" />
-        </div>
+    <div className="bg-[var(--bg)] text-[var(--ink)]">
+      {/* Hero - centered clarity */}
+      <section className="max-w-6xl mx-auto px-5 pt-10 sm:pt-16 pb-8 sm:pb-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-semibold tracking-widest bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow)]"
+          style={{ color: "var(--muted)" }}
+        >
+          <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
+          APPLICATIONS_OPEN_NOVEMBER_2026
+        </motion.div>
 
-        {/* Corner frames */}
-        <div className="absolute top-[57px] sm:top-24 left-[5px] sm:left-8 w-[72px] sm:w-24 h-[72px] sm:h-24 border-l-2 border-t-2 border-[#00fff0]/30" />
-        <div className="absolute top-[57px] sm:top-24 right-[5px] sm:right-8 w-[72px] sm:w-24 h-[72px] sm:h-24 border-r-2 border-t-2 border-[#ff00ff]/30" />
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.06 }}
+          className="mt-6 font-display font-semibold tracking-tight leading-none"
+          style={{ fontSize: "clamp(40px, 9vw, 84px)" }}
+        >
+          INCUBATOR
+        </motion.h1>
 
-        <div className="relative max-w-5xl mx-auto text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex w-full max-w-[304px] sm:w-auto sm:max-w-none items-center justify-center gap-1.5 sm:gap-3 px-3 sm:px-6 py-2.5 sm:py-3 bg-[#1a1a2e] border border-[#f0ff00]/50 text-[#f0ff00] text-[0.68rem] min-[360px]:text-[0.74rem] sm:text-sm font-medium mb-4 sm:mb-6 leading-none whitespace-nowrap"
-            style={{
-              clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-              boxShadow: "0 0 20px rgba(240, 255, 0, 0.2)",
-            }}
-          >
-            <span
-              className="w-2 h-2 bg-[#f0ff00] animate-pulse"
-              style={{ boxShadow: "0 0 10px #f0ff00" }}
-            />
-            <span>{"// APPLICATIONS_OPEN_NOVEMBER_2026"}</span>
-          </motion.span>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
-            style={{ fontFamily: '"Syne", sans-serif' }}
-          >
-            {"<"}
-            <span
-              className="text-[#00fff0]"
-              style={{ textShadow: "0 0 30px rgba(0, 255, 240, 0.8)" }}
-            >
-              INCUBATOR
-            </span>
-            {" />"}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto leading-relaxed"
-          >
-            {`> Where Student Ideas Become Revenue-Generating Startups_`}
-          </motion.p>
-        </div>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.12 }}
+          className="mt-4 mx-auto max-w-2xl text-[18px] sm:text-[20px] leading-relaxed"
+          style={{ color: "var(--muted)" }}
+        >
+          Where Student Ideas Become Revenue-Generating Startups
+        </motion.p>
       </section>
 
-      {/* Program Overview */}
-      <section className="pt-10 pb-12 sm:pt-12 sm:pb-14 px-4 sm:px-6 relative">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/50 to-transparent" />
-
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-10 bg-[#1a1a2e] border border-[#ff00ff]/30 relative"
-            style={{
-              clipPath:
-                "polygon(0 0, 98% 0, 100% 5%, 100% 100%, 2% 100%, 0 95%)",
-              boxShadow: "0 0 40px rgba(255, 0, 255, 0.2)",
-            }}
-          >
-            {/* Corner decorations */}
-            <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-[#ff00ff]" />
-            <div className="absolute bottom-3 right-3 w-6 h-6 border-r-2 border-b-2 border-[#ff00ff]" />
-
-            <p className="text-white/70 text-lg leading-relaxed mb-4 text-center">
-              {`// ${siteData.programs.incubator.description}`}
-            </p>
-            <p
-              className="text-[#00fff0] text-xl font-bold text-center"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                textShadow: "0 0 20px rgba(0, 255, 240, 0.5)",
-              }}
-            >
-              {`>>> ${siteData.programs.incubator.outcome}`}
-            </p>
-          </motion.div>
-        </div>
+      {/* Program overview card */}
+      <section className="max-w-6xl mx-auto px-5 pb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <Card className="p-7 sm:p-10 text-center">
+            <CardContent className="p-0">
+              <p className="text-[16px] sm:text-[18px] leading-relaxed max-w-3xl mx-auto" style={{ color: "var(--muted)" }}>
+                {siteData.programs.incubator.description}
+              </p>
+              <Separator className="my-6 max-w-[120px] mx-auto" />
+              <p className="font-display font-semibold text-[17px] sm:text-[19px]" style={{ color: "var(--accent)" }}>
+                {siteData.programs.incubator.outcome}
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
       </section>
 
-      {/* Program Structure */}
-      <section className="pt-10 pb-14 sm:pt-14 sm:pb-20 px-4 sm:px-6 relative">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-14 leading-tight"
-            style={{ fontFamily: '"Syne", sans-serif' }}
-          >
-            <span
-              className="text-[#f0ff00]"
-              style={{ textShadow: "0 0 20px rgba(240, 255, 0, 0.5)" }}
-            >
-              {"{ "}
-            </span>
-            <span className="text-white block sm:inline">PROGRAM</span>
-            <span
-              className="text-[#00fff0] block sm:inline"
-              style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
-            >
-              _STRUCTURE
-            </span>
-            <span
-              className="text-[#f0ff00]"
-              style={{ textShadow: "0 0 20px rgba(240, 255, 0, 0.5)" }}
-            >
-              {" }"}
-            </span>
-          </motion.h2>
+      {/* Program Structure - timeline */}
+      <section className="max-w-6xl mx-auto px-5 pb-16 sm:pb-20">
+        <div className="text-center mb-8 sm:mb-10">
+          <Badge variant="soft" className="mb-3 px-3 py-1 text-[11px] tracking-widest font-semibold">
+            PROGRAM STRUCTURE
+          </Badge>
+          <h2 className="font-display text-[26px] sm:text-[32px] font-semibold tracking-tight">
+            Five phases to revenue
+          </h2>
+          <p className="mt-2 text-sm max-w-xl mx-auto" style={{ color: "var(--muted)" }}>
+            A focused 3 to 4 month sprint. Each phase builds on the last.
+          </p>
+        </div>
 
-          <div className="md:hidden relative">
-            <div className="absolute left-5 top-2 bottom-2 w-px bg-gradient-to-b from-[#00fff0]/60 via-[#ff00ff]/50 to-[#00fff0]/60" />
-            <div className="space-y-5">
-              {siteData.programs.incubator.phases.map((phase, i) => {
-                const isCyan = i % 2 === 0;
-                const accent = isCyan ? "#00fff0" : "#ff00ff";
-                const glow = isCyan
-                  ? "rgba(0, 255, 240, 0.2)"
-                  : "rgba(255, 0, 255, 0.2)";
-
-                return (
-                  <motion.div
-                    key={i}
-                    initial={{
-                      opacity: 0,
-                      y: 24,
-                      scale: 0.96,
-                      filter: "blur(4px)",
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      filter: "blur(0px)",
-                    }}
-                    viewport={phaseViewport}
-                    transition={{
-                      duration: 0.45,
-                      delay: i * 0.08,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="relative pl-12"
-                  >
-                    <div
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 border-2 flex items-center justify-center"
-                      style={{
-                        borderColor: accent,
-                        color: accent,
-                        backgroundColor: `${accent}22`,
-                        clipPath: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%)",
-                        boxShadow: `0 0 16px ${glow}`,
-                        fontFamily: '"Syne", sans-serif',
-                      }}
-                    >
-                      {i + 1}
-                    </div>
-                    <div
-                      className="p-5 bg-[#0a0a0f] border"
-                      style={{
-                        borderColor: `${accent}80`,
-                        boxShadow: `0 0 24px ${glow}`,
-                      }}
-                    >
-                      <span
-                        className="text-sm font-bold"
-                        style={{
-                          color: accent,
-                          textShadow: `0 0 10px ${accent}`,
-                        }}
-                      >
-                        {`// ${phase.name}`}
-                      </span>
-                      <h3
-                        className="text-2xl sm:text-3xl font-bold mt-2 text-white leading-tight break-words"
-                        style={{
-                          fontFamily: '"Syne", sans-serif',
-                          overflowWrap: "anywhere",
-                        }}
-                      >
-                        {phase.title}
-                      </h3>
-                      <p className="text-white/50 mt-1 text-sm leading-relaxed">
-                        {phase.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="hidden md:block space-y-8 relative">
-            <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-[#00fff0]/50 via-[#ff00ff]/50 to-[#00fff0]/50" />
+        {/* Mobile: stacked with left line + dots */}
+        <div className="md:hidden relative pl-6">
+          <div className="absolute left-[7px] top-3 bottom-3 w-px bg-[var(--border)]" />
+          <div className="space-y-4">
             {siteData.programs.incubator.phases.map((phase, i) => (
               <motion.div
                 key={i}
-                initial={{
-                  opacity: 0,
-                  x: i % 2 === 0 ? -56 : 56,
-                  scale: 0.96,
-                  filter: "blur(4px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  x: 0,
-                  scale: 1,
-                  filter: "blur(0px)",
-                }}
-                viewport={phaseViewport}
-                transition={{
-                  duration: 0.5,
-                  delay: i * 0.1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className={`flex items-center gap-8 ${
-                  i % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                }`}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.06 }}
+                className="relative"
               >
-                <div
-                  className={`flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}
-                >
-                  <div
-                    className={`inline-block p-6 bg-[#0a0a0f] border ${
-                      i % 2 === 0
-                        ? "border-[#00fff0]/50"
-                        : "border-[#ff00ff]/50"
-                    } hover:border-opacity-100 transition-all`}
-                    style={{
-                      boxShadow:
-                        i % 2 === 0
-                          ? "0 0 30px rgba(0, 255, 240, 0.2)"
-                          : "0 0 30px rgba(255, 0, 255, 0.2)",
-                    }}
-                  >
-                    <span
-                      className={`text-sm font-bold ${
-                        i % 2 === 0 ? "text-[#00fff0]" : "text-[#ff00ff]"
-                      }`}
-                      style={{
-                        textShadow:
-                          i % 2 === 0 ? "0 0 10px #00fff0" : "0 0 10px #ff00ff",
-                      }}
-                    >
-                      {`// ${phase.name}`}
+                <span className="absolute -left-6 top-7 w-3.5 h-3.5 rounded-full bg-[var(--accent)] border-2 border-[var(--bg)] shadow-sm" />
+                <Card className="p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge variant="soft" className="text-[11px] font-semibold">
+                      {phase.name}
+                    </Badge>
+                    <span className="text-[11px] font-medium" style={{ color: "var(--muted-2)" }}>
+                      0{i + 1}
                     </span>
-                    <h3
-                      className="text-xl font-bold mt-2 text-white break-words"
-                      style={{ fontFamily: '"Syne", sans-serif' }}
-                    >
-                      {phase.title}
-                    </h3>
-                    <p className="text-white/50 mt-1 text-sm">
-                      {phase.description}
-                    </p>
                   </div>
-                </div>
-
-                <div
-                  className={`w-12 h-12 flex items-center justify-center border-2 ${
-                    i % 2 === 0
-                      ? "border-[#00fff0] bg-[#00fff0]/20"
-                      : "border-[#ff00ff] bg-[#ff00ff]/20"
-                  } relative z-10`}
-                  style={{
-                    clipPath: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%)",
-                    boxShadow:
-                      i % 2 === 0 ? "0 0 20px #00fff0" : "0 0 20px #ff00ff",
-                  }}
-                >
-                  <span
-                    className={`font-bold text-sm ${
-                      i % 2 === 0 ? "text-[#00fff0]" : "text-[#ff00ff]"
-                    }`}
-                    style={{ fontFamily: '"Syne", sans-serif' }}
-                  >
-                    {i + 1}
-                  </span>
-                </div>
-
-                <div className="flex-1" />
+                  <h3 className="font-display font-semibold text-[17px] leading-tight">{phase.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                    {phase.description}
+                  </p>
+                </Card>
               </motion.div>
             ))}
+          </div>
+        </div>
+
+        {/* Desktop: centered line with alternating cards */}
+        <div className="hidden md:block relative">
+          <div className="absolute left-1/2 top-4 bottom-4 w-px -translate-x-1/2 bg-[var(--border)]" />
+          <div className="space-y-6">
+            {siteData.programs.incubator.phases.map((phase, i) => {
+              const isLeft = i % 2 === 0;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: i * 0.05 }}
+                  className={`relative flex items-center gap-6 ${isLeft ? "flex-row" : "flex-row-reverse"}`}
+                >
+                  <div className={`flex-1 ${isLeft ? "text-right" : "text-left"}`}>
+                    <Card className={`inline-block text-left p-6 w-full max-w-[420px] ${isLeft ? "ml-auto" : "mr-auto"}`}>
+                      <div className={`flex items-center gap-2 mb-2 ${isLeft ? "justify-end" : "justify-start"}`}>
+                        <Badge variant="soft" className="text-[11px] font-semibold">
+                          {phase.name}
+                        </Badge>
+                        <span className="text-[11px] font-medium" style={{ color: "var(--muted-2)" }}>
+                          0{i + 1}
+                        </span>
+                      </div>
+                      <h3 className="font-display font-semibold text-[18px] leading-tight">{phase.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                        {phase.description}
+                      </p>
+                    </Card>
+                  </div>
+
+                  <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-[var(--accent)] border-4 border-[var(--bg)] shadow-sm shrink-0" />
+
+                  <div className="flex-1" />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Differentiators */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#1a1a2e] relative">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#f0ff00]/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#f0ff00]/50 to-transparent" />
-
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 leading-tight"
-            style={{ fontFamily: '"Syne", sans-serif' }}
-          >
-            <span className="text-white block sm:inline">WHY</span>
-            <span
-              className="text-[#ff00ff] block sm:inline"
-              style={{ textShadow: "0 0 20px rgba(255, 0, 255, 0.5)" }}
+      <section className="max-w-6xl mx-auto px-5 pb-16 sm:pb-20">
+        <div className="flex items-end justify-between gap-4 mb-6">
+          <h2 className="font-display text-[22px] sm:text-[26px] font-semibold tracking-tight">
+            Why CodeSpark
+          </h2>
+          <span className="hidden sm:inline text-xs" style={{ color: "var(--muted)" }}>
+            Four principles
+          </span>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {siteData.programs.incubator.differentiators.map((diff, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: i * 0.06 }}
             >
-              _CODESPARK
-            </span>
-            <span
-              className="text-[#f0ff00]"
-              style={{ textShadow: "0 0 20px rgba(240, 255, 0, 0.5)" }}
-            >
-              ?
-            </span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {siteData.programs.incubator.differentiators.map((diff, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="p-6 bg-[#0a0a0f] border border-[#f0ff00]/30 hover:border-[#f0ff00] transition-all group"
-                style={{ boxShadow: "0 0 20px rgba(240, 255, 0, 0.1)" }}
-              >
-                <div className="grid grid-cols-[3.25rem,1fr] items-start gap-x-4 sm:gap-x-5">
+              <Card hover className="p-6 h-full">
+                <div className="flex gap-4 items-start">
                   <span
-                    className="text-[#f0ff00] font-bold text-3xl text-center leading-none pt-0.5"
-                    style={{
-                      fontFamily: '"Syne", sans-serif',
-                      textShadow: "0 0 15px #f0ff00",
-                    }}
+                    className="w-9 h-9 rounded-full grid place-items-center text-sm font-bold shrink-0"
+                    style={{ background: "var(--accent-soft)", color: "var(--accent)", border: "1px solid color-mix(in srgb, var(--accent) 14%, transparent)" }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-white/70 group-hover:text-white transition-colors text-base sm:text-lg leading-relaxed">
-                    {diff}
-                  </p>
+                  <p className="text-[15px] leading-relaxed font-medium pt-1">{diff}</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#00fff0]/10 rounded-full blur-[150px]" />
-        </div>
-
-        <div className="relative max-w-3xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2
-              className="text-3xl md:text-5xl font-bold mb-6 text-white"
-              style={{ fontFamily: '"Syne", sans-serif' }}
+      {/* CTA blue */}
+      <section className="max-w-6xl mx-auto px-5 pb-12">
+        <Card className="p-8 sm:p-10 text-center bg-[var(--accent)] border-[var(--accent)] text-white overflow-hidden">
+          <h2 className="font-display text-[28px] sm:text-[36px] font-semibold tracking-tight leading-none">
+            Ready to build?
+          </h2>
+          <p className="mt-3 text-sm sm:text-[15px] max-w-xl mx-auto opacity-80 leading-relaxed">
+            Join the next cohort and turn your idea into a revenue-generating startup.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className="bg-white text-[var(--accent)] hover:bg-white/90 border-white shadow-none"
             >
-              Ready to{" "}
-              <span
-                className="text-[#00fff0]"
-                style={{ textShadow: "0 0 25px rgba(0, 255, 240, 0.8)" }}
-              >
-                BUILD
-              </span>
-              ?
-            </h2>
-            <p className="text-white/60 text-lg mb-10">
-              {`// Join the next cohort and turn your idea into a revenue-generating startup_`}
-            </p>
-
-            <a
-              href="https://tix.africa/discover/codesparkevent2026"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-12 py-5 bg-[#00fff0] text-[#0a0a0f] font-bold uppercase tracking-wider hover:scale-105 transition-all"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-                boxShadow: "0 0 50px rgba(0, 255, 240, 0.6)",
-              }}
-            >
-              JOIN_COMMUNITY
-            </a>
-          </motion.div>
-        </div>
+              <a href="https://tix.africa/discover/codesparkevent2026" target="_blank" rel="noopener noreferrer">
+                Join community
+              </a>
+            </Button>
+          </div>
+          <p className="mt-3 text-xs opacity-60">Applications open November 2026</p>
+        </Card>
       </section>
     </div>
   );

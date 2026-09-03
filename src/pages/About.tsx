@@ -2,609 +2,330 @@ import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { siteData } from "../data/siteData";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+
+// Fallback preserves the 6 real team members that match the public/*.webp assets.
+// Use siteData.about.team as primary source when it already has 6, otherwise use this known-good set.
+const fallbackTeam = [
+  { name: "Prosperity Olorunfemi", role: "Founder & Lead", image: "/team-lead.webp" },
+  { name: "Abasiono Mbat", role: "Technical Lead", image: "/technical-lead.webp" },
+  { name: "Okon Uyaiabasi", role: "Branding Lead", image: "/branding-lead.webp" },
+  { name: "Emmanuel Omale", role: "Program Manager", image: "/program-manager.webp" },
+  { name: "Oluwademilade Oguntade", role: "Marketing Lead", image: "/marketing-lead.webp" },
+  { name: "Omotayo Ayeni", role: "Logistics & Event Planning Lead", image: "/omotayo-ayeni.webp" },
+] as const;
+
+const teamImageMap: Record<string, string> = {
+  "Prosperity Olorunfemi": "/team-lead.webp",
+  "Abasiono Mbat": "/technical-lead.webp",
+  "Okon Uyaiabasi": "/branding-lead.webp",
+  "Emmanuel Omale": "/program-manager.webp",
+  "Oluwademilade Oguntade": "/marketing-lead.webp",
+  "Omotayo Ayeni": "/omotayo-ayeni.webp",
+  "Team Member 2": "/program-manager.webp",
+  "Team Member 3": "/branding-lead.webp",
+};
 
 export function About() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
+  // Keep all siteData content wired; fall back to 6 real members when siteData has placeholder entries.
+  const teamMembers =
+    siteData.about.team.length >= 6
+      ? siteData.about.team.map((m) => ({
+          name: m.name,
+          role: m.role,
+          image: teamImageMap[m.name] ?? "",
+          bio: m.bio,
+        }))
+      : (fallbackTeam as unknown as { name: string; role: string; image: string; bio?: string }[]);
+
   return (
-    <div
-      className="overflow-hidden"
-      style={{ fontFamily: '"Space Mono", monospace' }}
-    >
-      {/* Hero */}
-      <section className="relative pt-4 pb-6 sm:pt-20 sm:pb-14 px-4 sm:px-6">
-        {/* Background effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-1/4 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 left-1/4 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[400px] md:h-[400px] bg-[#00fff0]/10 rounded-full blur-[120px]" />
-        </div>
+    <div className="bg-[var(--bg)]">
+      {/* Hero - centered with pill */}
+      <section className="max-w-[1280px] mx-auto px-5 py-16 md:py-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex"
+          >
+            <Badge variant="outline" className="px-4 py-1.5 text-xs font-medium tracking-wide bg-[var(--surface)] shadow-[var(--shadow)]">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
+              About CodeSpark
+            </Badge>
+          </motion.div>
 
-        <div className="relative max-w-5xl mx-auto text-center">
-          <div className="relative mx-auto max-w-4xl px-4 sm:px-8 py-5 sm:py-6">
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-[#00fff0]/70 via-[#ff00ff]/60 to-[#ff00ff]/70" />
-              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#ff00ff]/80" />
-              <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-[#00fff0]/80" />
-            </div>
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="relative text-[1.75rem] sm:text-6xl font-bold mb-2 inline-flex items-center justify-center leading-none px-8 sm:px-14"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                letterSpacing: "-0.01em",
-              }}
-            >
-              <span
-                className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 text-[#00fff0] text-[2.35rem] sm:text-6xl leading-none"
-                style={{ textShadow: "0 0 25px rgba(0, 255, 240, 0.8)" }}
-              >
-                {"{"}
-              </span>
-              <span className="text-white">ABOUT</span>
-              <span
-                className="text-[#ff00ff]"
-                style={{
-                  textShadow: "0 0 30px rgba(255, 0, 255, 0.8)",
-                  margin: "0 0.03em",
-                }}
-              >
-                _
-              </span>
-              <span
-                className="text-[#ff00ff]"
-                style={{ textShadow: "0 0 30px rgba(255, 0, 255, 0.8)" }}
-              >
-                US
-              </span>
-              <span
-                className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 text-[#00fff0] text-[2.35rem] sm:text-6xl leading-none"
-                style={{ textShadow: "0 0 25px rgba(0, 255, 240, 0.8)" }}
-              >
-                {"}"}
-              </span>
-            </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.06 }}
+            className="mt-6 text-[32px] md:text-[52px] font-bold tracking-tight leading-[1.0]"
+            style={{ fontFamily: "Outfit" }}
+          >
+            {siteData.about.headline}
+          </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-xl md:text-2xl text-[#f0ff00] max-w-3xl mx-auto leading-snug"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                textShadow: "0 0 15px rgba(240, 255, 0, 0.5)",
-              }}
-            >
-              {siteData.about.headline}
-            </motion.p>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+            className="mt-4 text-[15px] md:text-lg leading-relaxed max-w-2xl mx-auto"
+            style={{ color: "var(--muted)" }}
+          >
+            {siteData.about.description}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.18 }}
+            className="mt-8 flex flex-wrap justify-center gap-3"
+          >
+            <Button asChild size="lg">
+              <a href="https://tix.africa/discover/codesparkevent2026" target="_blank" rel="noopener noreferrer">
+                Attend event
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link to="/for-partners">Partner with us</Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="pt-14 pb-16 sm:pt-16 sm:pb-20 px-6 bg-[#1a1a2e] relative">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#ff00ff]/50 to-transparent" />
-
-        {/* Side decoration */}
-        <div
-          className="absolute left-0 top-1/4 w-1 h-1/2 bg-gradient-to-b from-[#00fff0] via-[#ff00ff] to-[#00fff0]"
-          style={{ boxShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
-        />
-
+      {/* Our Story - left-bordered card list */}
+      <section className="max-w-[1280px] mx-auto px-5 py-16">
         <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl font-bold mb-12"
-            style={{ fontFamily: '"Syne", sans-serif' }}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
           >
-            <span
-              className="text-[#00fff0]"
-              style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
-            >
-              {"> "}
-            </span>
-            <span className="text-white">OUR</span>
-            <span
-              className="text-[#ff00ff]"
-              style={{ textShadow: "0 0 20px rgba(255, 0, 255, 0.5)" }}
-            >
-              _STORY
-            </span>
-          </motion.h2>
+            <p className="eyebrow">Our story</p>
+            <h2 className="mt-2 text-[28px] md:text-[32px] font-semibold tracking-tight" style={{ fontFamily: "Outfit" }}>
+              The story behind CodeSpark
+            </h2>
+            <Separator className="mt-4 mb-8" />
+          </motion.div>
 
-          <div className="space-y-6 pl-6 sm:pl-8 border-l-2 border-[#00fff0]/30">
+          <div className="border-l-2 border-[var(--border)] pl-6 md:pl-8 space-y-4">
             {siteData.about.story.map((text, i) => (
-              <motion.p
+              <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="text-white/70 text-base sm:text-lg leading-relaxed relative"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
               >
-                <span
-                  className="absolute -left-6 top-2 w-2 h-2 bg-[#ff00ff]"
-                  style={{ boxShadow: "0 0 10px #ff00ff" }}
-                />
-                {`// ${text}`}
-              </motion.p>
+                <Card hover className="p-6 md:p-7">
+                  <p className="text-sm md:text-[15px] leading-relaxed" style={{ color: "var(--ink)" }}>
+                    {text}
+                  </p>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Vision */}
-      <section className="pt-14 pb-16 sm:pt-16 sm:pb-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[500px] md:h-[500px] bg-[#f0ff00]/5 rounded-full blur-[150px]" />
-        </div>
-
-        <div className="relative max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-10 bg-[#1a1a2e] border-2 border-[#f0ff00]/30 relative"
-            style={{
-              clipPath:
-                "polygon(0 0, 97% 0, 100% 5%, 100% 100%, 3% 100%, 0 95%)",
-              boxShadow: "0 0 50px rgba(240, 255, 0, 0.2)",
-            }}
-          >
-            {/* Corner accents */}
-            <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#f0ff00]" />
-            <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#f0ff00]" />
-
-            <h3
-              className="text-2xl font-bold text-[#f0ff00] mb-6"
-              style={{
-                fontFamily: '"Syne", sans-serif',
-                textShadow: "0 0 20px rgba(240, 255, 0, 0.5)",
-              }}
-            >
-              {"<VISION/>"}
-            </h3>
-            <p
-              className="text-white/80 text-sm sm:text-base leading-relaxed tracking-tight"
-              style={{ letterSpacing: "-0.01em", wordSpacing: "-0.04em" }}
-            >
-              {siteData.about.vision}
-            </p>
-          </motion.div>
-        </div>
+      {/* Vision - soft blue card with border */}
+      <section className="max-w-[1280px] mx-auto px-5 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="max-w-4xl mx-auto"
+        >
+          <Card className="overflow-hidden border-[color-mix(in_srgb,var(--accent)_14%,var(--border))] bg-[var(--accent-soft)]">
+            <CardHeader className="pb-3">
+              <div className="flex items-center gap-3">
+                <Badge variant="soft" className="px-3 py-1 text-[11px] tracking-widest font-semibold">
+                  VISION
+                </Badge>
+                <Separator orientation="vertical" className="h-4" />
+                <span className="text-xs font-medium" style={{ color: "var(--muted)" }}>
+                  Where we are headed
+                </span>
+              </div>
+              <CardTitle className="mt-4 text-2xl md:text-3xl font-semibold tracking-tight" style={{ fontFamily: "Outfit" }}>
+                A continental pipeline of principled founders
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <Separator className="mb-6 bg-[color-mix(in_srgb,var(--accent)_14%,var(--border))]" />
+              <p className="text-[15px] md:text-base leading-relaxed" style={{ color: "var(--ink)" }}>
+                {siteData.about.vision}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <Badge variant="secondary" className="px-3 py-1">
+                  Faith-driven
+                </Badge>
+                <Badge variant="secondary" className="px-3 py-1">
+                  Revenue before hype
+                </Badge>
+                <Badge variant="secondary" className="px-3 py-1">
+                  Built in university
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </section>
 
-      {/* Pillars */}
-      <section className="pt-16 pb-14 sm:pt-20 sm:pb-16 px-6 bg-[#0a0a0f] relative">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/30 to-transparent" />
+      {/* Pillars - 3-col cards (odd highlighted soft blue) */}
+      <section className="max-w-[1280px] mx-auto px-5 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="flex items-end justify-between gap-4 mb-8"
+        >
+          <div>
+            <p className="eyebrow">Core pillars</p>
+            <h2 className="mt-2 text-[28px] md:text-[32px] font-semibold tracking-tight" style={{ fontFamily: "Outfit" }}>
+              What we stand for
+            </h2>
+          </div>
+          <span className="hidden md:inline text-xs" style={{ color: "var(--muted)" }}>
+            5 pillars
+          </span>
+        </motion.div>
 
-        {/* Vertical lines decoration */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `repeating-linear-gradient(90deg, #00fff0 0, #00fff0 1px, transparent 1px, transparent 100px)`,
-          }}
-        />
-
-        <div className="relative max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl font-bold text-center mb-16"
-            style={{ fontFamily: '"Syne", sans-serif' }}
-          >
-            <span className="text-white">CORE</span>
-            <span
-              className="text-[#00fff0]"
-              style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {siteData.about.pillars.map((pillar, i) => (
+            <motion.div
+              key={pillar.title}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
             >
-              _PILLARS
-            </span>
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {siteData.about.pillars.map((pillar, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="p-6 bg-[#1a1a2e] border border-[#ff00ff]/20 hover:border-[#ff00ff]/60 transition-all group relative overflow-hidden"
-                style={{
-                  clipPath:
-                    i % 2 === 0
-                      ? "polygon(0 0, 95% 0, 100% 8%, 100% 100%, 5% 100%, 0 92%)"
-                      : "polygon(5% 0, 100% 0, 100% 92%, 95% 100%, 0 100%, 0 8%)",
-                  boxShadow: "0 0 30px rgba(255, 0, 255, 0.1)",
-                }}
+              <Card
+                hover
+                className={`h-full p-6 flex flex-col ${
+                  i % 2 === 0 ? "bg-[var(--accent-soft)] border-[color-mix(in_srgb,var(--accent)_14%,var(--border))]" : ""
+                }`}
               >
-                {/* Glow on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#ff00ff]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                {/* Number */}
-                <span
-                  className="absolute top-4 right-4 text-5xl font-bold text-[#ff00ff]/10 group-hover:text-[#ff00ff]/20 transition-colors"
-                  style={{ fontFamily: '"Syne", sans-serif' }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-
-                <h3
-                  className="text-xl font-bold text-[#ff00ff] mb-3 relative z-10"
-                  style={{
-                    fontFamily: '"Syne", sans-serif',
-                    textShadow: "0 0 15px rgba(255, 0, 255, 0.5)",
-                  }}
-                >
+                <div className="flex items-center gap-3">
+                  <span className="w-9 h-9 rounded-full grid place-items-center text-xs font-bold text-white shrink-0" style={{ background: "var(--accent)" }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Separator orientation="vertical" className="h-5" />
+                  <Badge variant={i % 2 === 0 ? "soft" : "secondary"} className="text-[11px]">
+                    Pillar 0{i + 1}
+                  </Badge>
+                </div>
+                <h3 className="mt-4 text-base font-semibold tracking-tight" style={{ fontFamily: "Outfit" }}>
                   {pillar.title}
                 </h3>
-                <p className="text-white/60 group-hover:text-white/80 transition-colors text-sm leading-relaxed relative z-10">
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                   {pillar.description}
                 </p>
-              </motion.div>
-            ))}
-          </div>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Team/Founder Section */}
-      <section className="pt-14 pb-12 sm:pt-16 sm:pb-14 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/50 to-transparent" />
-
-        <div className="relative max-w-[1600px] mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-10 text-center"
-              style={{ fontFamily: '"Syne", sans-serif' }}
-            >
-              <span
-                className="text-[#00fff0]"
-                style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
-              >
-                {"{ "}
-              </span>
-              <span className="text-white">THE</span>
-              <span
-                className="text-[#f0ff00]"
-                style={{ textShadow: "0 0 20px rgba(240, 255, 0, 0.5)" }}
-              >
-                _TEAM
-              </span>
-              <span
-                className="text-[#00fff0]"
-                style={{ textShadow: "0 0 20px rgba(0, 255, 240, 0.5)" }}
-              >
-                {" }"}
-              </span>
-            </h2>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
-              {/* Team Lead */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="p-6 bg-[#1a1a2e] border border-[#00fff0]/30 text-center"
-                style={{
-                  clipPath:
-                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
-                  boxShadow: "0 0 40px rgba(0, 255, 240, 0.2)",
-                }}
-              >
-                <div
-                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#00fff0] overflow-hidden"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
-                    boxShadow: "0 0 30px rgba(0, 255, 240, 0.3)",
-                  }}
-                >
-                  <img
-                    src="/team-lead.webp"
-                    alt="Prosperity Olorunfemi"
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 16%" }}
-                  />
-                </div>
-                <h3
-                  className="text-xl font-bold text-white mb-1"
-                  style={{ fontFamily: '"Syne", sans-serif' }}
-                >
-                  Prosperity Olorunfemi
-                </h3>
-                <p
-                  className="text-[#00fff0] text-sm mb-2"
-                  style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}
-                >
-                  {"Founder & Lead"}
-                </p>
-              </motion.div>
-
-              {/* Technical Lead */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="p-6 bg-[#1a1a2e] border border-[#ff00ff]/30 text-center"
-                style={{
-                  clipPath:
-                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
-                  boxShadow: "0 0 40px rgba(255, 0, 255, 0.2)",
-                }}
-              >
-                <div
-                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#ff00ff] overflow-hidden"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
-                    boxShadow: "0 0 30px rgba(255, 0, 255, 0.3)",
-                  }}
-                >
-                  <img
-                    src="/technical-lead.webp"
-                    alt="Abasiono Mbat"
-                    className="w-full h-full object-cover"
-                    style={{
-                      objectPosition: "center 16%",
-                      transform: "translateY(-3px) scale(3)",
-                    }}
-                  />
-                </div>
-                <h3
-                  className="text-xl font-bold text-white mb-1"
-                  style={{ fontFamily: '"Syne", sans-serif' }}
-                >
-                  Abasiono Mbat
-                </h3>
-                <p
-                  className="text-[#ff00ff] text-sm mb-2"
-                  style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}
-                >
-                  {"Technical Lead"}
-                </p>
-              </motion.div>
-
-              {/* Branding Lead */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="p-6 bg-[#1a1a2e] border border-[#f0ff00]/30 text-center"
-                style={{
-                  clipPath:
-                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
-                  boxShadow: "0 0 40px rgba(240, 255, 0, 0.2)",
-                }}
-              >
-                <div
-                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#f0ff00] overflow-hidden"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
-                    boxShadow: "0 0 30px rgba(240, 255, 0, 0.3)",
-                  }}
-                >
-                  <img
-                    src="/branding-lead.webp"
-                    alt="Okon Uyaiabasi"
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 16%" }}
-                  />
-                </div>
-                <h3
-                  className="text-xl font-bold text-white mb-1"
-                  style={{ fontFamily: '"Syne", sans-serif' }}
-                >
-                  Okon Uyaiabasi
-                </h3>
-                <p
-                  className="text-[#f0ff00] text-sm mb-2"
-                  style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}
-                >
-                  {"Branding Lead"}
-                </p>
-              </motion.div>
-
-              {/* Program Manager */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="p-6 bg-[#1a1a2e] border border-[#00fff0]/30 text-center"
-                style={{
-                  clipPath:
-                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
-                  boxShadow: "0 0 40px rgba(0, 255, 240, 0.2)",
-                }}
-              >
-                <div
-                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#00fff0] overflow-hidden"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
-                    boxShadow: "0 0 30px rgba(0, 255, 240, 0.3)",
-                  }}
-                >
-                  <img
-                    src="/program-manager.webp"
-                    alt="Emmanuel Omale"
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 16%" }}
-                  />
-                </div>
-                <h3
-                  className="text-xl font-bold text-white mb-1"
-                  style={{ fontFamily: '"Syne", sans-serif' }}
-                >
-                  Emmanuel Omale
-                </h3>
-                <p
-                  className="text-[#00fff0] text-sm mb-2"
-                  style={{ textShadow: "0 0 10px rgba(0, 255, 240, 0.5)" }}
-                >
-                  {"Program Manager"}
-                </p>
-              </motion.div>
-
-              {/* Marketing Lead */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="p-6 bg-[#1a1a2e] border border-[#ff00ff]/30 text-center"
-                style={{
-                  clipPath:
-                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
-                  boxShadow: "0 0 40px rgba(255, 0, 255, 0.2)",
-                }}
-              >
-                <div
-                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#ff00ff] overflow-hidden"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
-                    boxShadow: "0 0 30px rgba(255, 0, 255, 0.3)",
-                  }}
-                >
-                  <img
-                    src="/marketing-lead.webp"
-                    alt="Oluwademilade Oguntade"
-                    className="w-full h-full object-cover"
-                    style={{
-                      objectPosition: "58% 18%",
-                      transform: "translate(-1px, 1px) scale(1.6)",
-                    }}
-                  />
-                </div>
-                <h3
-                  className="text-xl font-bold text-white mb-1"
-                  style={{ fontFamily: '"Syne", sans-serif' }}
-                >
-                  Oluwademilade Oguntade
-                </h3>
-                <p
-                  className="text-[#ff00ff] text-sm mb-2"
-                  style={{ textShadow: "0 0 10px rgba(255, 0, 255, 0.5)" }}
-                >
-                  {"Marketing Lead"}
-                </p>
-              </motion.div>
-
-              {/* Logistics & Event Planning Lead */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="p-6 bg-[#1a1a2e] border border-[#f0ff00]/30 text-center"
-                style={{
-                  clipPath:
-                    "polygon(3% 0, 97% 0, 100% 5%, 100% 95%, 97% 100%, 3% 100%, 0 95%, 0 5%)",
-                  boxShadow: "0 0 40px rgba(240, 255, 0, 0.2)",
-                }}
-              >
-                <div
-                  className="w-28 h-28 mx-auto mb-4 border-2 border-[#f0ff00] overflow-hidden"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)",
-                    boxShadow: "0 0 30px rgba(240, 255, 0, 0.3)",
-                  }}
-                >
-                  <img
-                    src="/omotayo-ayeni.webp"
-                    alt="Omotayo Ayeni"
-                    className="w-full h-full object-cover"
-                    style={{
-                      objectPosition: "90% 50%",
-                      transform: "translate(-1px, 1px) scale(1.1)",
-                    }}
-                  />
-                </div>
-                <h3
-                  className="text-xl font-bold text-white mb-1"
-                  style={{ fontFamily: '"Syne", sans-serif' }}
-                >
-                  Omotayo Ayeni
-                </h3>
-                <p
-                  className="text-[#f0ff00] text-sm mb-2"
-                  style={{ textShadow: "0 0 10px rgba(240, 255, 0, 0.5)" }}
-                >
-                  {"Logistics & Event Planning Lead"}
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="pt-14 pb-20 sm:pt-16 sm:pb-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] bg-[#ff00ff]/10 rounded-full blur-[150px]" />
-        </div>
-
-        {/* Animated scan line */}
+      {/* Team - rounded card grid with circular images */}
+      <section className="max-w-[1280px] mx-auto px-5 py-16">
         <motion.div
-          className="absolute w-full h-px bg-gradient-to-r from-transparent via-[#00fff0]/50 to-transparent"
-          initial={{ top: 0 }}
-          animate={{ top: "100%" }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        />
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="text-center max-w-2xl mx-auto mb-10"
+        >
+          <p className="eyebrow">The team</p>
+          <h2 className="mt-2 text-[28px] md:text-[32px] font-semibold tracking-tight" style={{ fontFamily: "Outfit" }}>
+            The team behind CodeSpark
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+            Builders, operators, and mentors helping students ship products before graduation.
+          </p>
+          <Separator className="mt-6 max-w-[120px] mx-auto" />
+        </motion.div>
 
-        <div className="relative max-w-3xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h2
-              className="text-3xl md:text-5xl font-bold mb-6 text-white"
-              style={{ fontFamily: '"Syne", sans-serif' }}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {teamMembers.map((member, i) => (
+            <motion.div
+              key={member.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
             >
-              JOIN THE{" "}
-              <span
-                className="text-[#ff00ff]"
-                style={{ textShadow: "0 0 30px rgba(255, 0, 255, 0.8)" }}
-              >
-                MOVEMENT
-              </span>
-            </h2>
-            <p className="text-white/60 text-lg mb-10">
-              {`// Be part of building Africa's next generation of tech founders_`}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://tix.africa/discover/codesparkevent2026"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-12 py-5 bg-[#ff00ff] text-white font-bold uppercase tracking-wider hover:scale-105 transition-all"
-                style={{
-                  fontFamily: '"Syne", sans-serif',
-                  clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-                  boxShadow: "0 0 50px rgba(255, 0, 255, 0.6)",
-                }}
-              >
-                ATTEND_EVENT
-              </a>
-              <Link
-                to="/for-partners"
-                className="inline-flex w-full sm:w-auto items-center justify-center text-center px-12 py-5 bg-transparent border-2 border-[#00fff0] text-[#00fff0] font-bold uppercase tracking-wider hover:bg-[#00fff0]/10 transition-all"
-                style={{
-                  fontFamily: '"Syne", sans-serif',
-                  clipPath: "polygon(3% 0, 100% 0, 97% 100%, 0 100%)",
-                }}
-              >
-                PARTNER_WITH_US
-              </Link>
-            </div>
-          </motion.div>
+              <Card hover className="p-7 text-center h-full flex flex-col items-center">
+                <div className="w-28 h-28 rounded-full overflow-hidden border-2 shadow-sm shrink-0 bg-[var(--surface-2)]" style={{ borderColor: "var(--border)" }}>
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: "center 16%" }}
+                    />
+                  ) : (
+                    <div className="w-full h-full grid place-items-center text-2xl" style={{ color: "var(--muted)" }}>
+                      {(member as { avatar?: string }).avatar ?? member.name[0]}
+                    </div>
+                  )}
+                </div>
+                <h3 className="mt-4 text-[15px] font-semibold tracking-tight" style={{ fontFamily: "Outfit" }}>
+                  {member.name}
+                </h3>
+                <Badge variant="soft" className="mt-2 px-3 py-1 text-xs font-medium">
+                  {member.role}
+                </Badge>
+                {(member as { bio?: string }).bio && (
+                  <p className="mt-3 text-xs leading-relaxed line-clamp-3" style={{ color: "var(--muted)" }}>
+                    {(member as { bio?: string }).bio}
+                  </p>
+                )}
+              </Card>
+            </motion.div>
+          ))}
         </div>
+      </section>
+
+      {/* CTA blue strip */}
+      <section className="max-w-[1280px] mx-auto px-5 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+        >
+          <Card className="p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-[var(--accent)] bg-[var(--accent)] text-white shadow-[var(--shadow-strong)]">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight" style={{ fontFamily: "Outfit" }}>
+                Join the movement
+              </h3>
+              <p className="mt-2 text-sm md:text-[15px] leading-relaxed opacity-90 max-w-xl">Be part of building Africa&apos;s next generation of tech founders. Attend the event or partner with us.</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto">
+              <Button asChild variant="outline" size="lg" className="bg-white text-[var(--accent)] border-white hover:bg-white/90 w-full sm:w-auto">
+                <a href="https://tix.africa/discover/codesparkevent2026" target="_blank" rel="noopener noreferrer">
+                  Attend event
+                </a>
+              </Button>
+              <Button asChild size="lg" className="bg-[var(--ink)] text-white hover:bg-black w-full sm:w-auto border border-white/15">
+                <Link to="/for-partners">Partner with us</Link>
+              </Button>
+            </div>
+          </Card>
+        </motion.div>
       </section>
     </div>
   );

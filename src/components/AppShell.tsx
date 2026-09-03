@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Rocket,
@@ -16,7 +16,6 @@ import {
   CalendarCheck,
 } from "lucide-react";
 import { useProfile, useStreak } from "@/lib/data";
-import { NBButton } from "@/components/nb";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -31,69 +30,92 @@ const NAV = [
   { to: "/challenge-resource-hub/progress", label: "Progress", icon: BarChart3 },
 ] as const;
 
+function useTheme() {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "light";
+    const saved = localStorage.getItem("codespark-theme") as "light" | "dark" | null;
+    if (saved) return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  });
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") root.classList.add("dark");
+    else root.classList.remove("dark");
+    localStorage.setItem("codespark-theme", theme);
+  }, [theme]);
+  return [theme, setTheme] as const;
+}
+
 export function AppShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const { data: profile } = useProfile();
   const { data: streak } = useStreak();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [theme, setTheme] = useTheme();
 
   return (
-    <div className="hub-root min-h-screen bg-cream">
-      <header className="sticky top-0 z-40 border-b-[3px] border-ink bg-paper">
-        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 lg:flex lg:justify-between">
-          <Link to="/challenge-resource-hub/dashboard" className="flex min-w-0 items-center gap-2">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-[3px] border-ink bg-brand-orange shadow-brutal-sm">
-              <Rocket className="h-5 w-5" />
+    <div className="min-h-screen bg-[var(--bg)]">
+      {/* top bar 64px clarity like hub header in clarity.html */}
+      <header className="sticky top-0 z-40 backdrop-blur-xl border-b bg-[var(--surface)]" style={{ borderColor: "var(--border)" }}>
+        <div className="mx-auto flex h-[64px] max-w-[1280px] items-center justify-between gap-4 px-5">
+          <Link to="/challenge-resource-hub/dashboard" className="flex min-w-0 items-center gap-3">
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[var(--accent)] text-sm font-bold text-white">C</span>
+            <span className="font-display text-[17px] font-semibold tracking-tight">Hub</span>
+            <span className="hidden md:inline-flex rounded-full border bg-[var(--surface-2)] px-3 py-1 text-xs font-medium" style={{ borderColor: "var(--border)", color: "var(--muted)" }}>
+              Cohort 2026
             </span>
-            <span className="truncate font-display text-lg font-extrabold">CodeSpark Hub</span>
           </Link>
 
           <div className="flex items-center gap-2">
-            <span className="hidden items-center gap-1 rounded-full border-[3px] border-ink bg-brand-orange px-3 py-1 font-display text-sm font-extrabold shadow-brutal-sm sm:inline-flex">
-              <Flame className="h-4 w-4 animate-flame" />
-              {streak?.current_streak ?? 0}
+            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border bg-[var(--accent)] px-3 py-1 text-xs font-semibold text-white" style={{ borderColor: "var(--accent)" }}>
+              <Flame className="h-3.5 w-3.5" /> {streak?.current_streak ?? 0} day streak
             </span>
-            <span className="hidden items-center gap-1 rounded-full border-[3px] border-ink bg-brand-yellow px-3 py-1 font-display text-sm font-extrabold shadow-brutal-sm sm:inline-flex">
+            <span className="hidden sm:inline-flex items-center rounded-full border bg-[var(--surface-2)] px-3 py-1 text-xs font-semibold" style={{ borderColor: "var(--border)" }}>
               {profile?.xp ?? 0} XP
             </span>
-            <NBButton
-              tone="ghost"
-              size="icon"
-              className="lg:hidden"
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen(!open)}
-            >
-              {open ? <Menu className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </NBButton>
-            <span className="hidden max-w-[14rem] truncate rounded-full border-[3px] border-ink bg-paper px-3 py-1 font-display text-sm font-extrabold shadow-brutal-sm lg:inline-flex">
+            <span className="hidden lg:inline-flex max-w-[14rem] truncate rounded-full border bg-[var(--surface)] px-3 py-1 text-sm font-medium" style={{ borderColor: "var(--border)" }}>
               {profile?.username ?? profile?.full_name ?? "Participant"}
             </span>
-
+            <button
+              aria-label="Toggle theme"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="grid h-9 w-9 place-items-center rounded-full border bg-[var(--surface)]"
+              style={{ borderColor: "var(--border)", color: "var(--muted)" }}
+            >
+              {theme === "dark" ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              )}
+            </button>
+            <button
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen(!open)}
+              className="grid h-9 w-9 place-items-center rounded-full border bg-[var(--surface)] lg:hidden"
+              style={{ borderColor: "var(--border)" }}
+            >
+              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
+            <img src="https://picsum.photos/seed/hub-avatar/80/80" alt="" className="hidden h-9 w-9 rounded-full object-cover sm:block" style={{ border: "1px solid var(--border)" }} />
           </div>
         </div>
 
-        <nav
-          className="mx-auto hidden max-w-7xl gap-1 overflow-x-auto px-4 pb-3 lg:flex"
-          aria-label="Main"
-        >
+        {/* desktop nav row */}
+        <div className="mx-auto hidden max-w-[1280px] items-center gap-1 px-5 pb-3 lg:flex">
           {NAV.map((item) => (
             <NavPill key={item.to} {...item} active={pathname.startsWith(item.to)} />
           ))}
-        </nav>
+        </div>
       </header>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-ink/40 lg:hidden" onClick={() => setOpen(false)}>
-          <nav
-            className="ml-auto flex h-full w-72 flex-col gap-2 border-l-[3px] border-ink bg-paper p-4"
-            onClick={(e) => e.stopPropagation()}
-            aria-label="Mobile"
-          >
+        <div className="fixed inset-0 z-50 bg-black/20 lg:hidden" onClick={() => setOpen(false)}>
+          <nav className="ml-auto flex h-full w-72 flex-col gap-2 border-l bg-[var(--surface)] p-4" style={{ borderColor: "var(--border)" }} onClick={(e) => e.stopPropagation()} aria-label="Mobile">
             <div className="mb-2 flex items-center justify-between">
-              <span className="font-display text-lg font-extrabold">Menu</span>
-              <NBButton tone="ghost" size="icon" aria-label="Close menu" onClick={() => setOpen(false)}>
-                <X className="h-5 w-5" />
-              </NBButton>
+              <span className="font-display text-lg font-semibold">Menu</span>
+              <button onClick={() => setOpen(false)} className="grid h-9 w-9 place-items-center rounded-full border" style={{ borderColor: "var(--border)" }}>
+                <X className="h-4 w-4" />
+              </button>
             </div>
             {NAV.map((item) => (
               <Link
@@ -101,48 +123,37 @@ export function AppShell({ children }: { children: ReactNode }) {
                 to={item.to}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "flex items-center gap-3 rounded-xl border-[3px] border-ink px-3 py-2 font-display font-extrabold",
-                  pathname.startsWith(item.to) ? "bg-brand-yellow shadow-brutal-sm" : "bg-paper",
+                  "flex items-center gap-3 rounded-[12px] px-3 py-2.5 text-sm font-medium",
+                  pathname.startsWith(item.to) ? "bg-[var(--surface-2)] text-[var(--ink)] font-semibold" : "text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--ink)]",
                 )}
               >
                 <item.icon className="h-4 w-4" /> {item.label}
               </Link>
             ))}
-            <div className="mt-2 rounded-xl border-[3px] border-ink bg-cream px-3 py-2 font-display text-sm font-extrabold">
+            <div className="mt-3 rounded-[16px] border bg-[var(--surface-2)] p-3 text-sm font-medium" style={{ borderColor: "var(--border)" }}>
               {profile?.username ?? profile?.full_name ?? "Participant"}
               {profile?.team ? ` · ${profile.team}` : ""}
             </div>
-
           </nav>
         </div>
       )}
 
-      <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
+      <main className="mx-auto max-w-[1280px] px-5 py-8">{children}</main>
 
-      <footer className="border-t-[3px] border-ink bg-paper px-4 py-6 text-center text-sm text-muted-foreground">
+      <footer className="border-t bg-[var(--surface)] px-5 py-6 text-center text-sm" style={{ borderColor: "var(--border)", color: "var(--muted)" }}>
         CodeSpark Innovation Hub — keep learning, keep shipping.
       </footer>
     </div>
   );
 }
 
-function NavPill({
-  to,
-  label,
-  icon: Icon,
-  active,
-}: {
-  to: string;
-  label: string;
-  icon: typeof Library;
-  active: boolean;
-}) {
+function NavPill({ to, label, icon: Icon, active }: { to: string; label: string; icon: typeof Library; active: boolean }) {
   return (
     <Link
       to={to}
       className={cn(
-        "nb-press flex shrink-0 items-center gap-2 rounded-xl border-[3px] border-ink px-3 py-2 font-display text-sm font-extrabold",
-        active ? "bg-brand-yellow shadow-brutal-sm" : "bg-paper hover:bg-cream",
+        "inline-flex shrink-0 items-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition-colors",
+        active ? "bg-[var(--accent)] text-white border-[var(--accent)]" : "bg-[var(--surface)] border-[var(--border)] text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--surface-2)]",
       )}
     >
       <Icon className="h-4 w-4" />
@@ -151,27 +162,13 @@ function NavPill({
   );
 }
 
-export function PageHeader({
-  eyebrow,
-  title,
-  subtitle,
-  right,
-}: {
-  eyebrow?: string;
-  title: string;
-  subtitle?: string;
-  right?: ReactNode;
-}) {
+export function PageHeader({ eyebrow, title, subtitle, right }: { eyebrow?: string; title: string; subtitle?: string; right?: ReactNode }) {
   return (
     <div className="mb-8 grid gap-4 sm:flex sm:items-end sm:justify-between">
       <div className="min-w-0">
-        {eyebrow && (
-          <span className="font-display text-xs font-extrabold uppercase tracking-[0.2em] text-muted-foreground">
-            {eyebrow}
-          </span>
-        )}
-        <h1 className="mt-1 text-3xl sm:text-4xl">{title}</h1>
-        {subtitle && <p className="mt-2 max-w-2xl text-muted-foreground">{subtitle}</p>}
+        {eyebrow && <span className="font-display text-[11px] font-medium uppercase tracking-[0.14em]" style={{ color: "var(--muted)" }}>{eyebrow}</span>}
+        <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h1>
+        {subtitle && <p className="mt-2 max-w-2xl text-sm" style={{ color: "var(--muted)" }}>{subtitle}</p>}
       </div>
       {right}
     </div>

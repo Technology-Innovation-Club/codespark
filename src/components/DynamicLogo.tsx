@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { Link } from "@tanstack/react-router";
 
 type DynamicLogoProps = {
   showWordmark?: boolean;
@@ -11,22 +11,22 @@ export function DynamicLogo({
   compact = false,
   className = "",
 }: DynamicLogoProps) {
-  const src =
-    !showWordmark || compact
-      ? "/codespark-logo-mark-white.webp"
-      : "/codespark-logo-white.webp";
+  const showText = showWordmark && !compact;
 
   return (
-    <div className={`flex items-center ${className}`}>
-      <motion.img
-        aria-label="CodeSpark logo"
-        initial={{ scale: 0.94, opacity: 0.9 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.35, ease: [0.25, 0.1, 0, 1] }}
-        src={src}
-        alt="CodeSpark"
-        className={`h-9 sm:h-10 w-auto object-contain ${compact ? "max-w-9 sm:max-w-10" : "max-w-[190px] sm:max-w-[210px]"}`}
-      />
-    </div>
+    <Link to="/" className={`flex items-center gap-3 ${className}`} aria-label="CodeSpark home">
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--accent)] text-sm font-bold text-white shrink-0">C</span>
+      {showText && (
+        <>
+          <span className="font-display text-[17px] font-semibold tracking-tight text-[var(--ink)]">CodeSpark</span>
+          <span
+            className="hidden lg:inline-flex rounded-full border bg-[var(--surface-2)] px-2 py-1 text-[10px] font-medium tracking-widest"
+            style={{ borderColor: "var(--border)", color: "var(--muted)" }}
+          >
+            CLARITY
+          </span>
+        </>
+      )}
+    </Link>
   );
 }
