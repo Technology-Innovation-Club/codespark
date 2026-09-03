@@ -1,5 +1,5 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import {
   Rocket,
   LayoutDashboard,
@@ -14,7 +14,10 @@ import {
   X,
   Flame,
   CalendarCheck,
+  LogOut,
 } from "lucide-react";
+import { useAuthActions } from "@convex-dev/auth/react";
+import { toast } from "sonner";
 import { useProfile, useStreak } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -52,6 +55,33 @@ export function AppShell({ children }: { children: ReactNode }) {
   const { data: streak } = useStreak();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [theme, setTheme] = useTheme();
+  const [userMenu, setUserMenu] = useState(false);
+  const { signOut } = useAuthActions();
+  const navigate = useNavigate();
+  const userMenuRef = useRef<HTMLDivElement | null>(null);
+  const isAuthed = !!(profile?.username || profile?.full_name);
+
+  useEffect(() => {
+    if (!userMenu) return;
+    function onDown(e: MouseEvent) {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) setUserMenu(false);
+    }
+    function onKey(e: KeyboardEvent) { if (e.key === "Escape") setUserMenu(false); }
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => { document.removeEventListener("mousedown", onDown); document.removeEventListener("keydown", onKey); };
+  }, [userMenu]);
+
+  async function handleSignOut() {
+    setUserMenu(false);
+    try {
+      await signOut();
+      toast.success("Signed out");
+      navigate({ to: "/challenge-resource-hub/auth", replace: true });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Sign out failed");
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[var(--bg)]">
@@ -73,9 +103,47 @@ export function AppShell({ children }: { children: ReactNode }) {
             <span className="hidden sm:inline-flex items-center rounded-full border bg-[var(--surface-2)] px-3 py-1 text-xs font-semibold" style={{ borderColor: "var(--border)" }}>
               {profile?.xp ?? 0} XP
             </span>
-            <span className="hidden lg:inline-flex max-w-[14rem] truncate rounded-full border bg-[var(--surface)] px-3 py-1 text-sm font-medium" style={{ borderColor: "var(--border)" }}>
-              {profile?.username ?? profile?.full_name ?? "Participant"}
-            </span>
+
+            <div className="relative" ref={userMenuRef}>
+              <button
+                type="button"
+                aria-label="Open user menu"
+                aria-haspopup="menu"
+                aria-expanded={userMenu}
+                onClick={() => setUserMenu((v) => !v)}
+                className="inline-flex items-center gap-2 rounded-full border bg-[var(--surface)] pl-1 pr-3 py-1 hover:bg-[var(--surface-2)] transition-colors"
+                style={{ borderColor: "var(--border)" }}
+              >
+                <img src="https://picsum.photos/seed/hub-avatar/80/80" alt="" className="h-7 w-7 rounded-full object-cover" style={{ border: "1px solid var(--border)" }} />
+                <span className="hidden lg:inline max-w-[10rem] truncate text-sm font-medium">{profile?.username ?? profile?.full_name ?? "Participant"}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-60" aria-hidden>
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              {userMenu && (
+                <div
+                  role="menu"
+                  className="absolute right-0 top-[calc(100%+6px)] z-50 min-w-[220px] rounded-[16px] border bg-[var(--surface)] p-2 shadow-[var(--shadow-strong)]"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  <div className="px-3 py-2">
+                    <p className="text-sm font-semibold truncate">{profile?.username ?? profile?.full_name ?? "Participant"}</p>
+                    <p className="mt-0.5 text-xs truncate" style={{ color: "var(--muted)" }}>{profile?.team ? `Team ${profile.team}` : "CodeSpark Hub"}</p>
+                  </div>
+                  <div className="my-1 h-px" style={{ background: "var(--border)" }} />
+                  <button
+                    role="menuitem"
+                    onClick={handleSignOut}
+                    disabled={!isAuthed}
+                    className="flex w-full items-center gap-2 rounded-[12px] px-3 py-2 text-sm font-medium text-[var(--ink)] hover:bg-[var(--surface-2)] disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign out
+                  </button>
+                </div>
+              )}
+            </div>
+
             <button
               aria-label="Toggle theme"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -83,7 +151,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               style={{ borderColor: "var(--border)", color: "var(--muted)" }}
             >
               {theme === "dark" ? (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4M1 12h2M21 12h2"/></svg>
               ) : (
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
               )}
@@ -96,7 +164,6 @@ export function AppShell({ children }: { children: ReactNode }) {
             >
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
-            <img src="https://picsum.photos/seed/hub-avatar/80/80" alt="" className="hidden h-9 w-9 rounded-full object-cover sm:block" style={{ border: "1px solid var(--border)" }} />
           </div>
         </div>
 

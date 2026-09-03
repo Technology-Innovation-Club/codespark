@@ -138,95 +138,126 @@ export const siteData = {
       ],
     },
     event: {
-      title: "CodeSpark Tech & Entrepreneurship Event 2026",
-      date: "April 25th 2026",
-      location: "Pan-Atlantic University, Lagos State, Nigeria",
-      attendance: "500+ Student Builders",
+      title: "CodeSpark Forum",
+      date: "September 26, 2026",
+      location: "Lagos Business School, Lagos",
+      attendance: "500 student builders",
       description:
         "An annual 500+ student builder convergence at Pan-Atlantic University. Founders. Investors. Operators. Real conversations.",
       whatItIs:
-        "A one-day convergence of student founders, investors, and business leaders exploring what it truly takes to build sustainable tech companies in Africa.",
+        "The world is moving to AI, but the classroom isn't keeping up. Don't wait until graduation to start building your career. Join 500 elite student builders and top industry operators at the CodeSpark Forum to transform your degree into a highly sought-after, AI-native tech advantage.",
       tagline: "This is not a conference. This is a builder's room.",
-      whoShouldAttend: [
-        "Student founders",
-        "Aspiring builders",
-        "Designers & developers",
-        "Investors scouting early founders",
-        "Innovation leaders",
-      ],
-      highlights: [
-        `Inter-school Tech Debate: "AI & Tech is Making Africans Dumb"`,
-        "CodeSpark Origin Story & Community Launch",
-        "CodeSpark Pitch Competition - 5 Startups Compete for ₦1 Million",
-        "CodeSpark Buildathon (Inter-school Ideation Session)",
-        "Networking, Exhibition & Founders' Showcase",
-        "CodeSpark Research Expo",
-        `Founders' Panel & AMA: "Failures as Founders: What No One Tells You"`,
-        "Closing Note: Building Products that Win in an AI-Saturated World",
-      ],
+      heroCta: {
+        primary: {
+          label: "Grab Your Seat",
+          href: "https://tix.africa/discover/codespark-tech-entrepreneurship-event",
+        },
+        secondary: {
+          label: "Sponsor a Student (Alumni/Parents)",
+          href: "https://tix.africa/discover/codespark-tech-entrepreneurship-event",
+        },
+      },
+      successStories: {
+        header: "This Is What Maximizing University Looks Like.",
+        body: "You are told to focus solely on your grades and wait until after graduation to innovate. They didn't listen. Meet the students who translated academic theory into real-world impact before they even left campus:",
+        stories: [
+          {
+            title: "Flash Narrative",
+            body: "After participating in CodeSpark, built an AI-powered reputation management solution for enterprises while in school. Secured a \u20A610,000,000 prize at the Zenith Bank Tech Fair Hackathon.",
+          },
+          {
+            title: "YarnGPT",
+            body: "Africa's First Student-Built LLM, built by a Nigerian student and got acquired by BlueChip Technologies. That's what's possible when students becomes builder.",
+          },
+          {
+            title: "Global Internships",
+            body: "Student builders are landing global roles at companies like Flutterwave, NVIDIA, Stripe, and Meta. This can be possible for you too.",
+          },
+        ],
+      },
+      about: {
+        header: "The Ultimate Convergence of Talent and Industry",
+        body: "CodeSpark Forum is where academic theory meets modern industry execution. On September 26, 2026, at the Lagos Business School, 500 top-tier students from 20+ universities will converge with Vice-Chancellors, investment leaders, and tech operators.",
+        students: "This is your direct bridge to industry operators and the exact blueprint to position yourself as highly sought-after talent.",
+        alumni: "The landscape has changed. A degree is no longer enough. This is your opportunity to participate in an ecosystem that actively transitions students from passive learners into industry-ready builders.",
+      },
       speakers: [
         {
-          name: "Dr. Eyitemi Fasanu-Adegboye",
-          title: "CEO & Co-founder | Research Ready Hub",
-          image: "/event-speakers/dr-eyitemi-fasanu-adegboye.webp",
-        },
-        {
-          name: "Anjolaoluwa Ajayi",
-          title: "Founder | Acad AI",
-          image: "/event-speakers/anjolaoluwa-ajayi.webp",
+          name: "Dr Itoro Emembolu",
+          role: "Faculty, Lagos Business School, Pan-Atlantic University",
+          panel: "Industry-Academia Collaboration",
+          focus: "Hear directly from academic leadership on how universities and the private sector must align to create competent, industry-ready talent.",
         },
         {
           name: "Grace Idiare",
-          title: "Co-founder | VarscityScape",
-          image: "/event-speakers/grace-idiare.webp",
+          role: "Tech Operator & Builder",
+          panel: "Panel 2 — Beyond the Degree",
+          focus: "A reality check on the brutal, rewarding journey of balancing academic coursework with building high-impact tech products.",
         },
         {
-          name: "John Oseni",
-          title: "Co-founder | AttendX",
-          image: "/event-speakers/john-oseni.webp",
+          name: "Blessing Bossman",
+          role: "Industry operator (Panel 2)",
+          panel: "Panel 2",
+          focus: "A reality check on the realities of building, scaling, and leading tech in Africa.",
         },
         {
-          name: "Gregory Asiegbu",
-          title: "Accelerator Manager | Lagos Business School BIA",
-          image: "/event-speakers/gregory-asiegbu.webp",
-        },
-        {
-          name: "Gabriel Ologunwa",
-          title:
-            "AVP, Global Expansion & Payment Partnerships, West Africa | Flutterwave",
-          image: "/event-speakers/gabriel-ologunwa.webp",
-        },
-        {
-          name: "James Nelson",
-          title: "Founder | Storipod",
-          image: "/event-speakers/james-nelson.webp",
-        },
-        {
-          name: "Yinka David-Kaiyewu",
-          title: "President | Purpose-Drive Global",
-          image: "/event-speakers/yinka-david-kaiyewu.webp",
-        },
-        {
-          name: "Emmanuel Samuel",
-          title: "Senior Tech Recruiter | Flutterwave",
-          image: "/event-speakers/emmanuel-samuel.webp",
-        },
-        {
-          name: "Dr Goodluck Nnorom",
-          title: "GenZ HOD | Caleb University",
-          image: "/event-speakers/dr-goodluck-nnorom.webp",
-        },
-        {
-          name: "Precious Ikade",
-          title: "Founder | TekBuddy",
-          image: "/event-speakers/precious-ikade.webp",
-        },
-        {
-          name: "Uche Edwin",
-          title: "Lead Product Manager | Equalyz AI",
-          image: "/event-speakers/uche-edwin.webp",
+          name: "Chioma Ukpabi",
+          role: "Judge, Pitch Competition",
+          panel: "Pitch Competition",
+          focus: "Live evaluation of the top teams from our 8-week innovation sprint pitching to real investors.",
         },
       ],
+      moreGuestsNote: "More guests to be announced soon.",
+      speakersIntro: "We are stripping away the fluff to bring you the unglamorous realities of building, scaling, and leading.",
+      fomo: {
+        header: "The Cost of Missing Out",
+        body: "The tech ecosystem moves entirely too fast for passive learning. If you miss this forum, you miss the exact frameworks our students used to secure over \u20A611M in funding this year. You miss direct access to 25+ industry mentors actively looking to guide and hire fresh talent. You miss the network that will define the next decade of African tech.",
+        parentNote: "If you want your child or the students of your alma mater to graduate with an undeniable competitive advantage, do not let them miss this room.",
+      },
+      agenda: {
+        header: "Built for Action, Not Just Listening",
+        body: "Every session is designed to generate immediate value for attendees:",
+        items: [
+          {
+            title: "Live Mentorship Sessions",
+            description: "Sit 1-on-1 with industry professionals to review your ideas, get unstuck, and map your career trajectory.",
+          },
+          {
+            title: "Startup Pitch Competitions",
+            description: "Watch the top teams from our 8-week innovation sprint pitch their validated, applied AI solutions to live investors.",
+          },
+          {
+            title: "AI & Tech Debates",
+            description: "High-stakes, critical conversations dissecting how artificial intelligence is rewriting the rules of the Nigerian economy.",
+          },
+          {
+            title: "AI Training & Ideation",
+            description: "Walk away with practical AI execution skills you can immediately apply to your specific field of study.",
+          },
+        ],
+      },
+      tickets: {
+        header: "Secure Your Access Today",
+        body: "Don't let your university years pass you by without building something real. Get your premium access now, or pay it forward by sponsoring the next generation of builders.",
+        perksHeader: "Premium Access to CodeSpark Perks",
+        perks: [
+          "Startup pitch viewing",
+          "Mentorship & networking access",
+          "Participation in debate & quiz",
+          "Access to ecosystem exposure",
+          "Exclusive opportunity to connect with guests",
+          "Premium seating spot",
+          "Refreshments",
+        ],
+        cta: {
+          primary: { label: "Get My Premium Ticket", href: "https://tix.africa/discover/codespark-tech-entrepreneurship-event/checkout?step=tickets" },
+          secondary: { label: "Sponsor 1 Student Ticket", href: "https://tix.africa/discover/codespark-tech-entrepreneurship-event/checkout?step=tickets" },
+          tiers: [
+            { label: "Sponsor 5 Student Tickets", href: "https://tix.africa/discover/codespark-tech-entrepreneurship-event/checkout?step=tickets" },
+            { label: "Sponsor 10 Student Tickets", href: "https://tix.africa/discover/codespark-tech-entrepreneurship-event/checkout?step=tickets" },
+          ],
+        },
+      },
     },
   },
 
