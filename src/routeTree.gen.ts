@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as DesignsRouteImport } from './routes/designs'
+import { Route as PanelRouteImport } from './routes/panel'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicAboutRouteImport } from './routes/_public/about'
 import { Route as PublicEventRouteImport } from './routes/_public/event'
@@ -43,6 +44,11 @@ const PublicRoute = PublicRouteImport.update({
 const DesignsRoute = DesignsRouteImport.update({
   id: '/designs',
   path: '/designs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PanelRoute = PanelRouteImport.update({
+  id: '/panel',
+  path: '/panel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicIndexRoute = PublicIndexRouteImport.update({
@@ -182,6 +188,7 @@ const ChallengeResourceHubHubCategorySlugRoute =
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
   '/designs': typeof DesignsRouteWithChildren
+  '/panel': typeof PanelRoute
   '/about': typeof PublicAboutRoute
   '/event': typeof PublicEventRoute
   '/events': typeof PublicEventsRoute
@@ -207,6 +214,7 @@ export interface FileRoutesByFullPath {
   '/challenge-resource-hub/category/$slug': typeof ChallengeResourceHubHubCategorySlugRoute
 }
 export interface FileRoutesByTo {
+  '/panel': typeof PanelRoute
   '/about': typeof PublicAboutRoute
   '/event': typeof PublicEventRoute
   '/events': typeof PublicEventsRoute
@@ -235,6 +243,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_public': typeof PublicRouteWithChildren
   '/designs': typeof DesignsRouteWithChildren
+  '/panel': typeof PanelRoute
   '/_public/about': typeof PublicAboutRoute
   '/_public/event': typeof PublicEventRoute
   '/_public/events': typeof PublicEventsRoute
@@ -265,6 +274,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/designs'
+    | '/panel'
     | '/about'
     | '/event'
     | '/events'
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/challenge-resource-hub/category/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/panel'
     | '/about'
     | '/event'
     | '/events'
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_public'
     | '/designs'
+    | '/panel'
     | '/_public/about'
     | '/_public/event'
     | '/_public/events'
@@ -346,6 +358,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   PublicRoute: typeof PublicRouteWithChildren
   DesignsRoute: typeof DesignsRouteWithChildren
+  PanelRoute: typeof PanelRoute
   ChallengeResourceHubHubRoute: typeof ChallengeResourceHubHubRouteWithChildren
   ChallengeResourceHubAuthRoute: typeof ChallengeResourceHubAuthRoute
   ChallengeResourceHubIndexRoute: typeof ChallengeResourceHubIndexRoute
@@ -365,6 +378,13 @@ declare module '@tanstack/react-router' {
       path: '/designs'
       fullPath: '/designs'
       preLoaderRoute: typeof DesignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/panel': {
+      id: '/panel'
+      path: '/panel'
+      fullPath: '/panel'
+      preLoaderRoute: typeof PanelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_public/': {
@@ -620,6 +640,7 @@ const ChallengeResourceHubHubRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   PublicRoute: PublicRouteWithChildren,
   DesignsRoute: DesignsRouteWithChildren,
+  PanelRoute: PanelRoute,
   ChallengeResourceHubHubRoute: ChallengeResourceHubHubRouteWithChildren,
   ChallengeResourceHubAuthRoute: ChallengeResourceHubAuthRoute,
   ChallengeResourceHubIndexRoute: ChallengeResourceHubIndexRoute,

@@ -198,4 +198,15 @@ export default defineSchema({
     .index("by_user", ["userId"])
     .index("by_session", ["sessionId"])
     .index("by_user_and_session", ["userId", "sessionId"]),
+
+  /* Live event Q&A for /panel — anonymous ask + upvote, host can present. */
+  panel_questions: defineTable({
+    text: v.string(),
+    author: v.optional(v.string()),
+    votes: v.number(),
+    answered: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_created", ["createdAt"])
+    .index("by_votes", ["votes"]),
 });
