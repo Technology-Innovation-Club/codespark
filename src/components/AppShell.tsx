@@ -19,6 +19,7 @@ import {
 import { useAuthActions } from "@convex-dev/auth/react";
 import { toast } from "sonner";
 import { useProfile, useStreak } from "@/lib/data";
+import { useTheme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -32,22 +33,6 @@ const NAV = [
   { to: "/challenge-resource-hub/my-library", label: "My Library", icon: Bookmark },
   { to: "/challenge-resource-hub/progress", label: "Progress", icon: BarChart3 },
 ] as const;
-
-function useTheme() {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "light";
-    const saved = localStorage.getItem("codespark-theme") as "light" | "dark" | null;
-    if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  });
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-    localStorage.setItem("codespark-theme", theme);
-  }, [theme]);
-  return [theme, setTheme] as const;
-}
 
 export function AppShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);

@@ -205,6 +205,7 @@ export default defineSchema({
     author: v.optional(v.string()),
     votes: v.number(),
     answered: v.boolean(),
+    pinned: v.optional(v.boolean()),
     createdAt: v.number(),
   })
     .index("by_created", ["createdAt"])

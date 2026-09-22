@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "convex/react";
 import { AnimatePresence, motion } from "motion/react";
 import { api } from "../../convex/_generated/api";
 import type { Id } from "../../convex/_generated/dataModel";
+import { useTheme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/panel")({
@@ -43,13 +44,16 @@ function Panel() {
   const questions = useQuery(api.panel.list);
   const askQuestion = useMutation(api.panel.ask);
   const upvote = useMutation(api.panel.upvote);
+  const unvote = useMutation(api.panel.unvote);
   const verifyHost = useMutation(api.panel.verifyHost);
   const setAnswered = useMutation(api.panel.setAnswered);
+  const setPinned = useMutation(api.panel.setPinned);
   const removeQuestion = useMutation(api.panel.remove);
 
   const [voted, setVoted] = useState<Set<string>>(() => new Set(readVoted()));
   const [pendingVotes, setPendingVotes] = useState<Record<string, number>>({});
   const [sort, setSort] = useState<"top" | "new">("top");
+  const [theme, setTheme] = useTheme();
 
   const [text, setText] = useState("");
   const [name, setName] = useState(() =>
@@ -68,13 +72,14 @@ function Panel() {
   const [stageId, setStageId] = useState<string | null>(null);
 
   const ordered = useMemo(() => {
-    const rows = questions ?? [];
-    const copy = [...rows];
-    if (sort === "top") {
-      copy.sort((a, b) => b.votes - a.votes || b.createdAt - a.createdAt);
-    } else {
-      copy.sort((a, b) => b.createdAt - a.createdAt);
-    }
+    const copy = [...(questions ?? [])];
+    copy.sort((a, b) => {
+      // Pinned questions always rise to the top, whatever the filter.
+      if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+      return sort === "top"
+        ? b.votes - a.votes || b.createdAt - a.createdAt
+        : b.createdAt - a.createdAt;
+    });
     return copy;
   }, [questions, sort]);
 
@@ -106,15 +111,19 @@ function Panel() {
     });
   }, []);
 
-  const handleUpvote = useCallback(
+  const handleToggleVote = useCallback(
     async (id: Id<"panel_questions">) => {
-      if (voted.has(id) || pendingVotes[id]) return;
-      markVoted(id);
-      setPendingVotes((p) => ({ ...p, [id]: 1 }));
+      if (pendingVotes[id]) return;
+      const removing = voted.has(id);
+      if (removing) unmarkVoted(id);
+      else markVoted(id);
+      setPendingVotes((p) => ({ ...p, [id]: removing ? -1 : 1 }));
       try {
-        await upvote({ id });
+        if (removing) await unvote({ id });
+        else await upvote({ id });
       } catch {
-        unmarkVoted(id);
+        if (removing) markVoted(id);
+        else unmarkVoted(id);
       } finally {
         setPendingVotes((p) => {
           const next = { ...p };
@@ -123,7 +132,7 @@ function Panel() {
         });
       }
     },
-    [voted, pendingVotes, markVoted, unmarkVoted, upvote],
+    [voted, pendingVotes, markVoted, unmarkVoted, upvote, unvote],
   );
 
   async function handleAsk(e: React.FormEvent) {
@@ -207,11 +216,29 @@ function Panel() {
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="hidden rounded-full border bg-[var(--surface)] px-4 py-2 text-right sm:block" style={{ borderColor: "var(--border)" }}>
-              <div className="font-display text-lg font-semibold leading-none">{questions?.length ?? 0}</div>
-              <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-2)]">
+            <button
+              aria-label="Toggle theme"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border bg-[var(--surface)] text-[var(--muted)] transition-colors hover:text-[var(--ink)]"
+              style={{ borderColor: "var(--border)" }}
+            >
+              {theme === "dark" ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+              )}
+            </button>
+            <div
+              className="hidden h-11 items-center gap-2.5 rounded-full border bg-[var(--surface)] px-4 sm:flex"
+              style={{ borderColor: "var(--border)" }}
+            >
+              <span className="font-display text-base font-semibold tabular-nums leading-none">
+                {questions?.length ?? 0}
+              </span>
+              <span className="h-4 w-px bg-[var(--border)]" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--muted-2)]">
                 questions
-              </div>
+              </span>
             </div>
             {isHost ? (
               <button
@@ -316,16 +343,18 @@ function Panel() {
                   className={cn(
                     "clarity-card flex gap-4 p-4 sm:p-5",
                     q.answered && "opacity-60",
+                    q.pinned && !q.answered && "border-[color-mix(in_srgb,var(--accent)_45%,var(--border))] shadow-[var(--shadow-strong)]",
                   )}
                 >
                   <button
-                    onClick={() => handleUpvote(q.id)}
-                    disabled={hasVoted}
-                    aria-label={hasVoted ? "Already upvoted" : "Upvote this question"}
+                    onClick={() => handleToggleVote(q.id)}
+                    aria-pressed={hasVoted}
+                    aria-label={hasVoted ? "Remove your upvote" : "Upvote this question"}
+                    title={hasVoted ? "Remove your upvote" : "Upvote"}
                     className={cn(
                       "flex h-16 w-14 shrink-0 flex-col items-center justify-center rounded-2xl border transition-all",
                       hasVoted
-                        ? "border-transparent bg-[var(--accent)] text-white"
+                        ? "border-transparent bg-[var(--accent)] text-white hover:-translate-y-0.5"
                         : "border-[var(--border)] bg-[var(--surface-2)] text-[var(--ink)] hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--accent)_45%,var(--border))]",
                     )}
                   >
@@ -340,6 +369,11 @@ function Panel() {
                       <p className="font-display text-[17px] font-medium leading-snug sm:text-[19px]">
                         {q.text}
                       </p>
+                      {q.pinned && (
+                        <span className="mt-0.5 shrink-0 rounded-full bg-[var(--accent-soft)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[var(--accent-ink)]">
+                          Pinned
+                        </span>
+                      )}
                       {q.answered && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-[#ecfdf5] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#047857]">
                           Answered
@@ -358,6 +392,18 @@ function Panel() {
                             style={{ borderColor: "var(--border)" }}
                           >
                             Zoom in
+                          </button>
+                          <button
+                            onClick={() => setPinned({ id: q.id, pinned: !q.pinned, password: hostPassword })}
+                            className={cn(
+                              "rounded-full border px-3 py-1 text-[11px] font-semibold transition-colors",
+                              q.pinned
+                                ? "border-transparent bg-[var(--accent)] text-white"
+                                : "text-[var(--muted)] hover:text-[var(--ink)]",
+                            )}
+                            style={q.pinned ? undefined : { borderColor: "var(--border)" }}
+                          >
+                            {q.pinned ? "Unpin" : "Pin"}
                           </button>
                           <button
                             onClick={() => setAnswered({ id: q.id, answered: !q.answered, password: hostPassword })}

@@ -20,6 +20,7 @@ export const list = query({
         author: r.author ?? null,
         votes: r.votes,
         answered: r.answered,
+        pinned: r.pinned ?? false,
         createdAt: r.createdAt,
       }))
       .sort((a, b) => b.votes - a.votes || b.createdAt - a.createdAt);
@@ -54,13 +55,38 @@ export const upvote = mutation({
   },
 });
 
+export const unvote = mutation({
+  args: { id: v.id("panel_questions") },
+  handler: async (ctx, args) => {
+    const question = await ctx.db.get(args.id);
+    if (!question) throw new Error("That question is gone.");
+    const votes = Math.max(0, question.votes - 1);
+    await ctx.db.patch(args.id, { votes });
+    return votes;
+  },
+});
+
 export const setAnswered = mutation({
   args: { id: v.id("panel_questions"), answered: v.boolean(), password: v.string() },
   handler: async (ctx, args) => {
     if (!(await isHost(args.password))) throw new Error("Not authorized.");
     const question = await ctx.db.get(args.id);
     if (!question) throw new Error("That question is gone.");
-    await ctx.db.patch(args.id, { answered: args.answered });
+    await ctx.db.patch(args.id, {
+      answered: args.answered,
+      // Answering a question takes it off the pinboard immediately.
+      ...(args.answered ? { pinned: false } : {}),
+    });
+  },
+});
+
+export const setPinned = mutation({
+  args: { id: v.id("panel_questions"), pinned: v.boolean(), password: v.string() },
+  handler: async (ctx, args) => {
+    if (!(await isHost(args.password))) throw new Error("Not authorized.");
+    const question = await ctx.db.get(args.id);
+    if (!question) throw new Error("That question is gone.");
+    await ctx.db.patch(args.id, { pinned: args.pinned });
   },
 });
 

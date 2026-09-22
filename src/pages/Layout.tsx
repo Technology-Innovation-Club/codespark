@@ -2,26 +2,11 @@ import { Outlet, Link, useRouterState, type LinkProps } from "@tanstack/react-ro
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { siteData } from "../data/siteData";
+import { useTheme } from "@/lib/theme";
 
 function navTo(path: string, basePath: string) {
   if (path === "") return (basePath || "/") as LinkProps["to"];
   return `${basePath}/${path}` as LinkProps["to"];
-}
-
-function useTheme() {
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "light";
-    const saved = localStorage.getItem("codespark-theme") as "light" | "dark" | null;
-    if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  });
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-    localStorage.setItem("codespark-theme", theme);
-  }, [theme]);
-  return [theme, setTheme] as const;
 }
 
 export function Layout() {
@@ -68,6 +53,13 @@ export function Layout() {
             >
               Hub
               {pathname.startsWith("/challenge-resource-hub") && <span className="absolute inset-x-3.5 bottom-1 h-0.5 rounded-full bg-[var(--accent)]" />}
+            </Link>
+            <Link
+              to="/panel"
+              className={`relative rounded-full px-3.5 py-2 transition-colors ${pathname.startsWith("/panel") ? "bg-[var(--surface-2)] font-semibold text-[var(--ink)]" : "text-[var(--muted)] hover:text-[var(--ink)]"}`}
+            >
+              Panel
+              {pathname.startsWith("/panel") && <span className="absolute inset-x-3.5 bottom-1 h-0.5 rounded-full bg-[var(--accent)]" />}
             </Link>
           </nav>
 
@@ -132,6 +124,13 @@ export function Layout() {
                     className="rounded-[12px] px-4 py-3 text-[15px] font-medium text-[var(--ink)] hover:bg-[var(--surface-2)]"
                   >
                     Innovation Hub
+                  </Link>
+                  <Link
+                    to="/panel"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="rounded-[12px] px-4 py-3 text-[15px] font-medium text-[var(--ink)] hover:bg-[var(--surface-2)]"
+                  >
+                    Panel
                   </Link>
                 </nav>
                 <div className="mt-3 grid grid-cols-2 gap-2">
