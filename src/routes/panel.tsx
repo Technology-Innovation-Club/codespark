@@ -40,6 +40,36 @@ function timeAgo(ts: number): string {
   return `${Math.floor(h / 24)}d ago`;
 }
 
+function ThemeToggle({
+  theme,
+  onToggle,
+  className,
+}: {
+  theme: "light" | "dark";
+  onToggle: () => void;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      title={theme === "dark" ? "Light mode" : "Dark mode"}
+      onClick={onToggle}
+      className={cn(
+        "grid h-11 w-11 shrink-0 place-items-center rounded-full border bg-[var(--surface)] text-[var(--muted)] transition-colors hover:text-[var(--ink)]",
+        className,
+      )}
+      style={{ borderColor: "var(--border)" }}
+    >
+      {theme === "dark" ? (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg>
+      ) : (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+      )}
+    </button>
+  );
+}
+
 function Panel() {
   const questions = useQuery(api.panel.list);
   const askQuestion = useMutation(api.panel.ask);
@@ -216,18 +246,10 @@ function Panel() {
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              aria-label="Toggle theme"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border bg-[var(--surface)] text-[var(--muted)] transition-colors hover:text-[var(--ink)]"
-              style={{ borderColor: "var(--border)" }}
-            >
-              {theme === "dark" ? (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg>
-              ) : (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
-              )}
-            </button>
+            <ThemeToggle
+              theme={theme}
+              onToggle={() => setTheme(theme === "dark" ? "light" : "dark")}
+            />
             <div
               className="hidden h-11 items-center gap-2.5 rounded-full border bg-[var(--surface)] px-4 sm:flex"
               style={{ borderColor: "var(--border)" }}
@@ -497,12 +519,19 @@ function Panel() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-[#050507] text-white"
+            className="fixed inset-0 z-[60] flex flex-col bg-[var(--bg)] text-[var(--ink)]"
           >
-            <div className="flex items-center justify-between px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/40">
+            <div className="flex items-center justify-between gap-4 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted-2)]">
               <span>Presenting</span>
-              <span>
-                {(ordered.findIndex((q) => q.id === staged.id) + 1)} / {ordered.length}
+              <span className="flex items-center gap-3">
+                <span className="tabular-nums">
+                  {(ordered.findIndex((q) => q.id === staged.id) + 1)} / {ordered.length}
+                </span>
+                <ThemeToggle
+                  theme={theme}
+                  onToggle={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="h-10 w-10"
+                />
               </span>
             </div>
 
@@ -518,7 +547,7 @@ function Panel() {
               <p className="max-w-[18ch] font-display text-[clamp(2rem,6.5vw,6rem)] font-semibold leading-[1.05] tracking-[-0.03em] sm:max-w-[26ch]">
                 {staged.text}
               </p>
-              <p className="mt-8 text-[clamp(1rem,2vw,1.5rem)] text-white/50">
+              <p className="mt-8 text-[clamp(1rem,2vw,1.5rem)] text-[var(--muted)]">
                 {staged.author ?? "Anonymous"}
               </p>
             </div>
@@ -530,7 +559,7 @@ function Panel() {
                   const next = ordered[Math.max(0, idx - 1)];
                   if (next) setStageId(next.id);
                 }}
-                className="grid h-12 w-12 place-items-center rounded-full border border-white/15 text-white/70 transition-colors hover:bg-white/10"
+                className="grid h-12 w-12 place-items-center rounded-full border border-[var(--border)] text-[var(--muted)] transition-colors hover:bg-[var(--surface-2)]"
                 aria-label="Previous question"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
@@ -541,14 +570,14 @@ function Panel() {
                   "h-12 rounded-full border px-6 text-sm font-semibold transition-colors",
                   staged.answered
                     ? "border-transparent bg-[#10b981] text-white"
-                    : "border-white/15 text-white/80 hover:bg-white/10",
+                    : "border-[var(--border)] text-[var(--ink)] hover:bg-[var(--surface-2)]",
                 )}
               >
                 {staged.answered ? "Answered ✓" : "Mark answered"}
               </button>
               <button
                 onClick={() => setStageId(null)}
-                className="h-12 rounded-full border border-white/15 px-6 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10"
+                className="h-12 rounded-full border border-[var(--border)] px-6 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--surface-2)]"
               >
                 Close
               </button>
@@ -558,7 +587,7 @@ function Panel() {
                   const next = ordered[Math.min(ordered.length - 1, idx + 1)];
                   if (next) setStageId(next.id);
                 }}
-                className="grid h-12 w-12 place-items-center rounded-full border border-white/15 text-white/70 transition-colors hover:bg-white/10"
+                className="grid h-12 w-12 place-items-center rounded-full border border-[var(--border)] text-[var(--muted)] transition-colors hover:bg-[var(--surface-2)]"
                 aria-label="Next question"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
