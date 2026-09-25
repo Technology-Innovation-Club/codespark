@@ -24,14 +24,17 @@ export const siteData = {
     ],
   },
 
-  iyin: {
-    headline: "Iyinoluwa Aboyeji Started as a Student.",
+  leadNote: {
+    kicker: "Note from our lead",
+    headline: "The Next Founder Is Already on Campus.",
     content: [
-      "He went on to co-found companies that became unicorns.",
-      "The question is not whether African students can build global companies.",
-      "The question is: Will we identify and equip them early enough?",
-      "CodeSpark exists to answer that question.",
+      "The world's most important companies are rarely started after graduation. They are started by students who refuse to wait for permission.",
+      "CodeSpark finds those students early, gives them a structure that works, and puts them in a room with people who have shipped.",
+      "We do not hand out ideas. We build principled founders who sell, ship, and lead.",
+      "That is the work CodeSpark exists to do.",
     ],
+    quote:
+      "African students do not lack ambition. They lack a path. Our job is to build that path and walk it with them, long before graduation.",
   },
 
   whatWeDo: {
