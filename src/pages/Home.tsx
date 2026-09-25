@@ -90,24 +90,19 @@ export function Home() {
                 style={{ color: "#6b7280" }}
               >
                 <div className="flex -space-x-2">
-                  <img
-                    src="https://picsum.photos/seed/codespark-clarity-students/64/64"
-                    className="w-8 h-8 rounded-full object-cover"
-                    style={{ border: "2px solid var(--surface)" }}
-                    alt=""
-                  />
-                  <img
-                    src="https://picsum.photos/seed/codespark-clarity-students2/64/64"
-                    className="w-8 h-8 rounded-full object-cover"
-                    style={{ border: "2px solid var(--surface)" }}
-                    alt=""
-                  />
-                  <img
-                    src="https://picsum.photos/seed/codespark-clarity-students3/64/64"
-                    className="w-8 h-8 rounded-full object-cover"
-                    style={{ border: "2px solid var(--surface)" }}
-                    alt=""
-                  />
+                  {["U", "O", "C"].map((initial, i) => (
+                    <span
+                      key={initial}
+                      className="w-8 h-8 rounded-full grid place-items-center text-[11px] font-bold"
+                      style={{
+                        background: i === 0 ? "var(--accent)" : "var(--surface-2)",
+                        color: i === 0 ? "#fff" : "var(--ink)",
+                        border: "2px solid var(--surface)",
+                      }}
+                    >
+                      {initial}
+                    </span>
+                  ))}
                 </div>
                 <span>Join founders from 15 universities</span>
               </div>
@@ -121,12 +116,35 @@ export function Home() {
               className="relative"
             >
               <Card className="overflow-hidden p-2.5 rounded-[20px]">
-                <div className="relative overflow-hidden rounded-[14px]">
-                  <img
-                    src="https://picsum.photos/seed/codespark-workspace/760/520"
-                    alt="Students building"
-                    className="w-full h-[380px] md:h-[440px] object-cover"
+                <div
+                  className="relative overflow-hidden rounded-[14px] h-[380px] md:h-[440px]"
+                  style={{
+                    background:
+                      "linear-gradient(150deg, var(--accent-soft) 0%, var(--surface-2) 48%, color-mix(in srgb, var(--accent) 16%, var(--surface)) 100%)",
+                  }}
+                >
+                  <div
+                    className="absolute inset-0 opacity-50"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(color-mix(in srgb, var(--accent) 26%, transparent) 1px, transparent 1px)",
+                      backgroundSize: "22px 22px",
+                    }}
                   />
+                  <div
+                    className="absolute -top-16 -right-10 w-56 h-56 rounded-full blur-2xl"
+                    style={{ background: "color-mix(in srgb, var(--accent) 22%, transparent)" }}
+                  />
+                  <div
+                    className="absolute -bottom-20 -left-12 w-64 h-64 rounded-full blur-2xl"
+                    style={{ background: "color-mix(in srgb, var(--accent) 14%, transparent)" }}
+                  />
+                  <div className="absolute top-0 left-0 right-0 flex items-center gap-1.5 px-4 pt-4">
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: "color-mix(in srgb, var(--accent) 35%, var(--border))" }} />
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: "color-mix(in srgb, var(--accent) 20%, var(--border))" }} />
+                    <span className="w-2.5 h-2.5 rounded-full" style={{ background: "var(--border)" }} />
+                    <span className="ml-2 text-[11px] tracking-wide" style={{ color: "var(--muted)" }}>codespark.app</span>
+                  </div>
                   <div
                     className="absolute inset-0"
                     style={{
@@ -346,19 +364,40 @@ export function Home() {
             hover
             className="overflow-hidden flex flex-col p-0 rounded-[20px] lg:row-span-2 group"
           >
-            <div className="relative h-[220px] overflow-hidden">
-              <img
-                src="https://picsum.photos/seed/codespark-team/800/500"
-                className="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500"
-                alt=""
-              />
+            <div
+              className="relative h-[220px] overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 48%, #0b1220) 100%)",
+              }}
+            >
               <div
-                className="absolute inset-0"
+                className="absolute inset-0 opacity-[0.32]"
                 style={{
-                  background:
-                    "linear-gradient(180deg, rgba(37,99,235,.08) 0%, rgba(24,24,27,.22) 100%)",
+                  backgroundImage:
+                    "radial-gradient(rgba(255,255,255,.55) 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
                 }}
               />
+              <div
+                className="absolute -right-12 -bottom-20 w-64 h-64 rounded-full"
+                style={{ background: "rgba(255,255,255,.10)" }}
+              />
+              <div
+                className="absolute right-20 top-6 w-24 h-24 rounded-full"
+                style={{ background: "rgba(255,255,255,.08)" }}
+              />
+              <span className="absolute right-6 top-1/2 -translate-y-1/2 text-7xl leading-none text-white/15 select-none">
+                ◈
+              </span>
+              <div className="absolute left-6 bottom-5">
+                <div className="text-[11px] tracking-[0.16em] uppercase text-white/70">
+                  Cohort 01
+                </div>
+                <div className="mt-1 font-display text-lg font-semibold text-white">
+                  Idea → Demo Day
+                </div>
+              </div>
               <Badge className="absolute top-4 left-4 rounded-full px-3 py-1 text-xs">
                 Featured
               </Badge>
@@ -424,11 +463,32 @@ export function Home() {
                 8 weeks
               </Badge>
             </div>
-            <img
-              src="https://picsum.photos/seed/codespark-clarity-students/600/240"
-              className="mt-4 w-full h-[96px] object-cover rounded-[12px]"
-              alt=""
-            />
+            <div
+              className="mt-4 w-full h-[96px] rounded-[12px] px-4 py-3 flex flex-col justify-center gap-1.5 overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, var(--surface)) 0%, var(--surface-2) 100%)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              {["Real problem spaces", "Operator judges", "Live pitch stage"].map(
+                (t) => (
+                  <div
+                    key={t}
+                    className="flex items-center gap-2 text-xs"
+                    style={{ color: "#6b7280" }}
+                  >
+                    <span
+                      className="w-4 h-4 rounded-full grid place-items-center text-[9px] text-white shrink-0"
+                      style={{ background: "var(--accent)" }}
+                    >
+                      ✓
+                    </span>
+                    {t}
+                  </div>
+                ),
+              )}
+            </div>
           </Card>
 
           <Card hover className="p-6 flex flex-col rounded-[20px]">
@@ -479,7 +539,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Founder note Iyin */}
+      {/* Note from our lead */}
       <section className="max-w-[1280px] mx-auto px-5 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -488,33 +548,66 @@ export function Home() {
           transition={{ duration: 0.5 }}
         >
           <Card className="overflow-hidden grid md:grid-cols-[420px_1fr] p-0 rounded-[20px]">
-            <img
-              src="https://picsum.photos/seed/codespark-clarity-founder/800/700"
-              alt="Founder Iyin"
-              className="h-[340px] md:h-full w-full object-cover"
-            />
+            <div
+              className="relative h-[220px] md:h-auto md:min-h-[420px]"
+              style={{
+                background:
+                  "linear-gradient(150deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 42%, #0b1220) 100%)",
+              }}
+            >
+              <div
+                className="absolute inset-0 opacity-[0.3]"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(rgba(255,255,255,.55) 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
+              />
+              <div
+                className="absolute -left-16 top-10 w-56 h-56 rounded-full blur-2xl"
+                style={{ background: "rgba(255,255,255,.12)" }}
+              />
+              <div
+                className="absolute -right-10 bottom-0 w-48 h-48 rounded-full blur-2xl"
+                style={{ background: "rgba(255,255,255,.08)" }}
+              />
+              <div className="absolute inset-0 grid place-items-center">
+                <span
+                  className="w-20 h-20 rounded-full grid place-items-center font-display text-2xl font-bold text-white"
+                  style={{
+                    background: "rgba(255,255,255,.16)",
+                    border: "1px solid rgba(255,255,255,.3)",
+                  }}
+                >
+                  PO
+                </span>
+              </div>
+              <div className="absolute left-6 bottom-5 text-[11px] tracking-[0.16em] uppercase text-white/70">
+                CodeSpark
+              </div>
+            </div>
             <div className="p-7 md:p-10 flex flex-col justify-center">
               <div
                 className="text-[11px] tracking-[0.14em] uppercase font-medium"
                 style={{ color: "#6b7280" }}
               >
-                Founder note
+                {siteData.leadNote.kicker}
               </div>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight font-display">
-                {siteData.iyin.headline}
+                {siteData.leadNote.headline}
               </h3>
               <div className="mt-4 space-y-3">
-                {siteData.iyin.content.map((para, i) => (
+                {siteData.leadNote.content.map((para, i) => (
                   <p
                     key={i}
-                    className={`leading-relaxed ${i === siteData.iyin.content.length - 1 ? "font-semibold text-[var(--ink)]" : "text-sm"}`}
+                    className={`leading-relaxed ${i === siteData.leadNote.content.length - 1 ? "font-semibold text-[var(--ink)]" : "text-sm"}`}
                     style={
-                      i === siteData.iyin.content.length - 1
+                      i === siteData.leadNote.content.length - 1
                         ? undefined
                         : { color: "#6b7280" }
                     }
                   >
-                    {i === siteData.iyin.content.length - 1 ? (
+                    {i === siteData.leadNote.content.length - 1 ? (
                       <span>{para}</span>
                     ) : (
                       para
@@ -526,20 +619,21 @@ export function Home() {
                 className="mt-4 border-l-2 pl-4 text-sm italic leading-relaxed"
                 style={{ borderColor: "var(--accent)", color: "#6b7280" }}
               >
-                We had ideas but no path to ship. CodeSpark gives you mentors who
-                review weekly, space to build, and a stage where people actually
-                listen.
+                {siteData.leadNote.quote}
               </blockquote>
               <div className="mt-6 flex items-center gap-3">
-                <img
-                  src="https://picsum.photos/seed/iyin-avatar/80/80"
-                  className="w-10 h-10 rounded-full object-cover"
-                  alt=""
-                />
+                <span
+                  className="w-10 h-10 rounded-full grid place-items-center text-sm font-bold text-white shrink-0"
+                  style={{ background: "var(--accent)" }}
+                >
+                  PO
+                </span>
                 <div>
-                  <div className="text-sm font-semibold">Iyin A.</div>
+                  <div className="text-sm font-semibold">
+                    Prosperity Olorunfemi
+                  </div>
                   <div className="text-xs" style={{ color: "#6b7280" }}>
-                    Founder, CodeSpark
+                    Head of the CodeSpark Team
                   </div>
                 </div>
                 <Button
